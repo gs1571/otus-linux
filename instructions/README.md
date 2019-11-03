@@ -10,8 +10,11 @@
 ## URLS
 
 ### tmux
-[Краткая шпаргалка по tmux (менеджеру терминалов)](https://habr.com/ru/post/126996/)
-[Терминальный сервер для админа; Ни единого SSH-разрыва](https://habr.com/ru/company/vdsina/blog/472746/)
+- [Краткая шпаргалка по tmux (менеджеру терминалов)](https://habr.com/ru/post/126996/)
+- [Терминальный сервер для админа; Ни единого SSH-разрыва](https://habr.com/ru/company/vdsina/blog/472746/)
 
 ### git
-[.gitignore](https://www.atlassian.com/git/tutorials/saving-changes/gitignore)
+- [.gitignore](https://www.atlassian.com/git/tutorials/saving-changes/gitignore)
+
+### markdown
+- [How to use Markdown for writing Docs](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown)

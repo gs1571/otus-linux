@@ -1,13 +1,17 @@
 # Запусть VM с Linux Centos 7
 
-# Обновить ядро
+## Обновить ядро
+
 Обновляем с 3.10.0-957.12.2.el7.x86_64 до 5.3.8-1.el7.elrepo.x86_64
 
+```bash
 [vagrant@kernel-update ~]$ uname -r
 5.3.8-1.el7.elrepo.x86_64
+```
 
-# Сделать через packet новый box Vagrant
+## Сделать через packet новый box Vagrant
 
+```bash
 gsol@cray-mini:~/dev/otus/otus-linux/lab01/packer$ packer build centos.json
 centos-7.7 output will be in this color.
 [..cut..]
@@ -36,9 +40,11 @@ gsol@cray-mini:~/dev/otus/otus-linux/lab01/test$ vagrant ssh
 Last login: Sat Nov  2 10:26:37 2019 from 10.0.2.2
 [vagrant@localhost ~]$ uname -r
 5.3.8-1.el7.elrepo.x86_64
+```
 
-# Залить образ на Vagrant Cloud
+## Залить образ на Vagrant Cloud
 
+```bash
 gsol@cray-mini:~/dev/otus/otus-linux/lab01/packer$ vagrant cloud publish --release gs1571/centos-7-5 1.0 virtualbox centos-7.7.1908-kernel-5-x86_64-Minimal.box 
 You are about to publish a box on Vagrant Cloud with the following options:
 gs1571/centos-7-5:   (v1.0) for provider 'virtualbox'
@@ -60,10 +66,13 @@ updated_at:      2019-11-03T11:27:27.479+03:00
 current_version: 1.0
 providers:       virtualbox
 old_versions:    ...
+```
 
-# Вопросы
+## Вопросы
+
 - Собрать ядро из исходников
 
+```
 yum install -y ncurses-devel make gcc bc bison flex elfutils-libelf-devel openssl-devel grub2 wget
 cd /usr/src/
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.8.tar.xz
@@ -74,5 +83,6 @@ make -j 2
 make -j 2 modules
 make install
 make modules_install
+```
 
 - Добавить поддержку VirtualBox FileShare
