@@ -73,16 +73,21 @@ old_versions:    ...
 - Собрать ядро из исходников
 
 ```
-yum install -y ncurses-devel make gcc bc bison flex elfutils-libelf-devel openssl-devel grub2 wget
-cd /usr/src/
+yum install -y ncurses-devel make gcc bc bison flex elfutils-libelf-devel openssl-devel grub2 wget perl
+cd /usr/src/ 
 wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.8.tar.xz
 tar -xf linux-5.3.8.tar.xz
 cd linux-5.3.8
-cp -v /boot/config-3.10.0-957.12.2.el7.x86_64 /usr/src/linux-5.3.8/.config
-make -j 2
-make -j 2 modules
+cp -v /boot/config-3.10.0-957.12.2.el7.x86_64 ./.config
+make olddefconfig
+make -j20
 make install
 make modules_install
 ```
+
+yum install -y ncurses-devel make gcc bc bison flex elfutils-libelf-devel openssl-devel grub2 wget perl && cd /usr/src/ && wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.8.tar.xz && tar -xf linux-5.3.8.tar.xz && cd linux-5.3.8 && cp -v /boot/config-3.10.0-957.12.2.el7.x86_64 ./.config && make olddefconfig
+date && make -j20 && sleep 2m && date && make -j20 modules && sleep 2m && date && make modules_install && sleep 2m && date && make install && date
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg && sudo grub2-set-default 0
 
 - Добавить поддержку VirtualBox FileShare
