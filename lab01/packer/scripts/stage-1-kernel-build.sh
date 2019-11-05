@@ -15,11 +15,11 @@ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.8.tar.xz
 tar -xf linux-5.3.8.tar.xz 
 cd linux-5.3.8 
 # copy config
-cp -v /boot/config-3.10.0-957.12.2.el7.x86_64 ./.config
+cp -v /boot/config-* ./.config
 # create config
 make olddefconfig
 # compile and install kernel
-date && make -j20 && sleep 2m && date && make -j20 modules && sleep 2m && date && make modules_install && sleep 2m && date && make install && date
+date && make -j3 && sleep 2m && date && make -j3 modules && sleep 2m && date && make modules_install && sleep 2m && date && make install && date
 # Update GRUB
 grub2-mkconfig -o /boot/grub2/grub.cfg
 grub2-set-default 0
