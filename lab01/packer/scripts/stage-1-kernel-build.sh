@@ -15,7 +15,7 @@ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.3.8.tar.xz
 tar -xf linux-5.3.8.tar.xz 
 cd linux-5.3.8 
 # copy config
-cp -v /boot/config-* ./.config
+cp -v /boot/config-* .config
 # create config
 make olddefconfig
 # compile and install kernel
@@ -24,5 +24,7 @@ date && make -j3 && sleep 2m && date && make -j3 modules && sleep 2m && date && 
 grub2-mkconfig -o /boot/grub2/grub.cfg
 grub2-set-default 0
 echo "Grub update done."
+sleep 2m 
 # Reboot VM
 shutdown -r now
+echo "Going to reboot"

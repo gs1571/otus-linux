@@ -36,8 +36,8 @@
       "output_directory": "builds",
 
       "vboxmanage": [
-        [  "modifyvm",  "{{.Name}}",  "--memory",  "4024" ],
-        [  "modifyvm",  "{{.Name}}",  "--cpus",  "3" ]
+        [  "modifyvm",  "{{.Name}}",  "--memory",  "8024" ],
+        [  "modifyvm",  "{{.Name}}",  "--cpus",  "4" ]
       ],
 
       "export_opts":

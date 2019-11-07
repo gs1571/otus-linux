@@ -1,6 +1,7 @@
 otus-linux.code-workspace
 lab01/packer/packer_cache/*
 lab01/packer/centos-7.7.1908-kernel-5-x86_64-Minimal.box
+lab01/packer/centos-7.7.1908-kernel-5-x86_64-Minimal-ver1.box
 **/.vagrant
 *.vdi
 
