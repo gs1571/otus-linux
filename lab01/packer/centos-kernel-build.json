@@ -13,7 +13,7 @@
       "headless": true,
 
       "boot_wait": "10s",
-      "disk_size": "30240",
+      "disk_size": "40240",
       "guest_os_type": "RedHat_64",
       "http_directory": "http",
 
@@ -37,8 +37,8 @@
       "output_directory": "builds",
 
       "vboxmanage": [
-        [  "modifyvm",  "{{.Name}}",  "--memory",  "8024" ],
-        [  "modifyvm",  "{{.Name}}",  "--cpus",  "4" ]
+        [  "modifyvm",  "{{.Name}}",  "--memory",  "12024" ],
+        [  "modifyvm",  "{{.Name}}",  "--cpus",  "11" ]
       ],
 
       "export_opts":

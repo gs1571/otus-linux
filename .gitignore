@@ -5,3 +5,4 @@ lab01/packer/centos-7.7.1908-kernel-5-x86_64-Minimal-ver1.box
 **/.vagrant
 *.vdi
 
+lab01/packer/centos-7.7.1908-kernel-5-x86_64-Minimal_big.box
