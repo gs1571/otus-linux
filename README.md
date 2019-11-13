@@ -4,6 +4,7 @@
 
 * [Lab01: С чего начинается Linux](lab01/README.md)
 * [Lab02: Дисковая подсистема ](lab02/README.md)
+* [Lab03: Файловые системы и LVM ](lab03/README.md)
 
 # Инструкции
 
