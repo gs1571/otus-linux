@@ -1,0 +1,983 @@
+Script started on Thu Nov 14 23:10:24 2019
+[?1034hbash-3.2$ vagrant ssh
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo su
+]0;root@lvm:/home/vagrant[?1034h[root@lvm vagrant]# yum install xfsdump -y
+Failed to set locale, defaulting to C
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.docker.ru
+ * extras: mirror.docker.ru
+ * updates: centos-mirror.rbc.ru
+Resolving Dependencies
+--> Running transaction check
+---> Package xfsdump.x86_64 0:3.1.7-1.el7 will be installed
+--> Processing Dependency: attr >= 2.0.0 for package: xfsdump-3.1.7-1.el7.x86_64
+--> Running transaction check
+---> Package attr.x86_64 0:2.4.46-13.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================
+ Package            Arch              Version                     Repository       Size
+========================================================================================
+Installing:
+ xfsdump            x86_64            3.1.7-1.el7                 base            308 k
+Installing for dependencies:
+ attr               x86_64            2.4.46-13.el7               base             66 k
+
+Transaction Summary
+========================================================================================
+Install  1 Package (+1 Dependent package)
+
+Total download size: 374 k
+Installed size: 1.1 M
+Downloading packages:
+(1/2): attr-2.4.46-13.el7.x86_64.rpm                             |  66 kB  00:00:00     
+(2/2): xfsdump-3.1.7-1.el7.x86_64.rpm                            | 308 kB  00:00:00     
+----------------------------------------------------------------------------------------
+Total                                                      1.1 MB/s | 374 kB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : attr-2.4.46-13.el7.x86_64 [                                        ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##                                      ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#######                                 ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##########                              ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [############                            ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [################                        ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#################                       ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [####################                    ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#####################                   ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#########################               ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##########################              ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [############################            ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#############################           ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##############################          ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [################################        ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#################################       ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##################################      ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [####################################    ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#####################################   ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [######################################  ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [####################################### ] 1/2  Installing : attr-2.4.46-13.el7.x86_64                                            1/2 
+  Installing : xfsdump-3.1.7-1.el7.x86_64 [                                       ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##                                     ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#####                                  ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#######                                ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##########                             ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###########                            ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##############                         ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#################                      ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###################                    ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [######################                 ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [########################               ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###########################            ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [############################           ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##############################         ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###############################        ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#################################      ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##################################     ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#####################################  ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###################################### ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64                                           2/2 
+  Verifying  : attr-2.4.46-13.el7.x86_64                                            1/2 
+  Verifying  : xfsdump-3.1.7-1.el7.x86_64                                           2/2 
+
+Installed:
+  xfsdump.x86_64 0:3.1.7-1.el7                                                          
+
+Dependency Installed:
+  attr.x86_64 0:2.4.46-13.el7                                                           
+
+Complete!
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# pvcreate /dev/sdb
+  Physical volume "/dev/sdb" successfully created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vgcreate vg_root /dev/sdb
+  Volume group "vg_root" successfully created
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -n lv_root -l+100%FREE /dev/vg_root
+  Logical volume "lv_root" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkfs.xfs /dev/vgroot_lv[K[K[K[K[K[K[K_root/lv_root
+meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2620416, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/vgroot/[K[K[K[K[K_root/lv_root /mnt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# xfsdump -J - /dev/VolGroup00/Logvol00 [K[K[K[K[K[KVol00 | xfsrestore -J - /mnt
+xfsrestore: using file dump (drive_simple) strategy
+xfsrestore: version 3.1.7 (dump format 3.0)
+xfsdump: using file dump (drive_simple) strategy
+xfsdump: version 3.1.7 (dump format 3.0)
+xfsdump: level 0 dump of lvm:/
+xfsdump: dump date: Thu Nov 14 20:12:35 2019
+xfsdump: session id: 84a0622a-e171-4616-aa69-b817228607bf
+xfsdump: session label: ""
+xfsrestore: searching media for dump
+xfsdump: ino map phase 1: constructing initial dump list
+xfsdump: ino map phase 2: skipping (no pruning necessary)
+xfsdump: ino map phase 3: skipping (only one dump stream)
+xfsdump: ino map construction complete
+xfsdump: estimated dump size: 741700480 bytes
+xfsdump: creating dump session media file 0 (media 0, file 0)
+xfsdump: dumping ino map
+xfsdump: dumping directories
+xfsrestore: examining media file 0
+xfsrestore: dump description: 
+xfsrestore: hostname: lvm
+xfsrestore: mount point: /
+xfsrestore: volume: /dev/mapper/VolGroup00-LogVol00
+xfsrestore: session time: Thu Nov 14 20:12:35 2019
+xfsrestore: level: 0
+xfsrestore: session label: ""
+xfsrestore: media label: ""
+xfsrestore: file system id: b60e9498-0baa-4d9f-90aa-069048217fee
+xfsrestore: session id: 84a0622a-e171-4616-aa69-b817228607bf
+xfsrestore: media id: 2395059e-f5fa-4a5e-9dc2-9816b360ae7a
+xfsrestore: searching media for directory dump
+xfsrestore: reading directories
+xfsdump: dumping non-directory files
+xfsrestore: 2698 directories and 23612 entries processed
+xfsrestore: directory post-processing
+xfsrestore: restoring non-directory files
+xfsdump: ending media file
+xfsdump: media file size 718583992 bytes
+xfsdump: dump size (non-dir files) : 705423192 bytes
+xfsdump: dump complete: 9 seconds elapsed
+xfsdump: Dump Status: SUCCESS
+xfsrestore: restore complete: 9 seconds elapsed
+xfsrestore: Restore Status: SUCCESS
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# for i in /proc/ /sysy[K/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i ; done
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# chroot /mnt/
+]0;root@lvm:/[?1034h[root@lvm /]# grub2-mkconfig -o /boot/grub2/grub.cfg 
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img
+done
+]0;root@lvm:/[root@lvm /]# cd /boot; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/in itramfs-//g;s/.img//g"` --force; done
+Executing: /sbin/dracut -v initramfs-3.10.0-862.2.3.el7.x86_64.img 3.10.0-862.2.3.el7.x86_64 --force
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: drm ***
+*** Including module: plymouth ***
+*** Including module: dm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 60-persistent-storage-dm.rules
+Skipping udev rule: 55-dm.rules
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: lvm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 56-lvm.rules
+Skipping udev rule: 60-persistent-storage-lvm.rules
+*** Including module: qemu ***
+*** Including module: resume ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
+]0;root@lvm:/boot[root@lvm boot]# vi /boot/grub2/grub.cfg 
+[?1049h[?1h=[1;48r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[48;1H"/boot/grub2/grub.cfg" 127L, 3658C[1;1H#
+# DO NOT EDIT THIS FILE
+#
+# It is automatically generated by grub2-mkconfig using templates
+# from /etc/grub.d and settings from /etc/default/grub
+#
+
+### BEGIN /etc/grub.d/00_header ###
+set pager=1
+
+if [ -s $prefix/grubenv ]; then
+  load_env
+fi
+if [ "${next_entry}" ] ; then
+   set default="${next_entry}"
+   set next_entry=
+   save_env next_entry
+   set boot_once=true
+else
+   set default="${saved_entry}"
+fi
+
+if [ x"${feature_menuentry_id}" = xy ]; then
+  menuentry_id_option="--id"
+else
+  menuentry_id_option=""
+fi
+
+export menuentry_id_option
+
+if [ "${prev_saved_entry}" ]; then
+  set saved_entry="${prev_saved_entry}"
+  save_env saved_entry
+  set prev_saved_entry=
+  save_env prev_saved_entry
+  set boot_once=true
+fi
+
+function savedefault {
+  if [ -z "${boot_once}" ]; then
+    saved_entry="${chosen}"
+    save_env saved_entry
+  fi
+}
+
+function load_video {
+  if [ x$feature_all_video_module = xy ]; then[1;1H[?12l[?25h[?25l[48;1H[K[48;1H/[?12l[?25hrd.lvm[?25l[27m[m[H[2J[1;5Hpassword_pbkdf2 root ${GRUB2_PASSWORD}
+  fi
+fi
+### END /etc/grub.d/01_users ###
+
+### BEGIN /etc/grub.d/10_linux ###
+menuentry 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' --class centos --class gnuu[8;1H-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-862.22[9;1H.3.el7.x86_64-advanced-5aab1cf3-d642-44d8-8fa2-518fe17536fe' {[10;9Hload_video[11;9Hset gfxpayload=keep[12;9Hinsmod gzio[13;9Hinsmod part_msdos[14;9Hinsmod xfs[15;9Hset root='hd0,msdos2'[16;9Hif [ x$feature_platform_search_hint = xy ]; then[17;11Hsearch --no-floppy --fs-uuid --set=root --hint-bios=hd0,msdos2 --hint-efi=hd0,,[18;1Hmsdos2 --hint-baremetal=ahci0,msdos2  570897ca-e759-4c81-90cf-389da6eee4cc[19;9Helse[20;11Hsearch --no-floppy --fs-uuid --set=root 570897ca-e759-4c81-90cf-389da6eee4cc[21;9Hfi[22;9Hlinux16 /vmlinuz-3.10.0-862.2.3.el7.x86_64 root=/dev/mapper/vg_root-lv_root ro nn[23;1Ho_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=nn[24;1Hoop crashkernel=auto rd.lvm.lv=VolGroup00/LogVol00 rd.lvm.lv=VolGroup00/LogVol01 rhgb quu[25;1Hiet[26;9Hinitrd16 /initramfs-3.10.0-862.2.3.el7.x86_64.img
+}
+if [ "x$default" = 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' ]; then default=''[29;1HAdvanced options for CentOS Linux>CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)'; fii[30;1H;
+### END /etc/grub.d/10_linux ###
+
+### BEGIN /etc/grub.d/20_linux_xen ###
+### END /etc/grub.d/20_linux_xen ###
+
+### BEGIN /etc/grub.d/20_ppc_terminfo ###
+### END /etc/grub.d/20_ppc_terminfo ###
+
+### BEGIN /etc/grub.d/30_os-prober ###
+### END /etc/grub.d/30_os-prober ###
+
+### BEGIN /etc/grub.d/40_custom ###
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+### END /etc/grub.d/40_custom ###[24;22H[?12l[?25hrd.lvm.lv=VolGroup00/LogVol00[?25l[48;1H[1m-- INSERT --[24;51H[?12l[?25h[?25l[m rd.lvm.lv=VolGroup00/LogVol01 rhgb quii[25;1Het [24;50H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiee[25;1Ht [24;49H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiett[25;1H [24;48H[?12l[?25h[?25l[22;47r[47;1H
+[1;48r[22;1H        linux16 /vmlinuz-3.10.0-862.2.3.el7.x86_64 root=/dev/mapper/vg_root-lv_root ro nn[23;1Ho_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=nn[24;1Hoop crashkernel=auto rd.lvm.lv=VolGroup00/LogV rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[47;1H### BEGIN /etc/grub.d/41_custom ###[24;47H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;46H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;45H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;44H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;43H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;42H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;41H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;40H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;39H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;38H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;37H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;36H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;35H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;34H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;33H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet [24;32H[?12l[?25h[?25lv rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;33H[?12l[?25h[?25lg rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;34H[?12l[?25h[?25l_ rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;35H[?12l[?25h[?25lr rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;36H[?12l[?25h[?25lo rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;37H[?12l[?25h[?25lo rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;38H[?12l[?25h[?25lt rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;39H[?12l[?25h[?25l/ rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;40H[?12l[?25h[?25ll rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;41H[?12l[?25h[?25lv rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;42H[?12l[?25h[?25l_ rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;43H[?12l[?25h[?25lr rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;44H[?12l[?25h[?25lo rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;45H[?12l[?25h[?25lo rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;46H[?12l[?25h[?25lt rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet[24;47H[?12l[?25h [48;1H[K[24;47H[?25l[?12l[?25h[?25l[48;1H:[?12l[?25hwq[?25l"grub2/grub.cfg" 127L, 3654C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/boot[root@lvm boot]# exit
+exit
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+bash-3.2$ vagrant ssh
+Last login: Thu Nov 14 20:10:30 2019 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo su
+]0;root@lvm:/home/vagrant[?1034h[root@lvm vagrant]# lsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                       8:0    0   40G  0 disk 
+|-sda1                    8:1    0    1M  0 part 
+|-sda2                    8:2    0    1G  0 part /boot
+`-sda3                    8:3    0   39G  0 part 
+  |-VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+  `-VolGroup00-LogVol00 253:2    0 37.5G  0 lvm  
+sdb                       8:16   0   10G  0 disk 
+`-vg_root-lv_root       253:0    0   10G  0 lvm  /
+sdc                       8:32   0    2G  0 disk 
+sdd                       8:48   0    1G  0 disk 
+sde                       8:64   0    1G  0 disk 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvreo[Kmove /dev/VolGroup00/LogVol00
+Do you really want to remove active logical volume VolGroup00/LogVol00? [y/n]: y
+  Logical volume "LogVol00" successfully removed
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -n VolGroup00/LogVol00 -L8G /dev/VolGroup00
+WARNING: xfs signature detected on /dev/VolGroup00/LogVol00 at offset 0. Wipe it? [y/n]: y
+  Wiping xfs signature on /dev/VolGroup00/LogVol00.
+  Logical volume "LogVol00" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkfs.xfs /dev/Col[K[K[KVolGroup00/LogVol00
+meta-data=/dev/VolGroup00/LogVol00 isize=512    agcount=4, agsize=524288 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2097152, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/LogVol00 /mnt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt
+xfsrestore: using file dump (drive_simple) strategy
+xfsrestore: version 3.1.7 (dump format 3.0)
+xfsdump: using file dump (drive_simple) strategy
+xfsdump: version 3.1.7 (dump format 3.0)
+xfsdump: level 0 dump of lvm:/
+xfsdump: dump date: Thu Nov 14 20:19:17 2019
+xfsdump: session id: de64695a-bd9e-4363-8d25-ca5ccc013d59
+xfsdump: session label: ""
+xfsrestore: searching media for dump
+xfsdump: ino map phase 1: constructing initial dump list
+xfsdump: ino map phase 2: skipping (no pruning necessary)
+xfsdump: ino map phase 3: skipping (only one dump stream)
+xfsdump: ino map construction complete
+xfsdump: estimated dump size: 740366784 bytes
+xfsdump: creating dump session media file 0 (media 0, file 0)
+xfsdump: dumping ino map
+xfsdump: dumping directories
+xfsrestore: examining media file 0
+xfsrestore: dump description: 
+xfsrestore: hostname: lvm
+xfsrestore: mount point: /
+xfsrestore: volume: /dev/mapper/vg_root-lv_root
+xfsrestore: session time: Thu Nov 14 20:19:17 2019
+xfsrestore: level: 0
+xfsrestore: session label: ""
+xfsrestore: media label: ""
+xfsrestore: file system id: 5aab1cf3-d642-44d8-8fa2-518fe17536fe
+xfsrestore: session id: de64695a-bd9e-4363-8d25-ca5ccc013d59
+xfsrestore: media id: 5eda6fc7-c574-4f9a-b75f-6203f91b84dd
+xfsrestore: searching media for directory dump
+xfsrestore: reading directories
+xfsdump: dumping non-directory files
+xfsrestore: 2702 directories and 23617 entries processed
+xfsrestore: directory post-processing
+xfsrestore: restoring non-directory files
+xfsdump: ending media file
+xfsdump: media file size 717211024 bytes
+xfsdump: dump size (non-dir files) : 704046528 bytes
+xfsdump: dump complete: 13 seconds elapsed
+xfsdump: Dump Status: SUCCESS
+xfsrestore: restore complete: 13 seconds elapsed
+xfsrestore: Restore Status: SUCCESS
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# for i in /roc/ s[K/[K[K[K[K[K[Kproc /[K[K/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i  ; done
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# chroot /mnt/
+]0;root@lvm:/[?1034h[root@lvm /]# grub2-mkconfig -o /boot/grub2/grub.cfg 
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img
+done
+]0;root@lvm:/[root@lvm /]# cd /boot/; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/i nitramfs-//g;s/.img//g"` --force; done
+Executing: /sbin/dracut -v initramfs-3.10.0-862.2.3.el7.x86_64.img 3.10.0-862.2.3.el7.x86_64 --force
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: drm ***
+*** Including module: plymouth ***
+*** Including module: dm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 60-persistent-storage-dm.rules
+Skipping udev rule: 55-dm.rules
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: lvm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 56-lvm.rules
+Skipping udev rule: 60-persistent-storage-lvm.rules
+*** Including module: qemu ***
+*** Including module: resume ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
+]0;root@lvm:/boot[root@lvm boot]# pvcreate /dev/sdc /dev/sdd
+  Physical volume "/dev/sdc" successfully created.
+  Physical volume "/dev/sdd" successfully created.
+]0;root@lvm:/boot[root@lvm boot]# vgcreate vg_ca[K[Kvar /dev/sds[Kc /dev/sdd
+  Volume group "vg_var" successfully created
+]0;root@lvm:/boot[root@lvm boot]# lvcreate -L 950M -m1 -n lv_var vg_var
+  Rounding up size to full physical extent 952.00 MiB
+  Logical volume "lv_var" created.
+]0;root@lvm:/boot[root@lvm boot]# mkfs.ext4 /dev/vg_var/lv_var
+mke2fs 1.42.9 (28-Dec-2013)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+60928 inodes, 243712 blocks
+12185 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=249561088
+8 block groups
+32768 blocks per group, 32768 fragments per group
+7616 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376
+
+Allocating group tables: 0/8   done                            
+Writing inode tables: 0/8   done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: 0/8   done
+
+]0;root@lvm:/boot[root@lvm boot]# mount /dev/vg_var/lv_var /mnt
+]0;root@lvm:/boot[root@lvm boot]# cp -aR /var/* /mnt/
+]0;root@lvm:/boot[root@lvm boot]# mkdir /tmp/oldvar && mv /var/* /tmp/oldvar
+]0;root@lvm:/boot[root@lvm boot]# umount /mnt
+]0;root@lvm:/boot[root@lvm boot]# mount /dev/vg_var/lv_var /var
+]0;root@lvm:/boot[root@lvm boot]# echo "`blkid | grep var: | awk '{print $2}'` /var ext4 defaults 0 0" >>  /etc/fstab 
+]0;root@lvm:/boot[root@lvm boot]# lvremove /dev/[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+exit
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+bash-3.2$ vagrant ssh
+^Cbash-3.2$ vagrant ssh
+Last login: Thu Nov 14 20:17:10 2019 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo su
+]0;root@lvm:/home/vagrant[?1034h[root@lvm vagrant]# lsblk
+NAME                     MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                        8:0    0   40G  0 disk 
+|-sda1                     8:1    0    1M  0 part 
+|-sda2                     8:2    0    1G  0 part /boot
+`-sda3                     8:3    0   39G  0 part 
+  |-VolGroup00-LogVol00  253:0    0    8G  0 lvm  /
+  `-VolGroup00-LogVol01  253:1    0  1.5G  0 lvm  [SWAP]
+sdb                        8:16   0   10G  0 disk 
+`-vg_root-lv_root        253:2    0   10G  0 lvm  
+sdc                        8:32   0    2G  0 disk 
+|-vg_var-lv_var_rmeta_0  253:3    0    4M  0 lvm  
+| `-vg_var-lv_var        253:7    0  952M  0 lvm  /var
+`-vg_var-lv_var_rimage_0 253:4    0  952M  0 lvm  
+  `-vg_var-lv_var        253:7    0  952M  0 lvm  /var
+sdd                        8:48   0    1G  0 disk 
+|-vg_var-lv_var_rmeta_1  253:5    0    4M  0 lvm  
+| `-vg_var-lv_var        253:7    0  952M  0 lvm  /var
+`-vg_var-lv_var_rimage_1 253:6    0  952M  0 lvm  
+  `-vg_var-lv_var        253:7    0  952M  0 lvm  /var
+sde                        8:64   0    1G  0 disk 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# df -Th
+Filesystem                      Type      Size  Used Avail Use% Mounted on
+/dev/mapper/VolGroup00-LogVol00 xfs       8.0G  743M  7.3G  10% /
+devtmpfs                        devtmpfs  110M     0  110M   0% /dev
+tmpfs                           tmpfs     118M     0  118M   0% /dev/shm
+tmpfs                           tmpfs     118M  4.5M  114M   4% /run
+tmpfs                           tmpfs     118M     0  118M   0% /sys/fs/cgroup
+/dev/mapper/vg_var-lv_var       ext4      922M  118M  740M  14% /var
+/dev/sda2                       xfs      1014M   61M  954M   6% /boot
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvremove /dev/vg_root/lv_root 
+Do you really want to remove active logical volume vg_root/lv_root? [y/n]: y
+  Logical volume "lv_root" successfully removed
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vgremove /dev/vg_root
+  Volume group "vg_root" successfully removed
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# pvremove /dev/d[Ksdb
+  Labels on physical volume "/dev/sdb" successfully wiped.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -n LogVol_Home -L2G /dev/VolGroup00
+  Logical volume "LogVol_Home" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkfs.xfs /dev/VolGroup00/LogVol_Home 
+meta-data=/dev/VolGroup00/LogVol_Home isize=512    agcount=4, agsize=131072 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=524288, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/LogVol_Home /mnt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# cp -aR /home/* /mnt/
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# rm -rf /home*[K/*
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# umount /mnt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/LogVol_Home /home/
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# echo "`blkid | grep Home | awk '{print $2}'` /home xfs deafults 0 0"  >> /etc/fstab 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# cat /etc/fstab 
+
+#
+# /etc/fstab
+# Created by anaconda on Sat May 12 18:50:26 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /                       xfs     defaults        0 0
+UUID=570897ca-e759-4c81-90cf-389da6eee4cc /boot                   xfs     defaults        0 0
+/dev/mapper/VolGroup00-LogVol01 swap                    swap    defaults        0 0
+UUID="fd459e31-6c2f-4878-b248-8fd6fdd95aa8" /var ext4 defaults 0 0
+UUID="ae736d1f-a410-46d1-8ac1-1195678b8e2b" /home xfs deafults 0 0
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# touch /home/file{1..20}
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# ll /home/
+total 0
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file1
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file10
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file11
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file12
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file13
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file14
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file15
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file16
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file17
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file18
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file19
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file2
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file20
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file3
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file4
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file5
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file6
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file7
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file8
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file9
+drwx------. 3 vagrant vagrant 74 May 12  2018 [0m[01;34mvagrant[0m
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -L 100MB -s -n home_snap /dev/VolGroup00/LogVol_Home
+  Rounding up size to full physical extent 128.00 MiB
+  Logical volume "home_snap" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# rm -f /home/file{11..20}
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# ll /home/
+total 0
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file1
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file10
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file2
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file3
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file4
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file5
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file6
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file7
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file8
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file9
+drwx------. 3 vagrant vagrant 74 May 12  2018 [0m[01;34mvagrant[0m
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# umount /home
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvconvert --merge /dev/VolGroup00/home_snap 
+  Merging of volume VolGroup00/home_snap started.
+  VolGroup00/LogVol_Home: Merged: 100.00%
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /home/
+mount: wrong fs type, bad option, bad superblock on /dev/mapper/VolGroup00-LogVol_Home,
+       missing codepage or helper program, or other error
+
+       In some cases useful info is found in syslog - try
+       dmesg | tail or so.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# df -Th
+Filesystem                      Type      Size  Used Avail Use% Mounted on
+/dev/mapper/VolGroup00-LogVol00 xfs       8.0G  743M  7.3G  10% /
+devtmpfs                        devtmpfs  110M     0  110M   0% /dev
+tmpfs                           tmpfs     118M     0  118M   0% /dev/shm
+tmpfs                           tmpfs     118M  4.5M  114M   4% /run
+tmpfs                           tmpfs     118M     0  118M   0% /sys/fs/cgroup
+/dev/mapper/vg_var-lv_var       ext4      922M  118M  740M  14% /var
+/dev/sda2                       xfs      1014M   61M  954M   6% /boot
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# dmesg | tail
+[  258.946313] XFS (dm-2): Mounting V5 Filesystem
+[  258.956524] XFS (dm-2): Ending clean mount
+[  289.686403] XFS (dm-2): Unmounting Filesystem
+[  304.528780] XFS (dm-2): Mounting V5 Filesystem
+[  304.536530] XFS (dm-2): Ending clean mount
+[  452.111112] XFS (dm-2): Unmounting Filesystem
+[  464.243458] audit_printk_skb: 90 callbacks suppressed
+[  464.243461] type=1130 audit(1573763664.331:372): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=lvm2-lvmpolld comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  488.956806] XFS (dm-2): unknown mount option [deafults].
+[  538.423541] type=1131 audit(1573763738.510:373): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=lvm2-lvmpolld comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# dmesg | tail 100
+tail: cannot open '100' for reading: No such file or directory
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# dmesg | tail 100-100n100 100
+[   10.736631] SELinux:  97 classes, 106591 rules
+[   10.740554] SELinux:  Completing initialization.
+[   10.740556] SELinux:  Setting up existing superblocks.
+[   10.743364] type=1403 audit(1573763210.831:3): policy loaded auid=4294967295 ses=4294967295
+[   10.746704] systemd[1]: Successfully loaded SELinux policy in 85.729ms.
+[   10.776164] ip_tables: (C) 2000-2006 Netfilter Core Team
+[   10.776183] systemd[1]: Inserted module 'ip_tables'
+[   10.788807] systemd[1]: Relabelled /dev and /run in 10.722ms.
+[   11.183328] ACPI: Video Device [GFX0] (multi-head: yes  rom: no  post: no)
+[   11.183381] input: Video Bus as /devices/LNXSYSTM:00/device:00/PNP0A03:00/LNXVIDEO:00/input/input4
+[   11.217117] piix4_smbus 0000:00:07.0: SMBus Host Controller at 0x4100, revision 0
+[   11.243938] e1000: Intel(R) PRO/1000 Network Driver - version 7.3.21-k8-NAPI
+[   11.243941] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[   11.275864] input: PC Speaker as /devices/platform/pcspkr/input/input5
+[   11.307846] sd 0:0:0:0: Attached scsi generic sg0 type 0
+[   11.309140] cryptd: max_cpu_qlen set to 100
+[   11.309296] sd 3:0:0:0: Attached scsi generic sg1 type 0
+[   11.309337] sd 4:0:0:0: Attached scsi generic sg2 type 0
+[   11.309359] sd 5:0:0:0: Attached scsi generic sg3 type 0
+[   11.309382] sd 6:0:0:0: Attached scsi generic sg4 type 0
+[   11.473559] AVX2 version of gcm_enc/dec engaged.
+[   11.473561] AES CTR mode by8 optimization enabled
+[   11.537573] ppdev: user-space parallel port driver
+[   11.630997] async_tx: api initialized (async)
+[   11.632219] xor: automatically using best checksumming function:
+[   11.667659]    avx       : 136852.000 MB/sec
+[   11.693130] raid6: sse2x1   gen() 12632 MB/s
+[   11.713046] raid6: sse2x2   gen() 14929 MB/s
+[   11.732986] raid6: sse2x4   gen() 16972 MB/s
+[   11.753072] raid6: avx2x1   gen() 24734 MB/s
+[   11.773077] raid6: avx2x2   gen() 27589 MB/s
+[   11.793084] raid6: avx2x4   gen() 31046 MB/s
+[   11.793086] raid6: using algorithm avx2x4 gen() (31046 MB/s)
+[   11.793087] raid6: using avx2x2 recovery algorithm
+[   11.793950] alg: No test for __gcm-aes-aesni (__driver-gcm-aes-aesni)
+[   11.795046] alg: No test for __generic-gcm-aes-aesni (__driver-generic-gcm-aes-aesni)
+[   11.795201] Adding 1572860k swap on /dev/mapper/VolGroup00-LogVol01.  Priority:-1 extents:1 across:1572860k FS
+[   11.827743] device-mapper: raid: Loading target version 1.13.2
+[   11.837904] XFS (sda2): Mounting V5 Filesystem
+[   11.978713] md/raid1:mdX: active with 2 out of 2 mirrors
+[   12.560524] EXT4-fs (dm-7): mounted filesystem with ordered data mode. Opts: (null)
+[   12.604108] systemd-journald[557]: Received request to flush runtime journal from PID 1
+[   12.661517] e1000 0000:00:03.0 eth0: (PCI:33MHz:32-bit) 52:54:00:c9:c7:04
+[   12.661521] e1000 0000:00:03.0 eth0: Intel(R) PRO/1000 Network Connection
+[   12.821876] XFS (sda2): Ending clean mount
+[   12.910323] type=1400 audit(1573763212.997:4): avc:  denied  { read } for  pid=740 comm="auditd" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:auditd_t:s0 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[   12.910342] type=1400 audit(1573763212.997:5): avc:  denied  { read } for  pid=740 comm="auditd" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:auditd_t:s0 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[   12.913211] type=1400 audit(1573763213.000:6): avc:  denied  { read } for  pid=743 comm="auditd" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:auditd_t:s0 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[   12.940400] type=1305 audit(1573763213.028:7): audit_pid=743 old=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:auditd_t:s0 res=1
+[   12.960383] RPC: Registered named UNIX socket transport module.
+[   12.960386] RPC: Registered udp transport module.
+[   12.960387] RPC: Registered tcp transport module.
+[   12.960388] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[   14.553924] snd_intel8x0 0000:00:05.0: measure - unreliable DMA position..
+[   14.912508] snd_intel8x0 0000:00:05.0: measure - unreliable DMA position..
+[   15.271400] snd_intel8x0 0000:00:05.0: measure - unreliable DMA position..
+[   15.272349] snd_intel8x0 0000:00:05.0: clocking to 48000
+[  103.170451] type=1305 audit(1573763303.257:8): audit_pid=0 old=743 auid=4294967295 ses=4294967295 subj=system_u:system_r:auditd_t:s0 res=1
+[  103.177351] type=1130 audit(1573763303.264:9): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=auditd comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=failed'
+[  103.185062] type=1127 audit(1573763303.271:10): pid=764 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg=' comm="systemd-update-utmp" exe="/usr/lib/systemd/systemd-update-utmp" hostname=? addr=? terminal=? res=success'
+[  103.188383] type=1130 audit(1573763303.275:11): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-update-utmp comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  103.213361] type=1130 audit(1573763303.300:12): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=irqbalance comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  103.238475] type=1400 audit(1573763303.324:13): avc:  denied  { read } for  pid=766 comm="rpcbind" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:rpcbind_t:s0 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[  103.238488] type=1300 audit(1573763303.324:13): arch=c000003e syscall=2 success=no exit=-13 a0=56156039dfb9 a1=40 a2=124 a3=7ffe7b4fb820 items=0 ppid=1 pid=766 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="rpcbind" exe="/usr/sbin/rpcbind" subj=system_u:system_r:rpcbind_t:s0 key=(null)
+[  103.238493] type=1327 audit(1573763303.324:13): proctitle=2F7362696E2F72706362696E64002D77
+[  103.276810] type=1400 audit(1573763303.363:14): avc:  denied  { read } for  pid=775 comm="gssproxy" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:gssproxy_t:s0 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[  103.276822] type=1300 audit(1573763303.363:14): arch=c000003e syscall=2 success=no exit=-13 a0=564f0ee9ed8d a1=241 a2=1b6 a3=24 items=0 ppid=769 pid=775 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="gssproxy" exe="/usr/sbin/gssproxy" subj=system_u:system_r:gssproxy_t:s0 key=(null)
+[  103.820644] e1000: eth0 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: RX
+[  109.371937] audit_printk_skb: 2220 callbacks suppressed
+[  109.371940] type=1400 audit(1573763309.455:302): avc:  denied  { read } for  pid=1308 comm="sshd" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:sshd_t:s0-s0:c0.c1023 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[  109.371964] type=1300 audit(1573763309.455:302): arch=c000003e syscall=42 success=no exit=-13 a0=6 a1=7ffc3c8342a0 a2=6e a3=8 items=0 ppid=1039 pid=1308 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="sshd" exe="/usr/sbin/sshd" subj=system_u:system_r:sshd_t:s0-s0:c0.c1023 key=(null)
+[  109.371968] type=1327 audit(1573763309.455:302): proctitle=2F7573722F7362696E2F73736864002D44002D7530002D52
+[  109.372304] type=1400 audit(1573763309.460:303): avc:  denied  { read } for  pid=1308 comm="sshd" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:sshd_t:s0-s0:c0.c1023 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[  109.372324] type=1300 audit(1573763309.460:303): arch=c000003e syscall=42 success=no exit=-13 a0=3 a1=7ffc3c835950 a2=6e a3=40 items=0 ppid=1039 pid=1308 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="sshd" exe="/usr/sbin/sshd" subj=system_u:system_r:sshd_t:s0-s0:c0.c1023 key=(null)
+[  109.372326] type=1327 audit(1573763309.460:303): proctitle=2F7573722F7362696E2F73736864002D44002D7530002D52
+[  109.372353] type=1400 audit(1573763309.460:304): avc:  denied  { read } for  pid=1308 comm="sshd" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:sshd_t:s0-s0:c0.c1023 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[  109.372371] type=1300 audit(1573763309.460:304): arch=c000003e syscall=42 success=no exit=-13 a0=3 a1=7ffc3c835ae0 a2=6e a3=40 items=0 ppid=1039 pid=1308 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="sshd" exe="/usr/sbin/sshd" subj=system_u:system_r:sshd_t:s0-s0:c0.c1023 key=(null)
+[  109.372373] type=1327 audit(1573763309.460:304): proctitle=2F7573722F7362696E2F73736864002D44002D7530002D52
+[  109.372907] type=1400 audit(1573763309.460:305): avc:  denied  { read } for  pid=1308 comm="sshd" name="run" dev="dm-7" ino=1528 scontext=system_u:system_r:sshd_t:s0-s0:c0.c1023 tcontext=unconfined_u:object_r:unlabeled_t:s0 tclass=lnk_file
+[  137.990527] audit_printk_skb: 222 callbacks suppressed
+[  137.990531] type=1105 audit(1573763338.077:348): pid=1336 uid=0 auid=1000 ses=1 subj=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023 msg='op=PAM:session_open grantors=pam_keyinit,pam_limits,pam_unix,pam_xauth acct="root" exe="/usr/bin/su" hostname=lvm addr=? terminal=pts/1 res=success'
+[  190.361268] type=1130 audit(1573763390.448:349): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=run-1378 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  190.394298] type=1131 audit(1573763390.481:350): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=run-1378 comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  193.413625] type=1130 audit(1573763393.500:351): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=gssproxy comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=failed'
+[  193.438034] type=1130 audit(1573763393.524:352): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=systemd-user-sessions comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  193.442473] type=1130 audit(1573763393.528:353): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=crond comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  193.592824] type=1130 audit(1573763393.679:354): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=plymouth-start comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  193.592843] type=1131 audit(1573763393.679:355): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=plymouth-start comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  193.597642] type=1130 audit(1573763393.684:356): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=plymouth-quit-wait comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  193.597657] type=1131 audit(1573763393.684:357): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=plymouth-quit-wait comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  258.946313] XFS (dm-2): Mounting V5 Filesystem
+[  258.956524] XFS (dm-2): Ending clean mount
+[  289.686403] XFS (dm-2): Unmounting Filesystem
+[  304.528780] XFS (dm-2): Mounting V5 Filesystem
+[  304.536530] XFS (dm-2): Ending clean mount
+[  452.111112] XFS (dm-2): Unmounting Filesystem
+[  464.243458] audit_printk_skb: 90 callbacks suppressed
+[  464.243461] type=1130 audit(1573763664.331:372): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=lvm2-lvmpolld comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+[  488.956806] XFS (dm-2): unknown mount option [deafults].
+[  538.423541] type=1131 audit(1573763738.510:373): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:init_t:s0 msg='unit=lvm2-lvmpolld comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /home
+mount: wrong fs type, bad option, bad superblock on /dev/mapper/VolGroup00-LogVol_Home,
+       missing codepage or helper program, or other error
+
+       In some cases useful info is found in syslog - try
+       dmesg | tail or so.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# fsck /dev/VolGroup00/LogVol_h[KHome
+fsck from util-linux 2.23.2
+shell-init: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+If you wish to check the consistency of an XFS filesystem or
+repair a damaged filesystem, see xfs_repair(8).
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# ls /dev/VolGroup00/
+[0m[01;36mLogVol00[0m  [01;36mLogVol01[0m  [01;36mLogVol_Home[0m
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# xfs_repair /dev/VolGroup00/LogVol_Home 
+Phase 1 - find and verify superblock...
+Phase 2 - using internal log
+        - zero log...
+ERROR: The filesystem has valuable metadata changes in a log which needs to
+be replayed.  Mount the filesystem to replay the log, and unmount it before
+re-running xfs_repair.  If you are unable to mount the filesystem, then use
+the -L option to destroy the log and attempt a repair.
+Note that destroying the log may cause corruption -- please attempt a mount
+of the filesystem before doing this.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# /[Kmount /dev/VolGroup00/LogVol_Home /home
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# cat fs[K[K/etc/fstab 
+
+#
+# /etc/fstab
+# Created by anaconda on Sat May 12 18:50:26 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /                       xfs     defaults        0 0
+UUID=570897ca-e759-4c81-90cf-389da6eee4cc /boot                   xfs     defaults        0 0
+/dev/mapper/VolGroup00-LogVol01 swap                    swap    defaults        0 0
+UUID="fd459e31-6c2f-4878-b248-8fd6fdd95aa8" /var ext4 defaults 0 0
+UUID="ae736d1f-a410-46d1-8ac1-1195678b8e2b" /home xfs deafults 0 0
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# blkid 
+/dev/sda2: UUID="570897ca-e759-4c81-90cf-389da6eee4cc" TYPE="xfs" 
+/dev/sda3: UUID="vrrtbx-g480-HcJI-5wLn-4aOf-Olld-rC03AY" TYPE="LVM2_member" 
+/dev/sdc: UUID="c5Au0N-dYyT-OGMq-MdFt-9SiZ-3NNd-wB0Tcx" TYPE="LVM2_member" 
+/dev/sdd: UUID="Rr4jD3-gJN3-cC8n-mK97-uNRd-UFop-kx1jhP" TYPE="LVM2_member" 
+/dev/mapper/VolGroup00-LogVol00: UUID="d24cfce3-3f03-45e0-b6e1-ca1ffcbcbfd8" TYPE="xfs" 
+/dev/mapper/VolGroup00-LogVol01: UUID="c39c5bed-f37c-4263-bee8-aeb6a6659d7b" TYPE="swap" 
+/dev/mapper/vg_var-lv_var_rimage_0: UUID="fd459e31-6c2f-4878-b248-8fd6fdd95aa8" TYPE="ext4" 
+/dev/mapper/vg_var-lv_var_rimage_1: UUID="fd459e31-6c2f-4878-b248-8fd6fdd95aa8" TYPE="ext4" 
+/dev/mapper/vg_var-lv_var: UUID="fd459e31-6c2f-4878-b248-8fd6fdd95aa8" TYPE="ext4" 
+/dev/mapper/VolGroup00-LogVol_Home: UUID="ae736d1f-a410-46d1-8ac1-1195678b8e2b" TYPE="xfs" 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi /etc/fstab 
+[?1049h[?1h=[1;48r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[48;1H"/etc/fstab" 13L, 615C[2;1H#
+# /etc/fstab
+# Created by anaconda on Sat May 12 18:50:26 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /[23Cxfs     defaults[8C0 0
+UUID=570897ca-e759-4c81-90cf-389da6eee4cc /boot[19Cxfs     defaults       [11;1H  0 0
+/dev/mapper/VolGroup00-LogVol01 swap[20Cswap    defaults[8C0 0
+UUID="fd459e31-6c2f-4878-b248-8fd6fdd95aa8" /var ext4 defaults 0 0
+UUID="ae736d1f-a410-46d1-8ac1-1195678b8e2b" /home xfs deafults 0 0
+[1m[34m~                                                                                       [16;1H~                                                                                       [17;1H~                                                                                       [18;1H~                                                                                       [19;1H~                                                                                       [20;1H~                                                                                       [21;1H~                                                                                       [22;1H~                                                                                       [23;1H~                                                                                       [24;1H~                                                                                       [25;1H~                                                                                       [26;1H~                                                                                       [27;1H~                                                                                       [28;1H~                                                                                       [29;1H~                                                                                       [30;1H~                                                                                       [31;1H~                                                                                       [32;1H~                                                                                       [33;1H~                                                                                       [34;1H~                                                                                       [35;1H~                                                                                       [36;1H~                                                                                       [37;1H~                                                                                       [38;1H~                                                                                       [39;1H~                                                                                       [40;1H~                                                                                       [41;1H~                                                                                       [42;1H~                                                                                       [43;1H~                                                                                       [44;1H~                                                                                       [45;1H~                                                                                       [46;1H~                                                                                       [47;1H~                                                                                       [1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+
+
+
+
+[?25l~                                                                                       [13;1H[?12l[?25h[?25l[m[48;1H[K[48;1H:[?12l[?25hwq[?25l"/etc/fstab" 12L, 548C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi /etc/fstab [8Pblkid[C[9@cat /etc/fstab[Cmount /dev/VolGroup00/LogVol_Home /home[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cxfs_repair /dev/VolGroup00/LogVol_Home [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pls /dev/VolGroup00/fsck /dev/VolGroup00/LogVol_Home[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[21Pmount /homedmesg | tail -n 100[3P100[K[6Pf -Thmount /home/lvconvert --merge /dev/VolGroup00/home_snap [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cumount /home[K[3Pll /home/rm -f /home/file{11..20}[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Clvcreate -L 100MB -s -n home_snap /dev/VolGroup00/LogVol_Home[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cl /home/[Ktouch /home/file{1..20}[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pcat /etc/fstab echo "`blkid | grep Home | awk '{print $2}'` /home xfs deafults 0 0"  >> /etc/fstab [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cfults 0 0" >[C[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Caults 0 0" [C[1@>[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# echo "`blkid | grep Home | awk '{print $2}'` /home xfs defaults 0 0"  >> /etc/fstab [A[C[C[C[C[Cvi /etc/fstab [K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[8Pblkid[C[9@cat /etc/fstab[Cmount /dev/VolGroup00/LogVol_Home /home[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[24Pcat /etc/fstab 
+
+#
+# /etc/fstab
+# Created by anaconda on Sat May 12 18:50:26 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /                       xfs     defaults        0 0
+UUID=570897ca-e759-4c81-90cf-389da6eee4cc /boot                   xfs     defaults        0 0
+/dev/mapper/VolGroup00-LogVol01 swap                    swap    defaults        0 0
+UUID="fd459e31-6c2f-4878-b248-8fd6fdd95aa8" /var ext4 defaults 0 0
+UUID="ae736d1f-a410-46d1-8ac1-1195678b8e2b" /home xfs defaults 0 0
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# umount /home
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /home
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# ll /home/
+total 0
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file1
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file10
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file11
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file12
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file13
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file14
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file15
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file16
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file17
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file18
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file19
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file2
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file20
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file3
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file4
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file5
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file6
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file7
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file8
+-rw-r--r--. 1 root    root     0 Nov 14 20:33 file9
+drwx------. 3 vagrant vagrant 74 May 12  2018 [0m[01;34mvagrant[0m
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lsblk 
+NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                          8:0    0   40G  0 disk 
+|-sda1                       8:1    0    1M  0 part 
+|-sda2                       8:2    0    1G  0 part /boot
+`-sda3                       8:3    0   39G  0 part 
+  |-VolGroup00-LogVol00    253:0    0    8G  0 lvm  /
+  |-VolGroup00-LogVol01    253:1    0  1.5G  0 lvm  [SWAP]
+  `-VolGroup00-LogVol_Home 253:2    0    2G  0 lvm  /home
+sdb                          8:16   0   10G  0 disk 
+sdc                          8:32   0    2G  0 disk 
+|-vg_var-lv_var_rmeta_0    253:3    0    4M  0 lvm  
+| `-vg_var-lv_var          253:7    0  952M  0 lvm  /var
+`-vg_var-lv_var_rimage_0   253:4    0  952M  0 lvm  
+  `-vg_var-lv_var          253:7    0  952M  0 lvm  /var
+sdd                          8:48   0    1G  0 disk 
+|-vg_var-lv_var_rmeta_1    253:5    0    4M  0 lvm  
+| `-vg_var-lv_var          253:7    0  952M  0 lvm  /var
+`-vg_var-lv_var_rimage_1   253:6    0  952M  0 lvm  
+  `-vg_var-lv_var          253:7    0  952M  0 lvm  /var
+sde                          8:64   0    1G  0 disk 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vgs
+  VG         #PV #LV #SN Attr   VSize   VFree  
+  VolGroup00   1   3   0 wz--n- <38.97g <27.47g
+  vg_var       2   1   0 wz--n-   2.99g   1.12g
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -n data_ext4_ro -L100M /dev/[K[K[K[K[KVolGroup00 
+  Rounding up size to full physical extent 128.00 MiB
+WARNING: xfs_external_log signature detected on /dev/VolGroup00/data_ext4_ro at offset 8192. Wipe it? [y/n]: y
+  Wiping xfs_external_log signature on /dev/VolGroup00/data_ext4_ro.
+WARNING: xfs_external_log signature detected on /dev/VolGroup00/data_ext4_ro at offset 9216. Wipe it? [y/n]: y
+  Wiping xfs_external_log signature on /dev/VolGroup00/data_ext4_ro.
+  Logical volume "data_ext4_ro" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -n data_ext4_ro -L100M VolGroup00 [C[C[C[1P[1@w
+  Rounding up size to full physical extent 128.00 MiB
+  Logical volume "data_ext4_rw" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -n data_ext4_rw -L100M VolGroup00 [1P[1P[1P[1P[1@b[1@t[1@r[1@f[1@s[C[C[C[1P[1@o
+  Rounding up size to full physical extent 128.00 MiB
+  Logical volume "data_btrfs_ro" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lvcreate -n data_btrfs_ro -L100M VolGroup00 [1P[1@w
+  Rounding up size to full physical extent 128.00 MiB
+  Logical volume "data_btrfs_rw" created.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkfs.ext4 /dev/VolGroup00/data_ext4_ro
+mke2fs 1.42.9 (28-Dec-2013)
+Filesystem label=
+OS type: Linux
+Block size=1024 (log=0)
+Fragment size=1024 (log=0)
+Stride=0 blocks, Stripe width=0 blocks
+32768 inodes, 131072 blocks
+6553 blocks (5.00%) reserved for the super user
+First data block=1
+Maximum filesystem blocks=33685504
+16 block groups
+8192 blocks per group, 8192 fragments per group
+2048 inodes per group
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729
+
+Allocating group tables:  0/16     done                            
+Writing inode tables:  0/16     done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information:  0/16     done
+
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkfs.ext4 /dev/VolGroup00/data_ext4_ro[Kw
+mke2fs 1.42.9 (28-Dec-2013)
+Filesystem label=
+OS type: Linux
+Block size=1024 (log=0)
+Fragment size=1024 (log=0)
+Stride=0 blocks, Stripe width=0 blocks
+32768 inodes, 131072 blocks
+6553 blocks (5.00%) reserved for the super user
+First data block=1
+Maximum filesystem blocks=33685504
+16 block groups
+8192 blocks per group, 8192 fragments per group
+2048 inodes per group
+Superblock backups stored on blocks: 
+	8193, 24577, 40961, 57345, 73729
+
+Allocating group tables:  0/16     done                            
+Writing inode tables:  0/16     done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information:  0/16     done
+
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkfs.ext4 /dev/VolGroup00/data_ext4_rwowo[1P_ro[1P_ro[1P_ro[1P_rox_rof_ro[1P_ro[1P_rob_rot_ror_rof_ros_ro[1P /dev/VolGroup00/data_btrfs_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P /dev/VolGroup00/data_btrfs_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P /dev/VolGroup00/data_btrfs_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P /dev/VolGroup00/data_btrfs_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cb /dev/VolGroup00/data_btrfs_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ct /dev/VolGroup00/data_btrfs_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cr /dev/VolGroup00/data_btrfs_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cf /dev/VolGroup00/data_btrfs_ros /dev/VolGroup00/data_btrfs_ro
+btrfs-progs v4.9.1
+See http://btrfs.wiki.kernel.org for more information.
+
+Label:              (null)
+UUID:               a7666b30-45ca-4c4f-a988-a65f1ac21cab
+Node size:          16384
+Sector size:        4096
+Filesystem size:    128.00MiB
+Block group profiles:
+  Data:             single            8.00MiB
+  Metadata:         DUP              32.00MiB
+  System:           DUP               8.00MiB
+SSD detected:       no
+Incompat features:  extref, skinny-metadata
+Number of devices:  1
+Devices:
+   ID        SIZE  PATH
+    1   128.00MiB  /dev/VolGroup00/data_btrfs_ro
+
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkfs.btrfs /dev/VolGroup00/data_btrfs_ro[Kw
+btrfs-progs v4.9.1
+See http://btrfs.wiki.kernel.org for more information.
+
+Label:              (null)
+UUID:               8538bf25-637f-4539-8a5d-7b52070df777
+Node size:          16384
+Sector size:        4096
+Filesystem size:    128.00MiB
+Block group profiles:
+  Data:             single            8.00MiB
+  Metadata:         DUP              32.00MiB
+  System:           DUP               8.00MiB
+SSD detected:       no
+Incompat features:  extref, skinny-metadata
+Number of devices:  1
+Devices:
+   ID        SIZE  PATH
+    1   128.00MiB  /dev/VolGroup00/data_btrfs_rw
+
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkdir -p /data/ext4_ro
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkdir -p /data/ext4_ro[Kw
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkdir -p /data/ext4_rw[K[K[K[K[K[K[Kbtrfw_ro
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkdir -p /data/btrfw_ro[Kw
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/ext[K[K[KVolGroup00/ext4_ro /data/ext4_ro
+mount: special device /dev/VolGroup00/ext4_ro does not exist
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/ext4_ro /data/ext4_ro[1@d[1@a[1@t[1@a[1@_
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/data_ext4_ro /data/ext4_ro[Kw[1P /data/ext4_rww /data/ext4_rw
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/data_ext4_rw /data/ext4_rw[K[K[K[K[K[K[Kbtrfs_ro[C[C[C[1P /data/btrfs_ro[1P /data/btrfs_ro[1P /data/btrfs_ro[1P /data/btrfs_ro[1P /data/btrfs_ro[1P /data/btrfs_ro[1P /data/btrfs_rob /data/btrfs_rotrfs_r /data/btrfs_roo /data/btrfs_ro
+mount: mount point /data/btrfs_ro does not exist
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/data_btrfs_ro /data/btrfs_ro[1P_row_ro
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/data_btrfs_ro /data/btrfw_ro[Kw[C[1P /data/btrfw_rww /data/btrfw_rw
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# df -Th
+Filesystem                           Type      Size  Used Avail Use% Mounted on
+/dev/mapper/VolGroup00-LogVol00      xfs       8.0G  744M  7.3G  10% /
+devtmpfs                             devtmpfs  110M     0  110M   0% /dev
+tmpfs                                tmpfs     118M     0  118M   0% /dev/shm
+tmpfs                                tmpfs     118M  4.5M  114M   4% /run
+tmpfs                                tmpfs     118M     0  118M   0% /sys/fs/cgroup
+/dev/mapper/vg_var-lv_var            ext4      922M  118M  740M  14% /var
+/dev/sda2                            xfs      1014M   61M  954M   6% /boot
+/dev/mapper/VolGroup00-LogVol_Home   xfs       2.0G   33M  2.0G   2% /home
+/dev/mapper/VolGroup00-data_ext4_ro  ext4      120M  1.6M  110M   2% /data/ext4_ro
+/dev/mapper/VolGroup00-data_ext4_rw  ext4      120M  1.6M  110M   2% /data/ext4_rw
+/dev/mapper/VolGroup00-data_btrfs_ro btrfs     128M   17M   47M  26% /data/btrfw_ro
+/dev/mapper/VolGroup00-data_btrfs_rw btrfs     128M   17M   47M  26% /data/btrfw_rw
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# touch /data/ext4_ro/test.txt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# touch /data/ext4_ro/test.txt[1P/test.txtw/test.txt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# touch /data/ext4_rw/test.txt[1P_rw/test.txt[1P_rw/test.txt[1P_rw/test.txt[1P_rw/test.txtb_rw/test.txtt_rw/test.txtr_rw/test.txtf_rw/test.txts_rw/test.txt[C[C[C[1P/test.txto/test.txt
+touch: cannot touch '/data/btrfs_ro/test.txt': No such file or directory
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# touch /data/btrfs_ro/test.txt[1P_ro/test.txtw_ro/test.txt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# touch /data/btrfw_ro/test.txt[C[C[C[1P/test.txtw/test.txt
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# umount /data/ext4_ro
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# umount /data/ext4_ro[K[K[K[K[K[K[Kbtrfw_ro
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# umount /data/btrfw_ro[1Pext4_rotouch /data/btrfw_rw/test.txto/test.txts_ro/test.txt[1Pext4_rw/test.txto/test.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdf -Th[Kmount /dev/VolGroup00/data_btrfs_rw /data/btrfw_rwo /data/btrfw_ro-/data/btrfw_roo/data/btrfw_ro /data/btrfw_ror/data/btrfw_roo/data/btrfw_ro /data/btrfw_ro
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/data_btrfs_ro -o ro /data/btrfw_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[35Pumount[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pext4_rotouch /data/btrfw_rw/test.txto/test.txts_ro/test.txt[1Pext4_rw/test.txto/test.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdf -Th[Kmount /dev/VolGroup00/data_btrfs_rw /data/btrfw_rwo /data/btrfw_ros_ro[2Pext4_rw /data/ext4_rwo /data/ext4_ro-/data/ext4_roo/data/ext4_ro /data/ext4_ror/data/ext4_roo/data/ext4_ro /data/ext4_ro
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount /dev/VolGroup00/data_ext4_ro -o ro /data/ext4_robtrfs_ro -o ro /data/btrfw_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[35Pumount[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pext4_rotouch /data/btrfw_rw/test.txto/test.txts_ro/test.txt[1Pext4_rw/test.txto/test.txt
+touch: cannot touch '/data/ext4_ro/test.txt': Read-only file system
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# touch /data/ext4_ro/test.txt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmount /dev/VolGroup00/data_ext4_ro -o ro /data/ext4_robtrfs_ro -o ro /data/btrfw_ro[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[35Pumount[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pext4_rotouch /data/btrfw_rw/test.txto/test.txt
+touch: cannot touch '/data/btrfw_ro/test.txt': Read-only file system
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# exit
+exit
+]0;vagrant@lvm:~[vagrant@lvm ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+bash-3.2$ exit
+exit
+
+Script done on Thu Nov 14 23:46:49 2019
