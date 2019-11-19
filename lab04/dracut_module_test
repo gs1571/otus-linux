@@ -1,0 +1,240 @@
+Script started on Tue Nov 19 10:01:43 2019
+[?1034hbash-3.2$ vagrant ssh
+Last login: Tue Nov 19 06:59:47 2019 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo su
+]0;root@lvm:/home/vagrant[?1034h[root@lvm vagrant]# mkdri[K[Kir /usr/lib/dracut/modules.d/01test
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mv /vagrant/module_setup.sh /vagrant/test.sh /usr/lib/mo[K[Kdracut/modules.d/01test/
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# chmm[Kod 755 /usr/lib/dracut/modules.d/01test/*
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mv usr[K[K[K/usr/lib/dracut/modules.d/01test/module_setup.sh /usr/lib/dracut/modules.d/01test/m odule_setup.sh [1P[1@-
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi /usr/lib/dracut/modules.d/01test/test.sh 
+[?1049h[?1h=[1;54r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[54;1H"/usr/lib/dracut/modules.d/01test/test.sh" 21L, 333C[2;1H#!/bin/bash
+
+exec 0<>/dev/console 1<>/dev/console 2<>/dev/console
+cat <<'msgend'
+Hello! You are in dracut module!
+ ___________________
+< I'm dracut module >
+ -------------------
+   \
+    \[12;9H.--.[13;8H|o_o |[14;8H|:_/ |[15;7H//   \ \[16;6H(|     | )
+    /'\_   _/`\
+    \___)=(___/
+msgend
+sleep 10
+echo " continuing...."
+[94m~                                                                                                         [23;1H~                                                                                                         [24;1H~                                                                                                         [25;1H~                                                                                                         [26;1H~                                                                                                         [27;1H~                                                                                                         [28;1H~                                                                                                         [29;1H~                                                                                                         [30;1H~                                                                                                         [31;1H~                                                                                                         [32;1H~                                                                                                         [33;1H~                                                                                                         [34;1H~                                                                                                         [35;1H~                                                                                                         [36;1H~                                                                                                         [37;1H~                                                                                                         [38;1H~                                                                                                         [39;1H~                                                                                                         [40;1H~                                                                                                         [41;1H~                                                                                                         [42;1H~                                                                                                         [43;1H~                                                                                                         [44;1H~                                                                                                         [45;1H~                                                                                                         [46;1H~                                                                                                         [47;1H~                                                                                                         [48;1H~                                                                                                         [49;1H~                                                                                                         [50;1H~                                                                                                         [51;1H~                                                                                                         [52;1H~                                                                                                         [53;1H~                                                                                                         [1;1H[?12l[?25h
+[?25l[m[54;1H[1m-- INSERT --[m[54;13H[K[2;1H[?12l[?25h[?25l[1;53r[53;1H
+[1;54r[53;1H[94m~                                                                                                         [1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[18;1H[?25l[19;53r[m[19;1H[L[1;54r[18;1H[K[19;1Hmsgend[?12l[?25h[18;1H[?25le[?12l[?25h[?25lc[?12l[?25h[?25lh[?12l[?25h[?25lo[?12l[?25h[?25l [?12l[?25h[?25lT[?12l[?25h[?25lo[?12l[?25h[?25ld[?12l[?25h[?25la[?12l[?25h[?25ly[?12l[?25h[?25l [?12l[?25h[?25li[?12l[?25h[?25ls[?12l[?25h[?25l:[?12l[?25h[?25l[19;53r[19;1H[L[1;54r[19;1H[?12l[?25h[?25ld[?12l[?25h[?25la[?12l[?25h[?25lt[?12l[?25h[?25le[?12l[?25h[18;5H[?25l[19;53r[19;1H[L[1;54r[18;1H[K[19;1Hecho Today is:[?12l[?25h[18;1H[?25le[?12l[?25h[?25lc[?12l[?25h[?25lh[?12l[?25h[?25lo[?12l[?25h[?25l [?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[19;15H
+date[21;7H[20;5H[?25l[21;53r[21;1H[L[1;54r[21;1H[?12l[?25h[?25le[?12l[?25h[?25lc[?12l[?25h[?25lh[?12l[?25h[?25lo[?12l[?25h[?25l [?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[?25l-[?12l[?25h[54;1H[K[21;21H[?25l[?12l[?25h[?25l[54;1H:[?12l[?25hwq[?25l"/usr/lib/dracut/modules.d/01test/test.sh" 24L, 396C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# dracut -f -v
+Executing: /sbin/dracut -f -v
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: test ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: drm ***
+*** Including module: plymouth ***
+*** Including module: dm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 60-persistent-storage-dm.rules
+Skipping udev rule: 55-dm.rules
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: lvm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 56-lvm.rules
+Skipping udev rule: 60-persistent-storage-lvm.rules
+*** Including module: qemu ***
+*** Including module: resume ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lsinitrd -m /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img | grep test
+[01;31m[Ktest[m[K
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+bash-3.2$ vagrant ssh
+Last login: Tue Nov 19 07:01:51 2019 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo su
+]0;root@lvm:/home/vagrant[?1034h[root@lvm vagrant]# vi /mo[K[Kusr//li[K[K[Klib/dracut/modules.d/01test/test.sh 
+[?1049h[?1h=[1;54r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[54;1H"/usr/lib/dracut/modules.d/01test/test.sh" 24L, 396C[1;1H#!/bin/bash
+
+exec 0<>/dev/console 1<>/dev/console 2<>/dev/console
+cat <<'msgend'
+Hello! You are in dracut module!
+ ___________________
+< I'm dracut module >
+ -------------------
+   \
+    \[11;9H.--.[12;8H|o_o |[13;8H|:_/ |[14;7H//   \ \[15;6H(|     | )
+    /'\_   _/`\
+    \___)=(___/
+echo ----------------
+echo Today is:
+date
+echo ----------------
+msgend
+sleep 10
+echo " continuing...."
+[94m~                                                                                                         [26;1H~                                                                                                         [27;1H~                                                                                                         [28;1H~                                                                                                         [29;1H~                                                                                                         [30;1H~                                                                                                         [31;1H~                                                                                                         [32;1H~                                                                                                         [33;1H~                                                                                                         [34;1H~                                                                                                         [35;1H~                                                                                                         [36;1H~                                                                                                         [37;1H~                                                                                                         [38;1H~                                                                                                         [39;1H~                                                                                                         [40;1H~                                                                                                         [41;1H~                                                                                                         [42;1H~                                                                                                         [43;1H~                                                                                                         [44;1H~                                                                                                         [45;1H~                                                                                                         [46;1H~                                                                                                         [47;1H~                                                                                                         [48;1H~                                                                                                         [49;1H~                                                                                                         [50;1H~                                                                                                         [51;1H~                                                                                                         [52;1H~                                                                                                         [53;1H~                                                                                                         [1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[20;1H[mdat[?25l[54;1H[1m-- INSERT --[m[54;13H[K[20;4H[?12l[?25he[?25l[20;4H[K[20;4H[?12l[?25h[?25l[20;3H[K[20;3H[?12l[?25h[?25l[20;2H[K[20;2H[?12l[?25h[?25l[20;1H[K[20;1H[?12l[?25h[?25le[?12l[?25h[?25lc[?12l[?25h[?25lh[?12l[?25h[?25lo[?12l[?25h[?25l [?12l[?25h[?25l1[?12l[?25h[?25l9[?12l[?25h[?25l.[?12l[?25h[?25l0[?12l[?25h[?25l[20;9H[K[20;9H[?12l[?25h[?25l1[?12l[?25h[?25l1[?12l[?25h[?25l.[?12l[?25h[?25l2[?12l[?25h[?25l0[?12l[?25h[?25l1[?12l[?25h[?25l9[?12l[?25h[21;16H[54;1H[K[21;15H[?25l[?12l[?25h[?25l[54;1H:[?12l[?25hwq[?25l"/usr/lib/dracut/modules.d/01test/test.sh" 24L, 407C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# dracut -f -v
+Executing: /sbin/dracut -f -v
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: test ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: drm ***
+*** Including module: plymouth ***
+*** Including module: dm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 60-persistent-storage-dm.rules
+Skipping udev rule: 55-dm.rules
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: lvm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 56-lvm.rules
+Skipping udev rule: 60-persistent-storage-lvm.rules
+*** Including module: qemu ***
+*** Including module: resume ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi /etc/default/grub 
+[?1049h[?1h=[1;54r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[54;1H"/etc/default/grub" 7L, 384C[1;1HGRUB_TIMEOUT=1
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevatoo[7;1Hr=noop crashkernel=auto rd.lvm.lv=OtusRoot/LogVol00 rd.lvm.lv=OtusRoot/LogVol01 rhgb quiet"
+GRUB_DISABLE_RECOVERY="true"
+[94m~                                                                                                         [10;1H~                                                                                                         [11;1H~                                                                                                         [12;1H~                                                                                                         [13;1H~                                                                                                         [14;1H~                                                                                                         [15;1H~                                                                                                         [16;1H~                                                                                                         [17;1H~                                                                                                         [18;1H~                                                                                                         [19;1H~                                                                                                         [20;1H~                                                                                                         [21;1H~                                                                                                         [22;1H~                                                                                                         [23;1H~                                                                                                         [24;1H~                                                                                                         [25;1H~                                                                                                         [26;1H~                                                                                                         [27;1H~                                                                                                         [28;1H~                                                                                                         [29;1H~                                                                                                         [30;1H~                                                                                                         [31;1H~                                                                                                         [32;1H~                                                                                                         [33;1H~                                                                                                         [34;1H~                                                                                                         [35;1H~                                                                                                         [36;1H~                                                                                                         [37;1H~                                                                                                         [38;1H~                                                                                                         [39;1H~                                                                                                         [40;1H~                                                                                                         [41;1H~                                                                                                         [42;1H~                                                                                                         [43;1H~                                                                                                         [44;1H~                                                                                                         [45;1H~                                                                                                         [46;1H~                                                                                                         [47;1H~                                                                                                         [48;1H~                                                                                                         [49;1H~                                                                                                         [50;1H~                                                                                                         [51;1H~                                                                                                         [52;1H~                                                                                                         [53;1H~                                                                                                         [1;1H[?12l[?25h
+
+
+
+
+[7;91H[?25l[m[54;1H[1m-- INSERT --[m[54;13H[K[7;91H[?12l[?25h[?25l"[7;91H[K[7;90H[?12l[?25h[?25l"[7;90H[K[7;89H[?12l[?25h[?25l"[7;89H[K[7;88H[?12l[?25h[?25l"[7;88H[K[7;87H[?12l[?25h[?25l"[7;87H[K[7;86H[?12l[?25h[?25l"[7;86H[K[7;85H[?12l[?25h[?25l"[7;85H[K[7;84H[?12l[?25h[?25l"[7;84H[K[7;83H[?12l[?25h[?25l"[7;83H[K[7;82H[?12l[?25h[?25l"[7;82H[K[7;81H[?12l[?25h[?25l"[7;81H[K[7;80H[?12l[?25h[54;1H[K[7;79H[?25l[?12l[?25h[?25l[54;1H:[?12l[?25hwq[?25l"/etc/default/grub" 7L, 373C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# /[Kgrub2-mkconfig -o /boo/[Kt/grub2/grub.cfg 
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img
+done
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# reboot
+PolicyKit daemon disconnected from the bus.
+We are no longer a registered authentication agent.
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+bash-3.2$ exitvagrant ssh
+Last login: Tue Nov 19 07:07:44 2019 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ su[K[Kexit
+logout
+Connection to 127.0.0.1 closed.
+bash-3.2$ exit
+exit
+
+Script done on Tue Nov 19 10:11:47 2019

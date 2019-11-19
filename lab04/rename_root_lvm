@@ -1,0 +1,398 @@
+Script started on Tue Nov 19 09:49:02 2019
+[?1034hbash-3.2$ vagrant ssh
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo su
+]0;root@lvm:/home/vagrant[?1034h[root@lvm vagrant]# vgs
+  VG         #PV #LV #SN Attr   VSize   VFree
+  VolGroup00   1   2   0 wz--n- <38.97g    0 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                       8:0    0   40G  0 disk 
+|-sda1                    8:1    0    1M  0 part 
+|-sda2                    8:2    0    1G  0 part /boot
+`-sda3                    8:3    0   39G  0 part 
+  |-VolGroup00-LogVol00 253:0    0 37.5G  0 lvm  /
+  `-VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+sdb                       8:16   0   10G  0 disk 
+sdc                       8:32   0    2G  0 disk 
+sdd                       8:48   0    1G  0 disk 
+sde                       8:64   0    1G  0 disk 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vgrename VolGroup00 OtusRoot
+  Volume group "VolGroup00" successfully renamed to "OtusRoot"
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi .et[K[K[K/уес[K[K[Ketc/fstab
+[?1049h[?1h=[1;54r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[54;1H"/etc/fstab" 11L, 481C[2;1H#
+# /etc/fstab
+# Created by anaconda on Sat May 12 18:50:26 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /[23Cxfs     defaults[8C0 0
+UUID=570897ca-e759-4c81-90cf-389da6eee4cc /boot[19Cxfs     defaults[8C0 0
+/dev/mapper/VolGroup00-LogVol01 swap[20Cswap    defaults[8C0 0
+[94m~                                                                                                         [13;1H~                                                                                                         [14;1H~                                                                                                         [15;1H~                                                                                                         [16;1H~                                                                                                         [17;1H~                                                                                                         [18;1H~                                                                                                         [19;1H~                                                                                                         [20;1H~                                                                                                         [21;1H~                                                                                                         [22;1H~                                                                                                         [23;1H~                                                                                                         [24;1H~                                                                                                         [25;1H~                                                                                                         [26;1H~                                                                                                         [27;1H~                                                                                                         [28;1H~                                                                                                         [29;1H~                                                                                                         [30;1H~                                                                                                         [31;1H~                                                                                                         [32;1H~                                                                                                         [33;1H~                                                                                                         [34;1H~                                                                                                         [35;1H~                                                                                                         [36;1H~                                                                                                         [37;1H~                                                                                                         [38;1H~                                                                                                         [39;1H~                                                                                                         [40;1H~                                                                                                         [41;1H~                                                                                                         [42;1H~                                                                                                         [43;1H~                                                                                                         [44;1H~                                                                                                         [45;1H~                                                                                                         [46;1H~                                                                                                         [47;1H~                                                                                                         [48;1H~                                                                                                         [49;1H~                                                                                                         [50;1H~                                                                                                         [51;1H~                                                                                                         [52;1H~                                                                                                         [53;1H~                                                                                                         [1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+
+[10;1H[9;1H[?25l[m[54;1H[K[54;1H:[?12l[?25hs/VolGroup00/OtusRoot/g[?25l[9;13HOtusRoot-LogVol00 /  [21Cxfs     defaults        0[9;83H[K[9;1H[?12l[?25h
+
+[10;93H[?25l[54;1H[K[54;1H:[?12l[?25hs/VolGroup00/OtusRoot[?25l[97m[41mE486: Pattern not found: VolGroup00[10;93H[?12l[?25h
+[?25l[m[54;1H[K[54;1H:[?12l[?25h%s/VolGroup00/OtusRoot/g[?25l[11;13HOtusRoot-LogVol01 swap  [18Cswap    defaults        0[11;83H[K[11;1H[?12l[?25h[?25l[54;1H[K[54;1H:[?12l[?25hwq[?25l"/etc/fstab" 11L, 477C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi /etc/fstab[K[K[K[K[Kdefault/groub[K[K[Kub
+[?1049h[?1h=[1;54r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[54;1H"/etc/default/grub" 7L, 388C[1;1HGRUB_TIMEOUT=1
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevatoo[7;1Hr=noop crashkernel=auto rd.lvm.lv=VolGroup00/LogVol00 rd.lvm.lv=VolGroup00/LogVol01 rhgb quiet"
+GRUB_DISABLE_RECOVERY="true"
+[94m~                                                                                                         [10;1H~                                                                                                         [11;1H~                                                                                                         [12;1H~                                                                                                         [13;1H~                                                                                                         [14;1H~                                                                                                         [15;1H~                                                                                                         [16;1H~                                                                                                         [17;1H~                                                                                                         [18;1H~                                                                                                         [19;1H~                                                                                                         [20;1H~                                                                                                         [21;1H~                                                                                                         [22;1H~                                                                                                         [23;1H~                                                                                                         [24;1H~                                                                                                         [25;1H~                                                                                                         [26;1H~                                                                                                         [27;1H~                                                                                                         [28;1H~                                                                                                         [29;1H~                                                                                                         [30;1H~                                                                                                         [31;1H~                                                                                                         [32;1H~                                                                                                         [33;1H~                                                                                                         [34;1H~                                                                                                         [35;1H~                                                                                                         [36;1H~                                                                                                         [37;1H~                                                                                                         [38;1H~                                                                                                         [39;1H~                                                                                                         [40;1H~                                                                                                         [41;1H~                                                                                                         [42;1H~                                                                                                         [43;1H~                                                                                                         [44;1H~                                                                                                         [45;1H~                                                                                                         [46;1H~                                                                                                         [47;1H~                                                                                                         [48;1H~                                                                                                         [49;1H~                                                                                                         [50;1H~                                                                                                         [51;1H~                                                                                                         [52;1H~                                                                                                         [53;1H~                                                                                                         [1;1H[?12l[?25h[?25l[m[54;1H[K[54;1H:[?12l[?25hs/VolGroup00/OtusRoot/g%s/VolGroup00/OtusRoot/g:%[?25l[7;35HOtusRoot/LogVol00 rd.lvm.lv=OtusRoot/LogVol01 rhgb quiet"[7;92H[K[6;1H[?12l[?25h[?25l[54;1H[K[54;1H:[?12l[?25hwq[?25l"/etc/default/grub" 7L, 384C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi /etc/default/grub[K/boot/grub2/[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kgrub2-mkconfig -o /boot/groub2/grub.c[1Pub2/grub.c[C[C[C[C[C[C[C[C[C[Cfg 
+/usr/sbin/grub2-probe: error: failed to get canonical path of `/dev/mapper/VolGroup00-LogVol00'.
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# grub2-mkconfig -o /boot/grub2/grub.cfg [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[19Pvi /etc/default/grub
+[?1049h[?1h=[1;54r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[54;1H"/etc/default/grub" 7L, 384C[1;1HGRUB_TIMEOUT=1
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevatoo[7;1Hr=noop crashkernel=auto rd.lvm.lv=OtusRoot/LogVol00 rd.lvm.lv=OtusRoot/LogVol01 rhgb quiet"
+GRUB_DISABLE_RECOVERY="true"
+[94m~                                                                                                         [10;1H~                                                                                                         [11;1H~                                                                                                         [12;1H~                                                                                                         [13;1H~                                                                                                         [14;1H~                                                                                                         [15;1H~                                                                                                         [16;1H~                                                                                                         [17;1H~                                                                                                         [18;1H~                                                                                                         [19;1H~                                                                                                         [20;1H~                                                                                                         [21;1H~                                                                                                         [22;1H~                                                                                                         [23;1H~                                                                                                         [24;1H~                                                                                                         [25;1H~                                                                                                         [26;1H~                                                                                                         [27;1H~                                                                                                         [28;1H~                                                                                                         [29;1H~                                                                                                         [30;1H~                                                                                                         [31;1H~                                                                                                         [32;1H~                                                                                                         [33;1H~                                                                                                         [34;1H~                                                                                                         [35;1H~                                                                                                         [36;1H~                                                                                                         [37;1H~                                                                                                         [38;1H~                                                                                                         [39;1H~                                                                                                         [40;1H~                                                                                                         [41;1H~                                                                                                         [42;1H~                                                                                                         [43;1H~                                                                                                         [44;1H~                                                                                                         [45;1H~                                                                                                         [46;1H~                                                                                                         [47;1H~                                                                                                         [48;1H~                                                                                                         [49;1H~                                                                                                         [50;1H~                                                                                                         [51;1H~                                                                                                         [52;1H~                                                                                                         [53;1H~                                                                                                         [1;1H[?12l[?25h[?25l[m[54;1H[K[54;1H:[?12l[?25hq[?25l[54;1H[K[54;1H[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# vi /etc/[K[K[K[Kboot/grub2/grub.cfg
+[?1049h[?1h=[1;54r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[54;1H"/boot/grub2/grub.cfg" 127L, 3607C[1;1H#
+# DO NOT EDIT THIS FILE
+#
+# It is automatically generated by grub2-mkconfig using templates
+# from /etc/grub.d and settings from /etc/default/grub
+#
+
+### BEGIN /etc/grub.d/00_header ###
+set pager=1
+
+if [ -s $prefix/grubenv ]; then
+  load_env
+fi
+if [ "${next_entry}" ] ; then
+   set default="${next_entry}"
+   set next_entry=
+   save_env next_entry
+   set boot_once=true
+else
+   set default="${saved_entry}"
+fi
+
+if [ x"${feature_menuentry_id}" = xy ]; then
+  menuentry_id_option="--id"
+else
+  menuentry_id_option=""
+fi
+
+export menuentry_id_option
+
+if [ "${prev_saved_entry}" ]; then
+  set saved_entry="${prev_saved_entry}"
+  save_env saved_entry
+  set prev_saved_entry=
+  save_env prev_saved_entry
+  set boot_once=true
+fi
+
+function savedefault {
+  if [ -z "${boot_once}" ]; then
+    saved_entry="${chosen}"
+    save_env saved_entry
+  fi
+}
+
+function load_video {
+  if [ x$feature_all_video_module = xy ]; then
+    insmod all_video
+  else
+    insmod efi_gop
+    insmod efi_uga
+    insmod ieee1275_fb
+    insmod vbe[1;1H[?12l[?25h[?25l[54;1H[K[54;1H:[?12l[?25h%a[?25l[54;3H[K[54;3H[?12l[?25hs/VolGroup00/OtusRoot/g[?25l3 substitutions on 1 line[27m[m[H[2J[1;3Hsource ${prefix}/user.cfg
+  if [ -n "${GRUB2_PASSWORD}" ]; then
+    set superusers="root"
+    export superusers
+    password_pbkdf2 root ${GRUB2_PASSWORD}
+  fi
+fi
+### END /etc/grub.d/01_users ###
+
+### BEGIN /etc/grub.d/10_linux ###
+menuentry 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' --class centos --class gnu-linux --class gnuu[12;1H --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-862.2.3.el7.x86_64-advanced-b60e9498-0baaa[13;1H-4d9f-90aa-069048217fee' {[14;9Hload_video[15;9Hset gfxpayload=keep[16;9Hinsmod gzio[17;9Hinsmod part_msdos[18;9Hinsmod xfs[19;9Hset root='hd0,msdos2'[20;9Hif [ x$feature_platform_search_hint = xy ]; then[21;11Hsearch --no-floppy --fs-uuid --set=root --hint='hd0,msdos2'  570897ca-e759-4c81-90cf-389da6eee4cc[22;1Hc[23;9Helse[24;11Hsearch --no-floppy --fs-uuid --set=root 570897ca-e759-4c81-90cf-389da6eee4cc[25;9Hfi[26;9Hlinux16 /vmlinuz-3.10.0-862.2.3.el7.x86_64 root=/dev/mapper/OtusRoot-LogVol00 ro no_timer_check coo[27;1Hnsole=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop crashkernel=auto rd.lvm.lv=Otuu[28;1HsRoot/LogVol00 rd.lvm.lv=OtusRoot/LogVol01 rhgb quiet[29;9Hinitrd16 /initramfs-3.10.0-862.2.3.el7.x86_64.img
+}
+if [ "x$default" = 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' ]; then default='Advanced options ff[32;1Hor CentOS Linux>CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)'; fi;
+### END /etc/grub.d/10_linux ###
+
+### BEGIN /etc/grub.d/20_linux_xen ###
+### END /etc/grub.d/20_linux_xen ###
+
+### BEGIN /etc/grub.d/20_ppc_terminfo ###
+### END /etc/grub.d/20_ppc_terminfo ###
+
+### BEGIN /etc/grub.d/30_os-prober ###
+### END /etc/grub.d/30_os-prober ###
+
+### BEGIN /etc/grub.d/40_custom ###
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+### END /etc/grub.d/40_custom ###
+
+### BEGIN /etc/grub.d/41_custom ###
+if [ -f  ${config_directory}/custom.cfg ]; then
+  source ${config_directory}/custom.cfg
+elif [ -z "${config_directory}" -a -f  $prefix/custom.cfg ]; then
+3 substitutions on 1 line[26;9H[?12l[?25h[?25l[54;1H[K[54;1H:[?12l[?25hwq[?25l"/boot/grub2/grub.cfg" 127L, 3601C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/home/vagrant[root@lvm vagrant]# cat /ets/fstab
+cat: /ets/fstab: No such file or directory
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# cat /etc/fstab
+
+#
+# /etc/fstab
+# Created by anaconda on Sat May 12 18:50:26 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/OtusRoot-LogVol00 /                       xfs     defaults        0 0
+UUID=570897ca-e759-4c81-90cf-389da6eee4cc /boot                   xfs     defaults        0 0
+/dev/mapper/OtusRoot-LogVol01 swap                    swap    defaults        0 0
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# cat /etc/default/grou[K[Kub
+GRUB_TIMEOUT=1
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop crashkernel=auto rd.lvm.lv=OtusRoot/LogVol00 rd.lvm.lv=OtusRoot/LogVol01 rhgb quiet"
+GRUB_DISABLE_RECOVERY="true"
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# cat /boot/grub2/grub.cfg 
+#
+# DO NOT EDIT THIS FILE
+#
+# It is automatically generated by grub2-mkconfig using templates
+# from /etc/grub.d and settings from /etc/default/grub
+#
+
+### BEGIN /etc/grub.d/00_header ###
+set pager=1
+
+if [ -s $prefix/grubenv ]; then
+  load_env
+fi
+if [ "${next_entry}" ] ; then
+   set default="${next_entry}"
+   set next_entry=
+   save_env next_entry
+   set boot_once=true
+else
+   set default="${saved_entry}"
+fi
+
+if [ x"${feature_menuentry_id}" = xy ]; then
+  menuentry_id_option="--id"
+else
+  menuentry_id_option=""
+fi
+
+export menuentry_id_option
+
+if [ "${prev_saved_entry}" ]; then
+  set saved_entry="${prev_saved_entry}"
+  save_env saved_entry
+  set prev_saved_entry=
+  save_env prev_saved_entry
+  set boot_once=true
+fi
+
+function savedefault {
+  if [ -z "${boot_once}" ]; then
+    saved_entry="${chosen}"
+    save_env saved_entry
+  fi
+}
+
+function load_video {
+  if [ x$feature_all_video_module = xy ]; then
+    insmod all_video
+  else
+    insmod efi_gop
+    insmod efi_uga
+    insmod ieee1275_fb
+    insmod vbe
+    insmod vga
+    insmod video_bochs
+    insmod video_cirrus
+  fi
+}
+
+terminal_output console
+if [ x$feature_timeout_style = xy ] ; then
+  set timeout_style=menu
+  set timeout=1
+# Fallback normal timeout code in case the timeout_style feature is
+# unavailable.
+else
+  set timeout=1
+fi
+### END /etc/grub.d/00_header ###
+
+### BEGIN /etc/grub.d/00_tuned ###
+set tuned_params=""
+set tuned_initrd=""
+### END /etc/grub.d/00_tuned ###
+
+### BEGIN /etc/grub.d/01_users ###
+if [ -f ${prefix}/user.cfg ]; then
+  source ${prefix}/user.cfg
+  if [ -n "${GRUB2_PASSWORD}" ]; then
+    set superusers="root"
+    export superusers
+    password_pbkdf2 root ${GRUB2_PASSWORD}
+  fi
+fi
+### END /etc/grub.d/01_users ###
+
+### BEGIN /etc/grub.d/10_linux ###
+menuentry 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-862.2.3.el7.x86_64-advanced-b60e9498-0baa-4d9f-90aa-069048217fee' {
+	load_video
+	set gfxpayload=keep
+	insmod gzio
+	insmod part_msdos
+	insmod xfs
+	set root='hd0,msdos2'
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root --hint='hd0,msdos2'  570897ca-e759-4c81-90cf-389da6eee4cc
+	else
+	  search --no-floppy --fs-uuid --set=root 570897ca-e759-4c81-90cf-389da6eee4cc
+	fi
+	linux16 /vmlinuz-3.10.0-862.2.3.el7.x86_64 root=/dev/mapper/OtusRoot-LogVol00 ro no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop crashkernel=auto rd.lvm.lv=OtusRoot/LogVol00 rd.lvm.lv=OtusRoot/LogVol01 rhgb quiet 
+	initrd16 /initramfs-3.10.0-862.2.3.el7.x86_64.img
+}
+if [ "x$default" = 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' ]; then default='Advanced options for CentOS Linux>CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)'; fi;
+### END /etc/grub.d/10_linux ###
+
+### BEGIN /etc/grub.d/20_linux_xen ###
+### END /etc/grub.d/20_linux_xen ###
+
+### BEGIN /etc/grub.d/20_ppc_terminfo ###
+### END /etc/grub.d/20_ppc_terminfo ###
+
+### BEGIN /etc/grub.d/30_os-prober ###
+### END /etc/grub.d/30_os-prober ###
+
+### BEGIN /etc/grub.d/40_custom ###
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+### END /etc/grub.d/40_custom ###
+
+### BEGIN /etc/grub.d/41_custom ###
+if [ -f  ${config_directory}/custom.cfg ]; then
+  source ${config_directory}/custom.cfg
+elif [ -z "${config_directory}" -a -f  $prefix/custom.cfg ]; then
+  source $prefix/custom.cfg;
+fi
+### END /etc/grub.d/41_custom ###
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mkinitrf[Kd -f -v /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img $(uname -r)
+Executing: /sbin/dracut -f -v /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img 3.10.0-862.2.3.el7.x86_64
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: drm ***
+*** Including module: plymouth ***
+*** Including module: dm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 60-persistent-storage-dm.rules
+Skipping udev rule: 55-dm.rules
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: lvm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 56-lvm.rules
+Skipping udev rule: 60-persistent-storage-lvm.rules
+*** Including module: qemu ***
+*** Including module: resume ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+bash-3.2$ vagrant ssh
+Last login: Tue Nov 19 06:49:14 2019 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo su
+]0;root@lvm:/home/vagrant[?1034h[root@lvm vagrant]# vgs
+  VG       #PV #LV #SN Attr   VSize   VFree
+  OtusRoot   1   2   0 wz--n- <38.97g    0 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# df -Th
+Filesystem                    Type      Size  Used Avail Use% Mounted on
+/dev/mapper/OtusRoot-LogVol00 xfs        38G  743M   37G   2% /
+devtmpfs                      devtmpfs  110M     0  110M   0% /dev
+tmpfs                         tmpfs     118M     0  118M   0% /dev/shm
+tmpfs                         tmpfs     118M  4.5M  114M   4% /run
+tmpfs                         tmpfs     118M     0  118M   0% /sys/fs/cgroup
+/dev/sda2                     xfs      1014M   61M  954M   6% /boot
+tmpfs                         tmpfs      24M     0   24M   0% /run/user/1000
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# mount | i OtusRoot[1P OtusRootg OtusRootr OtusRoote OtusRootp OtusRoot
+/dev/mapper/[01;31m[KOtusRoot[m[K-LogVol00 on / type xfs (rw,relatime,seclabel,attr2,inode64,noquota)
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# lsblk 
+NAME                  MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                     8:0    0   40G  0 disk 
+|-sda1                  8:1    0    1M  0 part 
+|-sda2                  8:2    0    1G  0 part /boot
+`-sda3                  8:3    0   39G  0 part 
+  |-OtusRoot-LogVol00 253:0    0 37.5G  0 lvm  /
+  `-OtusRoot-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+sdb                     8:16   0   10G  0 disk 
+sdc                     8:32   0    2G  0 disk 
+sdd                     8:48   0    1G  0 disk 
+sde                     8:64   0    1G  0 disk 
+]0;root@lvm:/home/vagrant[root@lvm vagrant]# exit
+exit
+]0;vagrant@lvm:~[vagrant@lvm ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+bash-3.2$ exit
+exit
+
+Script done on Tue Nov 19 10:01:27 2019
