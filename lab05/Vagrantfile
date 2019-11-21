@@ -11,27 +11,7 @@ MACHINES = {
 			:dfile => home + '/Downloads/sata1.vdi',
 			:size => 250,
 			:port => 1
-		},
-		:sata2 => {
-                        :dfile => home + '/Downloads/sata2.vdi',
-                        :size => 250, # Megabytes
-			:port => 2
-		},
-                :sata3 => {
-                        :dfile => home + '/Downloads/sata3.vdi',
-                        :size => 250,
-                        :port => 3
-                },
-                :sata4 => {
-                        :dfile => home + '/Downloads/sata4.vdi',
-                        :size => 250, # Megabytes
-                        :port => 4
-                },
-                :sata5 => {
-                        :dfile => home + '/Downloads/sata5.vdi',
-                        :size => 250, # Megabytes
-                        :port => 5
-                }
+		}
 	}
   },
 }
@@ -69,8 +49,43 @@ Vagrant.configure("2") do |config|
  	  box.vm.provision "shell", inline: <<-SHELL
 	      mkdir -p ~root/.ssh
               cp ~vagrant/.ssh/auth* ~root/.ssh
-              #yum install -y mdadm smartmontools hdparm gdisk
-              #/vagrant/create_raid.sh
+              # log monitoring
+              cp -v /vagrant/etc/sysconfig/watchdog /etc/sysconfig/
+              cp -v /vagrant/var/log/watchlog.log /var/log/
+              cp -v /vagrant/opt/watchlog.sh /opt/
+              chmod 755 /opt/watchlog.sh
+              cp -v /vagrant/etc/systemd/system/watchlog.* /etc/systemd/system/
+              systemctl daemon-reload
+              systemctl start watchlog.timer
+              systemctl start watchlog.service
+              # install packges
+              yum install epel-release -y 
+              yum install spawn-fcgi php php-cli -y
+              # systemd unit for spawn-fcgi
+              echo 'OPTIONS="-u apache -g apache -s $SOCKET -S -M 0600 -C 32 -F 1 -- /usr/bin/php-cgi"' | cat >> /etc/sysconfig/spawn-fcgi
+              cp -v /vagrant/etc/systemd/system/spawn-fcgi.service /etc/systemd/system/
+              systemctl start spawn-fcgi
+              # two separate instances of httpd
+              cp -v /vagrant/etc/systemd/system/httpd@.service /etc/systemd/system/
+              cp -v /vagrant/etc/sysconfig/httpd-first /etc/sysconfig/
+              cp -v /vagrant/etc/sysconfig/httpd-second /etc/sysconfig/
+              cp -v /vagrant/etc/httpd/conf/first.conf /etc/httpd/conf/
+              cp -v /vagrant/etc/httpd/conf/second.conf /etc/httpd/conf/
+              systemctl start httpd@first.service
+              systemctl start httpd@second.service
+              # wait 1 minutes before checks
+              echo --== sleep for 1 minute ==--
+              sleep 1m
+              # collect reports
+              echo ----- log monitoring ---------------------- > /root/report.txt 
+              grep Master /var/log/messages >> /root/report.txt 
+              echo ----- systemd unit for spawn-fcgi --------- >> /root/report.txt 
+              systemctl status spawn-fcgi | grep Active >> /root/report.txt
+              echo ----- two separate instances of httpd ----- >> /root/report.txt 
+              ss -tlupn | grep httpd >> /root/report.txt
+              echo --== show report ==--
+              cat /root/report.txt
+
   	  SHELL
 
       end

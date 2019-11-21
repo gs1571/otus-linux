@@ -1,0 +1,24 @@
+Nov 21 20:51:29 gsol-mac iTunes[39665]: Entered:_AMMuxedDeviceDisconnected, mux-device:22
+Nov 21 20:51:29 gsol-mac iTunes[39665]: Entered:__thr_AMMuxedDeviceDisconnected, mux-device:22
+Nov 21 20:51:29 gsol-mac iTunes[39665]: tid:36d3f - Mux ID not found in mapping dictionary
+Nov 21 20:51:29 gsol-mac iTunes[39665]: tid:36d3f - Can't handle disconnect with invalid ecid
+Nov 21 20:51:49 gsol-mac iTunes[39665]: Entered:_AMMuxedDeviceDisconnected, mux-device:23
+Nov 21 20:51:49 gsol-mac iTunes[39665]: Entered:__thr_AMMuxedDeviceDisconnected, mux-device:23
+Nov 21 20:51:49 gsol-mac iTunes[39665]: tid:1a92f - Mux ID not found in mapping dictionary
+Nov 21 20:51:49 gsol-mac iTunes[39665]: tid:1a92f - Can't handle disconnect with invalid ecid
+Nov 21 20:51:59 gsol-mac kcm[40164]: DEPRECATED USE in libdispatch client: Setting timer interval to 0 requests a 1ns timer, did you mean FOREVER (a one-shot timer)?; set a breakpoint on _dispatch_bug_deprecated to debug
+Nov 21 20:52:09 gsol-mac iTunes[39665]: Entered:_AMMuxedDeviceDisconnected, mux-device:24
+Nov 21 20:52:09 gsol-mac iTunes[39665]: Entered:__thr_AMMuxedDeviceDisconnected, mux-device:24
+Nov 21 20:52:09 gsol-mac iTunes[39665]: tid:1a92f - Mux ID not found in mapping dictionary
+Nov 21 20:52:09 gsol-mac iTunes[39665]: tid:1a92f - Can't handle disconnect with invalid ecidALERT
+Nov 21 20:52:12 gsol-mac Microsoft OneNote[18202]: [ACT]:[TASKSCHEDULER]:[Info]:opQueue=0x600000f06500 about to call waitUntilAllOperationsAreFinished
+Nov 21 20:52:12 gsol-mac Microsoft OneNote[18202]: [ACT]:[TASKSCHEDULER]:[Info]:opQueue=0x600000f06500 after call to waitUntilAllOperationsAreFinished
+Nov 21 20:52:12 gsol-mac Microsoft OneNote[18202]: [ACT]:[TASKSCHEDULER]:[Warn]:scheduleBlock:withRepeatInterval: called when opQueue is already nil!
+Nov 21 20:52:35 gsol-mac iTunes[39665]: Entered:_AMMuxedDeviceDisconnected, mux-device:25
+Nov 21 20:52:35 gsol-mac iTunes[39665]: Entered:__thr_AMMuxedDeviceDisconnected, mux-device:25
+Nov 21 20:52:35 gsol-mac iTunes[39665]: tid:36d3f - Mux ID not found in mapping dictionary
+Nov 21 20:52:35 gsol-mac iTunes[39665]: tid:36d3f - Can't handle disconnect with invalid ecid
+Nov 21 20:52:54 gsol-mac iTunes[39665]: Entered:_AMMuxedDeviceDisconnected, mux-device:26
+Nov 21 20:52:54 gsol-mac iTunes[39665]: Entered:__thr_AMMuxedDeviceDisconnected, mux-device:26
+Nov 21 20:52:54 gsol-mac iTunes[39665]: tid:36d3f - Mux ID not found in mapping dictionary
+Nov 21 20:52:54 gsol-mac iTunes[39665]: tid:36d3f - Can't handle disconnect with invalid ecid
