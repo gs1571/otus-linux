@@ -1,0 +1,561 @@
+19:58:36	 From Александр Гаврик : Всем доброго вечера :)
+19:58:50	 From Сергей Савельев ncsot : Привет всем
+20:01:41	 From Otus Онлайн-образование : http://ezprompt.net
+20:01:52	 From Alexey Zhdanovsky : -
+20:01:52	 From Сергей Савельев ncsot : -
+20:01:53	 From Артур Федоров : -
+20:01:56	 From Andrey Vasiliev : -
+20:01:57	 From Sergey : -
+20:01:57	 From Hanafeev_Rustam : -
+20:02:03	 From Aлексей Сбоев : -
+20:02:46	 From Alexey Zhdanovsky : 2
+20:02:46	 From Grigorii Solovev : 1
+20:02:47	 From Александр Максимов : 3
+20:02:47	 From Hanafeev_Rustam : 1
+20:02:48	 From mora : 2
+20:02:48	 From Sergey : 2
+20:02:49	 From Сергей Савельев ncsot : 2.5
+20:02:50	 From Anton : 3
+20:02:51	 From vadim.barutkin : 2
+20:02:52	 From Andrey Vasiliev : 1
+20:02:53	 From Igor Sablin : 3
+20:02:55	 From Артур Федоров : 0,5
+20:04:08	 From Leonid Albrekht : Всем привет)
+20:04:45	 From Leonid Albrekht : Чата на записи не видно
+20:05:01	 From Leonid Albrekht : Сори)
+20:05:24	 From Leonid Albrekht : Ща
+20:05:43	 From Leonid Albrekht : Только экран видно))
+20:07:50	 From Alexey Zhdanovsky : +
+20:07:52	 From Andrey Vasiliev : +
+20:07:52	 From Aлексей Сбоев : +
+20:07:53	 From Sergey Mikhaylov : +
+20:07:54	 From Александр Максимов : +
+20:07:56	 From Полунов Максим : +
+20:07:59	 From vadim.barutkin : +
+20:08:02	 From Sergey : +
+20:09:27	 From Aлексей Сбоев : +
+20:09:30	 From VIKTOR : +
+20:09:32	 From Hanafeev_Rustam : +
+20:09:37	 From Ivan Kiselev : +
+20:10:15	 From Grigorii Solovev : +
+20:10:15	 From vadim.barutkin : +
+20:10:16	 From Артур Федоров : -
+20:10:17	 From Alexey Zhdanovsky : -
+20:10:17	 From Полунов Максим : -
+20:10:19	 From Александр Максимов : egrep vs grep ?
+20:10:22	 From VIKTOR : Исключили символы?
+20:10:31	 From VIKTOR : чтобы комменты не читать
+20:10:44	 From Alexey Zhdanovsky : +
+20:10:44	 From Сергей Савельев ncsot : +
+20:10:45	 From Hanafeev_Rustam : +
+20:10:48	 From Alexey Zhdanovsky : +
+20:10:50	 From Aлексей Сбоев : +
+20:10:51	 From Otus Онлайн-образование : cat /etc/proxysql.cnf  | egrep -v '^#|^\s*$' | more
+20:12:38	 From VIKTOR : с mcedit это прокатывает?
+20:12:46	 From Александр Максимов : Простой grep не умеет в regex
+20:12:48	 From Александр Максимов : ?
+20:13:02	 From VIKTOR : А ну по сути тоже самое, я имел ввиду чтобы редактировать
+20:13:07	 From VIKTOR : А не просто смотреть
+20:13:36	 From Alexey Zhdanovsky : +
+20:13:38	 From Andrey Vasiliev : +
+20:13:38	 From Aлексей Сбоев : +
+20:13:39	 From Александр Максимов : ++
+20:13:40	 From Sergey : +
+20:14:23	 From Leonid Albrekht : Я ребятам уже fish показывал)
+20:14:28	 From Leonid Albrekht : Чутка)
+20:14:41	 From vadim.barutkin : как жить в zsh после bash?
+20:15:19	 From Leonid Albrekht : В fish прекрасно, в zsh наверное тоже)
+20:15:46	 From Otus Онлайн-образование : yum install bash-completion
+20:15:53	 From Sergey : -
+20:15:55	 From Alexey Zhdanovsky : -
+20:15:56	 From Andrey Vasiliev : -
+20:15:57	 From Полунов Максим : -
+20:15:57	 From Сергей Савельев ncsot : -
+20:15:57	 From VIKTOR : _
+20:15:57	 From Александр Максимов : Zsh
+20:15:58	 From Oleg : -
+20:16:00	 From Aлексей Сбоев : -
+20:16:03	 From Nikolay.Koshelkov : +
+20:16:08	 From Grigorii Solovev : для слабых духом! :)
+20:19:26	 From Сергей Савельев ncsot : регулярку в алиасы загнать можно?
+20:19:49	 From Сергей Савельев ncsot : ок
+20:20:02	 From Leonid Albrekht : export PS1="\[\e[32m\][\D{%d/%m/%Y %H:%M %Z}]\[\e[m\] \[\e[33m\]\u@\h\[\e[m\]:\w$ "
+20:20:03	 From Leonid Albrekht : =)
+20:22:02	 From Alexey Zhdanovsky : +
+20:22:02	 From Aлексей Сбоев : +
+20:22:04	 From Andrey Vasiliev : +
+20:22:07	 From VIKTOR : чот не особо
+20:22:25	 From Артур Федоров : Чтобы не перепутать
+20:22:28	 From Артур Федоров : машины
+20:22:29	 From Grigorii Solovev : что бы знать где
+20:22:29	 From Stan : xnj ,s gjybvfnm ult vs
+20:22:29	 From Igor Sablin : Чтобы прод не сломать :)
+20:22:30	 From Andrey Vasiliev : чтобы видеть под рутом мы 
+20:22:34	 From Александр Максимов : Чтоб не потеряться в лесу серверов
+20:22:43	 From Aлексей Сбоев : при обслуживании нескольких машин
+20:22:58	 From Igor Sablin : Кстати, а в зависимости от хоста можно цвет менять?
+20:23:23	 From Igor Sablin : Точно, сенькс
+20:26:02	 From Alexey Zhdanovsky : +
+20:26:04	 From Andrey Vasiliev : +
+20:26:04	 From Александр Максимов : +
+20:26:04	 From Ivan Kiselev : +
+20:26:04	 From Sergey Mikhaylov : а зачем тогда /etc/motd?
+20:26:06	 From Dmitriy Pnev : +
+20:26:06	 From vadim.barutkin : +
+20:26:06	 From Aлексей Сбоев : +
+20:26:19	 From Sergey Mikhaylov : отличий то есть нет?
+20:26:51	 From Sergey Mikhaylov : это понятно, имею ввиду в плане сообщений
+20:27:06	 From Sergey Mikhaylov : аа
+20:27:08	 From Sergey Mikhaylov : понял
+20:28:18	 From Alexey Zhdanovsky : +
+20:28:22	 From Aлексей Сбоев : +
+20:28:44	 From Александр Максимов : rc.local для юзера
+20:30:14	 From Sergey Mikhaylov : +
+20:30:15	 From Alexey Zhdanovsky : +
+20:30:16	 From vadim.barutkin : +
+20:30:16	 From Ivan Kiselev : +
+20:30:17	 From Andrey Vasiliev : +
+20:30:18	 From Александр Максимов : +
+20:30:19	 From Aлексей Сбоев : +
+20:31:07	 From VIKTOR : man man
+20:31:14	 From VIKTOR : Сломает линукс?
+20:31:21	 From Grigorii Solovev : man woman
+20:32:29	 From Сергей Савельев ncsot : -
+20:32:39	 From Alexey Zhdanovsky : -
+20:32:40	 From Andrey Vasiliev : -
+20:34:09	 From Alexey Zhdanovsky : +
+20:34:12	 From Sergey Mikhaylov : +
+20:34:13	 From Aлексей Сбоев : +
+20:34:13	 From Andrey Vasiliev : +
+20:34:15	 From Sergey : +
+20:34:16	 From Ivan Kiselev : +
+20:34:45	 From VIKTOR : нет
+20:34:45	 From Grigorii Solovev : нет
+20:34:46	 From Sergey Mikhaylov : нет
+20:34:47	 From Alexey Zhdanovsky : нет
+20:34:47	 From Сергей Савельев ncsot : nein
+20:34:47	 From Александр Максимов : no
+20:34:48	 From vadim.barutkin : нет
+20:34:51	 From Dmitriy Pnev : no
+20:35:17	 From Сергей Савельев ncsot : ./
+20:35:18	 From Sergey Mikhaylov : нет
+20:35:20	 From vadim.barutkin : Bash script
+20:35:22	 From Igor Sablin : Vj;yj
+20:35:33	 From Grigorii Solovev : chmod 755
+20:36:07	 From vadim.barutkin : Шебанг?
+20:36:22	 From Артур Федоров : Что есть шебанг
+20:38:10	 From Sergey : +
+20:38:10	 From Alexey Zhdanovsky : +
+20:38:10	 From Артур Федоров : +
+20:38:11	 From vadim.barutkin : +
+20:38:11	 From Ivan Kiselev : +
+20:38:12	 From Igor Sablin : +
+20:38:13	 From Александр Максимов : +
+20:38:13	 From Andrey Vasiliev : +
+20:38:14	 From Aлексей Сбоев : +
+20:39:14	 From VIKTOR : 0х2 как в винде?
+20:39:27	 From Aлексей Сбоев : +
+20:39:28	 From Sergey : +
+20:39:28	 From Alexey Zhdanovsky : +
+20:39:43	 From Сергей Савельев ncsot : сюда только чайлды basha возвращают
+20:39:49	 From Сергей Савельев ncsot : ?
+20:40:23	 From vadim.barutkin : Не 0 вернулся
+20:40:46	 From VIKTOR : Соответственно в баш скрипте мы можем вызывать запуск других баш скриптов и запускать целые цепочки ?
+20:41:09	 From Александр Максимов : Егсл один & ?
+20:41:50	 From Alexey Zhdanovsky : +
+20:41:50	 From Александр Максимов : +
+20:41:53	 From Ivan Kiselev : +
+20:41:56	 From vadim.barutkin : +
+20:41:57	 From Igor Sablin : +
+20:41:58	 From Sergey Mikhaylov : +
+20:42:00	 From Grigorii Solovev : +
+20:42:01	 From Sergey : +
+20:42:15	 From Артур Федоров : А один & это что?
+20:42:23	 From Aлексей Сбоев : еще раз про один &, плиз
+20:42:42	 From Aлексей Сбоев : +
+20:44:13	 From Alexey Zhdanovsky : +
+20:44:15	 From Ivan Kiselev : +
+20:44:15	 From Александр Максимов : +
+20:44:15	 From Aлексей Сбоев : +
+20:44:16	 From Grigorii Solovev : +
+20:44:18	 From Dmitriy Pnev : +
+20:44:22	 From vadim.barutkin : +
+20:44:22	 From Sergey : угу
+20:44:27	 From Aлексей Сбоев : еще как
+20:44:28	 From VIKTOR : Можно ответить?
+20:44:35	 From VIKTOR : Соответственно в баш скрипте мы можем вызывать запуск других баш скриптов и запускать целые цепочки ?
+20:44:57	 From VIKTOR : Спасибо
+20:45:18	 From Александр Гаврик : )
+20:45:23	 From vadim.barutkin : var = val
+20:45:24	 From mora : 4
+20:45:24	 From Grigorii Solovev : declare
+20:45:26	 From Nikolay Ferapontov : 5
+20:45:32	 From Aлексей Сбоев : 1?
+20:45:37	 From Александр Максимов : Yt 5
+20:46:17	 From vadim.barutkin : весь код стайл ломают)
+20:46:21	 From Артур Федоров : а как долго эта переменная живет?
+20:46:45	 From Артур Федоров : Понятно, спасибо. А если подольше хранить
+20:48:17	 From vadim.barutkin : А переменные вызывать ${ val } - это тоже нововведение?
+20:48:45	 From VIKTOR : В переменную загнать мини скрипт можно? 
+20:48:51	 From Aлексей Сбоев : в предпоследнем выражении есть пробелы - допускается?
+20:48:56	 From Александр Максимов : А зачем? { }
+20:49:27	 From EMP : не удобство. $"aaa_aa
+20:49:36	 From EMP : ${aa_bb}cc
+20:49:46	 From EMP : перменная - часть строки
+20:49:48	 From vadim.barutkin : А! В {} типа терновников можно вставлять
+20:49:49	 From EMP : но не вся строка
+20:50:04	 From Александр Максимов : Спасибо
+20:51:27	 From Alexey Zhdanovsky : +
+20:51:27	 From Nikolay Ferapontov : a `` ?
+20:51:28	 From Ivan Kiselev : +
+20:52:00	 From Grigorii Solovev : +
+20:52:01	 From Sergey Mikhaylov : +
+20:52:04	 From Aлексей Сбоев : +
+20:52:29	 From vadim.barutkin : как здесь т9 отключить? терновник=тернарник
+20:52:29	 From vadim.barutkin : +
+20:52:49	 From Leonid Albrekht : Может где-то в настройках Зума
+20:52:56	 From vadim.barutkin : да)
+20:52:56	 From Александр Максимов : А если echo `$var` ?
+20:52:57	 From Leonid Albrekht : Про чат видимо
+20:53:15	 From Дмитрий Лютенко : Речь об использовании тернарного оператора.
+20:53:24	 From Dmitriy Pnev : echo $var1 сделайте
+20:53:40	 From Александр Максимов : echo `$var` ?
+20:54:28	 From Sergey : +
+20:54:29	 From Alexey Zhdanovsky : +
+20:54:30	 From Andrey Vasiliev : +
+20:54:30	 From Aлексей Сбоев : +
+20:54:30	 From Александр Максимов : +
+20:54:30	 From Полунов Максим : +
+20:54:31	 From Ivan Kiselev : +
+20:54:31	 From Grigorii Solovev : нужно больше кавычек! :)
+20:54:32	 From mora : +
+20:54:34	 From vadim.barutkin : +
+20:57:30	 From Александр Максимов : cd
+20:59:34	 From Igor Sablin : $JAVA_HOME?
+20:59:47	 From Alexey Zhdanovsky : -
+20:59:48	 From Andrey Vasiliev : -
+20:59:49	 From Sergey : -
+20:59:49	 From Aлексей Сбоев : -
+20:59:51	 From Grigorii Solovev : -
+20:59:52	 From vadim.barutkin : Библиотеки?
+20:59:53	 From Полунов Максим : -
+21:01:38	 From Александр Максимов : +
+21:01:39	 From Aлексей Сбоев : +
+21:01:40	 From Alexey Zhdanovsky : +
+21:01:43	 From vadim.barutkin : +
+21:01:45	 From Igor Sablin : При установке ораклового клиента актуально
+21:01:45	 From mora : -
+21:01:50	 From Александр Максимов : ++
+21:02:01	 From mora : vj;tnt gjdnjhbnm 
+21:02:06	 From mora : можете повторить 
+21:03:22	 From mora : понял 
+21:03:29	 From Александр Максимов : Кстати что за 4 2 на конце?
+21:03:47	 From vadim.barutkin : Версии библиотек
+21:06:16	 From vadim.barutkin : +
+21:06:17	 From Александр Максимов : +
+21:06:17	 From Ivan Kiselev : +
+21:06:17	 From Igor Sablin : +
+21:06:18	 From Alexey Zhdanovsky : +
+21:06:34	 From Aлексей Сбоев : параметр 0 - имя скрипта, так?
+21:06:38	 From vadim.barutkin : да
+21:06:49	 From vadim.barutkin : Как в си
+21:07:47	 From Aлексей Сбоев : -
+21:07:50	 From Grigorii Solovev : +
+21:08:07	 From vadim.barutkin : поменять признак разделения
+21:09:24	 From Александр Максимов : +
+21:09:26	 From Ivan Kiselev : +
+21:09:28	 From Grigorii Solovev : +
+21:09:29	 From vadim.barutkin : +
+21:09:30	 From Aлексей Сбоев : +
+21:10:19	 From Александр Максимов : IFS?
+21:10:29	 From Сергей Савельев ncsot : переменная окружения тоже?
+21:10:32	 From Сергей Савельев ncsot : она
+21:10:44	 From Александр Максимов : Так переменную называть не надо?
+21:11:25	 From Aлексей Сбоев : регистр переменных имеет значение?
+21:11:27	 From vadim.barutkin : В env ее нет
+21:11:46	 From Александр Максимов : declare что это
+21:12:20	 From vadim.barutkin : в каких случаях declare нужен?
+21:13:50	 From Александр Гаврик : https://www.fvue.nl/wiki/Bash:_Show_IFS_value
+21:14:03	 From Александр Максимов : Другой бащ
+21:14:07	 From EMP : з
+21:14:11	 From EMP : области видимости
+21:14:55	 From Александр Максимов : Только для потомков? Потом умрет?
+21:16:42	 From vadim.barutkin : да, IFS - настраиваемый параметр интерпретатора
+21:17:35	 From Aлексей Сбоев : +
+21:17:35	 From Alexey Zhdanovsky : +
+21:17:37	 From Igor Sablin : +
+21:17:37	 From vadim.barutkin : +
+21:17:39	 From Grigorii Solovev : +
+21:20:22	 From Александр Максимов : -d
+21:20:55	 From Grigorii Solovev : +
+21:20:56	 From Alexey Zhdanovsky : +
+21:20:58	 From Aлексей Сбоев : +
+21:20:59	 From Andrey Vasiliev : +
+21:20:59	 From vadim.barutkin : +
+21:21:01	 From Sergey : +
+21:21:04	 From Александр Максимов : Ага кроме [ [[
+21:21:38	 From Александр Максимов : спит
+21:21:42	 From Сергей Савельев ncsot : https://serverfault.com/questions/52034/what-is-the-difference-between-double-and-single-square-brackets-in-bash
+21:21:54	 From Сергей Савельев ncsot : https://unix.stackexchange.com/questions/306111/what-is-the-difference-between-the-bash-operators-vs-vs-vs
+21:21:59	 From Сергей Савельев ncsot : тут
+21:21:59	 From Александр Гаврик : man test
+21:23:37	 From Aлексей Сбоев : +
+21:23:39	 From Grigorii Solovev : +
+21:23:39	 From Igor Sablin : +
+21:23:40	 From Alexey Zhdanovsky : +
+21:23:41	 From vadim.barutkin : +
+21:23:50	 From Александр Максимов : [[ расширенный тест?
+21:24:01	 From vadim.barutkin : Непонятно про builtin и keyword
+21:24:13	 From vadim.barutkin : точнее про keyword
+21:24:15	 From Александр Максимов : Можно не заморачиваться и не писать [
+21:24:17	 From Александр Максимов : ?
+21:24:49	 From Александр Максимов : Я имею одинарный [ не надо пу сути
+21:24:59	 From Александр Максимов : +
+21:25:01	 From Andrey Vasiliev : +
+21:25:03	 From Igor Sablin : +
+21:25:07	 From Sergey : +
+21:25:44	 From Сергей Савельев ncsot : перекур 5 мин maybe?
+21:25:54	 From Otus Онлайн-образование : дв
+21:26:09	 From vadim.barutkin : Разрешаю))
+21:26:40	 From Александр Гаврик : внутри [ ] не получится использовать  &&, ||, < и > ,насколько я помню, а в [[ ]] можно
+21:27:07	 From vadim.barutkin : [[ нет в POSIX
+21:27:38	 From vadim.barutkin : && = -a
+21:27:50	 From vadim.barutkin : || = -o
+21:29:22	 From Александр Гаврик : да, [[ bash-специфичная штука, если нужна совместимость, то не надо ее использовать
+21:29:40	 From Alexey Zhdanovsky : +
+21:29:40	 From Aлексей Сбоев : +
+21:29:53	 From Александр Максимов : О как
+21:30:09	 From Alexey Zhdanovsky : +
+21:30:11	 From Andrey Vasiliev : +
+21:30:11	 From Aлексей Сбоев : +
+21:30:13	 From Александр Гаврик : запись
+21:30:16	 From Александр Максимов : ++
+21:30:17	 From Andrey Vasiliev : ++
+21:30:18	 From Alexey Zhdanovsky : супер
+21:31:09	 From Александр Максимов : Ах вот где их искать
+21:31:53	 From vadim.barutkin : Одно = - подстава)
+21:32:14	 From Grigorii Solovev : подстава в питончике
+21:32:18	 From vadim.barutkin : причем тут же одно = используется для присвоения
+21:32:37	 From Александр Максимов : ненавижу
+21:33:07	 From Александр Максимов : Кстати зачем чучуть осталось?
+21:33:25	 From Александр Гаврик : совместимость, увы
+21:33:27	 From Leonid Albrekht : Для обратной совместимости
+21:34:29	 From Igor Sablin : Не проще было break впилить...
+21:35:19	 From Alexey Zhdanovsky : +
+21:35:21	 From Aлексей Сбоев : +
+21:35:22	 From Igor Sablin : +
+21:35:23	 From Ivan Kiselev : +
+21:39:13	 From Aлексей Сбоев : +
+21:39:13	 From Igor Sablin : +
+21:39:18	 From Александр Максимов : Надо потрогать
+21:39:20	 From Grigorii Solovev : +
+21:39:21	 From Ivan Kiselev : +
+21:41:06	 From Aлексей Сбоев : +
+21:41:13	 From Alexey Zhdanovsky : +
+21:41:14	 From vadim.barutkin : +
+21:41:14	 From Andrey Vasiliev : ++
+21:41:16	 From Александр Максимов : +
+21:41:16	 From Ivan Kiselev : +
+21:42:05	 From EMP : ох опасный скрипт
+21:42:51	 From Grigorii Solovev : * и @ в чем разница?
+21:43:54	 From Andrey Vasiliev : +
+21:43:55	 From Aлексей Сбоев : +
+21:43:55	 From vadim.barutkin : +
+21:43:56	 From Alexey Zhdanovsky : +
+21:43:57	 From Ivan Kiselev : +
+21:44:07	 From Igor Sablin : А что за конструкция #arr ?
+21:44:56	 From Otus Онлайн-образование : ${#arr[@]}
+21:45:01	 From Igor Sablin : +
+21:45:02	 From Alexey Zhdanovsky : +
+21:45:03	 From Александр Максимов : i++ так можно было?
+21:45:04	 From Aлексей Сбоев : +
+21:45:09	 From Grigorii Solovev : типа len() в питоне
+21:45:24	 From VIKTOR : i++ это стандартно, во многих языках
+21:45:37	 From Александр Максимов : В басе не видел
+21:45:42	 From Александр Максимов : баще
+21:46:57	 From Aлексей Сбоев : +
+21:46:57	 From Alexey Zhdanovsky : +
+21:46:58	 From Igor Sablin : +
+21:46:59	 From Александр Максимов : +
+21:47:39	 From Sergey : +
+21:47:44	 From Александр Максимов : -
+21:47:44	 From Aлексей Сбоев : +
+21:47:50	 From EMP : есть ли break N?
+21:49:04	 From Alexey Zhdanovsky : +
+21:49:05	 From Aлексей Сбоев : +
+21:49:06	 From Igor Sablin : +
+21:49:07	 From vadim.barutkin : +
+21:49:09	 From Grigorii Solovev : +
+21:49:55	 From vadim.barutkin : в третьем баше i++ работает
+21:50:05	 From Aлексей Сбоев : ;?
+21:50:27	 From Aлексей Сбоев : +
+21:50:30	 From Александр Гаврик : Про set -x; echo $- расскажете?)
+21:51:03	 From Александр Гаврик : set -x
+21:51:07	 From Leonid Albrekht : не не
+21:51:10	 From Leonid Albrekht : Set -x
+21:51:11	 From Leonid Albrekht : Ага
+21:51:19	 From Leonid Albrekht : Set -x
+21:51:23	 From Leonid Albrekht : set +x
+21:51:27	 From Leonid Albrekht : Внутри скрипта
+21:51:29	 From Leonid Albrekht : да
+21:51:58	 From Александр Максимов : +
+21:52:01	 From Ivan Kiselev : +
+21:52:03	 From Alexey Zhdanovsky : +
+21:52:08	 From Sergey : сохранить дебаг в файл?
+21:52:08	 From Aлексей Сбоев : +
+21:52:15	 From vadim.barutkin : круто
+21:52:21	 From Leonid Albrekht : > debug_file
+21:52:23	 From Leonid Albrekht : Почему нет)
+21:52:24	 From Александр Максимов : В домашках для преподов пишу )
+21:53:02	 From Александр Гаврик : текущее состояние set смотреть так echo $-
+21:53:26	 From Igor Sablin : О, теперь гуглить не надо. :)
+21:54:31	 From vadim.barutkin : +
+21:54:34	 From Aлексей Сбоев : +
+21:54:38	 From Alexey Zhdanovsky : -
+21:54:39	 From Grigorii Solovev : -
+21:54:39	 From Полунов Максим : -
+21:58:03	 From Sergey : -
+21:58:03	 From Grigorii Solovev : +/-
+21:58:04	 From Александр Максимов : Путаю всегда
+21:58:07	 From Aлексей Сбоев : -
+21:58:08	 From Полунов Максим : -
+21:59:44	 From Sergey : err
+22:01:26	 From Александр Максимов : +
+22:01:28	 From Andrey Vasiliev : +
+22:01:28	 From Aлексей Сбоев : +
+22:01:29	 From vadim.barutkin : +
+22:01:30	 From Grigorii Solovev : +
+22:02:05	 From Sergey : +
+22:02:05	 From vadim.barutkin : +
+22:02:06	 From Aлексей Сбоев : +
+22:02:07	 From Grigorii Solovev : +
+22:02:07	 From Igor Sablin : +
+22:02:07	 From Alexey Zhdanovsky : +
+22:02:07	 From Александр Максимов : +
+22:02:08	 From Ivan Kiselev : +
+22:02:09	 From Полунов Максим : +
+22:02:15	 From Александр Максимов : 3 ?
+22:02:50	 From Aлексей Сбоев : а можно зациклить 1>0
+22:03:28	 From Aлексей Сбоев : бесконечно?
+22:04:40	 From Aлексей Сбоев : ок
+22:07:03	 From Alexey Zhdanovsky : +
+22:07:03	 From Grigorii Solovev : как буфер
+22:07:09	 From Aлексей Сбоев : затупил
+22:07:10	 From vadim.barutkin : Еще разок
+22:07:31	 From Aлексей Сбоев : можно на словах что происходит
+22:08:19	 From Александр Максимов : Как эхо отваливалось?
+22:09:13	 From Александр Максимов : Вы пишете эхо в трубу и оно стоит, потом возврат в шел как произошел?
+22:09:22	 From Александр Максимов : Ctrl c не заметил
+22:09:33	 From Aлексей Сбоев : только один на один или может быть один пишет много читают?
+22:09:34	 From Александр Максимов : О! ждет
+22:09:39	 From Александр Максимов : спасибо
+22:09:57	 From Aлексей Сбоев : ок
+22:10:01	 From vadim.barutkin : +
+22:10:10	 From Ivan Kiselev : +
+22:12:48	 From Grigorii Solovev : +
+22:12:50	 From Aлексей Сбоев : -
+22:12:54	 From Sergey : не совсем
+22:13:52	 From Александр Максимов : Exec 233 пойдет?
+22:14:16	 From vadim.barutkin : Есть ограничение сверху по номеру fd
+22:14:26	 From Sergey : exec -это назначить дескриптор?
+22:14:26	 From Александр Максимов : 4й дескриптор
+22:17:36	 From Grigorii Solovev : > и >> ?
+22:17:38	 From Александр Максимов : /dev/stderr
+22:17:55	 From Александр Максимов : ?
+22:18:08	 From Sergey : дописать
+22:18:39	 From Aлексей Сбоев : +
+22:18:39	 From vadim.barutkin : +
+22:18:40	 From Sergey : +
+22:18:41	 From Ivan Kiselev : +
+22:18:42	 From Александр Максимов : +
+22:18:44	 From Полунов Максим : +
+22:18:44	 From Grigorii Solovev : а смысл это делать для /dev/stderr?
+22:19:18	 From Aлексей Сбоев : параметры функции?
+22:20:05	 From Сергей Савельев ncsot : в fdisk :)
+22:21:43	 From Grigorii Solovev : EOF - End Of File?
+22:23:26	 From vadim.barutkin : -
+22:23:29	 From Grigorii Solovev : -
+22:23:29	 From Sergey : -
+22:23:30	 From Andrey Vasiliev : -
+22:23:36	 From Alexey Zhdanovsky : -+
+22:28:38	 From Aлексей Сбоев : а если сброс питания, файл опять останется?
+22:28:49	 From EMP : ну и kill
+22:29:01	 From Aлексей Сбоев : +
+22:29:06	 From Alexey Zhdanovsky : +
+22:29:07	 From vadim.barutkin : +-
+22:29:08	 From Grigorii Solovev : +
+22:29:12	 From Ivan Kiselev : +
+22:29:15	 From Александр Максимов : Ну такое себе
+22:29:55	 From Александр Максимов : О!
+22:30:09	 From Александр Максимов : А kill есть?
+22:30:15	 From Александр Максимов : От kill
+22:30:20	 From Aлексей Сбоев : ок, можно и проверку по таймауту сделать?
+22:31:18	 From Александр Максимов : кошмар
+22:31:20	 From vadim.barutkin : регулярка
+22:31:21	 From Александр Гаврик : ))
+22:31:22	 From VIKTOR : шизофрения
+22:31:23	 From Sergey : условия
+22:31:24	 From Grigorii Solovev : email
+22:31:54	 From EMP : 5 сиволов на домен - это не по рфц
+22:32:09	 From EMP : ну 5 - это не верхний лимит
+22:33:11	 From Grigorii Solovev : https://regex101.com
+22:33:57	 From Александр Гаврик : когда будете regexp для ansible делать этот сайт зайдёт хорошо
+22:35:01	 From Александр Максимов : +
+22:37:02	 From Otus Онлайн-образование : find ./ -name "log*" -delete
+22:37:02	 From Александр Максимов : Про 50 000 поясните
+22:37:42	 From Александр Максимов : страх
+22:37:44	 From vadim.barutkin : Алексей, было бы здорово - выкладывать презентацию до начала занятия. Мы бы могли во время занятия подглядывать туда самостоятельно
+22:37:49	 From Сергей Савельев ncsot : какой структурой эта строка ограничена?
+22:37:52	 From Andrey Vasiliev : +
+22:38:07	 From Сергей Савельев ncsot : глобинг которая
+22:38:18	 From Сергей Савельев ncsot : ок
+22:38:36	 From VIKTOR : А лучше за день, чтобы можно было хоть как то вникуть а не сидеть с глазами как блюдца)
+22:39:48	 From Сергей Савельев ncsot : почему преравать неможем?
+22:40:20	 From vadim.barutkin : Непрерывно ctrl-c жать
+22:40:37	 From VIKTOR : теперь проверим на 1 000 000
+22:40:42	 From vadim.barutkin : )))
+22:40:43	 From Сергей Савельев ncsot : :)
+22:40:44	 From Александр Максимов : )
+22:40:55	 From Otus Онлайн-образование : for i in {1..100000};do touch log$i;done
+22:41:02	 From Александр Гаврик : https://stackoverflow.com/questions/19354870/bash-command-line-and-input-limit/19355351#19355351
+22:41:15	 From Александр Максимов : Только не быстро
+22:42:50	 From Александр Гаврик : wget https://raw.githubusercontent.com/elastic/examples/master/Common%20Data%20Formats/nginx_logs/nginx_logs
+22:43:08	 From mora : прод? 
+22:43:23	 From Александр Гаврик : не, тестовый лог
+22:44:14	 From Александр Максимов : Не быстро
+22:44:26	 From Александр Максимов : Не так быстро
+22:44:54	 From mora : чем то на cut похоже, можно указать ему другой разделитель? 
+22:44:57	 From EMP : часовой пояс еще
+22:45:03	 From EMP : 9
+22:45:58	 From Александр Максимов : Разделитель тут пробел был?
+22:46:16	 From EMP : только аккуратней с uniq, не совсем уникально
+22:46:23	 From EMP : это только последовательно уникальные
+22:46:28	 From EMP : sort -u
+22:46:39	 From Дмитрий Лютенко : Утилита cut режет строку по указанному разделителю. В awk, фактически, вы пишете мини-скрипт. Разделить, заменить, кажется даже if есть.
+22:48:22	 From Sergey : если указать за определенный интервал ?
+22:48:40	 From Sergey : +
+22:49:09	 From Александр Максимов : Я тут sed недавно полюбил, но тут кажется всё сложнее
+22:51:40	 From Grigorii Solovev : +
+22:51:42	 From vadim.barutkin : +
+22:51:43	 From Aлексей Сбоев : +
+22:51:46	 From Otus Онлайн-образование : cat /etc/passwd | awk -F":" -f test.awk
+22:52:42	 From Grigorii Solovev : эти скрипты выложите?
+22:53:00	 From Grigorii Solovev : ok
+22:53:29	 From Александр Максимов : fstab
+22:53:31	 From Александр Гаврик : sshd_config
+22:55:02	 From EMP : хорошо заменили диру (:
+22:55:10	 From Александр Максимов : -i не во всех системах
+22:56:09	 From Grigorii Solovev : root\s*root
+22:58:48	 From mora : 401 считаем ошибкой? 
+22:58:58	 From mora : 301 тоже? 
+22:59:07	 From Grigorii Solovev : запрашиваемых URI
+22:59:52	 From Александр Максимов : Лог идет в комплекте к дз?
+23:00:34	 From Otus Онлайн-образование : https://otus.ru/polls/5847/
+23:00:39	 From Александр Максимов : супер
+23:00:40	 From mora : отлично 
+23:00:40	 From Aлексей Сбоев : +++
+23:00:41	 From Sergey : круть 
+23:00:43	 From vadim.barutkin : +
+23:00:43	 From Andrey Vasiliev : +
+23:00:47	 From Grigorii Solovev : три часа…
+23:00:49	 From Alexey Zhdanovsky : +++
