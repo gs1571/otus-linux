@@ -1,4 +1,4 @@
-# Инициализация системы. Systemd и SysV
+# Инициализация системы. Systemd и SysV.
 
 ## Vagrant
 

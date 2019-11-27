@@ -1,0 +1,198 @@
+19:58:13	 From Ivan Kiselev : интересного много, еще больше пришлось дополнительно читать)
+19:58:18	 From Юрий : добрый вечер
+19:58:21	 From Vasiliy Galanov : Добрый вечер!
+19:58:22	 From Grigorii Solovev : Пока не добрался до домашки, перечитываю доки
+19:58:39	 From Grigorii Solovev : Но проще на питомнике сделать :)
+19:59:05	 From Grigorii Solovev : Поделитесь?
+19:59:47	 From Grigorii Solovev : киньте название
+20:00:16	 From OTUS Онлайн-образование : RHCSA/RHCE Centos 8 Cert Guide
+20:00:32	 From Sergey Mikhaylov : sander van vugt чтоли?
+20:00:38	 From Grigorii Solovev : Наверно
+20:00:42	 From Sergey Mikhaylov : крутой дядя)
+20:01:11	 From Grigorii Solovev : мне она не понравилась, опечаток много
+20:01:24	 From Grigorii Solovev : нет конечно
+20:01:27	 From Grigorii Solovev : на английском
+20:02:03	 From Grigorii Solovev : +
+20:02:04	 From vadim.barutkin : +
+20:02:04	 From Vasiliy Galanov : +
+20:02:05	 From Andrey Vasiliev : +
+20:02:05	 From Sergey Mikhaylov : +
+20:02:06	 From Александр Максимов : +
+20:02:06	 From Ivan Kiselev : +
+20:02:09	 From Anton Cherevaty : +
+20:02:10	 From mora : +
+20:02:12	 From Sergey : +
+20:05:31	 From vadim.barutkin : Обновления
+20:05:33	 From Grigorii Solovev : не учитываются зависимости
+20:05:35	 From Andrey Vasiliev : проблемы с обновлением
+20:05:40	 From ligain : хрен удалишь
+20:05:57	 From mora : как то раз собрали нджинкс с поддержкой мд5 необходимой для друпала и потом случайно обновили.... 
+20:16:19	 From Александр Максимов : +
+20:16:20	 From Grigorii Solovev : +
+20:16:21	 From vadim.barutkin : +
+20:16:21	 From mora : +
+20:16:23	 From Vasiliy Galanov : +
+20:17:49	 From Sergey Mikhaylov : makefile походу использовал yaml до того как это стало мейнстримом))
+20:19:45	 From Александр Максимов : Есть вопросс
+20:19:52	 From Grigorii Solovev : а make без параметров?
+20:20:11	 From Grigorii Solovev : я так и подумал :)
+20:20:30	 From Александр Максимов : Если ядро например собрали а потом переконфигурировали и опять make он всё заново собирать будет?
+20:21:14	 From vadim.barutkin : В материалах другие слайды лежат
+20:22:16	 From Александр Максимов : А вот если без клина
+20:24:11	 From Артур Федоров : там даже reload достаточно
+20:26:46	 From OTUS Онлайн-образование : https://otus.pw/ulZn/
+20:27:38	 From Александр Максимов : Freebsd портыыы
+20:28:12	 From mora : rpm и apt в принципе одно и то же? 
+20:28:29	 From Александр Максимов : Yum и apt
+20:28:40	 From Александр Максимов : А  rpm & deb
+20:29:03	 From mora : спасибо 
+20:31:32	 From Артур Федоров : А что происходит?
+20:35:25	 From Александр Максимов : В методичке есть эти ключики?
+20:35:55	 From OTUS Онлайн-образование : rpm -qf /etc/httpd/conf/httpd.conf
+20:38:12	 From Александр Максимов : Т.е. Он всё-таки знает что ему надо?
+20:39:56	 From Sergey Mikhaylov : что такое хуки?
+20:41:39	 From Александр Максимов : so.6 что за 6 ?
+20:42:24	 From Александр Максимов : да
+20:42:58	 From OTUS Онлайн-образование : rpm2cpio rmp_file | cpio -idmv
+20:43:14	 From Grigorii Solovev : +
+20:43:22	 From OTUS Онлайн-образование : rpm -q --scripts httpd
+20:43:24	 From Александр Максимов : Через mc проще скопировать )
+20:44:15	 From Александр Максимов : В винде только FAR !
+20:49:08	 From Alexey Zhdanovsky : +
+20:49:08	 From Александр Максимов : да
+20:49:09	 From Vasiliy Galanov : +
+20:49:10	 From vadim.barutkin : +
+20:49:10	 From AlexeyKo : +
+20:49:12	 From Юрий : +
+20:49:12	 From Полунов Максим : +
+20:50:56	 From OTUS Онлайн-образование : rm -f /var/lib/rpm/__db* db_verify /var/lib/rpm/Packages rpm --rebuilddb
+yum clean all
+20:52:22	 From Grigorii Solovev : опять tree?
+20:52:36	 From Grigorii Solovev : :)
+20:52:38	 From Александр Максимов : Про srpm пару слов
+20:52:45	 From Grigorii Solovev : +
+20:52:46	 From Александр Максимов : пжлст
+20:54:35	 From Александр Максимов : Может еще что-то?
+20:54:47	 From Александр Максимов : Типа флагов конфиигурации
+20:58:00	 From OTUS Онлайн-образование : patch
+21:06:27	 From OTUS Онлайн-образование : yumdownloader --source redis
+21:06:38	 From Andrey Vasiliev : +
+21:06:40	 From Alexey Zhdanovsky : +
+21:06:44	 From Ivan Kiselev : ок
+21:09:23	 From EMP : конфликты версий в зависимостях оно ж не разгребет самостоятельно?
+21:10:48	 From OTUS Онлайн-образование : rpm -ihv  redis-3.2.12-2.el7.src.rpm
+21:12:27	 From Александр Максимов : Страх… напоминает конфиг sendmail
+21:14:34	 From Александр Максимов : Это у вас там Роскомнадзор DPI включил?
+21:14:51	 From Дима Иванов : скопируйте, плз, команду
+21:15:07	 From OTUS Онлайн-образование : yum-builddep SPECS/redis.spec
+  191  rpmbuild -bb SPECS/redis.spec
+21:19:39	 From EMP : взять из сорцов свежий редис и собрать из него рпм будет не так просто
+21:20:09	 From OTUS Онлайн-образование : yumdownloader --source redis
+rpm -ihv redis-3.2.12-2.el7.src.rpm
+rpmbuild -ba rpmbuild/SPECS/redis.spec
+yum-buildep redis -y
+rpmbuild -ba rpmbuild/SPECS/redis.spec
+tree -L 3 rmpbuild/
+21:20:39	 From Alexey Zhdanovsky : +
+21:20:40	 From Andrey Vasiliev : +
+21:20:40	 From Sergey : +
+21:20:41	 From Grigorii Solovev : +
+21:20:42	 From Vasiliy Galanov : +
+21:20:43	 From Oleg : +
+21:20:44	 From AlexeyKo : +
+21:20:48	 From Юрий : +
+21:20:50	 From EMP : имею в виду сборку своего спека для чужих сорцов
+21:21:05	 From EMP : где спека изначально не было
+21:24:09	 From Alexey Zhdanovsky : +
+21:24:10	 From Полунов Максим : +
+21:24:16	 From EMP : +
+21:24:21	 From vadim.barutkin : +
+21:24:30	 From Юрий : +
+21:24:40	 From OTUS Онлайн-образование : -----
+21:24:44	 From Grigorii Solovev : -
+21:24:47	 From Полунов Максим : -
+21:24:47	 From Andrey Vasiliev : -
+21:24:47	 From AlexeyKo : -
+21:24:48	 From EMP : -
+21:24:49	 From vadim.barutkin : -
+21:24:50	 From Alexey Zhdanovsky : -
+21:24:50	 From Юрий : _
+21:24:53	 From Артур Федоров : -
+21:27:28	 From Grigorii Solovev : а-я-я-й
+21:28:13	 From Артур Федоров : А что есть gpg?
+21:28:32	 From Александр Максимов : Типа подпись
+21:28:34	 From Александр Максимов : ?
+21:29:00	 From Артур Федоров : Спасибо
+21:29:45	 From Александр Максимов : А плагин fastest mirror насколько полезен? Имхо он дольше миром ищет чем качает
+21:31:03	 From Александр Максимов : А есть специальный прокси для rpm?
+21:32:07	 From Александр Максимов : Для deb есть, чтобы сотня серверов из инета не качала один и тот же пакет
+21:32:32	 From Grigorii Solovev : это вы наверно про локальное зеркало
+21:32:57	 From Александр Максимов : да
+21:33:31	 From Александр Максимов : Про baseurl поясните
+21:33:43	 From Александр Максимов : Почти везде закоментирован
+21:34:59	 From Grigorii Solovev : netstat
+21:35:17	 From Александр Максимов : Или rpm -qf )
+21:35:57	 From Александр Максимов : Полезно
+21:36:43	 From Александр Максимов : Блин всегда в инете искал nslookup
+21:37:29	 From Александр Максимов : Да да
+21:38:04	 From OTUS Онлайн-образование : yum updateinfo list security all
+● yum updateinfo list security installed
+● yum -y update --security
+● yum update-minimal --security -y
+● yum update --cve <CVE>
+● yum updateinfo list cves
+● yum updateinfo list
+● yum info-sec
+21:39:04	 From OTUS Онлайн-образование : yum search --showduplicates <package_name>
+package-cleanup --dupes
+package-cleanup --cleandupes
+package-cleanup --problems
+21:40:39	 From OTUS Онлайн-образование : ----
+21:40:40	 From OTUS Онлайн-образование : yum repolist
+yum —disablerepo=”*” —enablerepo=”epel” install nginx
+yum —disablerepo=”*” —enablerepo=”epel” update
+21:41:46	 From OTUS Онлайн-образование : ——
+21:41:48	 From Александр Максимов : Нам задание давали
+21:42:06	 From Александр Максимов : Grub патченый поставить
+21:44:20	 From ligain : У apt тоже есть такой же функционал, как у yum?
+21:45:15	 From Александр Максимов : Очень круто
+21:45:31	 From Александр Максимов : Этого и надо
+21:46:01	 From OTUS Онлайн-образование : 218  yum history list
+  219  yum history info 7
+  220  yum history undo 7
+21:52:33	 From Александр Максимов : Что такое образ не понял
+21:52:35	 From EMP : что понимается под удаленным запуском образа?
+21:53:15	 From Александр Максимов : образ
+21:53:27	 From Sergey : это docker build machine? 
+21:53:32	 From EMP : те ручка поднятия локальных образов на удаленных тачках. не у себя локально.
+21:53:35	 From Юрий : а с сетевой адресацией как разруливается?
+21:54:03	 From EMP : ну из реджистри он же приезжает сначала
+21:54:08	 From EMP : и потом стартует
+21:55:39	 From OTUS Онлайн-образование : docker run --name nginx -v /srv/nginx/:/usr/share/nginx/html -p 80:80 -d nginx
+21:58:12	 From OTUS Онлайн-образование : https://hub.docker.com/search?q=&type=image
+21:58:22	 From EMP : есть какой-то стандартный метод узнать, где контейнер ожидает конфиги/дата файлы?
+22:00:23	 From Sergey : где находиться сам контейнер, я про путь ?
+22:01:34	 From Александр Максимов : В стандартной команде ps что видно?
+22:01:41	 From Александр Максимов : На хосте
+22:02:22	 From Александр Максимов : Ха т.е. Его прибить как процесс можно
+22:08:09	 From Александр Максимов : Echo sed )
+22:08:22	 From Артур Федоров : Наверное надо было когда запускали контейнер в параметрах что-то указывать?
+22:09:46	 From Sergey : при рестарте контейнера изменения остануться?
+22:10:50	 From Александр Максимов : Может вам fastest mirror все-таки отключить?
+22:11:42	 From Sergey : на apoche можно тоже самое сдлеть ?
+22:11:50	 From Sergey : apache
+22:13:55	 From Александр Максимов : Те там своя мини ОС таки есть?
+22:16:04	 From ligain : -
+22:16:09	 From vadim.barutkin : +
+22:16:11	 From Sergey : +
+22:16:19	 From Юрий : +
+22:16:49	 From ligain : Зачем там PATH?
+22:20:15	 From ligain : Интерпретатор питона можно собрать?
+22:21:18	 From Sergey : что в образе долдно  быть ?
+22:21:23	 From Sergey : +
+22:21:52	 From vadim.barutkin : Вот, запись бы по докеру с прошлого потока увидеть бы)
+22:22:05	 From Александр Максимов : У вас видео лекций никак скачать нельзя?
+22:22:07	 From Grigorii Solovev : В vagrant через provision?
+22:22:13	 From Артур Федоров : А как обновлять пакетики если нет сети на машинах
+22:22:30	 From Александр Максимов : Плеер на сайте не комильфо
+22:23:58	 From vadim.barutkin : Видео всегда можно как-то скачать)
