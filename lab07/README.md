@@ -1,6 +1,7 @@
 # Управление пакетами. Дистрибьюция софта.
 
-[Vagrant file](Vagrantfile)
+[Vagrantfile](Vagrantfile)
+[Dockerfile](Dockerfile)
 
 ## Полезная информация
 
