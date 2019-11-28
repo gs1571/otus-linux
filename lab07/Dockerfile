@@ -1,33 +1,14 @@
 # Set the base image to Ubuntu
-FROM ubuntu:18.04
+FROM alpine:latest
 
-# Update the repository sources list and install gnupg2
-RUN apt-get update && apt-get install -y gnupg2
+# Update the repository sources list and install python3
+#RUN apk update && apk add python3
+RUN apk add --no-cache python3
 
-# Add the package verification key
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+# install pip and install requests
+RUN easy_install-3.7 pip && pip3 install requests
 
-# Add MongoDB to the repository sources list
-RUN echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' > tee /etc/apt/sources.list.d/mongodb.list
-
-# Update the repository sources list
-RUN apt-get update
-
-# Install MongoDB package (.deb)
-RUN apt-get install -y --no-install-recommends mongodb
-
-# Cleaning
-RUN apt-get autoremove -y
-RUN apt-get clean
-
-# Create the default data directory
-RUN mkdir -p /data/db
-
-# Expose the default port
-EXPOSE 27017
-
-# Default port to execute the entrypoint (MongoDB)
-CMD ["--port 27017"]
+COPY myip.py /usr/local/bin
 
 # Set default container command
-ENTRYPOINT /usr/bin/mongodb
+ENTRYPOINT /usr/bin/python3 /usr/local/bin/myip.py

@@ -49,40 +49,61 @@ Vagrant.configure("2") do |config|
  	  box.vm.provision "shell", inline: <<-SHELL
 	        mkdir -p ~root/.ssh
           cp ~vagrant/.ssh/auth* ~root/.ssh
-          # Install required SW
+          echo "---===---"
+          echo "Install required SW"
           yum install -y redhat-lsb-core wget rpmdevtools rpm-build createrepo yum-utils gcc
-          # Download SRPM package of NGINX
+          echo "---===---"
+          echo "Download SRPM package of NGINX"
           cd /root
-          wget https://nginx.org/packages/centos/7/SRPMS/nginx-1.14.1-1.el7_4.ngx.src.rpm
-          # Install the package to home directory
+          wget -nv https://nginx.org/packages/centos/7/SRPMS/nginx-1.14.1-1.el7_4.ngx.src.rpm
+          echo "---===---"
+          echo "Install the package to home directory"
           rpm -i nginx-1.14.1-1.el7_4.ngx.src.rpm
-          # Download latest OpenSSL library source
-          wget https://www.openssl.org/source/latest.tar.gz
-          # Unarchive it
+          echo "---===---"
+          echo "Download latest OpenSSL library source"
+          wget -nv https://www.openssl.org/source/latest.tar.gz
+          echo "---===---"
+          echo "Unarchive it"
           tar -zxf latest.tar.gz
-          # Install dependency packages
+          echo "---===---"
+          echo "Install dependency packages"
           yum-builddep -y /root/rpmbuild/SPECS/nginx.spec
-          # Change SPEC file to support OpenSSL
+          echo "---===---"
+          echo "Change SPEC file to support OpenSSL"
           cp /vagrant/root/rpmbuild/SPECS/nginx.spec /root/rpmbuild/SPECS/nginx.spec
-          # Compile source and create RPM package
+          echo "---===---"
+          echo "Compile source and create RPM package"
           rpmbuild --quiet -bb /root/rpmbuild/SPECS/nginx.spec
-          # Intsall the RPM package
+          echo "---===---"
+          echo "Install the RPM package"
           yum localinstall -y /root/rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm
+          echo "---===---"
+          echo "Run NGINX"
           systemctl start nginx
-          # Create directory for repository
-          mkdir /usr/share/nginx/html/repo
-          # Copy the RPM package to the directory
-          cp /root/rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm  /usr/share/nginx/html/repo/
-          # Download some package to the directory
-          wget http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm -O /usr/share/nginx/html/repo/percona-release-0.1-6.noarch.rpm
-          # Create repository
+          echo "---===---"
+          echo "Status NGINX"
+          systemctl status nginx
+          echo "---===---"
+          echo "Create directory for repository"
+          mkdir -v /usr/share/nginx/html/repo
+          echo "---===---"
+          echo "Copy the RPM package to the directory"
+          cp -v /root/rpmbuild/RPMS/x86_64/nginx-1.14.1-1.el7_4.ngx.x86_64.rpm  /usr/share/nginx/html/repo/
+          echo "---===---"
+          echo "Download some package to the directory"
+          wget -nv http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm -O /usr/share/nginx/html/repo/percona-release-0.1-6.noarch.rpm
+          echo "---===---"
+          echo "Create repository"
           createrepo /usr/share/nginx/html/repo/
-          # Change configuration of NXHINX to support autoindex
-          cp /vagrant/etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+          echo "---===---"
+          echo "Change configuration of NXHINX to support autoindex"
+          cp -v /vagrant/etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
           nginx -s reload
-          # Add new repository to YUM
-          cp /vagrant/etc/yum.repos.d/otus.repo /etc/yum.repos.d/otus.repo
-          # Install some package form the new repository
+          echo "---===---"
+          echo "Add new repository to YUM"
+          cp -v /vagrant/etc/yum.repos.d/otus.repo /etc/yum.repos.d/otus.repo
+          echo "---===---"
+          echo "Install some package form the new repository"
           yum install percona-release -y
 
   	  SHELL
