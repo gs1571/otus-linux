@@ -37,6 +37,12 @@
     - [Working with Source RPMs](https://blog.packagecloud.io/eng/2015/04/20/working-with-source-rpms/)
     - [How to setup private Docker registry](https://blog.sleeplessbeastie.eu/2018/04/16/how-to-setup-private-docker-registry/)
     - [rpm-software-management/mock](https://github.com/rpm-software-management/mock/wiki)
+* [Управление процессами](lab08/README.md)
+    - [Youtube: Exploring Linux /proc filesystem and System Calls Hacking Session with Tanel Poder](https://www.youtube.com/watch?v=2Txu6umbsKE)
+    - [Updating ulimit on a running Linux process](https://gchp.ie/updating-ulimit-on-running-linux-process/)
+    - [Attach to your Docker containers with ease using nsenter (Example)](https://coderwall.com/p/xwbraq/attach-to-your-docker-containers-with-ease-using-nsenter)
+    - [Часть 1. Основы работы с сигналами](https://www.ibm.com/developerworks/ru/library/l-signals_1/index.html)
+    - [proc(5): process info pseudo-file system - Linux man page](https://linux.die.net/man/5/proc)
 
 # Инструкции
 
