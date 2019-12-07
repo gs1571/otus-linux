@@ -37,13 +37,20 @@
     - [Working with Source RPMs](https://blog.packagecloud.io/eng/2015/04/20/working-with-source-rpms/)
     - [How to setup private Docker registry](https://blog.sleeplessbeastie.eu/2018/04/16/how-to-setup-private-docker-registry/)
     - [rpm-software-management/mock](https://github.com/rpm-software-management/mock/wiki)
-* [Управление процессами](lab08/README.md)
+* [Lab08: Управление процессами](lab08/README.md)
     - [Youtube: Exploring Linux /proc filesystem and System Calls Hacking Session with Tanel Poder](https://www.youtube.com/watch?v=2Txu6umbsKE)
     - [Updating ulimit on a running Linux process](https://gchp.ie/updating-ulimit-on-running-linux-process/)
     - [Attach to your Docker containers with ease using nsenter (Example)](https://coderwall.com/p/xwbraq/attach-to-your-docker-containers-with-ease-using-nsenter)
     - [Часть 1. Основы работы с сигналами](https://www.ibm.com/developerworks/ru/library/l-signals_1/index.html)
     - [proc(5): process info pseudo-file system - Linux man page](https://linux.die.net/man/5/proc)
-* [Docker](lab09/README.md)
+* [Lab09: Docker](lab09/README.md)
+* [Lab10: Автоматизация администрирования. Ansible.](lab10/README.md)
+    - [User Guide — Ansible Documentation](https://docs.ansible.com/ansible/latest/user_guide/index.html)
+    - [Ansible для сетевых инженеров · GitBook](https://www.gitbook.com/book/natenka/ansible-dlya-setevih-inzhenerov)
+    - [Ansible - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible)
+    - [Welcome to Jinja2 — Jinja2 Documentation (2.10)](http://jinja.pocoo.org/docs/2.10/)
+    - [Динамическое инвентори в Ansible – Nikolay Antsiferov – Medium](https://medium.com/@Nklya/%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%B8%D0%BD%D0%B2%D0%B5%D0%BD%D1%82%D0%BE%D1%80%D0%B8-%D0%B2-ansible-9ee880d540d6)
+    - [Molecule — тестируем роли Ansible](https://habr.com/ru/post/437216/)
 
 # Инструкции
 

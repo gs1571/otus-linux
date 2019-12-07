@@ -1,0 +1,182 @@
+19:56:07	 From Igor Sablin : Приветствую!
+19:56:24	 From Igor Sablin : Почти закончил домашку :)
+19:56:33	 From Igor Sablin : А на работе сейчас сплошной ансибл :)
+19:56:42	 From Igor Sablin : Ага, в ЛК его уже видно.
+19:58:02	 From Igor Sablin : Тут на лекциях отдыхаешь душой. Слушаешь как должно быть :)
+19:58:14	 From Артур Федоров : Всем привет, товарищи
+19:58:22	 From Александр Гаврик : Привет всем :)
+19:58:30	 From Юрий : добрый вечер
+19:58:32	 From mora : у меня такая ) 
+19:59:07	 From Юрий : -
+19:59:07	 From Артур Федоров : я надеюсь что вы познакомите)
+19:59:09	 From Grigorii Solovev : + Сетевая автоматизация
+19:59:13	 From Dmitriy Pnev : -
+19:59:31	 From Grigorii Solovev : ну так себе
+19:59:32	 From Александр Гаврик : Меня вот познакомили год назад и всё... никуда без него теперь :)
+19:59:38	 From Grigorii Solovev : juniper хорошо дружит
+20:01:09	 From Grigorii Solovev : +
+20:01:10	 From Артур Федоров : все ок
+20:01:11	 From Александр Максимов : +
+20:01:13	 From Alexey Zhdanovsky : +
+20:06:00	 From Артур Федоров : А позже расскажите подробнее про самодокументирование?
+20:08:39	 From Igor Sablin : Глюкало страшное (AWX)
+20:09:22	 From Артур Федоров : У нас девопсики используют, вроде норм.
+20:17:20	 From ligain : Когда уже Vagrant на yaml переведут? Нет уже сил смотреть на руби код.
+20:20:08	 From Александр Максимов : тераформ это что?
+20:20:38	 From Igor Sablin : Можно
+20:20:57	 From Артур Федоров : Маленькое это сколько?
+20:21:36	 From Артур Федоров : Ничего себе у вас маленькое количество)
+20:22:25	 From mora : хах я около 100 уже задумывался о том что долго.... а тут 250.... 
+20:27:01	 From Артур Федоров : я читал, что вообще некоторые советают в venv пихать 
+20:28:33	 From mora : не дублировать 
+20:28:36	 From Артур Федоров : что-то из урологии
+20:28:44	 From Grigorii Solovev : воспроизводимость
+20:28:45	 From ligain : сохранение состояния
+20:32:34	 From Grigorii Solovev : +
+20:32:41	 From Артур Федоров : +
+20:32:51	 From mora : вы показали модули как искать, ну нашел я че с ним делать) 
+20:38:24	 From ligain : Есть ли в ansible cli комманда для создания нового проекта?
+20:38:42	 From ligain : +
+20:39:07	 From Grigorii Solovev : +
+20:39:08	 From Alexey Zhdanovsky : +
+20:39:13	 From Igor Sablin : Вот про ansible-config не слышал :)
+20:39:58	 From ligain : А как ansible работает с centos/8 там же нет питона по умолчанию?
+20:44:16	 From Grigorii Solovev : через cli наверно
+20:44:45	 From Александр Максимов : ну и в дебиане судо нет по дефолту, ансиблу оно надо
+20:45:06	 From OTUS Онлайн-образование : [diff]
+always = True
+context = 3
+20:45:40	 From Igor Sablin : - name: Bootstrap a host without python2 installed
+  raw: dnf install -y python2 python2-dnf libselinux-python
+20:46:03	 From Igor Sablin : Это куда угодно где нет питона
+20:46:04	 From Артур Федоров : что есть raw
+20:46:27	 From Александр Максимов : а ему до сих пор питон 2 нужен?
+20:46:39	 From Grigorii Solovev : С НГ python2 деприкетед, сколько уже можно :)
+20:49:44	 From mora : ansible_ssh_port постоянно указываю... 
+20:56:44	 From mora : вот и ответ на вопрос про модули) спасибо 
+21:00:20	 From Александр Гаврик : Можно к проксу :)
+21:00:27	 From Артур Федоров : создавать машины ансиблом?оО
+21:00:42	 From Igor Sablin : Можно - я на проксмоксе как раз создаю.
+21:00:43	 From Александр Гаврик : Да, модуль команды по API посылает
+21:02:22	 From Александр Максимов : будет всегда обновляться при запуске
+21:05:15	 From mora : -s 
+21:07:17	 From Александр Максимов : +
+21:07:19	 From Alexey Zhdanovsky : +
+21:07:19	 From vadim.barutkin : +
+21:07:21	 From Grigorii Solovev : +
+21:07:22	 From ligain : +
+21:07:34	 From Артур Федоров : + 
+я пока ни черта не понял, что делали вообще, но верю в вас, что я пойму
+21:08:02	 From Артур Федоров : Да я понимаю
+21:08:14	 From vadim.barutkin : +
+21:09:34	 From ligain : холодно потому что живешь на Урале
+21:14:43	 From vadim.barutkin : не видно
+21:14:50	 From Дима Иванов : не видно плейбука
+21:14:56	 From Максим Юрчак : В каком?
+21:14:58	 From Александр Гаврик :  у меня у одного демо экрана не идёт?
+21:15:00	 From Grigorii Solovev : кажется пауза
+21:15:01	 From Александр Максимов : пинг!!
+21:15:15	 From Дима Иванов : +
+21:15:15	 From Grigorii Solovev : +
+21:15:16	 From Alexey Zhdanovsky : +
+21:15:17	 From Александр Гаврик : +
+21:15:20	 From Максим Юрчак : +
+21:15:20	 From vadim.barutkin : +
+21:16:44	 From Артур Федоров : лучше в редакторе смотреть такие штуки
+21:16:45	 From Grigorii Solovev : шрифт неудачный
+21:17:03	 From Артур Федоров : а там непонятные где отсутпы)
+21:17:15	 From Grigorii Solovev : copy-paste из презы?
+21:18:03	 From Дима Иванов : А вот про Амазон было интересно. Что ансибл использовал, для того, чтобы создать инстанс? Какая то ссылка на API должна быть?
+21:19:38	 From Александр Максимов : ансибл же умеет в шифрование
+21:25:48	 From Александр Максимов : +
+21:25:48	 From vadim.barutkin : +
+21:25:49	 From Grigorii Solovev : +
+21:25:49	 From Alexey Zhdanovsky : +
+21:25:51	 From Dmitriy Pnev : +
+21:25:54	 From Полунов Максим : +
+21:26:01	 From mora : корень инклуда папка конфига? 
+21:34:21	 From mora : я не очень понял как указать конфиг с переменными плейбуку
+21:39:46	 From mora : да, спасибо 
+21:39:59	 From Александр Максимов : тэги для чего еще?
+21:44:01	 From OTUS Онлайн-образование : https://jinja.palletsprojects.com/en/2.10.x/
+21:44:21	 From OTUS Онлайн-образование : https://jinja.palletsprojects.com/en/2.10.x/templates/
+21:47:54	 From OTUS Онлайн-образование : {% for host in groups['consul_servers'] %}
+  host: {{ hostvars[host]['ansible_host'] }}:8500
+{% endfor %}
+21:57:03	 From Grigorii Solovev : +
+21:57:08	 From ligain : вообще ничего не понятно
+21:57:13	 From Дима Иванов : в целом понятно, но надо практику потом делать
+21:58:32	 From ligain : Госпади! циклы в yaml
+21:58:47	 From Артур Федоров : yaml девелопер же
+22:09:06	 From Артур Федоров : может ну его
+22:09:18	 From Александр Гаврик : ansible-vault encrypt_string 'Test123!' --name 'ansible_password'
+22:10:09	 From Александр Гаврик : )
+22:11:25	 From ligain : Эти шифрованные комманты можно коммитить?
+22:17:46	 From Grigorii Solovev : +/-
+22:17:46	 From mora : + 
+22:17:51	 From Александр Максимов : +-
+22:18:48	 From Александр Гаврик : meta - там ещё лицензия, создатели, комментарии и прочая метаинфа
+22:19:09	 From Артур Федоров : а handlers
+22:19:38	 From Grigorii Solovev : Покажите как провижинить vagrant ансиблом
+22:20:00	 From Артур Федоров : желательно что-то из жизни
+22:20:10	 From Артур Федоров : а не сферического коня
+22:20:11	 From Артур Федоров : спасибо
+22:20:21	 From Igor Sablin : Спойлер :)
+22:20:27	 From Артур Федоров : дз видимо
+22:20:28	 From Igor Sablin : Дз :)
+22:20:39	 From Александр Гаврик : у меня под рукой есть роль кластера DRBD c FreeIPA
+22:24:57	 From Александр Гаврик : ansible_ssh_private_key_file ?
+22:24:59	 From mora : ansible_ssh_host
+22:27:25	 From Александр Максимов : у вас так написано
+22:27:56	 From Полунов Максим : может ansible_port ?
+22:27:57	 From Александр Гаврик : эм... ini формат не подскажу
+22:28:35	 From Igor Sablin : Проще провиженом отправлять :)
+22:28:49	 From Александр Максимов : может defaults заменить?
+22:33:10	 From Александр Гаврик : yes/no в доке по модулю предлагается
+22:34:37	 From Александр Гаврик : epel: epel-release
+22:39:13	 From Alexey Zhdanovsky : +
+22:39:14	 From ligain : +
+22:39:15	 From Полунов Максим : +
+22:39:19	 From Ivan Kiselev : +
+22:39:26	 From Артур Федоров : на дз посмотрим)
+22:39:33	 From Александр Гаврик : у vagrant при автопровижене из него самого имя играет роль
+22:39:41	 From Александр Максимов : имхо отсюда надо было начинать лекцию
+22:40:02	 From Артур Федоров : а да, вагрантом как в итоге провижинеть через ансибл?)
+22:40:12	 From Александр Гаврик : ща выдам)
+22:40:18	 From Артур Федоров : Спасибо!
+22:40:57	 From Александр Гаврик : config.vm.provision "ansible" do |ansible|    ansible.compatibility_mode = "2.0"    ansible.playbook = "ansible_repo/startall.yml"    ansible.verbose = "true"    #ansible.become = "true"  end
+22:41:37	 From Александр Гаврик : вот так сначала shell потои ansible
+22:41:38	 From Александр Гаврик :   config.vm.provision "shell", run: "always", inline: <<-SHELL    mkdir -p ~root/.ssh    cp ~vagrant/.ssh/auth* ~root/.ssh    #cat /vagrant/id_rsa.pub | awk '{print $1,$2}' >> /root/.ssh/authorized_keys  SHELL  config.vm.provision "ansible" do |ansible|    ansible.compatibility_mode = "2.0"    ansible.playbook = "ansible_repo/startall.yml"    ansible.verbose = "true"    #ansible.become = "true"  end
+22:42:01	 From Александр Гаврик : для примера привел
+22:49:35	 From Александр Гаврик : selinux off
+22:49:46	 From mora : ww-data не root 
+22:49:49	 From Полунов Максим : права 750 были?
+22:50:47	 From Grigorii Solovev : -x
+22:51:18	 From mora : nginx обычно работает от www-data он не может прочесть этот файл чтобы отдать 
+22:51:26	 From Полунов Максим : потому что 0 для everyone ?
+22:54:13	 From Igor Sablin : И линтер на них ругается
+22:55:46	 From Grigorii Solovev : +
+22:55:46	 From vadim.barutkin : +
+22:55:47	 From Alexey Zhdanovsky : +
+22:55:49	 From Юрий : +
+22:55:52	 From Igor Sablin : И молекулу заодно сделать :) Там есть приколы :)
+22:56:21	 From Igor Sablin : + Goss еще
+22:56:24	 From Александр Гаврик : надо молекулу докачать)
+22:56:30	 From Igor Sablin : Именно :)
+22:56:39	 From Александр Гаврик : я про себя
+22:58:49	 From Grigorii Solovev : no such file
+23:00:46	 From vadim.barutkin : команда .
+23:03:28	 From Igor Sablin : В кфг мы указали где роли искать?
+23:04:10	 From Igor Sablin : Он пишет где ищет - там точно есть что нам надо?
+23:04:57	 From Igor Sablin : Он не там ищет
+23:05:11	 From mora : the role nginx was not found? 
+23:05:13	 From Igor Sablin : Он идет roles в каталоге playbooks
+23:06:29	 From Grigorii Solovev : Супер! Спасибо!
+23:06:31	 From vadim.barutkin : +
+23:06:32	 From Alexey Zhdanovsky : +
+23:06:32	 From Полунов Максим : +
+23:06:37	 From Дима Иванов : +
+23:07:10	 From Максим Юрчак : Спасибо, есть занятие на выходные. Будем изучать.
+23:07:22	 From Igor Sablin : Спасибо!
+23:07:23	 From Alexey Zhdanovsky : спасибо
+23:07:24	 From Дима Иванов : спасибо!
