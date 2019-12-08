@@ -2,8 +2,8 @@
 
 ## Домашнее задание
 
+При провижининге вирутальной машины запускается ansible playbook:
 [Vagrantfile](ansible/Vagrantfile)
-При провижининге вирутальной машины запускается ansible playbook
 
 Проверка:
 ```
