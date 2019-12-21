@@ -51,6 +51,10 @@
     - [Welcome to Jinja2 — Jinja2 Documentation (2.10)](http://jinja.pocoo.org/docs/2.10/)
     - [Динамическое инвентори в Ansible – Nikolay Antsiferov – Medium](https://medium.com/@Nklya/%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%B8%D0%BD%D0%B2%D0%B5%D0%BD%D1%82%D0%BE%D1%80%D0%B8-%D0%B2-ansible-9ee880d540d6)
     - [Molecule — тестируем роли Ansible](https://habr.com/ru/post/437216/)
+* [Lab11: Механизмы изоляции и аккаунтинга Linux (namespaces и cgroups)](lab11/README.md)
+* [Lab12: Мониторинг производительности](lab12/README.md)
+* [Lab13: Мониторинг и алертинг](lab12/README.md)
+
 
 # Инструкции
 

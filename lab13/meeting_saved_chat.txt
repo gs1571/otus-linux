@@ -1,0 +1,137 @@
+19:57:36	 From Grigorii Solovev : Добрый вечер
+19:57:37	 From Ivan Kiselev : Добрый вечер!
+19:57:37	 From Alexey Zhdanovsky : добрый вечер
+19:57:40	 From AlexeyKo : добрый
+19:57:40	 From ligain : Вечер  добрый
+19:57:57	 From ligain : возможно
+20:00:41	 From Ivan Kiselev : обычно больше )
+20:00:55	 From ligain : чат будет на видео?
+20:01:08	 From AlexeyKo : нет
+20:01:09	 From Ivan Kiselev : нет
+20:01:10	 From ligain : -
+20:01:15	 From Alexey Zhdanovsky : нет
+20:03:03	 From vadim.barutkin : +
+20:03:03	 From Ivan Kiselev : +
+20:03:06	 From Alexey Zhdanovsky : +
+20:03:09	 From ligain : +
+20:03:54	 From vadim.barutkin : 5
+20:03:56	 From AlexeyKo : 5
+20:03:56	 From Grigorii Solovev : 5
+20:03:57	 From ligain : 5
+20:03:57	 From Полунов Максим : 5
+20:03:58	 From Alexey Zhdanovsky : 5
+20:04:00	 From Ivan Kiselev : 5
+20:04:57	 From mora : +
+20:05:00	 From Grigorii Solovev : -
+20:05:01	 From Полунов Максим : +
+20:05:14	 From Oleg : Zabbix
+20:05:22	 From Grigorii Solovev : CheckMK
+20:05:27	 From Полунов Максим : Zabbix, thedude микротика
+20:05:33	 From mora : нагиос тыкал, но в основной заббикс конечно 
+20:06:04	 From Grigorii Solovev : CheckMK - обертка над nagios, коммерческая
+20:06:25	 From Полунов Максим : для мониторинга именно микротиков, на микротике rb1100 стоит
+20:06:39	 From Полунов Максим : да да
+20:06:40	 From mora : он в провах нужен, в провайдере заббикс бесполезен в большинстве случаев 
+20:07:09	 From Grigorii Solovev : в провайдерах mikrotik не нужен :)
+20:07:29	 From mora : нет, динамические карты) 
+20:10:12	 From Grigorii Solovev : -
+20:10:16	 From Полунов Максим : -
+20:11:20	 From Grigorii Solovev : snmp?
+20:13:13	 From vadim.barutkin : +
+20:13:13	 From Grigorii Solovev : +
+20:13:14	 From AlexeyKo : +
+20:13:14	 From Alexey Zhdanovsky : +
+20:13:17	 From Ivan Kiselev : +
+20:15:36	 From mora : LLD спасает) 
+20:21:11	 From Alexey Zhdanovsky : -
+20:21:21	 From Grigorii Solovev : -
+20:21:33	 From vadim.barutkin : -
+20:21:35	 From Grigorii Solovev : -
+20:21:41	 From ligain : -
+20:25:02	 From Grigorii Solovev : -
+20:25:07	 From vadim.barutkin : -
+20:28:14	 From Grigorii Solovev : -
+20:28:15	 From Alexey Zhdanovsky : -
+20:28:16	 From vadim.barutkin : -
+20:28:20	 From Oleg : -
+20:29:34	 From Grigorii Solovev : не знаем :)
+20:34:02	 From vadim.barutkin : -
+20:34:03	 From Alexey Zhdanovsky : -
+20:36:09	 From vadim.barutkin : -
+20:36:10	 From Grigorii Solovev : -
+20:36:13	 From Oleg : -
+20:38:02	 From Alexey Zhdanovsky : +
+20:38:02	 From vadim.barutkin : +
+20:38:03	 From Grigorii Solovev : ok
+20:38:07	 From ligain : +
+20:39:29	 From Alexey Zhdanovsky : пока нет
+20:39:32	 From Grigorii Solovev : +
+20:40:10	 From Grigorii Solovev : -
+20:40:13	 From Alexey Zhdanovsky : -
+20:40:57	 From Grigorii Solovev : в чем особенность timeseries bd?
+20:41:05	 From Grigorii Solovev : *db
+20:42:41	 From vadim.barutkin : filebeat+elasticsearch+kibana vs zabbix ?
+20:44:23	 From mora : +
+20:49:26	 From mora : +
+20:49:26	 From vadim.barutkin : -
+20:49:30	 From Alexey Zhdanovsky : -
+20:49:48	 From VIKTOR : а через iLO?
+20:53:11	 From Grigorii Solovev : Active это типа как телеметрия?
+20:53:17	 From mora : на обьектах локально чтобы 20-30 машин опрашивать поближе
+20:54:56	 From mora : something wrong)
+20:57:40	 From mora : телега и смс 
+20:57:44	 From VIKTOR : в почту
+20:57:45	 From Oleg :  Telegram
+20:57:48	 From Hanafeev_Rustam :  у нас в почту
+20:57:50	 From Полунов Максим : в телеграм бот
+20:57:55	 From mora : нет бордер куплен
+20:58:01	 From VIKTOR : А как в телеграмм? Научите
+20:58:37	 From mora : сервера в германии) 
+20:58:51	 From Полунов Максим : сервер в хецнере
+20:58:51	 From Oleg : прокся в Литве
+20:58:55	 From Hanafeev_Rustam : +
+21:02:34	 From mora : +
+21:02:54	 From Hanafeev_Rustam : -
+21:02:54	 From Grigorii Solovev : -
+21:02:54	 From vadim.barutkin : +
+21:02:56	 From Oleg : -
+21:02:59	 From VIKTOR : нг на носу
+21:03:24	 From Дима Иванов : через vrops например
+21:04:20	 From mora : proxmox дебиан, туда просто агент линуксовый пихается
+21:07:41	 From Полунов Максим : 5
+21:07:41	 From Alexey Zhdanovsky : 5
+21:07:42	 From vadim.barutkin : 5
+21:07:42	 From Hanafeev_Rustam : 5
+21:07:43	 From VIKTOR : +
+21:07:46	 From Grigorii Solovev : 6
+21:07:48	 From ligain : 5
+21:07:48	 From AlexeyKo : 5
+21:13:19	 From Alexey Zhdanovsky : +
+21:13:20	 From mora : хотелось бы разобрать правила хорошего тона, куда складывать кастомные скрипты в каких случаях и когда они вообще нужны
+21:13:25	 From Полунов Максим : +
+21:13:28	 From Grigorii Solovev : +
+21:13:33	 From vadim.barutkin : +
+21:15:33	 From VIKTOR : задеплоим инстанс....
+21:21:05	 From Ivan Kiselev : домашка будет по этой теме?
+21:21:53	 From Grigorii Solovev : prometheus + grafana?
+21:25:22	 From Otus Онлайн : http://104.196.98.14:19999
+21:25:51	 From Alexey Zhdanovsky : +
+21:25:52	 From vadim.barutkin : +
+21:25:59	 From Oleg : круто
+21:26:00	 From ligain : пошли линку тестить
+21:28:05	 From Otus Онлайн : https://otus.ru/polls/5857/
+21:28:28	 From Hanafeev_Rustam : есть организационный
+21:28:46	 From Grigorii Solovev : первая лекция уложившаяся в 1 час 30 минут :)
+21:28:52	 From VIKTOR : Кто из мск? Надо хоть раз за курс в баре собраться)
+21:29:04	 From Hanafeev_Rustam : в кабинете 11 и 12 дз не отображается
+21:29:18	 From Grigorii Solovev : там не было ДЗ
+21:29:22	 From Полунов Максим : там просто нет дз
+21:29:22	 From Grigorii Solovev : и не будет
+21:29:25	 From Hanafeev_Rustam : о как?
+21:29:29	 From Grigorii Solovev : Читаем Slack
+21:29:46	 From Grigorii Solovev : +1 за бар, но после НГ
+21:30:00	 From VIKTOR : good point
+21:30:00	 From Ivan Kiselev : а что за объявление обещали в конце лекции?
+21:30:07	 From vadim.barutkin : +1
+21:30:48	 From Otus Онлайн : https://otus.ru/polls/5857/
+21:30:52	 From VIKTOR : Нас Алексей приучил уже к 3,5 часам по пятницам
