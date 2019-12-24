@@ -1,0 +1,22 @@
+---
+- name: Configure grafana
+  hosts: servers
+  become: yes
+
+  tasks: 
+    - name: Configure datastore
+      grafana_datasource:
+        ds_type: prometheus
+        is_default: yes
+        name: prometheus
+        state: present
+        url: "http://192.168.11.150:9090"
+        grafana_url: "http://192.168.11.150:3000"
+
+    - name: Configure dashboard
+      grafana_dashboard:
+        state: present
+        grafana_url: "http://192.168.11.150:3000"
+        path: "/Users/gsol/dev/otus/otus-linux/lab13/templates/template.json"
+
+

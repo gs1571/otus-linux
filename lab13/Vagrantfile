@@ -2,7 +2,7 @@
 # vim: set ft=ruby :
 
 MACHINES = {
-  :nginx => {
+  :monitoring => {
         :box_name => "centos/7",
         :ip_addr => '192.168.11.150'
   }
@@ -20,22 +20,57 @@ Vagrant.configure("2") do |config|
           box.vm.network "private_network", ip: boxconfig[:ip_addr]
 
           box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "200"]
+            vb.customize ["modifyvm", :id, "--memory", "1000"]
           end
           
           box.vm.provision "shell", inline: <<-SHELL
             mkdir -p ~root/.ssh; cp ~vagrant/.ssh/auth* ~root/.ssh
             sed -i '65s/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
             systemctl restart sshd
+            # enable EPEL
+            yum install epel-release -y
+            # install basic packages
+            yum install -y bash-completion bash-completion-extras vim-enhanced
+            # install specific packages
+            yum install -y wget initscripts urw-fonts fontconfig freetype*
+            # install node exporter
+            useradd --no-create-home --shell /bin/false node_exporter
+            wget -qc https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
+            tar -xzf node_exporter-0.18.1.linux-amd64.tar.gz
+            cp node_exporter-0.18.1.linux-amd64/node_exporter /usr/local/bin/
+            cp /vagrant/etc/systemd/system/node_exporter.service /etc/systemd/system/
+            systemctl daemon-reload
+            systemctl enable --now node_exporter
+            # install prometheus
+            useradd --no-create-home --shell /bin/false prometheus
+            wget -qc https://github.com/prometheus/prometheus/releases/download/v2.14.0/prometheus-2.14.0.linux-amd64.tar.gz
+            tar -xzf prometheus-2.14.0.linux-amd64.tar.gz
+            cp prometheus-2.14.0.linux-amd64/prometheus /usr/local/bin/
+            cp prometheus-2.14.0.linux-amd64/promtool /usr/local/bin/
+            mkdir /etc/prometheus
+            cp -r prometheus-2.14.0.linux-amd64/consoles/ /etc/prometheus/consoles
+            cp -r prometheus-2.14.0.linux-amd64/console_libraries/ /etc/prometheus/console_libraries
+            cp /vagrant/etc/prometheus/prometheus.yml /etc/prometheus/
+            chown -R prometheus:prometheus /etc/prometheus
+            mkdir /var/lib/prometheus
+            chown prometheus:prometheus /var/lib/prometheus
+            cp /vagrant/etc/systemd/system/prometheus.service /etc/systemd/system/
+            systemctl daemon-reload
+            systemctl enable --now prometheus
+            # install grafana
+            cp /vagrant/etc/yum.repos.d/grafana.repo /etc/yum.repos.d/
+            yum install grafana -y 
+            systemctl daemon-reload
+            systemctl enable --now grafana-server
+
           SHELL
 
           config.vm.provision "ansible" do |ansible|
             ansible.compatibility_mode = "2.0"
-            ansible.playbook = "playbooks/nginx.yml"
+            ansible.playbook = "playbooks/grafana.yml"
             ansible.verbose = "true"
             ansible.become = "true"
           end
-
       end
   end
 end
