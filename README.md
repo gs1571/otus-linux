@@ -53,7 +53,7 @@
     - [Molecule — тестируем роли Ansible](https://habr.com/ru/post/437216/)
 * [Lab11: Механизмы изоляции и аккаунтинга Linux (namespaces и cgroups)](lab11/README.md)
 * [Lab12: Мониторинг производительности](lab12/README.md)
-* [Lab13: Мониторинг и алертинг](lab12/README.md)
+* [Lab13: Мониторинг и алертинг](lab13/README.md)
     - [Zabbix: мониторинг дисковых хранилищ DELL MD36XX](https://otus.ru/nest/post/13/)
     - [This is a role for installing and maintaining the zabbix-server](https://github.com/dj-wasabi/ansible-zabbix-server)
     - [Getting started | Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)
