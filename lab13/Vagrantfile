@@ -63,6 +63,40 @@ Vagrant.configure("2") do |config|
             systemctl daemon-reload
             systemctl enable --now grafana-server
 
+            # install LAMP + Zabbix
+            # yum install httpd -y
+            # systemctl enable --now httpd
+            # sudo yum install mariadb-server mariadb
+            # systemctl enable --now mariadb
+            # mysql_secure_installation
+            # yum install php php-mysql -y
+            # systemctl restart httpd
+            # vi /var/www/html/info.php
+            # sudo rm /var/www/html/info.php
+            # rpm -Uvh https://repo.zabbix.com/zabbix/4.4/rhel/7/x86_64/zabbix-release-4.4-1.el7.noarch.rpm
+            # yum clean all
+            # yum repolist
+            # yum install zabbix-server-mysql zabbix-web-mysql -y
+            # yum install zabbix-agent
+            # mysql -uroot -p
+            # MariaDB [(none)]> create database zabbix character set utf8 collate utf8_bin;
+            # MariaDB [(none)]> grant all privileges on zabbix.* to zabbix@localhost identified by '1qaz@WSX';
+            # MariaDB [(none)]> flush privileges;
+            # MariaDB [(none)]> quit;
+            # zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+            # vi /etc/zabbix/zabbix_server.conf
+            # sudo vi /etc/httpd/conf.d/zabbix.conf
+            # systemctl restart httpd
+            # getenforce
+            # setenforce 0
+            # getenforce
+            # systemctl enable --now zabbix-server.service
+            # systemctl enable --now zabbix-agent.service
+            # systemctl status zabbix-agent.service
+            # systemctl status zabbix-server.service
+            # vi /etc/zabbix/zabbix_agentd.conf
+            # ll /etc/zabbix/zabbix_agentd.d/userparameter_mysql.conf
+                    
           SHELL
 
           config.vm.provision "ansible" do |ansible|

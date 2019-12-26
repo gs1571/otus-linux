@@ -54,7 +54,15 @@
 * [Lab11: Механизмы изоляции и аккаунтинга Linux (namespaces и cgroups)](lab11/README.md)
 * [Lab12: Мониторинг производительности](lab12/README.md)
 * [Lab13: Мониторинг и алертинг](lab12/README.md)
-
+    - [Zabbix: мониторинг дисковых хранилищ DELL MD36XX](https://otus.ru/nest/post/13/)
+    - [This is a role for installing and maintaining the zabbix-server](https://github.com/dj-wasabi/ansible-zabbix-server)
+    - [Getting started | Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)
+    - [Prometheus](https://habr.com/ru/company/otus/blog/341862/)
+    - [Zabbix documentation in Russian [Zabbix Documentation 3.4]](https://www.zabbix.com/documentation/3.4/ru/start)
+    - [erlong15/zabbix-ansible](https://github.com/erlong15/zabbix-ansible)
+    - [vagrant-prometheus-grafana](https://github.com/viveksatasiya/vagrant-prometheus-grafana)
+    - [«Флант» и Okmeter: симбиоз на благо мониторинга](https://habr.com/en/company/flant/blog/354974/)
+    - [SNMP: протокол управления сетью](http://www.laes.ru/list/pve/SNMP/tcp25.html)
 
 # Инструкции
 
