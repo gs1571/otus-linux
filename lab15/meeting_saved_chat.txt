@@ -1,0 +1,119 @@
+19:58:02	 From Александр Максимов : +
+19:58:08	 From Alexey Zhdanovsky : Добрый вечер!
+19:58:09	 From Артур Федоров : Видно и слышно, а вы кто?)
+19:59:46	 From Отус Онлайн-образование  : +
+19:59:49	 From Александр Гаврик : +
+19:59:50	 From Ivan Kiselev : Добрый вечер
+19:59:51	 From Дмитрий Лютенко : +
+19:59:52	 From Alexey Zhdanovsky : +
+19:59:53	 From Ivan Kiselev : да
+20:10:21	 From Александр Максимов : еуые гыук создан обычно? не урезали специально права?
+20:10:27	 From Александр Максимов : test user
+20:13:16	 From Александр Максимов : а у рута теперть то работает
+20:13:18	 From Александр Максимов : ?
+20:15:53	 From Grigorii Solovev : а как pam_cap берет данные из capability.conf? Это его стандартный конфиг?
+20:16:20	 From Александр Максимов : теперь он все утилиты net_admin может выполнять. А можно было на tcpdump дать капабилити и ограничить через acl ?
+20:17:36	 From Александр Максимов : перетрутся при апдейте пакета например?
+20:19:52	 From Александр Гаврик : :P
+20:20:31	 From VIKTOR : ytn
+20:20:44	 From Александр Максимов : на il.so тоже убрать х
+20:20:48	 From Александр Максимов : надо
+20:21:19	 From Grigorii Solovev : +
+20:23:45	 From Отус Онлайн-образование : capsh --inh="cap_net_admin,cap_net_raw+ie" --user=test --keep=1 --
+20:23:52	 From Отус Онлайн-образование  : +
+20:23:53	 From Grigorii Solovev : +
+20:23:55	 From Ivan Kiselev : +
+20:24:18	 From Отус Онлайн-образование : https://github.com/ContainerSolutions/capabilities-blog.git
+20:25:33	 From Отус Онлайн-образование : 129
+20:25:40	 From Отус Онлайн-образование : gcc -lcap-ng set_ambient.c -o set_ambient
+20:30:02	 From Александр Максимов : один -
+20:31:04	 From Александр Максимов : +
+20:31:05	 From Grigorii Solovev : +
+20:31:07	 From Ivan Kiselev : +
+20:31:15	 From Отус Онлайн-образование  : +
+20:31:21	 From Александр Гаврик : getcap -r / 2>/dev/null
+20:33:21	 From Alexey Zhdanovsky : +
+20:33:22	 From Ivan Kiselev : +
+20:33:24	 From AlexeyKo : +
+20:33:25	 From Grigorii Solovev : +
+20:33:25	 From Александр Гаврик : selinux!!!111 :)
+20:33:25	 From ligain : +
+20:33:25	 From Полунов Максим : +
+20:33:27	 From Юрий : +
+20:34:32	 From Александр Максимов : вы его обычно отлючаете если чесно?
+20:35:02	 From Артур Федоров : Александр, вы к концу лекции решили сразу перепрыгнуть))
+20:39:26	 From Александр Максимов : от взлома приложения?
+20:39:36	 From Александр Максимов : повышение прав через этот приклад
+20:39:39	 From VIKTOR : Для управления политиками безопасности, ACL
+20:42:31	 From Александр Максимов : он мне даже права рута не дал менять при загрузке с параметром init=/bin/sh
+21:08:26	 From Александр Максимов : +++
+21:08:28	 From Grigorii Solovev : +
+21:08:28	 From AlexeyKo : +
+21:08:30	 From ligain : +
+21:08:31	 From Артур Федоров : +
+21:08:31	 From Nikolay Ferapontov : +
+21:08:31	 From Alexey Zhdanovsky : +
+21:08:32	 From Oleg : +
+21:08:32	 From Юрий : +
+21:08:56	 From Stan : не пользуюсь но и не возражаю))
+21:09:44	 From Александр Гаврик : есть ещё утилита sealert из пакета setroubleshoot-server … или было?
+21:15:51	 From Grigorii Solovev : +
+21:15:54	 From Alexey Zhdanovsky : +
+21:15:58	 From Юрий : +
+21:15:59	 From AlexeyKo : +
+21:15:59	 From Ivan Kiselev : +
+21:16:00	 From ligain : norm
+21:16:45	 From Александр Максимов : про /opt не знал, полезно
+21:18:39	 From Александр Максимов : страх
+21:22:58	 From Alexey Zhdanovsky : +
+21:22:59	 From Александр Максимов : +
+21:22:59	 From Grigorii Solovev : +
+21:23:00	 From Полунов Максим : +
+21:23:27	 From Александр Гаврик : ++
+21:28:30	 From AlexeyKo : +
+21:28:31	 From Ivan Kiselev : +
+21:32:16	 From Александр Максимов : перестал
+21:32:17	 From Nikolay Ferapontov : +
+21:32:22	 From VIKTOR : +
+21:32:27	 From Igor Sablin : Смысл - все равно сканер найдет :)
+21:32:50	 From Александр Максимов : поэтому и перестал, ключи рулят
+21:34:35	 From VIKTOR : дудосят наверно)
+21:36:57	 From Александр Максимов : selinux не дал
+21:37:01	 From Александр Максимов : порт сменить
+21:41:44	 From Stan : ОЧЕНЬ
+21:41:50	 From Александр Максимов : да
+21:41:55	 From Alexey Zhdanovsky : +
+21:42:43	 From Ivan Kiselev : последняя пятница в году не самая удачная )
+21:44:59	 From Александр Гаврик : Кстати, iptables может тоже работать с контекстами :)
+21:45:06	 From Grigorii Solovev : одна галочка в esxi
+21:46:58	 From Александр Максимов : можно nginx на другой порт
+21:47:04	 From Александр Максимов : тоже ругнется
+21:47:39	 From Александр Максимов : просто наступал на эти грабли
+21:49:31	 From Ivan Kiselev : +
+21:49:33	 From Grigorii Solovev : +
+21:49:47	 From Александр Максимов : будем там подглядывать
+21:52:26	 From Alexey Zhdanovsky : +
+21:52:35	 From Отус Онлайн-образование  : semanage port -a -t ssh_port_t -p tcp 5022
+21:52:41	 From Отус Онлайн-образование  : semanage port -d -t ssh_port_t -p tcp 5022
+21:52:46	 From Отус Онлайн-образование  : semanage port -l | grep ssh
+21:53:03	 From Отус Онлайн-образование  : audit2why < /var/log/audit/audit.log
+21:53:55	 From Отус Онлайн-образование  : seinfo --portcon=80
+21:55:02	 From Александр Максимов : +
+21:55:08	 From ligain : +
+21:58:55	 From Grigorii Solovev : поменяли контексты
+21:59:55	 From Александр Максимов : какой командой? пропустил
+22:00:07	 From Отус Онлайн-образование  : chcon -v -R -t samba_share_t /var/lib/mysql
+22:00:43	 From Александр Максимов : зато по самбе наверно можно было бы пошарить
+22:03:13	 From Отус Онлайн-образование  : audit2allow -M mysqld_add --debug < /var/log/audit/audit.log
+22:04:31	 From Отус Онлайн-образование  : semodule -i mysqld_add.pp
+22:04:37	 From Отус Онлайн-образование  : semodule -l | grep mysqld_add
+22:07:30	 From Отус Онлайн-образование  : semodule -r mysqld_add
+22:08:41	 From Отус Онлайн-образование  : restorecon -v -R /var/lib/mysql
+22:12:01	 From Отус Онлайн-образование  : semanage fcontext -a -t samba_share_t "/test-dir(/.*)?"
+22:14:32	 From Александр Максимов : очищать эхой лог как то жестко
+22:14:38	 From Александр Максимов : соранить бы
+22:18:42	 From Отус Онлайн-образование  : https://otus.ru/polls/5859/
+22:18:55	 From ligain : audit2why запомнилось
+22:19:10	 From Grigorii Solovev : /opt
+22:19:56	 From Александр Максимов : трогать надо
+22:19:59	 From Grigorii Solovev : Спасибо
