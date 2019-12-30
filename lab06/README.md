@@ -13,6 +13,8 @@
 Критерии оценки:
 - трапы и функции, а также sed и find +1 балл
 
+Скрипт - [httpdlog_analyzer.sh](httpdlog_analyzer.sh)
+
 ## Полезная информация
 
 ### Hot keys
