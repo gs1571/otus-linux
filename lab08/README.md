@@ -1,10 +1,16 @@
-# Управление пакетами. Дистрибьюция софта.
+# Управление процессами
 
 ## Домашнее задание
 
-
+Реализация утилиты `ps ax` путем анализа содержимого /proc средствами bash - [psax.sh](psax.sh)
 
 ## Полезная информация
+
+* http://man7.org/linux/man-pages/man1/ps.1.html
+* https://linux.die.net/man/5/proc
+* https://www.linuxjournal.com/content/bashs-built-printf-function
+* https://stackoverflow.com/questions/16726779/how-do-i-get-the-total-cpu-usage-of-an-application-from-proc-pid-stat
+* https://linuxacademy.com/blog/linux/conditions-in-bash-scripting-if-statements/
 
 ### MAX PROCESS ID
 
