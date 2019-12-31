@@ -54,9 +54,9 @@ then
     echo "-> TOP $X requested locations:" >> report.txt
     tail -n $begin_line $logFile | awk '/GET/{ locations[$7]++ } END { for (i in locations) { printf "%4d - %s\n", locations[i], i } }' | sort -rn | head -$X >> report.txt
     echo "-> Error codes:" >> report.txt
-    tail -n $begin_line $logFile | awk 'BEGIN{FS="\""}{print $3}' | awk 'BEGIN{FIELDWIDTHS="1 3"}{if ($1 < 600 && $1 > 399) print $1}' | sort -u | sort >> report.txt
+    tail -n $begin_line $logFile | awk 'BEGIN{FS="\""}{print $3}' | awk 'BEGIN{FIELDWIDTH="1 3"}{if ($1 < 600 && $1 > 399) print $1}' | sort -u | sort >> report.txt
     echo "-> All HTTP codes:" >> report.txt
-    tail -n $begin_line $logFile | awk 'BEGIN{FS="\""}{print $3}' | awk 'BEGIN{FIELDWIDTHS="1 3"}{ codes[$1]++ } END { for (i in codes) { printf "%4d - %3d\n", codes[i], i } }' | sort -rn >> report.txt
+    tail -n $begin_line $logFile | awk 'BEGIN{FS="\""}{print $3}' | awk 'BEGIN{FIELDWIDTH="1 3"}{ codes[$1]++ } END { for (i in codes) { printf "%4d - %3d\n", codes[i], i } }' | sort -rn >> report.txt
     # print footer
     echo -------------------------- >> report.txt
 
