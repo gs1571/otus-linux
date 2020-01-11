@@ -87,6 +87,14 @@
     - [SELinux/Tutorials/How does a process get into a certain context - Gentoo Wiki](https://wiki.gentoo.org/wiki/SELinux/Tutorials/How_does_a_process_get_into_a_certain_context)
     - [The_SELinux_Notebook-4th_Edition.pdf](lab15/The_SELinux_Notebook_4th_Edition.pdf)
     - [Знакомимся с SELINUX и пытаемся понять, почему Дэн Уолш плачет](https://defcon.ru/os-security/1264/)
+* [Lab16: Резервное копирование](lab16/README.md)
+    - [Linux rsync command help and examples](https://www.computerhope.com/unix/rsync.htm)
+    - [Проект OpenNet: MAN rsync (1) Команды и прикладные программы пользовательского уровня (FreeBSD и Linux)](https://www.opennet.ru/man.shtml?category=1&russian=0&topic=rsync)
+    - [Cкоростная синхронизация миллиарда файлов](https://habr.com/post/132098/)
+    - [Сравнение способов резервного копирования](https://habr.com/company/selectel/blog/226831/)
+    - [Bareos/Bacula Cheat Sheet – workaround.org](https://workaround.org/bacula-cheatsheet/)
+    - [Borg Documentation — Borg - Deduplicating Archiver 1.1.7 documentation](https://borgbackup.readthedocs.io/en/stable/)
+
 
 # Инструкции
 
