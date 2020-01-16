@@ -1,0 +1,73 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+
+MACHINES = {
+  :server => {
+        :box_name => "centos/7",
+        :ip_addr => '192.168.11.150'
+  },
+  :client => {
+        :box_name => "centos/7",
+        :ip_addr => '192.168.11.151'
+  }
+}
+
+Vagrant.configure("2") do |config|
+
+  # server VM
+  config.vm.define "server" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "lab16-server"
+    
+    box.vm.network :private_network, ip: "192.168.56.101"
+    box.vm.network :forwarded_port, guest: 22, host: 61601, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "256"]
+    end
+
+    box.vm.provision "shell", inline: <<-SHELL
+      
+      # install ssh keys
+      mkdir -p ~root/.ssh; cp ~vagrant/.ssh/auth* ~root/.ssh
+      sed -i '65s/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+      systemctl restart sshd
+      # enable EPEL
+      yum install -y epel-release
+      # install basic packages
+      yum install -y bash-completion bash-completion-extras vim-enhanced mc setools-console
+                    
+      SHELL
+  end
+
+  # client VM
+  config.vm.define "client" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "lab16-client"
+    
+    box.vm.network :private_network, ip: "192.168.56.102"
+    box.vm.network :forwarded_port, guest: 22, host: 61602, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "256"]
+    end
+
+    box.vm.provision "shell", inline: <<-SHELL
+      
+      # install ssh keys
+      mkdir -p ~root/.ssh; cp ~vagrant/.ssh/auth* ~root/.ssh
+      sed -i '65s/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+      systemctl restart sshd
+      # enable EPEL
+      yum install -y epel-release
+      # install basic packages
+      yum install -y bash-completion bash-completion-extras vim-enhanced mc setools-console
+                    
+      SHELL
+  end
+
+end

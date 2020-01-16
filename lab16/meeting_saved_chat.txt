@@ -1,0 +1,209 @@
+20:01:03	 From Дмитрий Киселёв : +
+20:01:05	 From Васильев Максим : +
+20:01:05	 From Pavel Vikiryuk : +
+20:01:05	 From Andrey Andreev : +
+20:01:06	 From Dmitiry : +
+20:01:11	 From Dymov.Roman_aka_SaTaNa : + && + || -
+20:02:46	 From Антон Марьясин : А можно скрыть слева боковую панель?
+20:03:16	 From Dymov.Roman_aka_SaTaNa : дедупликация ? 
+20:03:43	 From Васильев Максим : Поддерживаю про боковую панель
+20:04:07	 From Васильев Максим : Уберите пожалуйста боковую панель
+20:04:16	 From Антон Марьясин : спасибо
+20:04:16	 From Васильев Максим : +
+20:06:41	 From Andrey Agafonov : Доброго вечера!
+20:07:47	 From Васильев Максим : Бакула это коммерческий продукт?
+20:08:34	 From Dymov.Roman_aka_SaTaNa : к примеру
+20:09:18	 From Dymov.Roman_aka_SaTaNa : спасибо
+20:11:19	 From Pavel Shekur : Ленты быле дешевы
+20:11:21	 From Дмитрий Киселёв : +
+20:11:22	 From Dymov.Roman_aka_SaTaNa : ленты у нас исп.
+20:11:24	 From Daniil Bessonov : +
+20:11:28	 From Andrey Andreev : +
+20:11:37	 From Andrey Agafonov : -
+20:11:39	 From Pavel Shekur : потому что это очень дешего на гигабайт данных
+20:11:40	 From Pavel Shekur : +
+20:13:18	 From Dymov.Roman_aka_SaTaNa : горячая = фулл реплика ? 
+20:14:14	 From Dymov.Roman_aka_SaTaNa : ммм
+20:14:25	 From Dymov.Roman_aka_SaTaNa : да не ответили
+20:14:40	 From Dymov.Roman_aka_SaTaNa : да нет, ответили :))
+20:14:48	 From Dymov.Roman_aka_SaTaNa : казниить нельзя помиловать
+20:24:24	 From Васильев Максим : авто что?
+20:24:36	 From Andrey Agafonov : до/после
+20:27:30	 From Dymov.Roman_aka_SaTaNa : dd - dysk destroy ^-^
+20:27:36	 From Dymov.Roman_aka_SaTaNa : disk
+20:27:45	 From Pavel Shekur : самого главного инстумента не было видно) 
+20:28:09	 From Dymov.Roman_aka_SaTaNa : disk duplicate - на сколько я помню 
+20:28:13	 From Pavel Shekur : джа
+20:28:15	 From Andrey Agafonov : в первом примере # что означает?
+20:28:21	 From Andrey Agafonov : вконце строки
+20:28:53	 From Дмитрий Киселёв : это коммент, как восстанавливать, наверное
+20:31:00	 From Andrey Agafonov : По dd  сво время снятия образа - нужно полностью приостанавливть использование  устройства? или можно наживую? 
+20:31:13	 From Andrey Agafonov : как в этом случае она себя ведет если диск активно используется.
+20:31:51	 From Andrey Agafonov : спасибо.
+20:32:19	 From Dymov.Roman_aka_SaTaNa : по тару - c - create - z gzip - v -verbose -f file # x - extract 
+20:32:55	 From Dymov.Roman_aka_SaTaNa : а пол года назад я этих ключей пугался
+20:33:07	 From Otus Онлайн : Dd if=/dev/sda | ssh targethost “cat -“
+20:33:49	 From Антон Марьясин : Как/чем бэкапить корневой раздел / запущенной системы?
+20:34:12	 From Dymov.Roman_aka_SaTaNa : xfsdump |  xfsrestore - как-то пользовался для дз
+20:34:12	 From Pavel Shekur : rsync
+20:34:33	 From Pavel Shekur : если есть возможност init 1
+20:34:34	 From Otus Онлайн : rsync -aHPz —delete  /mn/www $remotehost:/backup/www
+20:34:50	 From Антон Марьясин : Если смонтировано все в / :)
+20:35:33	 From Айтуган Асфандияров : подробнее плиз, не понятно
+20:35:51	 From Otus Онлайн : Cp -arl /backup/www /backup/www.`date +%Y-%m-%s`
+20:36:29	 From Dymov.Roman_aka_SaTaNa : по рсинку - a, --archive This is equivalent to -rlptgoD... лучше ?  xD
+20:37:05	 From Dymov.Roman_aka_SaTaNa : далее вербосе и зип
+20:37:11	 From Антон Марьясин : Как rsync определяет, что файл изменен - по date modify?
+20:38:47	 From Dymov.Roman_aka_SaTaNa : -r, --recursive
+l, --links
+-p, --perms - права
+-t, --times
+-g, --group
+-o, --owner
+20:42:45	 From Антон Марьясин : Live usb/cd для восстановления рухнувшей системы?
+20:42:51	 From Дмитрий Киселёв : Cp -arl /backup/www /backup/www.`date +%Y-%m-%s`
+20:43:00	 From Дмитрий Киселёв : это cp ?
+20:43:09	 From Антон Марьясин : да
+20:43:12	 From Васильев Максим : В чем конкурентное преимущество rsync?
+20:43:51	 From Антон Марьясин : У Bakula есть свой загрузчик?
+20:43:59	 From Антон Марьясин : Bacula*
+20:46:03	 From Антон Марьясин : Bacula может на лету забэкапить ОС и гарантировать, что данный бэкап консистентен?
+20:47:08	 From Антон Марьясин : Интересен контекст как восстанавливать рухнувшие физические сервера за минимальное время
+20:47:15	 From Daniil Bessonov : У акулы веб интерфейс будет?
+20:47:21	 From Daniil Bessonov : в бесплатной версии
+20:47:31	 From Антон Марьясин : Web, db
+20:47:42	 From Dymov.Roman_aka_SaTaNa : прокся веба - 5-10 минут
+20:48:30	 From Антон Марьясин : спасибо
+20:48:37	 From Dymov.Roman_aka_SaTaNa : пора уже к елке переходить - она поддерживает отвалы нод
+20:50:02	 From Otus Онлайн : myslbinlog
+20:50:13	 From Otus Онлайн : myssqlbinlog
+20:50:30	 From Dymov.Roman_aka_SaTaNa : mysqlbinlog
+20:52:15	 From Pavel Shekur : кеды...
+20:53:23	 From Daniil Bessonov : бареос разворачивал
+20:53:33	 From Daniil Bessonov : Веб интерфейс тоже убогий
+20:53:50	 From Daniil Bessonov : Кончики немного отличаются по структуре включений
+20:53:59	 From Daniil Bessonov : конфиги;
+20:57:00	 From Andrey Agafonov : +
+20:57:00	 From Васильев Максим : +
+20:57:02	 From Айтуган Асфандияров : +
+20:57:02	 From Dmitiry : +
+20:57:03	 From Andrey Andreev : +
+20:57:04	 From Михаил : +
+21:01:01	 From Daniil Bessonov : если использовать инклуды то норм
+21:01:59	 From Daniil Bessonov : В барбосе как раз с инклудами сразу конфиги
+21:02:14	 From Daniil Bessonov : )
+21:03:06	 From Васильев Максим : Давайте 5 минутный перерывчик
+21:04:26	 From Daniil Bessonov : +
+21:04:28	 From Антон Марьясин : +
+21:04:29	 From Andrey Andreev : +
+21:04:38	 From Айтуган Асфандияров : 5
+21:42:18	 From Васильев Максим : +
+21:42:19	 From Andrey Agafonov : + и для тех кого нет сегодня с нами.
+21:42:25	 From Айтуган Асфандияров : +
+21:42:55	 From Dymov.Roman_aka_SaTaNa : я хотел рассказать про мастер ключи
+21:43:02	 From Dymov.Roman_aka_SaTaNa : и обычные ключи
+21:43:32	 From Andrey Andreev : А может вам в текстовый файл конфиг и прикрепить.
+21:43:34	 From Otus Онлайн : https://www.bacula.org/5.2.x-manuals/en/main/main/Data_Encryption.html
+21:43:45	 From Andrey Andreev : с коммментариями
+21:43:53	 From Andrey Andreev : если это кому то надо
+21:44:14	 From Dymov.Roman_aka_SaTaNa : ога..этим я и пользовался 
+21:51:49	 From Васильев Максим : Пароль прямым текстом - это ужас. Есть возможность как-то обойти этот момент?
+21:52:11	 From Айтуган Асфандияров : инклуды?
+21:53:37	 From Айтуган Асфандияров : понятно
+21:56:12	 From Otus Онлайн : Васильев Максим: шифрование коммуникаций(в небезопасной сети) и шифрование бэкапов(мне кажется что нужно всегда)
+22:01:28	 From Daniil Bessonov : Как это все запускать в пакетном режиме?
+22:01:45	 From Daniil Bessonov : Вы сейчас интерактивно
+22:01:56	 From Daniil Bessonov : а я хотел бы как backup —
+22:02:00	 From Daniil Bessonov : Bla bla
+22:02:05	 From Daniil Bessonov : да
+22:02:07	 From Дмитрий Киселёв : есть же расписание
+22:02:24	 From Daniil Bessonov : Расписание не подходит
+22:02:33	 From Daniil Bessonov : во многих кейсах
+22:03:08	 From Daniil Bessonov : Одна из причин отказа от бакулы бареоса отсутствие неинтерактивной консоли
+22:03:33	 From Daniil Bessonov : было пару кейсов
+22:03:44	 From Антон Марьясин : Даниил, в чью пользу отказались?
+22:04:05	 From Daniil Bessonov : Пока централизованных решений не использую
+22:04:20	 From Daniil Bessonov : rsync|tar и тп
+22:05:07	 From Otus Онлайн : А какой кейс был?
+22:05:32	 From Daniil Bessonov : Уже не вспомню, что то с автоматизацией по условию
+22:06:08	 From Daniil Bessonov : Те не по расписанию надо было запускать бакап или Рестор а по триггеру
+22:06:33	 From Daniil Bessonov : в девопсе бывает нужно)
+22:06:44	 From Daniil Bessonov : Ну или если я хочу протестировать бакап
+22:07:42	 From Антон Марьясин : Bacula умеет проверять свои бэкапы на разворачиваемость?
+22:07:52	 From Daniil Bessonov : нет
+22:08:02	 From Daniil Bessonov : Это не задача бакулы
+22:08:49	 From Антон Марьясин : Есть какие-то решение или только самому писать?
+22:08:58	 From Daniil Bessonov : самому
+22:09:09	 From Daniil Bessonov : Оч многозависит от продукта
+22:10:23	 From Daniil Bessonov : репозиторий Борга это каталог бокапов?
+22:13:12	 From Daniil Bessonov : У Борга есть апи сервер или что то чем можно управлять его настройками и поведением из других сервисов?
+22:13:32	 From Михаил : что-то меня выкидывает дисконнектом часто
+22:13:41	 From Михаил : да
+22:13:46	 From Dymov.Roman_aka_SaTaNa : -
+22:13:48	 From Айтуган Асфандияров : -
+22:13:49	 From Дмитрий Киселёв : у меня - норм.
+22:13:50	 From Васильев Максим : dct yjhv
+22:13:51	 From Daniil Bessonov : -
+22:13:54	 From Васильев Максим : вс норм
+22:13:57	 From Andrey Andreev : норм
+22:14:03	 From Михаил : гребаный ртк
+22:14:08	 From Daniil Bessonov : )
+22:16:57	 From Daniil Bessonov : Питон рулит)
+22:17:10	 From Daniil Bessonov : борг на питоне написали)
+22:17:44	 From Daniil Bessonov : Я тоже, в описании на сайте pip install borg
+22:18:52	 From Дмитрий Киселёв : а восстановить что-нибудь из бекапа
+22:19:09	 From Daniil Bessonov : веб интерфей у него есть? Или только консоль?
+22:19:21	 From Daniil Bessonov : Да)
+22:19:28	 From Daniil Bessonov : не мне начальству)
+22:19:53	 From Daniil Bessonov : Да нажать кнопку Рестор если что то сломал)
+22:20:06	 From Daniil Bessonov : меня искать не надо
+22:21:43	 From Дмитрий Киселёв : а можно восстановит в другой каталог?
+22:21:51	 From Daniil Bessonov : пока не нашел в доках у Борга есть плагины может быть s3?
+22:23:16	 From Daniil Bessonov : Борг умеет слать джсон логи в ремоут логгер?
+22:23:29	 From Daniil Bessonov : Да елка
+22:23:45	 From Daniil Bessonov : да как раз
+22:23:51	 From Daniil Bessonov : увидел
+22:25:25	 From Otus Онлайн : /usr/bin/innobackupex  --stream=tar ./|gzip > /var/backups/mysqlbackup.tar.gz
+22:26:05	 From Дмитрий Киселёв : 0
+22:26:31	 From Dymov.Roman_aka_SaTaNa : || echo 1
+22:26:39	 From Антон Марьясин : Поясните пожалуйста почему 0?
+22:26:41	 From Daniil Bessonov : If [[ ! -e file ]] then exit 1 fi
+22:26:54	 From Дмитрий Киселёв : я не помню
+22:27:04	 From Otus Онлайн : set -o pipefail -o errexit && /usr/bin/innobackupex
+22:27:20	 From Daniil Bessonov : о
+22:27:23	 From Daniil Bessonov : круто
+22:27:26	 From Дмитрий Киселёв : спасибо!
+22:27:34	 From Otus Онлайн : Set -e
+22:27:38	 From Daniil Bessonov : Черный пояс по башу
+22:28:25	 From Daniil Bessonov : чатик скиньте в материалы
+22:28:31	 From Daniil Bessonov : А то забуду)
+22:29:00	 From Дмитрий Киселёв : по домашку скажите
+22:29:19	 From Дмитрий Киселёв : проехали :)
+22:29:21	 From Daniil Bessonov : Back || fuckup
+22:30:14	 From Daniil Bessonov : Сложный конфиг
+22:30:21	 From Daniil Bessonov : нужно разбивать на файлы
+22:30:36	 From Daniil Bessonov : Нет понимания сущностей кроме файа
+22:30:57	 From Daniil Bessonov : нет возможности проверитьбакап на целостность
+22:31:17	 From Антон Марьясин : Нет неинтерактивной консоли
+22:31:23	 From Daniil Bessonov : Для меня еще отсутствие не интерактивной консоли
+22:31:26	 From Daniil Bessonov : )
+22:31:35	 From Daniil Bessonov : Просто уже напарывался
+22:31:39	 From Daniil Bessonov : покажите
+22:31:45	 From Otus Онлайн : echo “show pools” |bconsole
+22:32:06	 From Daniil Bessonov : Не догадался так сделать)
+22:32:14	 From Daniil Bessonov : но это кастыль
+22:32:52	 From Daniil Bessonov : Без там комплишна это будет боль
+22:33:01	 From Daniil Bessonov : таб*
+22:33:14	 From Daniil Bessonov : Но все равно спасибо)
+22:33:18	 From Pavel Vikiryuk : https://otus.ru/polls/3884/
+22:33:37	 From Daniil Bessonov : было интересно)
+22:33:54	 From Антон Марьясин : Спасибо, хорошая лекция
+22:34:03	 From Михаил : всем спасибо
+22:34:04	 From Dymov.Roman_aka_SaTaNa : спасибо
+22:34:05	 From Andrey Andreev : Спасибо
+22:34:07	 From Дмитрий Киселёв : Спасибо!
+22:34:11	 From Айтуган Асфандияров : спасибо!))
+22:34:12	 From Andrey Andreev : Всего доброгоо
+22:34:14	 From Dmitiry : спасибо!
+22:34:17	 From Alexandr Starikov : Спасибо
+22:34:30	 From Айтуган Асфандияров : сохраняем чатик)
