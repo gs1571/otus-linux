@@ -1,0 +1,99 @@
+---
+- name: Provsioning LAB:16 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install Borg
+      yum:
+        name: borgbackup
+        state: present
+
+    - name: Add IP address of hosts to /etc/hosts
+      lineinfile: 
+        dest: /etc/hosts
+        line: '{{ item }}'
+        state: present
+      with_items:
+        - "192.168.56.101 server"
+        - "192.168.56.102 client"
+
+- name: Provision backup client keys
+  hosts: client
+  become: yes
+
+  tasks:
+
+    - name: Set up authorized key
+      openssh_keypair:
+        path: /root/.ssh/id_rsa
+
+    - name: Retrieve public key
+      shell: cat /root/.ssh/id_rsa.pub
+      register: master_public_key
+
+- name: Provision backup server
+  hosts: server
+  become: yes
+
+  tasks:
+
+    - name: Add user borg
+      user:
+        name: borg
+        state: present
+        home: /home/borg
+
+    - name: Create storage direcory
+      file:
+        path: /home/borg/storage
+        state: directory
+        owner: borg
+        group: borg
+        mode: '0755'
+
+    - name: Add client public key to server
+      authorized_key:
+        user: borg
+        key: "{{ hostvars['client'].master_public_key.stdout }}"
+
+- name: Set up Borg 
+  hosts: client
+  become: yes
+
+  tasks:
+
+    - name: Create scripts direcory
+      file:
+        path: /etc/scripts/
+        state: directory
+        owner: root
+        group: root
+        mode: 0700
+
+    - name: Copy borg scripts
+      copy:
+        src: 'etc/scripts/{{ item }}'
+        dest: /etc/scripts
+        mode: 0700
+      with_items:
+        - borg-init-etc.sh
+        - borg-etc.sh
+    
+    - name: Authenticity with server
+      shell: ssh -o StrictHostKeyChecking=no borg@server echo ok
+
+    - name: Init repository
+      shell: /etc/scripts/borg-init-etc.sh
+
+    - name: Set up Contab file
+      lineinfile: 
+        dest: /etc/crontab
+        line: '*/10 * * * * root /etc/scripts/borg-etc.sh'
+        state: present
