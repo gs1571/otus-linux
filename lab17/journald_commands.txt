@@ -1,0 +1,17 @@
+# journalctl --field=_TRANSPORT - все доступные транспорты
+# journalctl _TRANSPORT=syslog - то, что пришло через syslog
+# journalctl _TRANSPORT=syslog -o verbose - структурированные данные
+# journalctl -p crit
+ -p
+  emerg (0)
+  alert (1) - PRIORITY=1
+  crit (2) - PRIORITY=1
+  err (3) - PRIORITY=3
+  warning (4)
+  notice (5)
+  info (6)
+  debug (7)
+# journactl -u mysqld.service -f - отслеживание лога mysql (аналог tail -f)
+# journalctl _UID=0 - все с UID 0
+# journalctl --list-boots - показать время ребутов сервера (если нет директории то будет показан только последний)
+# journalctl -b -2 - показать логи второго бута
