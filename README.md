@@ -103,6 +103,18 @@
     - [Пингвин под колпаком: Аудит системных событий в Linux - «Хакер»](https://xakep.ru/2011/03/30/54897/)
     - [Удаленное логирование в journald или Всё ещё «это вам не нужно»?](https://habr.com/company/southbridge/blog/317182/)
     - [ABRT — База знаний проекта Russian Fedora](https://wiki.russianfedora.pro/index.php?title=ABRT)
+* [Lab18: Архитектура сетей](lab18/README.md)
+    - [Networking/CLI - Fedora Project Wiki](https://fedoraproject.org/wiki/Networking/CLI)
+    - [ip COMMAND CHEAT SHEET for Red Hat Enterprise Linux](lab18/rh_ip_command_cheatsheet_1214_jcs_print.pdf)
+    - [A tcpdump Tutorial and Primer with Examples - Daniel Miessler](https://danielmiessler.com/study/tcpdump/)
+    - [TCPDUMP: a simple cheatsheet | So Long, and Thanks for All the Fish](https://www.andreafortuna.org/2018/07/18/tcpdump-a-simple-cheatsheet/)
+    - [Packet Analyzer: 15 TCPDUMP Command Examples](https://www.thegeekstuff.com/2010/08/tcpdump-command-examples)
+    - [tshark tutorial and filter examples | HackerTarget.com](https://hackertarget.com/tshark-tutorial-and-filter-examples/)
+    - [tshark - The Wireshark Network Analyzer 2.6.1](https://www.wireshark.org/docs/man-pages/tshark.html)
+    - [Why you shouldn't hate and disable NetworkManager anymore | www.hogarthuk.com](https://www.hogarthuk.com/?q=node/8)
+    - [Перевод руководства по iproute2 и управлению трафиком в Linux](https://www.opennet.ru/docs/RUS/LARTC/)
+    - [TCP/IP Protocols](https://www.opennet.ru/docs/RUS/tcpip/)
+    - [IPROUTE2 Utility Suite Documentation](http://policyrouting.org/iproute2-toc.html)
 
 # Инструкции
 

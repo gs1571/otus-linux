@@ -1,0 +1,90 @@
+# Provsioning LAB:18 enviroment
+---
+- name: Istall traceroute
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install traceroute
+      yum:
+        name: traceroute
+        state: present
+
+- name: Enable IPv4 forwarding on the routers
+  hosts: routers
+  become: yes
+
+  tasks:
+
+    - sysctl:
+        name: net.ipv4.conf.all.forwarding
+        value: '1'
+        state: present
+
+- name: Setup static routes on centralRouter
+  hosts: centralRouter
+  become: yes
+
+  tasks:
+
+    - net_static_route:
+        aggregate:
+          - { prefix: 0.0.0.0, mask: 0.0.0.0, next_hop: 192.168.255.1 }
+          - { prefix: 192.168.1.0, mask: 255.255.255.0, next_hop: 192.168.255.10 }
+          - { prefix: 192.168.2.0, mask: 255.255.255.0, next_hop: 192.168.255.6 }
+
+- name: Setup default route on Office1Router
+  hosts: Office1Router
+  become: yes
+
+  tasks:
+
+    - net_static_route:
+        prefix: 0.0.0.0
+        mask: 0.0.0.0
+        next_hop: 192.168.255.5
+
+- name: Setup default route on Office2Router
+  hosts: Office2Router
+  become: yes
+
+  tasks:
+
+    - net_static_route:
+        prefix: 0.0.0.0
+        mask: 0.0.0.0
+        next_hop: 192.168.255.9
+
+- name: Setup deafult route on CentralServer
+  hosts: CentralServer
+  become: yes
+
+  tasks:
+
+    - net_static_route:
+        prefix: 0.0.0.0
+        mask: 0.0.0.0
+        next_hop: 192.168.0.1
+
+- name: Setup deafult route on Office1Server
+  hosts: Office1Server
+  become: yes
+
+  tasks:
+
+    - net_static_route:
+        prefix: 0.0.0.0
+        mask: 0.0.0.0
+        next_hop: 192.168.2.1
+
+- name: Setup deafult route on Office1Server
+  hosts: Office2Server
+  become: yes
+
+  tasks:
+
+    - net_static_route:
+        prefix: 0.0.0.0
+        mask: 0.0.0.0
+        next_hop: 192.168.1.1

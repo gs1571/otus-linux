@@ -6,3 +6,4 @@ lab01/packer/centos-7.7.1908-kernel-5-x86_64-Minimal-ver1.box
 lab01/packer/centos-7.7.1908-kernel-5-x86_64-Minimal_big.box
 **/.DS_Store
 .DS_Store
+lab18/.DS_Store

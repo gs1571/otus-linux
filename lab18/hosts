@@ -1,0 +1,10 @@
+[routers]
+inetRouter ansible_host=127.0.0.1 ansible_port=61801 ansible_private_key_file=.vagrant/machines/inetRouter/virtualbox/private_key
+centralRouter ansible_host=127.0.0.1 ansible_port=61802 ansible_private_key_file=.vagrant/machines/centralRouter/virtualbox/private_key
+Office1Router ansible_host=127.0.0.1 ansible_port=61804 ansible_private_key_file=.vagrant/machines/Office1Router/virtualbox/private_key
+Office2Router ansible_host=127.0.0.1 ansible_port=61806 ansible_private_key_file=.vagrant/machines/Office2Router/virtualbox/private_key
+
+[servers]
+centralServer ansible_host=127.0.0.1 ansible_port=61803 ansible_private_key_file=.vagrant/machines/centralServer/virtualbox/private_key
+Office1Server ansible_host=127.0.0.1 ansible_port=61805 ansible_private_key_file=.vagrant/machines/Office1Server/virtualbox/private_key
+Office2Server ansible_host=127.0.0.1 ansible_port=61807 ansible_private_key_file=.vagrant/machines/Office2Server/virtualbox/private_key
