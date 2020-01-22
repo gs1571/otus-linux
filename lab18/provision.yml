@@ -1,8 +1,22 @@
 # Provsioning LAB:18 enviroment
 ---
-- name: Istall traceroute
+- name: Provsioning LAB:18 enviroment
   hosts: all
   become: yes
+  vars:
+    continents:
+      - Africa
+      - Asia
+      - South America
+      - North America
+      - Europe
+    default_gateways:
+        centralRouter: 192.168.255.1
+        centralServer: 192.168.0.1
+        Office1Router: 192.168.255.5
+        Office1Server: 192.168.2.1
+        Office2Router: 192.168.255.9
+        Office2Server: 192.168.1.1
 
   tasks:
 
@@ -11,80 +25,51 @@
         name: traceroute
         state: present
 
-- name: Enable IPv4 forwarding on the routers
-  hosts: routers
-  become: yes
-
-  tasks:
-
-    - sysctl:
+    - name: Enable IPv4 forwarding on the routers
+      sysctl:
         name: net.ipv4.conf.all.forwarding
         value: '1'
         state: present
+      when: "'Router' in inventory_hostname"
 
-- name: Setup static routes on centralRouter
-  hosts: centralRouter
-  become: yes
+    - name: Setup static routes on centralRouter
+      shell: "nmcli connection modify System\\ {{ item.int }} +ipv4.routes \"{{ item.route }}\" && nmcli connection up System\\ {{ item.int }}"
+      with_items:
+        - { int: 'eth5', route: '192.168.2.0/24 192.168.255.6'}
+        - { int: 'eth6', route: '192.168.1.0/24 192.168.255.10'}
+      when: "'centralRouter' in inventory_hostname"
 
-  tasks:
+    - name: Setup static routes on inetRouter
+      shell: "nmcli connection modify System\\ {{ item.int }} +ipv4.routes \"{{ item.route }}\" && nmcli connection up System\\ {{ item.int }}"
+      with_items:
+        - { int: 'eth1', route: '192.168.0.0/16 192.168.255.2'}
+      when: "'inetRouter' in inventory_hostname"
 
-    - net_static_route:
-        aggregate:
-          - { prefix: 0.0.0.0, mask: 0.0.0.0, next_hop: 192.168.255.1 }
-          - { prefix: 192.168.1.0, mask: 255.255.255.0, next_hop: 192.168.255.10 }
-          - { prefix: 192.168.2.0, mask: 255.255.255.0, next_hop: 192.168.255.6 }
+    - name: Remove default from eth0
+      shell: nmcli connection modify System\ eth0 ipv4.never-default yes && nmcli connection up System\ eth0
+      when: "'inet' not in inventory_hostname"
 
-- name: Setup default route on Office1Router
-  hosts: Office1Router
-  become: yes
+    - name: Setup default route on centralRouter
+      shell: nmcli connection modify System\ eth1 ipv4.gateway 192.168.255.1 && nmcli connection up System\ eth1
+      when: "'centralRouter' in inventory_hostname"
 
-  tasks:
+    - name: Setup default route on centralServer
+      shell: nmcli connection modify System\ eth1 ipv4.gateway 192.168.0.1 && nmcli connection up System\ eth1
+      when: "'centralServer' in inventory_hostname"
 
-    - net_static_route:
-        prefix: 0.0.0.0
-        mask: 0.0.0.0
-        next_hop: 192.168.255.5
+    - name: Setup default route on Office1Router
+      shell: nmcli connection modify System\ eth1 ipv4.gateway 192.168.255.5 && nmcli connection up System\ eth1
+      when: "'office1Router' in inventory_hostname"
 
-- name: Setup default route on Office2Router
-  hosts: Office2Router
-  become: yes
+    - name: Setup default route on Office1Server
+      shell: nmcli connection modify System\ eth1 ipv4.gateway 192.168.2.1 && nmcli connection up System\ eth1
+      when: "'office1Server' in inventory_hostname"
 
-  tasks:
+    - name: Setup default route on Office2Router
+      shell: nmcli connection modify System\ eth1 ipv4.gateway 192.168.255.9 && nmcli connection up System\ eth1
+      when: "'office2Router' in inventory_hostname"
 
-    - net_static_route:
-        prefix: 0.0.0.0
-        mask: 0.0.0.0
-        next_hop: 192.168.255.9
+    - name: Setup default route on Office2Server
+      shell: nmcli connection modify System\ eth1 ipv4.gateway 192.168.1.1 && nmcli connection up System\ eth1
+      when: "'office2Server' in inventory_hostname"
 
-- name: Setup deafult route on CentralServer
-  hosts: CentralServer
-  become: yes
-
-  tasks:
-
-    - net_static_route:
-        prefix: 0.0.0.0
-        mask: 0.0.0.0
-        next_hop: 192.168.0.1
-
-- name: Setup deafult route on Office1Server
-  hosts: Office1Server
-  become: yes
-
-  tasks:
-
-    - net_static_route:
-        prefix: 0.0.0.0
-        mask: 0.0.0.0
-        next_hop: 192.168.2.1
-
-- name: Setup deafult route on Office1Server
-  hosts: Office2Server
-  become: yes
-
-  tasks:
-
-    - net_static_route:
-        prefix: 0.0.0.0
-        mask: 0.0.0.0
-        next_hop: 192.168.1.1

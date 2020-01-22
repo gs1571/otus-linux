@@ -33,7 +33,7 @@ MACHINES = {
                 ]
   },
   # Office1
-  :Office1Router => {
+  :office1Router => {
         :box_name => "centos/8",
         :fwd => {:guest => 22, :host => 61804},
         :net => [
@@ -44,7 +44,7 @@ MACHINES = {
                    {ip: '192.168.2.193', adapter: 6, netmask: "255.255.255.192", virtualbox__intnet: "o1-hw-net"},
                 ]
   },  
-  :Office1Server => {
+  :office1Server => {
         :box_name => "centos/8",
         :fwd => {:guest => 22, :host => 61805},
         :net => [
@@ -52,7 +52,7 @@ MACHINES = {
                 ]
   },
   # Office2
-  :Office2Router => {
+  :office2Router => {
         :box_name => "centos/8",
         :fwd => {:guest => 22, :host => 61806},
         :net => [
@@ -62,7 +62,7 @@ MACHINES = {
                    {ip: '192.168.1.193', adapter: 5, netmask: "255.255.255.192", virtualbox__intnet: "o2-hw-net"},
                 ]
   },  
-  :Office2Server => {
+  :office2Server => {
         :box_name => "centos/8",
         :fwd => {:guest => 22, :host => 61807},
         :net => [
@@ -127,6 +127,14 @@ Vagrant.configure("2") do |config|
             #        echo "GATEWAY=192.168.0.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1
             #        systemctl restart network
             #    SHELL
+            when "office2Server"
+                box.vm.provision "ansible" do |ansible|
+                    ansible.compatibility_mode = "2.0"
+                    ansible.playbook = "provision.yml"
+                    ansible.verbose = "true"
+                    ansible.become = "true"
+                    ansible.limit = "all"
+                end
             end
 
         end
