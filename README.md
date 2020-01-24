@@ -116,6 +116,12 @@
     - [Перевод руководства по iproute2 и управлению трафиком в Linux](https://www.opennet.ru/docs/RUS/LARTC/)
     - [TCP/IP Protocols](https://www.opennet.ru/docs/RUS/tcpip/)
     - [IPROUTE2 Utility Suite Documentation](http://policyrouting.org/iproute2-toc.html)
+* [Lab19: LDAP. Централизованная авторизация и аутентификация.](lab19/README.md)
+    - [Chapter 1. Introduction to Red Hat Identity Management - Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/linux_domain_identity_authentication_and_policy_guide/introduction)
+    - [FreeIPAv2:IPA Client Design Overview - FreeIPA](https://www.freeipa.org/page/FreeIPAv2:IPA_Client_Design_Overview)
+    - [building_open_source_identity_management_solution_with_freeipa.pdf](https://www.oss4b.it/wp-content/uploads/2013/10/building_open_source_identity_management_solution_with_freeipa.pdf)
+    - [Про LDAP по-русски](https://pro-ldap.ru/)
+
 
 # Инструкции
 

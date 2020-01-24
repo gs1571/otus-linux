@@ -1,0 +1,23 @@
+# Provsioning LAB:18 enviroment
+---
+- name: Provsioning LAB:18 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    # Installing needed packages
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install a list of packages
+      yum:
+        name: "{{ packages }}"
+        state: present
+
+
+
+
+

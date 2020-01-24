@@ -1,0 +1,4 @@
+packages:
+    - bash-completion 
+    - vim-enhanced 
+    - mc

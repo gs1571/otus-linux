@@ -1,0 +1,5 @@
+packages:
+    - ipa-server
+    - bash-completion 
+    - vim-enhanced 
+    - mc
