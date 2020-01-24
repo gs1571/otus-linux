@@ -1,0 +1,152 @@
+---
+- name: Provsioning LAB:17 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    # Installing needed packages
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install my list of packages
+      yum:
+        name:
+          - bash-completion 
+          - vim-enhanced 
+          - mc
+          - systemd-journal-gateway
+        state: present
+
+    - name: WEB:Install nginx and plugins for auditd
+      yum:
+        name:
+          - nginx
+          - audispd-plugins
+        state: present
+      when: "'web' in inventory_hostname"
+
+    # Disable SELinux
+    - name: Disable runtime SELinux
+      selinux:
+        state: disabled
+
+    - name: Ensure SELinux is set to disable mode
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: SELINUX=disabled
+
+    # Configuration nginx
+    - name: WEB:Configure just crit error log for local logging
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        regexp: '^error_log'
+        line: "error_log /var/log/nginx/error.log crit;"
+        state: present
+      when: "'web' in inventory_hostname"
+      notify: nginx restart
+
+    - name: WEB:Setup sending error logs to system syslog
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        insertafter: '^error_log'
+        line: "error_log syslog:server=unix:/dev/log;"
+        state: present
+      when: "'web' in inventory_hostname"
+      notify: nginx restart
+
+    - name: WEB:Setup sending access logs to system syslog
+      lineinfile:
+        path: /etc/nginx/nginx.conf
+        regexp: 'access_log'
+        line: "access_log syslog:server=unix:/dev/log main;"
+        state: present
+      when: "'web' in inventory_hostname"
+      notify: nginx restart
+
+    # Configuration auditing
+    - name: WEB:Enable send audit logs to syslog
+      lineinfile:
+        path: /etc/audit/plugins.d/syslog.conf
+        regexp: '^active'
+        line: "active = yes"
+        state: present
+      when: "'web' in inventory_hostname"
+      notify: auditd restart
+
+    - name: WEB:Enable audit of nginx configuration
+      blockinfile:
+        path: /etc/audit/rules.d/nginx.rules
+        state: present
+        create: yes
+        block: |
+          -w /etc/nginx/nginx.conf -p wa -k nginx_config_file_changes
+          -w /etc/nginx/conf.d -p wa -k nginx_config_dir_changes
+      when: "'web' in inventory_hostname"
+      notify: auditd restart
+
+    # Configure sending logs to remote host
+    - name: LOG:Create directory for journald-remote
+      file:
+        path: /var/log/journal/remote
+        state: directory
+        owner: systemd-journal-remote
+        group: systemd-journal-remote
+      when: "'log' in inventory_hostname"
+      notify: journal-remote restart
+
+    - name: LOG:Configure journald-remote
+      lineinfile:
+        path: /lib/systemd/system/systemd-journal-remote.service
+        regexp: '^ExecStart'
+        line: "ExecStart=/usr/lib/systemd/systemd-journal-remote --listen-http=-3 --output=/var/log/journal/remote/"
+        state: present
+      when: "'log' in inventory_hostname"
+      notify: journal-remote restart
+
+    - name: LOG:Enable journal-remote
+      systemd:
+        name: systemd-journal-remote
+        enabled: yes
+        state: started
+      when: "'log' in inventory_hostname"
+
+    - name: WEB:Configure remote host for journal-upload
+      lineinfile:
+        path: /etc/systemd/journal-upload.conf
+        insertafter: '^\[Upload\]'
+        line: URL=http://192.168.56.102:19532
+        state: present
+      when: "'web' in inventory_hostname"
+      notify: journal-upload restart
+
+    - name: LOG:Enable journal-upload
+      systemd:
+        name: systemd-journal-upload
+        enabled: yes
+        state: started
+      when: "'web' in inventory_hostname"
+
+  handlers:
+
+    - name: nginx restart
+      systemd:
+        name: nginx
+        state: restarted
+
+    - name: journal-remote restart
+      systemd:
+        name: systemd-journal-remote
+        state: restarted
+        daemon_reload: yes
+
+    - name: journal-upload restart
+      systemd:
+        name: systemd-journal-upload
+        state: restarted
+
+    - name: auditd restart
+      shell: service auditd restart

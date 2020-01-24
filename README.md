@@ -95,6 +95,7 @@
     - [Bareos/Bacula Cheat Sheet – workaround.org](https://workaround.org/bacula-cheatsheet/)
     - [Borg Documentation — Borg - Deduplicating Archiver 1.1.7 documentation](https://borgbackup.readthedocs.io/en/stable/)
 * [Lab17: Сбор и анализ логов](lab17/README.md)
+    - [ABRT — База знаний проекта Russian Fedora](https://wiki.russianfedora.pro/index.php?title=ABRT)
     - [Аудит системных событий в Linux](https://habr.com/company/selectel/blog/267833/)
     - [journald_commands.txt](lab17/journald_commands.txt)
     - [RSyslog Documentation](https://www.rsyslog.com/doc/v8-stable/)

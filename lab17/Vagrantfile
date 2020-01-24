@@ -1,0 +1,75 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  # server VM
+  config.vm.define "web" do |box|
+    box.vm.box = "centos/8"
+    box.vm.hostname = "web"
+    
+    box.vm.network :private_network, ip: "192.168.56.101"
+    box.vm.network :forwarded_port, guest: 22, host: 61701, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "256"]
+    end
+
+    box.vm.provision "shell", inline: <<-SHELL
+      
+      # install ssh keys
+      mkdir -p ~root/.ssh; cp ~vagrant/.ssh/auth* ~root/.ssh
+      sed -i '65s/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+      systemctl restart sshd
+      # correct locale
+      echo "LANG=en_US.utf-8" > /etc/environment
+      echo "LC_ALL=en_US.utf-8" > /etc/environment
+      # enable EPEL
+      #yum install -y epel-release
+      # install basic packages
+      #yum install -y bash-completion vim-enhanced mc setools-console
+                    
+      SHELL
+  end
+
+  # client VM
+  config.vm.define "log" do |box|
+    box.vm.box = "centos/8"
+    box.vm.hostname = "log"
+    
+    box.vm.network :private_network, ip: "192.168.56.102"
+    box.vm.network :forwarded_port, guest: 22, host: 61702, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "256"]
+    end
+
+    box.vm.provision "shell", inline: <<-SHELL
+      
+      # install ssh keys
+      mkdir -p ~root/.ssh; cp ~vagrant/.ssh/auth* ~root/.ssh
+      sed -i '65s/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+      systemctl restart sshd
+      # correct locale
+      echo "LANG=en_US.utf-8" > /etc/environment
+      echo "LC_ALL=en_US.utf-8" > /etc/environment
+      # enable EPEL
+      #yum install -y epel-release
+      # install basic packages
+      #yum install -y bash-completion vim-enhanced mc setools-console
+                    
+    SHELL
+
+    box.vm.provision "ansible" do |ansible|
+      ansible.compatibility_mode = "2.0"
+      ansible.playbook = "provision.yml"
+      ansible.verbose = "true"
+      ansible.become = "true"
+      ansible.limit = "all"
+    end
+  end
+end
