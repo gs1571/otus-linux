@@ -121,6 +121,13 @@
     - [FreeIPAv2:IPA Client Design Overview - FreeIPA](https://www.freeipa.org/page/FreeIPAv2:IPA_Client_Design_Overview)
     - [building_open_source_identity_management_solution_with_freeipa.pdf](https://www.oss4b.it/wp-content/uploads/2013/10/building_open_source_identity_management_solution_with_freeipa.pdf)
     - [Про LDAP по-русски](https://pro-ldap.ru/)
+* [Lab20: Сетевые пакеты. VLAN'ы. LACP. ](lab20/README.md)
+    - [VLAN в Linux — Xgu.ru](http://xgu.ru/wiki/VLAN_%D0%B2_Linux)
+    - [Linux Bonding — Xgu.ru](http://xgu.ru/wiki/Linux_Bonding)
+    - [Linux bonding — объединение сетевых интерфейсов в Linux | Админия](http://www.adminia.ru/linux-bonding-obiedinenie-setevyih-interfeysov-v-linux/)
+    - [Chapter 5. Configure Network Teaming - Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/ch-configure_network_teaming)
+    - [How To: Network / TCP / UDP Tuning](https://wwwx.cs.unc.edu/~sparkst/howto/network_tuning.php)
+    - [28.1.21. /etc/sysconfig/network](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-sysconfig-network.html)
 
 
 # Инструкции
