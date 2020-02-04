@@ -1,0 +1,12 @@
+teams:
+    - conn_name: team0
+      ip4: 192.168.255.1/30
+
+team_members:
+    - conn_name: Wired connection 1
+      ifname: eth1
+      master: team0
+    - conn_name: Wired connection 2
+      ifname: eth2
+      master: team0
+

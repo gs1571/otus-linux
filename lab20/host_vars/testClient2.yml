@@ -1,0 +1,6 @@
+vlans:
+    - conn_name: eth1.200
+      ifname: eth1.200
+      vlanid: 200
+      vlandev: eth1
+      ip4: 10.10.10.1/24
