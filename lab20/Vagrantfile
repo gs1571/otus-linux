@@ -9,16 +9,16 @@ MACHINES = {
         #:public => {:ip => '192.168.11.100', :adapter => 1},
         :fwd => {:guest => 22, :host => 62001},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "router-net-1"},
-                   {adapter: 3, virtualbox__intnet: "router-net-2"},
+                   {adapter: 2, virtualbox__intnet: "team-net-1"},
+                   {adapter: 3, virtualbox__intnet: "team-net-2"},
                 ]
   },
   :centralRouter => {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 62002},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "router-net-1"},
-                   {adapter: 3, virtualbox__intnet: "router-net-2"},
+                   {adapter: 2, virtualbox__intnet: "team-net-1"},
+                   {adapter: 3, virtualbox__intnet: "team-net-1"},
                    {adapter: 4, virtualbox__intnet: "vsw1"},
                 ]
   },  
@@ -103,6 +103,7 @@ Vagrant.configure("2") do |config|
                     ansible.become = "true"
                     ansible.limit = "all"
                 end
+            
             end
 
         end

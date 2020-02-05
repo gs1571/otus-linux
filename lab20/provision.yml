@@ -1,6 +1,6 @@
-# Provsioning LAB:18 enviroment
+# Provsioning LAB:20 enviroment
 ---
-- name: Provsioning LAB:18 enviroment
+- name: Provsioning LAB:20 enviroment
   hosts: all
   become: yes
 
@@ -23,44 +23,25 @@
       when: "'Router' in inventory_hostname"
 
     - name: Configure Team interfaces
-      nmcli:
-        type: team
-        conn_name: '{{ item.conn_name }}'
-        mode: 802.3ad
-        ip4: '{{ item.ip4 }}'
-        state: present
+      shell: "nmcli connection add type team con-name {{ item.conn_name}} ifname {{ item.conn_name }} team.runner lacp team.runner-fast-rate yes ipv4.method {{ item.ipv4_method }} {% if item.ipv4_method != 'disabled' %} ipv4.addresses {{ item.ipv4_addresses }} {% endif %} ipv6.method {{ item.ipv6_method }}"
       with_items: 
         - '{{ teams }}'
       when: teams is defined
 
-    - name: Remove connections of members of Team interfaces
-      nmcli:
-        conn_name: '{{ item.conn_name }}'
-        state: absent
+    - name: Configure members of Team interfaces
+      shell: "nmcli connection add type ethernet con-name {{ item.conn_name }} ifname {{ item.ifname }} master {{ item.master }}"
       with_items: 
         - '{{ team_members }}'
       when: team_members is defined
 
-    - name: Configure members of Team interfaces
-      nmcli:
-        type: team-slave
-        conn_name: '{{ item.conn_name }}'
-        ifname: '{{ item.ifname }}'
-        master: '{{ item.master }}'
-        state: present
+    - name: Configure eth interfaces
+      shell: "nmcli connection add type ethernet con-name {{ item.conn_name}} ifname {{ item.ifname }} ipv4.method {{ item.ipv4_method }} {% if item.ipv4_method != 'disabled' %} ipv4.addresses {{ item.ipv4_addresses }} {% endif %} ipv6.method {{ item.ipv6_method }}"
       with_items: 
-        - '{{ team_members }}'
-      when: team_members is defined
+        - '{{ eths }}'
+      when: eths is defined
 
     - name: Configure Vlan sub-interfaces
-      nmcli:
-        type: vlan
-        conn_name: '{{ item.conn_name }}'
-        ifname: '{{ item.ifname }}'
-        vlanid: '{{ item.vlanid }}'
-        vlandev: '{{ item.vlandev }}'
-        ip4: '{% if item.ip4 is defined %} {{ item.ip4 }} {% endif %}'
-        state: present
+      shell: "nmcli connection add type vlan con-name {{ item.conn_name }} vlan.id {{ item.vlan_id }} vlan.parent {{ item.vlan_parent }} ipv4.method {{ item.ipv4_method }} {% if item.ipv4_method != 'disabled' %} ipv4.addresses {{ item.ipv4_addresses }} {% endif %} ipv6.method {{ item.ipv6_method }}"
       with_items: 
         - '{{ vlans }}'
       when: vlans is defined
