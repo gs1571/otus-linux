@@ -1,0 +1,36 @@
+forwarding: yes
+eth:
+    dhcp:
+        - name: eth0
+    static:
+        - name: eth1
+          ipaddr: 192.168.255.2
+          netmask: 255.255.255.252
+        - name: eth2
+          ipaddr: 192.168.0.1
+          netmask: 255.255.255.240
+        - name: eth3
+          ipaddr: 192.168.0.33
+          netmask: 255.255.255.240
+        - name: eth4
+          ipaddr: 192.168.0.65
+          netmask: 255.255.255.192
+        - name: eth5
+          ipaddr: 192.168.255.5
+          netmask: 255.255.255.252
+        - name: eth6
+          ipaddr: 192.168.255.9
+          netmask: 255.255.255.252
+routes:
+    - dev: eth1
+      routes:
+        - route: default
+          nh: 192.168.255.1
+    - dev: eth5
+      routes:
+        - route: 192.168.2.0/24
+          nh: 192.168.255.6
+    - dev: eth6
+      routes:
+        - route: 192.168.1.0/24
+          nh: 192.168.255.10

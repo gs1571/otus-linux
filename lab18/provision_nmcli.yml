@@ -16,7 +16,7 @@
         name: net.ipv4.conf.all.forwarding
         value: '1'
         state: present
-      when: "'Router' in inventory_hostname"
+      when: forwarding is defined and forwarding
 
     - name: Setup static routes on centralRouter
       shell: "nmcli connection modify System\\ {{ item.int }} +ipv4.routes \"{{ item.route }}\" && nmcli connection up System\\ {{ item.int }}"

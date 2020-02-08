@@ -1,0 +1,13 @@
+eth:
+    dhcp:
+        - name: eth0
+    static:
+        - name: eth1
+          ipaddr: 192.168.0.2
+          netmask: 255.255.255.240
+
+routes:
+    - dev: eth1
+      routes:
+        - route: default
+          nh: 192.168.0.1

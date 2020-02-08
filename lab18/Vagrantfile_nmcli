@@ -9,7 +9,7 @@ MACHINES = {
         #:public => {:ip => '192.168.11.100', :adapter => 1},
         :fwd => {:guest => 22, :host => 61801},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "router-net"},
+                   {ip: '192.168.255.1', adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "router-net"},
                 ]
   },
   # Central Office
@@ -17,19 +17,19 @@ MACHINES = {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 61802},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "router-net"},
-                   {adapter: 3, virtualbox__intnet: "dir-net"},
-                   {adapter: 4, virtualbox__intnet: "hw-net"},
-                   {adapter: 5, virtualbox__intnet: "wifi-net"},
-                   {adapter: 6, virtualbox__intnet: "wan1-net"},
-                   {adapter: 7, virtualbox__intnet: "wan2-net"},
+                   {ip: '192.168.255.2', adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "router-net"},
+                   {ip: '192.168.0.1', adapter: 3, netmask: "255.255.255.240", virtualbox__intnet: "dir-net"},
+                   {ip: '192.168.0.33', adapter: 4, netmask: "255.255.255.240", virtualbox__intnet: "hw-net"},
+                   {ip: '192.168.0.65', adapter: 5, netmask: "255.255.255.192", virtualbox__intnet: "wifi-net"},
+                   {ip: '192.168.255.5', adapter: 6, netmask: "255.255.255.252", virtualbox__intnet: "wan1-net"},
+                   {ip: '192.168.255.9', adapter: 7, netmask: "255.255.255.252", virtualbox__intnet: "wan2-net"},
                 ]
   },  
   :centralServer => {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 61803},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "dir-net"},
+                   {ip: '192.168.0.2', adapter: 2, netmask: "255.255.255.240", virtualbox__intnet: "dir-net"},
                 ]
   },
   # Office1
@@ -37,18 +37,18 @@ MACHINES = {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 61804},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "wan1-net"},
-                   {adapter: 3, virtualbox__intnet: "o1-dev-net"},
-                   {adapter: 4, virtualbox__intnet: "o1-test-net"},
-                   {adapter: 5, virtualbox__intnet: "o1-mng-net"},
-                   {adapter: 6, virtualbox__intnet: "o1-hw-net"},
+                   {ip: '192.168.255.6', adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "wan1-net"},
+                   {ip: '192.168.2.1', adapter: 3, netmask: "255.255.255.192", virtualbox__intnet: "o1-dev-net"},
+                   {ip: '192.168.2.65', adapter: 4, netmask: "255.255.255.192", virtualbox__intnet: "o1-test-net"},
+                   {ip: '192.168.2.129', adapter: 5, netmask: "255.255.255.192", virtualbox__intnet: "o1-mng-net"},
+                   {ip: '192.168.2.193', adapter: 6, netmask: "255.255.255.192", virtualbox__intnet: "o1-hw-net"},
                 ]
   },  
   :office1Server => {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 61805},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "o1-dev-net"},
+                   {ip: '192.168.2.2', adapter: 2, netmask: "255.255.255.192", virtualbox__intnet: "o1-dev-net"},
                 ]
   },
   # Office2
@@ -56,17 +56,17 @@ MACHINES = {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 61806},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "wan2-net"},
-                   {adapter: 3, virtualbox__intnet: "o2-dev-net"},
-                   {adapter: 4, virtualbox__intnet: "o2-test-net"},
-                   {adapter: 5, virtualbox__intnet: "o2-hw-net"},
+                   {ip: '192.168.255.10', adapter: 2, netmask: "255.255.255.252", virtualbox__intnet: "wan2-net"},
+                   {ip: '192.168.1.1', adapter: 3, netmask: "255.255.255.128", virtualbox__intnet: "o2-dev-net"},
+                   {ip: '192.168.1.129', adapter: 4, netmask: "255.255.255.192", virtualbox__intnet: "o2-test-net"},
+                   {ip: '192.168.1.193', adapter: 5, netmask: "255.255.255.192", virtualbox__intnet: "o2-hw-net"},
                 ]
   },  
   :office2Server => {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 61807},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "o2-dev-net"},
+                   {ip: '192.168.1.2', adapter: 2, netmask: "255.255.255.128", virtualbox__intnet: "o2-dev-net"},
                 ]
   },
 }
@@ -127,15 +127,15 @@ Vagrant.configure("2") do |config|
             #        echo "GATEWAY=192.168.0.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1
             #        systemctl restart network
             #    SHELL
-
-            when "office2Server"
-                box.vm.provision "ansible" do |ansible|
-                    ansible.compatibility_mode = "2.0"
-                    ansible.playbook = "provision_netscript.yml"
-                    ansible.verbose = "true"
-                    ansible.become = "true"
-                    ansible.limit = "all"
-                end
+            
+            #when "office2Server"
+            #    box.vm.provision "ansible" do |ansible|
+            #        ansible.compatibility_mode = "2.0"
+            #        ansible.playbook = "provision.yml"
+            #        ansible.verbose = "true"
+            #        ansible.become = "true"
+            #        ansible.limit = "all"
+            #    end
             end
 
         end
