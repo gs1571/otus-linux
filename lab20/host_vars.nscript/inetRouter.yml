@@ -1,10 +1,10 @@
 forwarding: yes
 eth:
-    team:
+    static:
         - name: team0
           ipaddr: 192.168.255.1
           netmask: 255.255.255.252
-    team_member:
+    team:
         - name: eth1
           master: team0
         - name: eth2

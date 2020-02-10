@@ -1,0 +1,13 @@
+eths:
+    - conn_name: eth1
+      ifname: eth1
+      ipv4_method: disabled
+      ipv6_method: ignore
+
+vlans:
+    - conn_name: eth1.101
+      vlan_id: 101
+      vlan_parent: eth1
+      ipv4_method: manual
+      ipv4_addresses: 10.10.10.1/24
+      ipv6_method: ignore

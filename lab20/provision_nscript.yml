@@ -1,0 +1,133 @@
+# Provsioning LAB:20 enviroment
+---
+- name: Provsioning LAB:20 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Enable IPv4 forwarding on the routers
+      sysctl:
+        name: net.ipv4.conf.all.forwarding
+        value: '1'
+        state: present
+      when: forwarding is defined and forwarding == True
+
+    - name: Disable ZeroConf
+      lineinfile:
+        path: /etc/sysconfig/network
+        line: "NOZEROCONF=yes"
+        state: present
+
+    - name: Configure Team interfaces
+      template:
+        src: templates/ifcfg_team.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.team is defined
+      with_items:
+        - '{{ eth.team }}'
+      notify: reload team
+
+    - name: Configure Team members interfaces
+      template:
+        src: templates/ifcfg_team_member.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.team_member is defined
+      with_items:
+        - '{{ eth.team_member }}'
+      notify: reload team member
+
+    - name: Configure IPv4 static on interfaces
+      template:
+        src: templates/ifcfg_static.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.static is defined
+      with_items:
+        - '{{ eth.static }}'
+      notify: reload eth static
+
+    - name: Configure vlan on interfaces
+      template:
+        src: templates/ifcfg_vlan.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.vlan is defined
+      with_items:
+        - '{{ eth.vlan }}'
+      notify: reload eth vlan
+
+    - name: Configure IPv4 DHCP on interfaces
+      template:
+        src: templates/ifcfg_dhcp.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.dhcp is defined
+      with_items:
+        - '{{ eth.dhcp }}'
+      notify: reload eth dhcp
+
+    - name: Configure IPv4 static routes
+      template:
+        src: templates/route.j2
+        dest: "/etc/sysconfig/network-scripts/route-{{ item.dev }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: routes is defined
+      with_items:
+        - '{{ routes }}'
+      notify: reload static routes
+
+  handlers:
+
+    - name: reload eth dhcp
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.dhcp }}'
+
+    - name: reload team
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.team }}'
+
+    - name: reload team member
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.team_member }}'
+
+    - name: reload eth static
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.static }}'
+
+    - name: reload eth vlan
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.vlan }}'
+
+    - name: reload parent
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.parent }}'
+
+    - name: reload static routes
+      shell: "ifdown {{ item.dev }}; ifup {{ item.dev }}"
+      with_items:
+        - '{{ routes }}'
+
+
+
+

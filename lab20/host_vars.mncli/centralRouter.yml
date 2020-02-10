@@ -1,0 +1,37 @@
+gw: 
+    ip4: 192.168.255.1
+    conn_name: team0
+
+teams:
+    - conn_name: team0
+      ipv4_addresses: 192.168.255.2/30
+      ipv4_method: manual
+      ipv6_method: ignore
+
+team_members:
+    - conn_name: team-eth1
+      ifname: eth1
+      master: team0
+    - conn_name: team-eth2
+      ifname: eth2
+      master: team0
+
+eths:
+    - conn_name: eth3
+      ifname: eth3
+      ipv4_method: disabled
+      ipv6_method: ignore
+
+vlans:
+    - conn_name: eth3.100
+      vlan_id: 100
+      vlan_parent: eth3
+      ipv4_method: disabled
+      ipv6_method: ignore
+    - conn_name: eth3.101
+      vlan_id: 101
+      vlan_parent: eth3
+      ipv4_method: disabled
+      ipv6_method: ignore
+      
+

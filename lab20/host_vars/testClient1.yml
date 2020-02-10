@@ -1,13 +1,10 @@
-eths:
-    - conn_name: eth1
-      ifname: eth1
-      ipv4_method: disabled
-      ipv6_method: ignore
-
-vlans:
-    - conn_name: eth1.100
-      vlan_id: 100
-      vlan_parent: eth1
-      ipv4_method: manual
-      ipv4_addresses: 10.10.10.1/24
-      ipv6_method: ignore
+eth:
+    static:
+        - name: eth1
+          ipaddr: no
+    vlan:
+        - name: eth1.100
+          physdev: eth1
+          vlan_id: 100
+          ipaddr: 10.10.10.1
+          netmask: 255.255.255.0

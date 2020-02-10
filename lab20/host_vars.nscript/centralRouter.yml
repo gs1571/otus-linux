@@ -3,6 +3,9 @@ eth:
     dhcp:
         - name: eth0
     static:
+        - name: eth1
+          ipaddr: 192.168.255.2
+          netmask: 255.255.255.252
         - name: eth2
           ipaddr: 192.168.0.1
           netmask: 255.255.255.240
@@ -18,17 +21,8 @@ eth:
         - name: eth6
           ipaddr: 192.168.255.9
           netmask: 255.255.255.252
-    team:
-        - name: team0
-          ipaddr: 192.168.255.2
-          netmask: 255.255.255.252
-    team_member:
-        - name: eth1
-          master: team0
-        - name: eth7
-          master: team0
 routes:
-    - dev: team0
+    - dev: eth1
       routes:
         - route: default
           nh: 192.168.255.1

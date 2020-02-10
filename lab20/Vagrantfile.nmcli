@@ -9,61 +9,43 @@ MACHINES = {
         #:public => {:ip => '192.168.11.100', :adapter => 1},
         :fwd => {:guest => 22, :host => 62001},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "team-1"},
-                   {adapter: 3, virtualbox__intnet: "team-2"},
+                   {adapter: 2, virtualbox__intnet: "team-net-1"},
+                   {adapter: 3, virtualbox__intnet: "team-net-2"},
                 ]
   },
-  # Central Office
   :centralRouter => {
         :box_name => "centos/7",
         :fwd => {:guest => 22, :host => 62002},
         :net => [
-                   {adapter: 2, virtualbox__intnet: "team-1"},
-                   {adapter: 3, virtualbox__intnet: "dir-net"},
-                   {adapter: 4, virtualbox__intnet: "hw-net"},
-                   {adapter: 5, virtualbox__intnet: "wifi-net"},
-                   {adapter: 6, virtualbox__intnet: "wan1-net"},
-                   {adapter: 7, virtualbox__intnet: "wan2-net"},
-                   {adapter: 8, virtualbox__intnet: "team-2"},
-                ]
-  },  
-  # Office1
-  :office1Router => {
-        :box_name => "centos/7",
-        :fwd => {:guest => 22, :host => 62004},
-        :net => [
-                   {adapter: 2, virtualbox__intnet: "wan1-net"},
-                   {adapter: 3, virtualbox__intnet: "o1-dev-net"},
-                   {adapter: 4, virtualbox__intnet: "o1-test-net"},
-                   {adapter: 5, virtualbox__intnet: "o1-mng-net"},
-                   {adapter: 6, virtualbox__intnet: "o1-hw-net"},
-                   {adapter: 7, virtualbox__intnet: "vsw1"},
+                   {adapter: 2, virtualbox__intnet: "team-net-1"},
+                   {adapter: 3, virtualbox__intnet: "team-net-1"},
+                   {adapter: 4, virtualbox__intnet: "vsw1"},
                 ]
   },  
   :testServer1 => {
         :box_name => "centos/7",
-        :fwd => {:guest => 22, :host => 62008},
+        :fwd => {:guest => 22, :host => 62003},
         :net => [
                    {adapter: 2, virtualbox__intnet: "vsw1"},
                 ]
   },  
   :testClient1 => {
         :box_name => "centos/7",
-        :fwd => {:guest => 22, :host => 62009},
+        :fwd => {:guest => 22, :host => 62004},
         :net => [
                    {adapter: 2, virtualbox__intnet: "vsw1"},
                 ]
   },  
   :testServer2 => {
         :box_name => "centos/7",
-        :fwd => {:guest => 22, :host => 62010},
+        :fwd => {:guest => 22, :host => 62005},
         :net => [
                    {adapter: 2, virtualbox__intnet: "vsw1"},
                 ]
   },  
   :testClient2 => {
         :box_name => "centos/7",
-        :fwd => {:guest => 22, :host => 62011},
+        :fwd => {:guest => 22, :host => 62006},
         :net => [
                    {adapter: 2, virtualbox__intnet: "vsw1"},
                 ]
@@ -78,6 +60,10 @@ Vagrant.configure("2") do |config|
 
             box.vm.box = boxconfig[:box_name]
             box.vm.host_name = boxname.to_s
+
+            #boxconfig[:fwd].each do |fwdconf|
+            #    box.vm.network "forwarded_port", fwdconf
+            #end
 
             if boxconfig.key?(:fwd)
                 box.vm.network "forwarded_port", boxconfig[:fwd]
@@ -109,17 +95,19 @@ Vagrant.configure("2") do |config|
                     #sysctl net.ipv4.conf.all.forwarding=1
                     iptables -t nat -A POSTROUTING ! -d 192.168.0.0/16 -o eth0 -j MASQUERADE
                 SHELL
-
             when "testClient2"
                 box.vm.provision "ansible" do |ansible|
                     ansible.compatibility_mode = "2.0"
-                    ansible.playbook = "provision_nscript.yml"
+                    ansible.playbook = "provision.yml"
                     ansible.verbose = "true"
                     ansible.become = "true"
                     ansible.limit = "all"
                 end
-
+            
             end
+
         end
+
     end
+  
 end
