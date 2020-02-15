@@ -143,6 +143,21 @@
     - [Блокировать ли ICMP трафик? Вопрос безопасности • 14 байт](https://14bytes.ru/blokirovat-li-icmp-trafik-bezopasno-li/)
     - [Understanding Firewalld in Multi-Zone Configurations | Linux Journal](https://www.linuxjournal.com/content/understanding-firewalld-multi-zone-configurations)
     - [kadlecsik-ipset-firewalling-iptables.pdf](lab21/kadlecsik-ipset-firewalling-iptables.pdf)
+* Lab22: NFTables
+    - [nftables-rmll-2014.pdf](lab22/nftables-rmll-2014.pdf)
+    - [nft_tutorial.pdf](lab22/nft_tutorial.pdf)
+* [Lab23: Мосты, туннели и VPN](lab23/README.md)
+* [Lab24: Статическая и динамическая маршрутизация](lab24/README.md)
+* Lab25: IPv6]
+    - [DHCP for IPv6 (DHCPv6) Red Hat Enterprise Linux 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-dhcp_for_ipv6_dhcpv6)
+    - [RADVD - Configuring the radvd daemon for IPv6 routers Red Hat Enterprise Linux 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/networking_guide/sec-configuring_the_radvd_daemon_for_ipv6_routers)
+    - [sysctl ipv6 variables](https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)
+    - [IPv4/IPv6 subnet calculator and addressing planner](http://www.gestioip.net/cgi-bin/subnet_calculator.cgi)
+    - [RFC 4890 - Recommendations for Filtering ICMPv6 Messages in Firewalls](https://tools.ietf.org/html/rfc4890)
+    - [Internet Control Message Protocol version 6 (ICMPv6) Parameters](https://www.iana.org/assignments/icmpv6-parameters/icmpv6-parameters.xhtml)
+    - [IANA - IPv6 Global Unicast Address Assignments](https://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml)
+    - [IANA - IPv6 Address Space](https://www.iana.org/assignments/ipv6-address-space/ipv6-address-space.xhtml)
+
 
 # Инструкции
 

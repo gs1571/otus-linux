@@ -1,0 +1,181 @@
+19:59:51	 From ligain : Привет
+20:00:03	 From Sergey Mikhaylov : Вечер добрый
+20:00:38	 From Alexey Zhdanovsky : Добрый вечер
+20:00:40	 From Ivan Kiselev : Добрый вечер
+20:00:49	 From Ivan Kiselev : +
+20:00:51	 From AlexeyKo : +
+20:00:51	 From ligain : +
+20:00:53	 From Alexey Zhdanovsky : +
+20:00:55	 From Полунов Максим : +
+20:06:03	 From vadim.barutkin : мост))))
+20:06:11	 From mora : виртуальный интерфейс
+20:06:19	 From Grigorii Solovev : L2 связность
+20:06:41	 From Артур Федоров : Григорий вроде как
+20:07:02	 From Grigorii Solovev : я скромный :)
+20:07:24	 From VIKTOR : -
+20:07:35	 From vadim.barutkin : +-
+20:07:36	 From Артур Федоров : Может щупал, но не знал
+20:07:40	 From VIKTOR : а может трогал, но не понял
+20:07:41	 From Oleg : +-
+20:07:42	 From AlexeyKo : -
+20:12:56	 From Grigorii Solovev : 2^10 :)
+20:14:57	 From Артур Федоров : не совсем понял как это петля создается и что вы положили? Сеть?
+20:14:57	 From Grigorii Solovev : Я видел петли между Москвой и Тверью.. так себе было :)
+20:15:52	 From Grigorii Solovev : Есть еще Open vSwitch
+20:16:36	 From Grigorii Solovev : это уже тема из Open Stack
+20:16:54	 From mora : я через iproute2 клепал подобное, но не разобрался с автозагрузкой виртуальных интерфейсов... мы рассмотрим? 
+20:17:12	 From mora : да... ipip 
+20:17:18	 From VIKTOR : А не совсем по теме, ник тимминг в линукс есть возможность включать? Легко ли?
+20:17:50	 From VIKTOR : А не, не смог( Посмотрю
+20:19:06	 From mora : да мора пойдет) да, я маякну 
+20:21:25	 From Артур Федоров : Петля то как образуется?)
+20:21:47	 From Grigorii Solovev : быстро, очень быстро!
+20:24:38	 From Артур Федоров : надо завтра попробовать, бгг
+20:25:19	 From VIKTOR : Артур, можешь дома, если есть хотя бы домашний роутер, патчик из одного порта в другой засунь
+20:25:57	 From VIKTOR : Лучше когда дети ютубчик смотрят)
+20:26:08	 From Артур Федоров : ))) хорошо, спасибо
+20:27:37	 From Grigorii Solovev : нюанс понятен!
+20:27:39	 From Артур Федоров : Применение
+20:28:15	 From VIKTOR : Да минимум в микротиках любых объединяем интерфейсы в бриджи, тот же линукс по сути
+20:28:22	 From Grigorii Solovev : vagrant их создает через private_network
+20:28:47	 From Артур Федоров : понял
+20:29:09	 From mora : в микротах бриджы вроде как стараются не создавать) появились же interface lists 
+20:29:45	 From Grigorii Solovev : берете сервер за 4k$ и делаете из него свич за 100$
+20:30:11	 From mora : обьединить две железки на расстоянии 
+20:30:24	 From VIKTOR : чтобы из домика в рабочую сеть попасть и на файловую помоечку ходить))
+20:30:26	 From Alexey Zhdanovsky : виртуальный линк
+20:33:08	 From Ivan Kiselev : домру?
+20:36:20	 From mora : а сеансовый?) 
+20:37:27	 From mora : это канал как выделенная линия 
+20:40:57	 From Grigorii Solovev : ох
+20:41:03	 From mora : pptp l2tp ipip? 
+20:41:05	 From Alexey Zhdanovsky : GRE, IPSec
+20:41:13	 From VIKTOR : подземные
+20:41:20	 From Юрий : stunnel
+20:42:48	 From VIKTOR : А мировые магистрали тоже к провайдерским относятся? 
+20:45:55	 From mora :  мы настраивали связь между офисами по ipip на микротах а внутри бегал ospf вполне живенько 
+20:46:25	 From Grigorii Solovev : ospf надо тюнить
+20:55:05	 From Grigorii Solovev : tcpdump -ieth0?
+20:55:53	 From Grigorii Solovev : icmp надо убрать
+20:56:03	 From mora : почему должны быть они не закапсулированы? 
+20:56:45	 From Grigorii Solovev : tshark
+20:56:57	 From Grigorii Solovev : я то же не помню
+20:57:07	 From Grigorii Solovev : Но можно оно на будущее
+20:58:06	 From Grigorii Solovev : > почему должны быть они не закапсулированы?
+20:59:25	 From Otus Online  : auto tun1
+iface tun1 inet manual
+    mtu 1420
+    pre-up ip tunnel add tun1 mode gre remote 10.10.0.2 local 10.10.0.1 dev eth0
+    post-up ip address add 10.30.0.1/30 dev tun1
+    post-up ip rule add from 10.30.0.0/30 table GRE && ip route add default via 10.30.0.1 table GRE
+    post-down ip tunnel del tun1
+
+20:59:38	 From Grigorii Solovev : потому что транзитные устройства не знают про адресацию пакетов внутри туннеля и не смогут правильно их маршрутизировать, для этого они оборачиваются еще одним заголовком по которому трафик маршрутизируется между концами туннеля
+21:00:26	 From mora : у меня с подобным конфигом после ребута машина не завелась))) 
+21:01:39	 From mora : нет, там типо сетевой интерфейс не поднялся и он запрашивал пароль после прогрузки 
+21:02:56	 From mora :  + 
+21:03:27	 From mora : я пришел к решению rc.local но мне оно не нравится 
+21:05:46	 From Grigorii Solovev : IPSec это почти отдельный курс :)
+21:07:49	 From mora : peervpn будет? ну или что то около? 
+21:08:01	 From mora : децентрализованный впн 
+21:09:21	 From Alexey Zhdanovsky : +
+21:09:23	 From vadim.barutkin : +
+21:09:27	 From Юрий : +
+21:16:25	 From Grigorii Solovev : +
+21:16:27	 From AlexeyKo : + 
+21:16:28	 From Ivan Kiselev : +
+21:16:28	 From Alexey Zhdanovsky : +
+21:16:46	 From AlexeyKo : матершина)
+21:16:47	 From mora : для меня это шифрование... 
+21:16:50	 From Артур Федоров : а еще к IP и безопасности
+21:16:51	 From Alexey Zhdanovsky : IP Security
+21:18:58	 From VIKTOR : cisco packet tracer)
+21:31:31	 From vadim.barutkin : +
+21:31:34	 From Юрий : +
+21:32:50	 From mora : +++ 
+21:33:22	 From Полунов Максим : +
+21:33:24	 From Grigorii Solovev : +
+21:33:26	 From ligain : -
+21:33:26	 From Ivan Kiselev : +
+21:33:28	 From vadim.barutkin : -
+21:33:41	 From mora : если сравнивать xl2tpd + IPsec и openVPN то тут я лично выберу быстро... 
+21:36:24	 From Grigorii Solovev : там вроде недавно завезли UDP
+21:36:31	 From mora : завезли 
+21:36:33	 From Полунов Максим : c 7 routeros будет udp
+21:36:39	 From Полунов Максим : в бете есть
+21:38:43	 From Alexey Zhdanovsky : у безопасников параноя по отношению к openssl
+21:38:50	 From Grigorii Solovev : https://en.wikipedia.org/wiki/Heartbleed - история про OpenSSL
+21:46:36	 From Полунов Максим : +
+21:46:40	 From mora : ipip так умеет? 
+21:47:05	 From Grigorii Solovev : нет, IPIP передает только IP
+21:47:17	 From Полунов Максим : ipip, на микротике как минимум, не бриджуется
+21:47:19	 From Grigorii Solovev : tap передает ethernet
+21:47:35	 From mora : спасибо! буду лапать 
+21:50:27	 From ligain : да, генерацию надо показать
+21:50:35	 From Andrey Vasiliev : лучше построчно)
+21:57:29	 From mora : а можете подсказать тогда нечто,  также умеющее бриджевать туннели, но менее громоздкое 
+21:57:53	 From Otus Online  : Tinc VPN
+21:57:58	 From mora : принял, изучу 
+22:03:27	 From Otus Online  : openssl dhparam -out /etc/openvpn/dh.pem 2048
+22:03:30	 From Alexey Zhdanovsky : нужны
+22:03:43	 From Otus Online  : git clone https://github.com/OpenVPN/easy-rsa
+
+./easyrsa clean-all
+./easyrsa init-pki
+./easyrsa build-ca nopass
+./easyrsa build-server-full 1.1.1.1 nopass
+./easyrsa build-client-full client1 nopass
+./easyrsa show-cert 1.1.1.1
+
+22:04:03	 From Otus Online  : ./easyrsa revoke client1
+./easyrsa gen-crl
+22:04:40	 From VIKTOR : Я нашел свой скриптик которым генерю сертификаты, тоже рса:cd /etc/openvpn/keys/easy-rsa-master/easyrsa3./easyrsa gen-req <имя пользователя> nopass./easyrsa sign-req client <имя пользователя>
+22:04:40	 From mora : рестарт? не релоад? 
+22:11:44	 From Grigorii Solovev : ca - удостоверяющий центр, который выдает сертификаты. Он может быть и не частью настройки OpenVPN, а быть одним для разных целей, например для генерации сертификатов для http
+22:11:46	 From vadim.barutkin : +
+22:13:06	 From Grigorii Solovev : это пока не надо проходить аудит безопасности
+22:17:21	 From Полунов Максим : -
+22:17:22	 From vadim.barutkin : -
+22:17:24	 From Alexey Zhdanovsky : -
+22:17:25	 From mora : -
+22:17:26	 From Andrey Vasiliev : -
+22:17:39	 From Grigorii Solovev : слышал
+22:17:44	 From Grigorii Solovev : нет
+22:17:45	 From mora : популярный продукт) 
+22:17:47	 From ligain : слышал, что его встроили в линукс ядро
+22:17:58	 From Grigorii Solovev : у нас Cisco/Juniper и пр
+22:18:21	 From Grigorii Solovev : в полный рост
+22:21:08	 From mora : можно добавлять в бриджи?) 
+22:31:41	 From Grigorii Solovev : насколько я понимаю OpenVPN использует не симметричные ключи, а IPSec симметричные, это катастрофически сказывается на производительности.
+22:33:20	 From mora : а как это влияет?) ведь если я правильно понимаю ассимметрия осуществляется за счет интегрирования и оно всегда односторонее
+22:34:14	 From Grigorii Solovev : на ассиметричных ключах математика гораздо более сложная, но за то не надо светить ключи в интернете
+22:34:32	 From Grigorii Solovev : IPSec использует первую фазу что бы зашифровать передачу ключей
+22:34:58	 From mora : тоесть там в принципе математики нет при дешифровке? тогда понятно 
+22:35:21	 From Grigorii Solovev : Ну и в целом IPSec это промышленный стандарт, он сразу делался с учетом многих вещей
+22:35:32	 From Grigorii Solovev : Математика всегда есть
+22:36:00	 From Grigorii Solovev : да
+22:36:21	 From Grigorii Solovev : Ну там еще и есть аппаратные ускорения
+22:36:44	 From Grigorii Solovev : ну Cisco ASA и стоит не дешево
+22:37:03	 From Grigorii Solovev : Но стоит и каши не просит :)
+22:39:03	 From Grigorii Solovev : спалили ключики :)
+22:40:00	 From Grigorii Solovev : это профессиональный напряг
+22:48:56	 From Ivan Kiselev : выглядит проще чем ovpn
+22:49:01	 From Grigorii Solovev : +
+22:51:37	 From Ivan Kiselev : потерь поменьше
+22:51:37	 From vadim.barutkin : нет потерь
+22:52:53	 From Полунов Максим : в wg ключи генерятся и сервером и клиентом а потом они обмениваются публичными?
+22:53:13	 From Полунов Максим : я имел ввиду в конфиге
+22:58:03	 From mora : метрики? 
+22:59:55	 From mora : более одного одновременно или несколько но есть приоритетный 
+23:02:48	 From mora : настроить маскарад с другой стороны) 
+23:04:48	 From Grigorii Solovev : ocserv?
+23:04:52	 From Otus Online  : https://otus.ru/polls/5864/
+23:05:40	 From mora : бридж в туннель, это будущая задача я думал три сети с тремя деф маршрутами творить...... а тут оказывается так можно 
+23:07:41	 From Grigorii Solovev : спасибо!
+23:07:44	 From Alexey Zhdanovsky : Спасибо
+23:07:46	 From Полунов Максим : спасибо
+23:07:47	 From mora : спасибо! 
+23:07:57	 From Ivan Kiselev : Спасибо за лекцию
+23:07:58	 From Grigorii Solovev : следующее занятие это мое
+23:08:03	 From Grigorii Solovev : bap любовь моя
+23:08:08	 From Grigorii Solovev : *bgp
