@@ -1,0 +1,168 @@
+19:59:44	 From Андрей Агафонов : Добрый вечер :)
+19:59:49	 From Ivan Kiselev : Добрый вечер!
+19:59:58	 From AlexeyKo : Добрый
+20:00:01	 From Alexey Zhdanovsky : Добрый вечер
+20:00:34	 From Андрей Агафонов : опять не поспим?)
+20:01:31	 From Alexey Zhdanovsky : +
+20:01:34	 From Ivan Kiselev : +
+20:01:37	 From Sergey Mikhaylov : +
+20:06:34	 From Grigorii Solovev : enterprise, ISP, DC
+20:06:40	 From Юрий : виртуальные
+20:06:41	 From Alexey Zhdanovsky : Локальные и глобальные
+20:06:59	 From Андрей Агафонов : даленные - локальные ?:)
+20:07:02	 From Полунов Максим : маршрутизируемые и не маршрутизируемые
+20:09:42	 From Grigorii Solovev : https://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xhtml#note1 - тут есть полный список
+20:10:36	 From mora : белый) 
+20:12:04	 From Полунов Максим : +
+20:12:04	 From Alexey Zhdanovsky : +
+20:12:07	 From vadim.barutkin : +
+20:12:08	 From Юрий : +
+20:12:08	 From Dmitriy Pnev : +
+20:12:11	 From vadim.barutkin : ya.ru
+20:12:14	 From ligain : +
+20:12:24	 From AlexeyKo : mail.ru
+20:15:22	 From Grigorii Solovev : ipcalc
+20:15:56	 From Grigorii Solovev : попробуйте ipcalc
+20:18:29	 From vadim.barutkin : +
+20:18:46	 From Юрий : +
+20:20:42	 From Stan : сам с собой поговорить)
+20:20:50	 From Grigorii Solovev : логический интерфейс не связанный с физической средой
+20:20:50	 From Alexey Zhdanovsky : интерфейс заглушка
+20:22:08	 From Артур Федоров : это localhost получается?
+20:23:42	 From Grigorii Solovev : +++
+20:23:42	 From Alexey Zhdanovsky : +
+20:23:44	 From Артур Федоров : -
+20:27:30	 From Grigorii Solovev : я просто промолчу :)
+20:27:43	 From Андрей Агафонов : -
+20:27:43	 From Stan : -
+20:27:44	 From Andrey Vasiliev : -
+20:27:50	 From AlexeyKo : -
+20:29:23	 From Grigorii Solovev : да всегда так называлась
+20:29:30	 From Grigorii Solovev : вроде нет альтернатив
+20:29:44	 From Grigorii Solovev : IGMP Snooping
+20:30:15	 From Stan : +
+20:30:18	 From Юрий : +
+20:30:18	 From AlexeyKo : +
+20:30:21	 From Полунов Максим : +
+20:31:59	 From Артур Федоров : Можно глупый вопрос - что есть статическая маршрутизация)
+20:33:04	 From Alexey Zhdanovsky : + быстрое принятие решения куда отправить трафик
+20:33:23	 From Grigorii Solovev : То что вы делали в домашнем задании по занятию 18
+20:33:35	 From Артур Федоров : Не делал)
+20:33:47	 From Alexey Zhdanovsky : - маршруты нужно прописывать на всех узлах сети вручную
+20:33:58	 From VIKTOR : Для небольшой инфраструктуры стат. маршрутизация добро, а для большой - гемор
+20:34:06	 From VIKTOR : Ну имхо
+20:35:24	 From Полунов Максим : в статике сложнее  все сломать)
+20:37:38	 From Stan : в случае обрыва на одном канале - переключаемся на другой
+20:37:39	 From Юрий : отказоустойчивость
+20:37:46	 From VIKTOR : При изменении конфига в сети не нужно руками все перелопачивать
+20:37:47	 From Андрей Агафонов : не безопасно
+20:38:09	 From Grigorii Solovev : передача информации о маршрутах между участниками сети
+20:38:13	 From Grigorii Solovev : оптимизация трафика
+20:38:20	 From Grigorii Solovev : защита от петель
+20:41:25	 From VIKTOR : OSFP RIP
+20:41:33	 From Alexey Zhdanovsky : дистанс вектор и линк стате
+20:41:54	 From VIKTOR : Хотя RIP уже рипнулся вроде
+20:45:51	 From Alexey Zhdanovsky : +
+20:45:52	 From vadim.barutkin : -
+20:45:52	 From VIKTOR : +
+20:45:54	 From mora : +
+20:45:55	 From AlexeyKo : -
+20:45:56	 From Артур Федоров : -
+20:45:57	 From Полунов Максим : использую на микротиках)
+20:45:58	 From Nikolay : +
+20:45:59	 From Stan : -
+20:46:00	 From Андрей Агафонов : -
+20:48:15	 From VIKTOR : Мы все ждали историю про дальнюю дорогу в пятницу вечером(
+20:49:18	 From Артур Федоров : графы
+20:56:43	 From Grigorii Solovev : на самом деле скорее наоборот, деление на  арии создает больше проблем
+20:57:53	 From mora : мы делили по логике на зоны, к примеру телефонная сеть требовала другой стоимости 
+21:00:32	 From Grigorii Solovev : autonomous system boundary router
+21:00:40	 From Grigorii Solovev : area border router
+21:00:52	 From Grigorii Solovev : как бы странно это не звучало
+21:00:57	 From Grigorii Solovev : но RFC так написано
+21:02:16	 From Grigorii Solovev : согласен
+21:02:30	 From Grigorii Solovev : plug and play :)
+21:05:15	 From Grigorii Solovev : Должен быть уникальным!
+21:07:42	 From Grigorii Solovev : DBD - это краткий список известных сетей, LSR это запрос детальной информации по неизвестным маршрутам
+21:07:52	 From Grigorii Solovev : LSU передача подробной информации
+21:08:09	 From Grigorii Solovev : R - request
+21:08:12	 From Grigorii Solovev : U-update
+21:10:51	 From Grigorii Solovev : это автоматический расчет стоимости cost = bandwith/10^6
+21:11:31	 From Grigorii Solovev : не bw/10^9
+21:11:57	 From Grigorii Solovev : это дефолт, можно поменять формулу
+21:12:13	 From Grigorii Solovev : но проще руками задавать
+21:13:02	 From vadim.barutkin : +
+21:13:06	 From Stan : +
+21:13:07	 From AlexeyKo : +
+21:13:21	 From VIKTOR : У нас был случай давний. Злодей проник в сетку и сделал МФУшку основным шлюзом)) Можно пофантазировать на тему того как нам было "весело"
+21:13:26	 From VIKTOR : Так расслабиться
+21:13:45	 From VIKTOR : Ну да, статика
+21:14:04	 From mora : а потом пропишу) 
+21:20:29	 From Ivan Kiselev : +
+21:20:29	 From AlexeyKo : +
+21:20:29	 From mora : +
+21:20:30	 From VIKTOR : +
+21:20:34	 From Stan : ++
+21:21:06	 From mora : шарить ас 
+21:21:08	 From mora : )) 
+21:21:08	 From ligain : -
+21:21:19	 From Andrey Vasiliev : -
+21:21:24	 From Grigorii Solovev : Стык с провайдером и между провайдерами
+21:21:26	 From AlexeyKo : -
+21:24:23	 From mora : full view 
+21:24:47	 From Grigorii Solovev : 800k
+21:25:09	 From Артур Федоров : 800к чего?
+21:25:22	 From Grigorii Solovev : маршрутов
+21:26:19	 From Otus Online  : https://blog.apnic.net/2019/01/16/bgp-in-2018-the-bgp-table/
+21:27:34	 From Grigorii Solovev : https://www.cidr-report.org/as2.0/
+21:27:40	 From Grigorii Solovev : 817463
+21:28:37	 From mora : я пару лет назад хотел арендовать 28 сеть) для собственных развлечений.. даже звонил в провайдеры и не понимал почему отказываются)) 
+21:29:12	 From VIKTOR : Интересный у Вас досуг
+21:30:36	 From Grigorii Solovev : Сейчас в Интернете - 67216 AS
+21:30:55	 From Grigorii Solovev : в том же отчете
+21:31:00	 From Grigorii Solovev : Я сам офигел!
+21:34:12	 From mora : сейчас опять выкидывают из ната из-за яровой, чтобы было клиент-белый адрес, а чтобы продавалась статика меняют периодически адрес 
+21:34:31	 From mora : во во 
+21:37:32	 From Grigorii Solovev : Тут важно заметить, что BGP реально интересен, только если у вас подключение к больше чем одному провайдеру
+21:37:56	 From Grigorii Solovev : Fullview нужен только для балансировки, опять же не всегда надо
+21:39:05	 From mora : поехали на бутлерова!) 
+21:42:53	 From Полунов Максим : -
+21:42:57	 From ligain : -
+21:42:58	 From Андрей Агафонов : -
+21:43:03	 From vadim.barutkin : -
+21:46:37	 From Grigorii Solovev : главное, что он дешевле
+21:47:00	 From Grigorii Solovev : платится, но дешевле чем у аплинков
+21:50:08	 From Grigorii Solovev : По миру вот этот один из самых крутых - https://lg.he.net/
+21:50:59	 From Grigorii Solovev : bgp route
+21:52:39	 From mora : + 
+21:54:25	 From Grigorii Solovev : origin наверно
+21:54:30	 From Артур Федоров : Сайт конечно у этого зингера
+21:54:38	 From mora : я так узнал что мой немецкий хостинг сидит на баррикадной 
+21:56:51	 From mora : но ведь это означает что ддос удался 
+21:57:14	 From Grigorii Solovev : whois AS9002 как пример
+21:57:59	 From Grigorii Solovev : RETN красавцы
+21:57:59	 From Андрей Агафонов : а на что мы сейчас смотрим?
+21:58:10	 From mora : цель лежит, атакующий выиграл, с тем же успехом можно днс запись на 127.0.0.1 сделать 
+21:58:35	 From Андрей Агафонов : а что такое as9002 в данном случае
+21:58:42	 From Андрей Агафонов : а понял
+22:09:45	 From Grigorii Solovev : К сожалению, мне надо идти. Буду досматривать в записи. Всем спокойно ночи. Спасибо за лекцию!
+22:12:23	 From Артур Федоров : Не надо, лучше на новом софте, если идентичны
+22:22:33	 From Ivan Kiselev : проще чем казалось)
+22:23:35	 From Андрей Агафонов : OSPF может выполнять роль балансировки нагрузки?
+22:24:46	 From Андрей Агафонов : ага) 
+22:24:52	 From Андрей Агафонов : было интерсно просто :)
+22:27:26	 From vadim.barutkin : [
+22:31:11	 From mora : добавить в шары
+22:47:47	 From Otus Online  : https://otus.ru/polls/5862/
+22:47:58	 From Артур Федоров : Невероятно сложно по крайне мере для меня. Спасибо
+22:48:38	 From Артур Федоров : Таненбаум еще то чтиво, на 1к страниц
+22:49:15	 From Alexey Zhdanovsky : Спасибо
+22:49:43	 From Андрей Агафонов : есть ли какие то негативные последсвия если попадается ассиметричная маршрутизация в сети?
+22:50:20	 From Андрей Агафонов : хорошо видно на трассировках - когда уменьшается время ответов хопов.
+22:51:16	 From Андрей Агафонов : Павел, спасибо за лекцию.
+Было интересно, а теперь практика :)
+22:51:20	 From vadim.barutkin : Спасибо
+22:51:21	 From Ivan Kiselev : Спасибо за лекцию
+22:51:24	 From Юрий : спасибо
+22:51:32	 From mora : спасибо
+22:51:54	 From Андрей Агафонов : Всем хорошего вечера, и всем пока :)
