@@ -1,0 +1,82 @@
+# Provsioning LAB:18 enviroment
+---
+- name: Provsioning LAB:18 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install traceroute
+      yum:
+        name: traceroute
+        state: present
+
+    - name: Enable IPv4 forwarding on the routers
+      sysctl:
+        name: net.ipv4.conf.all.forwarding
+        value: '1'
+        state: present
+      when: forwarding is defined and forwarding == True
+
+    - name: Disable ZeroConf
+      lineinfile:
+        path: /etc/sysconfig/network
+        line: "NOZEROCONF=yes"
+        state: present
+
+    - name: Configure IPv4 static on interfaces
+      template:
+        src: templates/ifcfg_static.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.static is defined
+      with_items:
+        - '{{ eth.static }}'
+      notify: reload eth static
+
+    - name: Configure IPv4 DHCP on interfaces
+      template:
+        src: templates/ifcfg_dhcp.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.dhcp is defined
+      with_items:
+        - '{{ eth.dhcp }}'
+      notify: reload eth dhcp
+
+    - name: Configure IPv4 static routes
+      template:
+        src: templates/route.j2
+        dest: "/etc/sysconfig/network-scripts/route-{{ item.dev }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: routes is defined
+      with_items:
+        - '{{ routes }}'
+      notify: reload static routes
+
+  handlers:
+
+    - name: reload eth dhcp
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.dhcp }}'
+
+    - name: reload eth static
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.static }}'
+
+    - name: reload static routes
+      shell: "ifdown {{ item.dev }}; ifup {{ item.dev }}"
+      with_items:
+        - '{{ routes }}'
+
+
+
+
