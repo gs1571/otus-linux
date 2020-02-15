@@ -1,0 +1,29 @@
+log syslog all;
+
+router id {{ item.router_id }};
+
+protocol device {
+}
+
+protocol direct {
+        disabled;
+        ipv4;
+}
+
+protocol kernel {
+	ipv4 {
+	      export all;
+	};
+}
+
+protocol ospf v2 {
+	area 0 {
+		{% for int in item.interfaces %}
+		interface "{{ int.name }}" {
+			type broadcast;
+			cost {{ int.cost }};
+			hello 5;
+		};
+		{% endfor %}
+	};
+}

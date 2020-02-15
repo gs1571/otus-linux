@@ -1,0 +1,134 @@
+---
+- name: Provsioning LAB:24 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install packages
+      yum:
+        name: 
+          - traceroute
+          - bash-completion 
+          - bash-completion-extras 
+          - vim-enhanced 
+          - mc
+          - bird2
+        state: present
+
+    - name: Enable IPv4 forwarding on the routers
+      sysctl:
+        name: net.ipv4.conf.all.forwarding
+        value: '1'
+        state: present
+      when: forwarding is defined and forwarding == True
+
+    - name: Disable ZeroConf
+      lineinfile:
+        path: /etc/sysconfig/network
+        line: "NOZEROCONF=yes"
+        state: present
+
+    - name: Configure IPv4 static on interfaces
+      template:
+        src: templates/ifcfg_static.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.static is defined
+      with_items:
+        - '{{ eth.static }}'
+      #notify: reload eth static
+
+    - name: reload eth static
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      with_items:
+        - '{{ eth.static }}'
+
+    - name: Run BIRD
+      systemd:
+        state: started
+        name: bird
+        enabled: yes
+
+    - name: Configure OSPF routing with Asymmentric
+      template:
+        src: templates/bird.conf.j2
+        dest: "/etc/bird.conf"
+        owner: root
+        group: bird
+        mode: 0640
+      when: ospf_asym is defined
+      with_items:
+        - '{{ ospf_asym }}'
+
+    - name: Reload bird
+      systemd:
+        state: reloaded
+        name: bird
+
+    - name: Pause for 30 seconds
+      pause:
+        seconds: 30
+
+    - name: Run traceroute
+      shell: "traceroute -n -w 1 {{ traceroute }}"
+      register: result
+      when: traceroute is defined
+
+    - name: Dispaly traceroute
+      debug: 
+        var: result.stdout_lines
+      when: result.stdout_lines is defined
+
+    - name: Configure OSPF routing with Symmentric
+      template:
+        src: templates/bird.conf.j2
+        dest: "/etc/bird.conf"
+        owner: root
+        group: bird
+        mode: 0640
+      when: ospf_sym is defined
+      with_items:
+        - '{{ ospf_sym }}'
+
+    - name: Reload bird
+      systemd:
+        state: reloaded
+        name: bird
+
+    - name: Pause for 30 seconds
+      pause:
+        seconds: 30
+
+    - name: Run traceroute
+      shell: "traceroute -n -w 1 {{ traceroute }}"
+      register: result
+      when: traceroute is defined
+
+    - name: Dispaly traceroute
+      debug: 
+        var: result.stdout_lines
+      when: result.stdout_lines is defined
+
+#  handlers:
+#
+#    - name: reload eth static
+#      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+#      with_items:
+#        - '{{ eth.static }}'
+#
+#    - name: reload bird
+#      systemd:
+#        state: restarted
+#        name: bird
+
+
+
+
