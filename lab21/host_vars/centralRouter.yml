@@ -21,16 +21,14 @@ eth:
         - name: eth6
           ipaddr: 192.168.255.9
           netmask: 255.255.255.252
+        - name: eth7
+          ipaddr: 192.168.255.14
+          netmask: 255.255.255.252
 routes:
     - dev: eth1
       routes:
         - route: default
           nh: 192.168.255.1
-    - dev: eth5
-      routes:
-        - route: 192.168.2.0/24
-          nh: 192.168.255.6
-    - dev: eth6
-      routes:
-        - route: 192.168.1.0/24
-          nh: 192.168.255.10
+
+packages:
+    - nmap

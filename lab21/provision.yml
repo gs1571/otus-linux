@@ -1,15 +1,21 @@
-# Provsioning LAB:18 enviroment
 ---
-- name: Provsioning LAB:18 enviroment
+- name: Provsioning LAB:21 enviroment
   hosts: all
   become: yes
 
   tasks:
 
-    - name: Install traceroute
+    - name: Install EPEL
       yum:
-        name: traceroute
+        name: epel-release
         state: present
+
+    - name: Install packages
+      yum:
+        name: '{{ item }}'
+        state: present
+      when: packages is defined
+      loop: '{{ packages }}'
 
     - name: Enable IPv4 forwarding on the routers
       sysctl:
@@ -60,6 +66,33 @@
         - '{{ routes }}'
       notify: reload static routes
 
+    - name: Enable password auth
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regex: "^PasswordAuthentication"
+        line: PasswordAuthentication yes
+        state: present
+      notify: reload sshd
+
+    - name: Copy file with owner and permissions
+      copy:
+        src: configs/iptables
+        dest: /etc/sysconfig/iptables
+        owner: root
+        group: root
+        mode: 0644
+      when: knocking is defined and knocking == True
+      notify: reload iptables
+
+    - name: Enable services
+      systemd:
+        state: '{{ item.state }}'
+        name: '{{ item.name }}'
+        enabled: '{{ item.enabled }}'
+      when: services is defined
+      with_items:
+        - '{{ services }}'
+
   handlers:
 
     - name: reload eth dhcp
@@ -77,6 +110,13 @@
       with_items:
         - '{{ routes }}'
 
+    - name: reload sshd
+      systemd:
+        state: restarted
+        name: sshd
 
-
+    - name: reload iptables
+      systemd:
+        state: restarted
+        name: iptables
 

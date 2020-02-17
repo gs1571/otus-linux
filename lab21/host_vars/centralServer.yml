@@ -11,3 +11,11 @@ routes:
       routes:
         - route: default
           nh: 192.168.0.1
+
+packages:
+    - nginx
+
+services:
+    - name: nginx
+      state: started
+      enabled: yes
