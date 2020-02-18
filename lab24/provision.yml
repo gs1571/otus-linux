@@ -28,6 +28,15 @@
         state: present
       when: forwarding is defined and forwarding == True
 
+    - name: Disable RP filter for OSPF interfaces
+      sysctl:
+        name: "net.ipv4.conf.{{ item.name }}.rp_filter"
+        value: '2'
+        state: present
+      when: ospf is defined and ospf.interfaces is defined
+      with_items:
+        - '{{ ospf.interfaces }}'
+
     - name: Disable ZeroConf
       lineinfile:
         path: /etc/sysconfig/network
@@ -64,9 +73,9 @@
         owner: root
         group: bird
         mode: 0640
-      when: ospf_asym is defined
+      when: ospf is defined
       with_items:
-        - '{{ ospf_asym }}'
+        - '{{ ospf }}'
 
     - name: Reload bird
       systemd:

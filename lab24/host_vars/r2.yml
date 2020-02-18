@@ -11,13 +11,23 @@ eth:
           ipaddr: 172.16.2.2
           netmask: 255.255.255.0
 
-ospf_asym:
+ospf:
     router_id: 2.2.2.2
     interfaces:
         - name: eth1
           cost: 10
         - name: eth2
           cost: 10
+        - name: eth3
+          cost: 10
+
+ospf_sym:
+    router_id: 2.2.2.2
+    interfaces:
+        - name: eth1
+          cost: 10
+        - name: eth2
+          cost: 100
         - name: eth3
           cost: 10
 
