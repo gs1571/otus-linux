@@ -74,14 +74,24 @@
         state: present
       notify: reload sshd
 
-    - name: Copy file with owner and permissions
+    - name: Enable iptables knocking
       copy:
-        src: configs/iptables
+        src: configs/iptables-knock
         dest: /etc/sysconfig/iptables
         owner: root
         group: root
         mode: 0644
       when: knocking is defined and knocking == True
+      notify: reload iptables
+
+    - name: Enable iptables nat
+      copy:
+        src: configs/iptables-nat
+        dest: /etc/sysconfig/iptables
+        owner: root
+        group: root
+        mode: 0644
+      when: nat is defined and nat == True
       notify: reload iptables
 
     - name: Enable services
@@ -92,6 +102,15 @@
       when: services is defined
       with_items:
         - '{{ services }}'
+
+    - name: Copy knock.sh
+      copy:
+        src: scripts/knock.sh
+        dest: /home/vagrant/knock.sh
+        owner: vagrant
+        group: vagrant
+        mode: '0775'
+      when: knocking is defined and knocking == True
 
   handlers:
 

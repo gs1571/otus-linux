@@ -14,6 +14,7 @@ routes:
 
 packages:
     - iptables-services
+    - tcpdump
 
 services:
     - name: firewalld
