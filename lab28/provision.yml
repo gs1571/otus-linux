@@ -1,0 +1,250 @@
+---
+- name: Provsioning LAB:28 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    # General configuration
+
+    - name: Fix locale
+      lineinfile:
+        path: /etc/environment
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - "LANG=en_US.utf-8"
+        - "LC_ALL=en_US.utf-8"
+
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    # Enable repos
+
+    - name: Install the php-fpm repo
+      yum:
+        name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+        state: present
+
+    - name: Enable php-fpm 7.4 repo
+      shell: yum-config-manager --enable remi-php74
+
+    - name: Get repo file for Passenger
+      get_url:
+        url: https://oss-binaries.phusionpassenger.com/yum/definitions/el-passenger.repo
+        dest: /etc/yum.repos.d/passenger.repo
+
+    - name: Enable Passenger repo
+      shell: yum-config-manager --enable cr
+
+    # Install the packages
+
+    - name: Install packages
+      yum:
+        name: 
+          - bash-completion 
+          - bash-completion-extras 
+          - vim-enhanced 
+          - mc
+          - wget
+          - nginx
+          - python-pip 
+          - python-devel 
+          - gcc
+          - git
+          - npm
+          - php-cli 
+          - php-fpm 
+          - php-mysql 
+          - php-json 
+          - php-opcache 
+          - php-mbstring 
+          - php-xml 
+          - php-gd 
+          - php-curl
+          - passenger
+        state: present
+
+    # Base index page
+
+    - name: Run nginx
+      systemd:
+        state: started
+        name: nginx
+        enabled: yes
+
+    - name: Create a directory for content
+      file:
+        path: /var/www/html/
+        state: directory
+        mode: 0755
+
+    - name: Copy base config of nginx
+      copy:
+        src: configs/etc/nginx/conf.d/otus-lab28-base.local.conf
+        dest: /etc/nginx/conf.d/otus-lab28-base.local.conf
+        mode: 0644
+      notify: nginx restart
+
+    - name: Copy new index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/otus-lab28-base.local/
+        force: yes
+
+    # WordPress by PHP-FPM
+
+    - name: Configure php-fpm
+      lineinfile:
+        path: /etc/php-fpm.d/www.conf
+        line: "{{ item.line }}"
+        regexp: "{{ item.regexp }}"
+        state: present
+      with_items:
+        - { regexp: "^user =", line: "user = nginx" }
+        - { regexp: "^group =", line: "group = nginx" }
+        - { regexp: "^listen =", line: "listen = /run/php-fpm/www.sock" }
+        - { regexp: "^;listen.owner", line: "listen.owner = nginx" }
+        - { regexp: "^;listen.group", line: "listen.group = nginx" }
+
+    - name: Change ownership of /var/lib/php
+      file:
+        path: /var/lib/php
+        state: directory
+        recurse: yes
+        owner: root
+        group: nginx
+
+    - name: Run php-fpm
+      systemd:
+        state: started
+        name: php-fpm 
+        enabled: yes
+
+    - name: Unarchive latest WordPress
+      unarchive:
+        src: https://wordpress.org/latest.tar.gz
+        dest: /var/www/html/
+        remote_src: yes
+
+    - name: Change ownership of WordPress directory
+      file:
+        path: /var/www/html/wordpress
+        state: directory
+        recurse: yes
+        owner: nginx
+
+    - name: Copy WordPress config of nginx
+      copy:
+        src: configs/etc/nginx/conf.d/otus-lab28-wp.local.conf
+        dest: /etc/nginx/conf.d/otus-lab28-wp.local.conf
+        mode: 0644
+      notify: nginx restart
+
+    # Hello World app by flask
+
+    - name: Upgrade pip
+      pip:
+        name: pip
+        state: latest
+        executable: pip2.7
+
+    - name: Install zipp
+      pip:
+        name: 
+          - zipp
+          - virtualenv
+        state: present
+        executable: pip2.7
+
+    - name: Create a directory for app
+      file:
+        path: /opt/hello_world
+        state: directory
+        mode: 0755
+
+    - name: Copy files of app
+      copy:
+        src: "hello_world/{{ item }}"
+        dest: "/opt/hello_world/{{ item }}"
+      with_items:
+        - requirements.txt
+        - hello_world.py
+        - wsgi.py
+        - config.ini
+
+    - name: Initiate virtualenv
+      pip: 
+        virtualenv: /opt/hello_world/hello_world_env
+        virtualenv_python: python2.7
+        requirements: /opt/hello_world/requirements.txt
+
+    - name: Change ownership of app dir
+      file:
+        path: /opt/hello_world
+        state: directory
+        recurse: yes
+        owner: nginx
+        group: nginx
+
+    - name: Copy systemd unit file
+      copy:
+        src: configs/etc/systemd/system/helloworld.service
+        dest: /etc/systemd/system/helloworld.service
+
+    - name: Run systemd unit of app
+      systemd:
+        name: helloworld
+        state: started
+        enabled: yes
+        daemon_reload: yes
+
+    - name: Copy flask config of nginx
+      copy:
+        src: configs/etc/nginx/conf.d/otus-lab28-flask.local.conf
+        dest: /etc/nginx/conf.d/otus-lab28-flask.local.conf
+        mode: 0644
+      notify: nginx restart
+      
+    # Simple app by NodeJS
+
+    - name: Clone simple NodeJS app
+      git:
+        repo: https://github.com/phusion/passenger-nodejs-connect-demo.git
+        dest: /var/www/html/passenger-nodejs-connect-demo
+
+    - name: Install app
+      npm:
+        path: /var/www/html/passenger-nodejs-connect-demo
+        production: yes
+
+    - name: Copy nodejs config of nginx
+      copy:
+        src: configs/etc/nginx/conf.d/otus-lab28-nodejs.local.conf
+        dest: /etc/nginx/conf.d/otus-lab28-nodejs.local.conf
+        mode: 0644
+      notify: nginx restart
+
+    - name: Configure passanger
+      lineinfile:
+        path: /etc/nginx/conf.d/passenger.conf
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - "passenger_root /usr/share/ruby/vendor_ruby/phusion_passenger/locations.ini;"
+        - "passenger_ruby /usr/bin/ruby;"
+        - "passenger_instance_registry_dir /var/run/passenger-instreg;"
+      notify: nginx restart
+
+  handlers:
+
+    - name: nginx restart
+      systemd:
+        state: restarted
+        name: nginx

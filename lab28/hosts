@@ -1,0 +1,1 @@
+srv ansible_host=127.0.0.1 ansible_port=62801 ansible_private_key_file=.vagrant/machines/srv/virtualbox/private_key
