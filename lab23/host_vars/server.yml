@@ -1,0 +1,24 @@
+forwarding: yes
+eth:
+    static:
+        - name: eth2
+          ipaddr: 10.1.2.1
+          netmask: 255.255.255.0
+routes:
+    - dev: eth2
+      routes:
+        - route: 10.2.3.0/24
+          nh: 10.1.2.2
+
+packages:
+    - tcpdump
+    - bash-completion
+    - bash-completion-extras
+    - vim-enhanced
+    - openvpn
+    - iperf3
+
+openvpn_s2s: server
+openvpn_ras: yes
+iperf_server: yes
+

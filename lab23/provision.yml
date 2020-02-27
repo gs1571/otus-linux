@@ -1,0 +1,218 @@
+---
+- name: Provsioning LAB:23 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+# Preparation
+
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install packages
+      yum:
+        name: '{{ item }}'
+        state: present
+      when: packages is defined
+      loop: '{{ packages }}'
+
+    - name: Fix locale
+      lineinfile:
+        path: /etc/environment
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - "LANG=en_US.utf-8"
+        - "LC_ALL=en_US.utf-8"
+
+    - name: Enable IPv4 forwarding on the routers
+      sysctl:
+        name: net.ipv4.conf.all.forwarding
+        value: '1'
+        state: present
+      when: forwarding is defined and forwarding == True
+
+    - name: Disable ZeroConf
+      lineinfile:
+        path: /etc/sysconfig/network
+        line: "NOZEROCONF=yes"
+        state: present
+
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+
+# Configure networking
+
+    - name: Configure IPv4 static on interfaces
+      template:
+        src: templates/ifcfg_static.j2
+        dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item.name }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: eth.static is defined
+      with_items:
+        - '{{ eth.static }}'
+
+    - name: reload eth static
+      shell: "ifdown {{ item.name }}; ifup {{ item.name }}"
+      when: eth.static is defined
+      with_items:
+        - '{{ eth.static }}'
+
+    - name: Configure IPv4 static routes
+      template:
+        src: templates/route.j2
+        dest: "/etc/sysconfig/network-scripts/route-{{ item.dev }}"
+        owner: root
+        group: root
+        mode: 0644
+      when: routes is defined
+      with_items:
+        - '{{ routes }}'
+
+    - name: reload static routes
+      shell: "ifdown {{ item.dev }}; ifup {{ item.dev }}"
+      when: routes is defined
+      with_items:
+        - '{{ routes }}'
+
+    - name: Copy SystemD unit for iperf3
+      copy:
+        src: configs/iperfd.service
+        dest: /etc/systemd/system/iperfd.service
+        owner: root
+        group: root
+        mode: 0644
+      when: iperf_server is defined
+
+    - name: Enable iperf service
+      systemd:
+        state: started
+        name: iperfd
+        enabled: yes
+        daemon_reload: yes
+      when: iperf_server is defined
+
+# OpenVPN TAP
+
+    - name: Copy key for TAP/TUN tunnels
+      copy:
+        src: keys/static.key
+        dest: /etc/openvpn/static.key
+        owner: root
+        group: root
+        mode: 0644
+      when: openvpn_s2s is defined
+
+    - set_fact: tunnel_type=tap
+
+    - name: Configure OpenVPN for TAP tunnel
+      template:
+        src: "templates/openvpn_{{ item }}.conf.j2"
+        dest: "/etc/openvpn/{{ item }}.conf"
+        owner: root
+        group: root
+        mode: 0644
+      when: openvpn_s2s is defined
+      with_items:
+        - "{{ openvpn_s2s }}"
+
+    - name: Enable OpenVPN service on Server
+      systemd:
+        state: restarted
+        name: "openvpn@{{ item }}"
+        enabled: yes
+      when: openvpn_s2s is defined
+      with_items:
+        - "{{ openvpn_s2s }}"
+
+    - name: Pause for 5 seconds
+      pause:
+        seconds: 5
+
+    - name: Run iperf3 client
+      shell: iperf3 -c 10.1.3.1 -t 40 -i 5
+      when: iperf_client is defined
+      register: result_tap
+
+# OpenVPN TAP
+
+    - set_fact: tunnel_type=tun
+
+    - name: Configure OpenVPN for TUN tunnel
+      template:
+        src: "templates/openvpn_{{ item }}.conf.j2"
+        dest: "/etc/openvpn/{{ item }}.conf"
+        owner: root
+        group: root
+        mode: 0644
+      when: openvpn_s2s is defined
+      with_items:
+        - "{{ openvpn_s2s }}"
+
+    - name: Restart OpenVPN service on Server
+      systemd:
+        state: restarted
+        name: "openvpn@{{ item }}"
+        enabled: yes
+      when: openvpn_s2s is defined
+      with_items:
+        - "{{ openvpn_s2s }}"
+
+    - name: Pause for 5 seconds
+      pause:
+        seconds: 5
+
+    - name: Run iperf3 client
+      shell: iperf3 -c 10.1.3.1 -t 40 -i 5
+      when: iperf_client is defined
+      register: result_tun
+
+    - name: Dispaly TAP speed
+      debug: 
+        var: result_tap.stdout_lines
+      when: result_tap.stdout_lines is defined
+
+    - name: Dispaly TUN speed
+      debug: 
+        var: result_tun.stdout_lines
+      when: result_tun.stdout_lines is defined
+
+# OpenVPN RAS
+
+    - name: Copy OpenVPN RAS PKI
+      copy:
+        src: keys/pki
+        dest: /etc/openvpn
+        owner: root
+        group: root
+      when: openvpn_ras is defined
+
+    - name: Copy ta.key
+      copy:
+        src: keys/ta.key
+        dest: /etc/openvpn/
+        owner: root
+        group: root
+      when: openvpn_ras is defined
+
+    - name: Configure RAS server
+      copy:
+        src: configs/ras_server.conf
+        dest: /etc/openvpn/server.conf
+        owner: root
+        group: root
+        mode: 0644
+      when: openvpn_ras is defined
+
+    - name: Restart OpenVPN service on Server
+      systemd:
+        state: restarted
+        name: openvpn@server
+        enabled: yes
+      when: openvpn_ras is defined

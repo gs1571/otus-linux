@@ -1,0 +1,11 @@
+forwarding: yes
+eth:
+    static:
+        - name: eth1
+          ipaddr: 10.2.3.2
+          netmask: 255.255.255.0
+        - name: eth2
+          ipaddr: 10.1.2.2
+          netmask: 255.255.255.0
+
+
