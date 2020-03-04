@@ -180,6 +180,16 @@
     - [Installing WordPress « WordPress Codex](https://wordpress.org/support/article/how-to-install-wordpress/)
     - [PHP: FastCGI Process Manager (FPM) - Manual](http://php.net/manual/en/install.fpm.php)
     - [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_72/rzab6/xnonblock.htm)
+* [Lab29: MySQL](lab29/README.md)
+    - [Введение в PERFORMANCE_SCHEMA](https://habr.com/post/126358/)
+    - [mysql_replication - Manage MySQL replication — Ansible Documentation](https://docs.ansible.com/ansible/2.5/modules/mysql_replication_module.html)
+    - [How To Configure MySQL Backups with Percona XtraBackup on Ubuntu 16.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-mysql-backups-with-percona-xtrabackup-on-ubuntu-16-04)
+    - [Корректная настройка MySQL для работы с UTF8](http://gahcep.github.io/blog/2013/01/05/mysql-utf8/)
+    - [Производительность MySQL | Сергей Маненок](http://manenok.pp.ua/tunning-mysql/)
+    - [Как настроить MySQL Master-Slave репликацию?](https://ruhighload.com/%D0%9A%D0%B0%D0%BA+%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+mysql+master-slave+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8E%3F)
+    - [Percona XtraBackup Feature Comparison](https://www.percona.com/software/mysql-database/percona-xtrabackup/feature-comparison)
+    - []
+
 
 # Инструкции
 
