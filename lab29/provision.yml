@@ -16,6 +16,18 @@
         - "LANG=en_US.utf-8"
         - "LC_ALL=en_US.utf-8"
 
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install Python modeules for MySQL
+      yum:
+        name: 
+          - MySQL-python
+          - python2-PyMySQL
+        state: present
+
     - name: Install Percona repo
       yum:
         name: http://www.percona.com/downloads/percona-release/redhat/0.1-6/percona-release-0.1-6.noarch.rpm
@@ -31,6 +43,113 @@
         name: Percona-Server-server-57
         state: present
 
+    - name: Copy configuration
+      copy:
+        src: "{{ item }}"
+        dest: /etc/my.cnf.d/
+      with_items:
+        - conf/conf.d/01-base.cnf
+        - conf/conf.d/02-max-connections.cnf
+        - conf/conf.d/03-performance.cnf
+        - conf/conf.d/04-slow-query.cnf
+        - conf/conf.d/05-binlog.cnf
 
+    - name: Modify slave config
+      lineinfile:
+        path: "{{ item.path }}"
+        line: "{{ item.line }}"
+        regexp: "{{ item.regexp }}"
+        state: present
+      with_items:
+        - { path: "/etc/my.cnf.d/01-base.cnf", regexp: "^server-id", line: "server-id = 2" }
+        - { path: "/etc/my.cnf.d/05-binlog.cnf", regexp: "^replicate-ignore-table=bet.events_on_demand", line: "replicate-ignore-table=bet.events_on_demand" }
+        - { path: "/etc/my.cnf.d/05-binlog.cnf", regexp: "^replicate-ignore-table=bet.v_same_event", line: "replicate-ignore-table=bet.v_same_event" }
+      when: role is defined and role == 'slave'
 
+    - name: Run MySQL
+      systemd:
+        state: started
+        name: mysql
+        enabled: yes        
 
+    - name: Getting generated mysql password
+      shell: "cat /var/log/mysqld.log | grep 'root@localhost:' | awk '{print $11}'"
+      register: gen_pass
+
+    - debug:
+        var: gen_pass.stdout_lines
+
+    - name: Setting mysql password
+      shell: "mysql -uroot -p{{ gen_pass.stdout_lines[0]}} --connect-expired-password -Ns -e \"ALTER USER USER() IDENTIFIED BY '{{ mysql_pass }}';\" "
+      ignore_errors: yes
+
+    - name: Copy my.cnf
+      template:
+        src: .my.cnf.j2
+        dest: /root/.my.cnf
+        mode: 0600
+
+#    - name: Drop database bet
+#      shell: "mysql -uroot -p{{ gen_pass.stdout_lines[0]}} --connect-expired-password -Ns -e \"DROP DATABASE bet;\" "
+#
+#    - name: Create databse bet
+#      shell: "mysql -uroot -p{{ gen_pass.stdout_lines[0]}} --connect-expired-password -Ns -e \"CREATE DATABASE bet;\" "
+#      when: role is defined and role == 'master'
+#
+#    - name: Load data to bet
+#      shell: "mysql -uroot -p{{ gen_pass.stdout_lines[0]}} -D bet < /vagrant/bet.dmp "
+#      when: role is defined and role == 'master'
+
+    - name: Drop database bet
+      mysql_db:
+        login_unix_socket: /var/lib/mysql/mysql.sock
+        name: bet
+        state: absent
+      
+    - name: Create database bet
+      mysql_db:
+        login_unix_socket: /var/lib/mysql/mysql.sock
+        name: bet
+        state: present
+      when: role is defined and role == 'master'
+
+    - name: Load data to bet
+      shell: "mysql -uroot -p{{ mysql_pass }} -D bet < /vagrant/bet.dmp "
+      when: role is defined and role == 'master'
+
+    - name: Remove previously created replication user
+      mysql_user:
+        login_unix_socket: /var/lib/mysql/mysql.sock
+        name: repl
+        host_all: yes
+        state: absent
+
+    - name: Create replication user
+      shell: "mysql -uroot -p{{ mysql_pass }} -Bse \" CREATE USER 'repl'@'%' IDENTIFIED BY '!OtusLinux2018'; GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%' IDENTIFIED BY '!OtusLinux2018';\" "
+      when: role is defined and role == 'master'
+
+    - name: Disable replication on slave
+      shell: "mysql -uroot -p{{ mysql_pass }} -Bse \" STOP SLAVE;\" "
+      when: role is defined and role == 'slave'
+
+    - name: Configure replication on slave
+      shell: "mysql -uroot -p{{ mysql_pass }} -Bse \" CHANGE MASTER TO MASTER_HOST = '192.168.11.150', MASTER_PORT = 3306, MASTER_USER = 'repl', MASTER_PASSWORD = '!OtusLinux2018', MASTER_AUTO_POSITION = 1;\" "
+      when: role is defined and role == 'slave'
+
+    - name: Enable replication on slave
+      shell: "mysql -uroot -p{{ mysql_pass }} -Bse \" START SLAVE;\" "
+      when: role is defined and role == 'slave'
+
+    - name: Pause for 10 seconds
+      pause:
+        seconds: 10
+
+    - name: Get status of replication
+      shell: "mysql -uroot -p{{ mysql_pass }} -Bse \" SHOW SLAVE STATUS\\G\" "
+      register: replication_status
+      when: role is defined and role == 'slave'
+
+    - name: Print status
+      debug: 
+        var: replication_status.stdout_lines
+      when: replication_status.stdout_lines is defined
