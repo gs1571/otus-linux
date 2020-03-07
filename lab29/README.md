@@ -6,7 +6,7 @@
 Важно заметить, что playbook не идепонентен!
 
 После этого можно зайти в базы и протестировать работу репликации, для этого после подключения к VM по ssh требуется зайти в пользователя и запустить mysql:
-```bash
+```
 $ sudo su root
 # mysql
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -209,5 +209,5 @@ DELIMITER ;
 /*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;
 ```
 
-## Полезная информаци�
+## Полезная информаци
 
