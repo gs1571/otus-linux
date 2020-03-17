@@ -188,6 +188,17 @@
     - [Производительность MySQL | Сергей Маненок](http://manenok.pp.ua/tunning-mysql/)
     - [Как настроить MySQL Master-Slave репликацию?](https://ruhighload.com/%D0%9A%D0%B0%D0%BA+%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C+mysql+master-slave+%D1%80%D0%B5%D0%BF%D0%BB%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D1%8E%3F)
     - [Percona XtraBackup Feature Comparison](https://www.percona.com/software/mysql-database/percona-xtrabackup/feature-comparison)
+* [Lab30: Почта: SMTP, IMAP, POP3](lab30/README.md)
+* [Lab31: MySQL - бэкап, репликация, кластер](lab31/README.md)
+    - [Percona XtraBackup 2.4 Documentation](https://learn.percona.com/hubfs/Manuals/Percona_Xtra_Backup/Percona_XtraBackup_2.4/Percona-XtraBackup-2.4.6.pdf)
+    - [Percona XtraDB Cluster with ProxySQL | OTUS](https://otus.ru/nest/post/527/)
+    - [Everything You Need to Know About MySQL Group Replication](https://www.percona.com/live/17/sites/default/files/slides/EverythingYouNeedToKnowAboutMySQLGroupReplication.pdf)
+    - [MySQL8_Replication.pdf](lab31/MySQL8_Replication-4560.pdf)
+    - [Linux-Mysql-Clusters-2.pdf](lab31/Linux_Mysql_Clusters_2-4560-6b3bb1.pdf)
+    - [Failover with the MySQL Utilities: Part 2 - mysqlfailover](https://www.percona.com/blog/2014/07/03/failover-mysql-utilities-part-2-mysqlfailover/)
+    - [5.9 mysqlfailover — Automatic replication health monitoring and failover](https://docs.oracle.com/cd/E17952_01/mysql-utilities-1.4-en/mysqlfailover.html)
+    - [Quick Start Guide for Percona XtraDB Cluster](https://www.percona.com/doc/percona-xtradb-cluster/LATEST/overview.html)
+    - [Percona XtraDB Cluster 5.7 Tutorial - FileId - 115295.pdf](https://www.percona.com/live/e17/sites/default/files/slides/Percona%20XtraDB%20Cluster%205.7%20Tutorial%20-%20FileId%20-%20115295.pdf)
 
 
 # Инструкции
