@@ -1,0 +1,4 @@
+[routers]
+pg ansible_host=127.0.0.1 ansible_port=63201 ansible_private_key_file=.vagrant/machines/pg/virtualbox/private_key
+backup ansible_host=127.0.0.1 ansible_port=63202 ansible_private_key_file=.vagrant/machines/backup/virtualbox/private_key
+replica ansible_host=127.0.0.1 ansible_port=63203 ansible_private_key_file=.vagrant/machines/replica/virtualbox/private_key

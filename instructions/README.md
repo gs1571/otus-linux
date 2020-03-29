@@ -22,3 +22,7 @@
 ## books
 How linux works 
 UNIX AND LINUX SYSTEM ADMINISTRATION HANDBOOK by Evi Nemeth 
+
+## Parallel vagrant up
+
+vagrant status | awk 'BEGIN{ tog=0; } /^$/{ tog=!tog; } /./ { if(tog){print $1} }' | xargs -P10 -I {} vagrant up {} --no-provision

@@ -1,0 +1,83 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+
+MACHINES = {
+    :pg => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 63201},
+        :net => [
+                   {adapter: 2, ip: "192.168.50.10", virtualbox__intnet: "dc"},
+                ]
+    },
+    :backup => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 63202},
+        :net => [
+                    {adapter: 2, ip: "192.168.50.100", virtualbox__intnet: "dc"},
+                ]
+    },
+    :replica => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 63203},
+        :net => [
+                    {adapter: 2, ip: "192.168.50.200", virtualbox__intnet: "dc"},
+                ]
+    },
+
+}
+
+Vagrant.configure("2") do |config|
+
+    MACHINES.each do |boxname, boxconfig|
+
+        config.vm.define boxname do |box|
+
+            box.vm.box = boxconfig[:box_name]
+            box.vm.host_name = boxname.to_s
+
+            #boxconfig[:fwd].each do |fwdconf|
+            #    box.vm.network "forwarded_port", fwdconf
+            #end
+
+            if boxconfig.key?(:fwd)
+                box.vm.network "forwarded_port", boxconfig[:fwd]
+            end
+
+            boxconfig[:net].each do |ipconf|
+                box.vm.network "private_network", ipconf
+            end
+            
+            if boxconfig.key?(:public)
+                box.vm.network "public_network", boxconfig[:public]
+            end
+
+            box.vm.provider :virtualbox do |vb|
+                vb.customize ["modifyvm", :id, "--memory", "2048"]
+                vb.customize ["modifyvm", :id, "--cpus", "4"]
+            end
+
+#            box.vm.provision "shell", inline: <<-SHELL
+#                mkdir -p ~root/.ssh
+#                cp ~vagrant/.ssh/auth* ~root/.ssh
+#                # correct locale
+#                echo "LANG=en_US.utf-8" > /etc/environment
+#                echo "LC_ALL=en_US.utf-8" > /etc/environment
+#            SHELL
+            
+            case boxname.to_s
+
+            when "replica"
+                box.vm.provision "ansible" do |ansible|
+                    ansible.compatibility_mode = "2.0"
+                    ansible.playbook = "provision.yml"
+                    ansible.verbose = "false"
+                    ansible.become = "true"
+                    ansible.limit = "all"
+                end
+
+            end
+        end
+    end
+end

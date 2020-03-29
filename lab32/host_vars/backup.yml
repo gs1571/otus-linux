@@ -1,0 +1,9 @@
+packages:
+    - bash-completion
+    - bash-completion-extras
+    - vim-enhanced
+    - postgresql10-server
+    - postgresql10
+    - barman
+
+state: backup

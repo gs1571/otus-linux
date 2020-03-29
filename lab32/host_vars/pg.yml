@@ -1,0 +1,9 @@
+packages:
+    - bash-completion
+    - bash-completion-extras
+    - vim-enhanced
+    - postgresql10-server
+    - barman-cli
+    - unzip
+
+state: pg

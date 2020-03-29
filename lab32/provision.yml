@@ -1,0 +1,269 @@
+---
+- name: Provsioning LAB:32 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    # General configuration of hosts
+
+    - name: Fix locale
+      lineinfile:
+        path: /etc/environment
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - "LANG=en_US.utf-8"
+        - "LC_ALL=en_US.utf-8"
+
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+
+    - name: Install EPEL
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Update hosts file
+      lineinfile:
+        path: /etc/hosts
+        line: "{{ item }}"
+      with_items:
+        - "192.168.50.10 pg"
+        - "192.168.50.100 backup"
+        - "192.168.50.200 replica"
+
+    - name: Install PostgreSQL repo
+      yum:
+        name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+        state: present
+
+    - name: Exclude barman from PostgreSQL repo
+      lineinfile:
+        path: /etc/yum.repos.d/pgdg-redhat-all.repo
+        line: exclude=barman*
+        state: present
+      when: state is defined and state == "backup"
+
+    - name: Install Barman repo
+      shell: curl https://dl.2ndquadrant.com/default/release/get/10/rpm | sudo bash
+      when: state is defined and state == "backup"
+      
+    - name: Install packages
+      yum:
+        name: '{{ packages }}'
+        state: present
+      when: packages is defined   
+
+    # Configuration Server
+      
+    - name: Initialize the Database
+      command: /usr/pgsql-10/bin/postgresql-10-setup initdb
+      args:
+        creates: /var/lib/pgsql/10/data/base
+      when: state is defined and state == "pg"
+
+    - name: Copy files on Server host
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: postgres
+        group: postgres
+      when: state is defined and state == "pg"
+      with_items:
+        - { src: 'pg/var/lib/pgsql/10/data/pg_hba.conf', dest: '/var/lib/pgsql/10/data/pg_hba.conf'}
+        - { src: 'pg/var/lib/pgsql/10/data/postgresql.conf', dest: '/var/lib/pgsql/10/data/postgresql.conf'}
+
+    - name: Run PostgreSQL
+      systemd:
+        state: restarted
+        name: postgresql-10
+        enabled: yes
+      when: state is defined and state == "pg"
+
+    - name: Create database users
+      postgresql_user:
+        db: postgres
+        name: "{{ item.name }}"
+        password: "{{ item.password }}"
+        role_attr_flags: "{{ item.flags }}"
+      become: true
+      become_user: postgres
+      when: state is defined and state == "pg"
+      with_items:
+        - { name: barman, password: 1qa@WS3ed, flags: SUPERUSER}
+        - { name: replica, password: 1qa@WS3ed, flags: REPLICATION,LOGIN}
+
+    - name: Remove demo databse if exists
+      postgresql_db:
+        name: demo
+        state: absent
+      become: true
+      become_user: postgres
+      when: state is defined and state == "pg"
+
+    - name: Get demo database
+      unarchive:
+        src: https://edu.postgrespro.ru/demo-small-20161013.zip
+        dest: /var/tmp
+        remote_src: yes
+      when: state is defined and state == "pg"
+    
+    - name: Load demo database to PostgreSQL
+      become: true 
+      become_user: postgres
+      shell: psql -f /var/tmp/demo_small.sql
+      when: state is defined and state == "pg"
+
+    # Configuration Replica
+
+#    - name: Create slot for replication
+#      shell: sudo -u postgres psql -c "SELECT pg_create_physical_replication_slot('replica_slot');"
+#      when: state is defined and state == "pg"
+#      ignore_errors: yes
+
+    - name: Create physical slot for replication if doesn't exist
+      become_user: postgres
+      postgresql_slot:
+        slot_name: replica_slot
+      when: state is defined and state == "pg"
+
+    - name: Stop PostgreSQL
+      systemd:
+        state: stopped
+        name: postgresql-10
+      when: state is defined and state == "replica"
+
+    - name: Remove database folder if exists
+      file:
+        path: /var/lib/pgsql/10/data
+        state: absent
+      when: state is defined and state == "replica"
+
+    - name: Copy files on Replica host
+      copy:
+        src: replica/var/lib/pgsql/.pgpass
+        dest: /var/lib/pgsql/.pgpass
+        owner: postgres
+        group: postgres
+        mode: 0600
+      when: state is defined and state == "replica"
+
+    - name: PG_BASEBACKUP running
+      become_user: postgres
+      shell: pg_basebackup -h pg -D /var/lib/pgsql/10/data -U replica
+      when: state is defined and state == "replica"
+      ignore_errors: yes
+
+    - name: Copy files on Replica host
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: postgres
+        group: postgres
+      when: state is defined and state == "replica"
+      with_items:
+        - { src: 'replica/var/lib/pgsql/10/data/recovery.conf', dest: '/var/lib/pgsql/10/data/recovery.conf'}
+        - { src: 'replica/var/lib/pgsql/10/data/postgresql.conf', dest: '/var/lib/pgsql/10/data/postgresql.conf'}
+
+    - name: Run PostgreSQL
+      systemd:
+        state: restarted
+        name: postgresql-10
+        enabled: yes
+      when: state is defined and state == "replica"
+
+    # Configuration Barman backup
+
+    - name: Create a directory .ssh if it does not exist on Server
+      file:
+        path: /var/lib/pgsql/.ssh
+        state: directory
+        group: postgres
+        owner: postgres
+        mode: '0700'
+      when: state is defined and state == "pg"
+
+    - name: Create a directory .ssh if it does not exist on Backup
+      file:
+        path: /var/lib/barman/.ssh
+        state: directory
+        mode: '0700'
+        group: barman
+        owner: barman
+      when: state is defined and state == "backup"
+
+    - name: Set up authorized key on Server
+      openssh_keypair:
+        path: /var/lib/pgsql/.ssh/id_rsa
+        group: postgres
+        owner: postgres
+      when: state is defined and state == "pg"
+
+    - name: Retrieve public key from on Server
+      shell: cat /var/lib/pgsql/.ssh/id_rsa.pub
+      register: pg_public_key
+      when: state is defined and state == "pg"
+
+    - name: Add client public key to Backup
+      authorized_key:
+        user: barman
+        key: "{{ hostvars['pg'].pg_public_key.stdout }}"
+      when: state is defined and state == "backup"
+
+    - name: Set up authorized key on Backup
+      openssh_keypair:
+        path: /var/lib/barman/.ssh/id_rsa
+        group: barman
+        owner: barman
+      when: state is defined and state == "backup"
+
+    - name: Retrieve public key from on Backup
+      shell: cat /var/lib/barman/.ssh/id_rsa.pub
+      register: backup_public_key
+      when: state is defined and state == "backup"
+
+    - name: Add client public key to Server
+      authorized_key:
+        user: postgres
+        key: "{{ hostvars['backup'].backup_public_key.stdout }}"
+      when: state is defined and state == "pg"
+
+    - name: Copy files on Backup host
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: barman
+        group: barman
+        mode: 0600
+      when: state is defined and state == "backup"
+      with_items:
+        - { src: 'backup/var/lib/barman/.pgpass', dest: '/var/lib/barman/.pgpass'}
+        - { src: 'backup/var/lib/barman/.bash_profile', dest: '/var/lib/barman/.bash_profile'}
+        - { src: 'backup/etc/barman.d/pg.conf', dest: '/etc/barman.d/pg.conf'}
+        - { src: 'backup/etc/barman.conf', dest: '/etc/barman.conf'}
+
+    - name: Update path variable for cron
+      lineinfile:
+        path: /etc/crontab
+        line: "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/pgsql-10/bin"
+        regexp: "^PATH"
+        state: present
+      when: state is defined and state == "backup"
+
+    - name: Add job for backup
+      lineinfile:
+        path: /etc/crontab
+        line: "* * * * * barman /usr/bin/barman cron"
+        state: present
+      when: state is defined and state == "backup"
+
+    - name: Create slot and check WAL archive
+      shell: "{{ item }}"
+      ignore_errors: yes
+      when: state is defined and state == "backup"
+      with_items:
+        - barman receive-wal --create-slot pg
+        - barman switch-wal --force --archive --archive-timeout 60 pg
+        - barman switch-wal --force --archive --archive-timeout 60 pg

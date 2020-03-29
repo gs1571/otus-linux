@@ -199,6 +199,15 @@
     - [5.9 mysqlfailover — Automatic replication health monitoring and failover](https://docs.oracle.com/cd/E17952_01/mysql-utilities-1.4-en/mysqlfailover.html)
     - [Quick Start Guide for Percona XtraDB Cluster](https://www.percona.com/doc/percona-xtradb-cluster/LATEST/overview.html)
     - [Percona XtraDB Cluster 5.7 Tutorial - FileId - 115295.pdf](https://www.percona.com/live/e17/sites/default/files/slides/Percona%20XtraDB%20Cluster%205.7%20Tutorial%20-%20FileId%20-%20115295.pdf)
+* [Lab32: PostgreSQL](lab32/README.md)
+    - [Работа с PostgreSQL: настройка и масштабирование](https://postgresql.leopard.in.ua/)
+    - [PostgreSQL: Documentation: 11: PostgreSQL 11.5 Documentation](https://www.postgresql.org/docs/11/index.html)
+    - [Postgres Pro Standard : Документация: 11: Документация к Postgres Pro Standard 11.5.1](https://postgrespro.ru/docs/postgrespro/11/index)
+    - [PGTune - calculate configuration for PostgreSQL based on the maximum performance for a given hardware configuration](https://pgtune.leopard.in.ua/)
+    - [jfcoz/postgresqltuner](https://github.com/jfcoz/postgresqltuner)
+    - [Barman](https://www.pgbarman.org/)
+    - [wal-g/wal-g](https://github.com/wal-g/wal-g)
+    - [postgrespro/pg_probackup](https://github.com/postgrespro/pg_probackup)
 
 
 # Инструкции
