@@ -208,7 +208,14 @@
     - [Barman](https://www.pgbarman.org/)
     - [wal-g/wal-g](https://github.com/wal-g/wal-g)
     - [postgrespro/pg_probackup](https://github.com/postgrespro/pg_probackup)
-
+* [Lab33: PostgreSQL cluster](lab33/README.md)
+    - [Introduction — Patroni 1.5.6 documentation](https://patroni.readthedocs.io/en/latest/)
+    - [Эволюция отказоустойчивости в PostgreSQL: фаза репликации](https://habr.com/ru/company/pgdayrussia/blog/326440/)
+    - [Кластер PostgreSQL высокой надежности на базе Patroni, Haproxy, Keepalived](https://habr.com/ru/post/322036/)
+    - [Patroni Documentation, Release 1.6.3](https://patroni.readthedocs.io/en/latest/)
+    - [Кластер высокой доступности на postgresql 9.6 + repmgr + pgbouncer + haproxy + keepalived + контроль через telegram](https://habr.com/ru/company/etagi/blog/314000/)
+    - [Кластер pacemaker/corosync без валидола](https://habr.com/ru/company/postgrespro/blog/359230/)
+    - [Stolon vs. Patroni, HA решения для PostgreSQL](https://nastachku.ru/var/files/1/presentation/backend/2_Backend_7.pdf)
 
 # Инструкции
 

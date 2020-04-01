@@ -1,0 +1,16 @@
+---
+# Prepare host
+- name: Consul | Install required packages
+  yum:
+    name: unzip
+    state: present
+    update_cache: True
+
+# Install consul
+- include: install.yml
+  tags:
+    - install
+
+- include: configure.yml
+  tags:
+    - config

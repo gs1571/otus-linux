@@ -1,0 +1,58 @@
+---
+
+- name: Patroni | common | Fix locale
+  lineinfile:
+    path: /etc/environment
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "LANG=en_US.utf-8"
+    - "LC_ALL=en_US.utf-8"
+
+- name: Patroni | common | Turn off SELinux
+  selinux:
+    state: disabled
+
+- name: Patroni | install | Install EPEL
+  yum:
+    name: epel-release
+    state: present
+
+- name: Patroni | install | Install patroni requiered packages
+  yum:
+    name: "{{ yum_packages }}"
+    state: present
+
+- name: Patroni | install | Add postgresql-10 repo
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+    state: present
+
+- name: Patroni | install | Install postgresql-10
+  yum:
+    name: 
+      - postgresql10-server
+      - postgresql10
+    state: present
+
+- name: Patroni | install | Upgrade pip3
+  pip: 
+    name: pip
+    executable: pip3
+    state: latest
+
+- name: Patroni | install | Install pip3 packages
+  pip:
+    name: "{{ pip3_packages }}"
+    state: present
+    executable: pip3
+  tags:
+    - pip
+
+- name: Patroni | install | Install patroni
+  pip:
+    name: patroni[consul]
+    state: present
+    executable: pip3
+  tags:
+    - pip-patroni
