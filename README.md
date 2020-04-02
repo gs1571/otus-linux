@@ -222,6 +222,11 @@
     - [Как мы Redis Cluster готовили](https://habr.com/ru/post/320902/)
     - [Увеличение производительности Redis с помощью простого кластера](https://habr.com/ru/post/214131/)
     - [erlong15/vagrant-redis-cluster](https://github.com/erlong15/vagrant-redis-cluster.git)
+* [Lab36: Файловые хранилища - NFS, SMB, FTP](lab36/README.md)
+    - [Deploying NFS Server with 10GigE Network for Dell High Performance Clusters](lab36/dell_nfs_server.pdf)
+    - [NFS Tuning for Oracle: Introducing DTrace](lab36/2011_06_Hailey_NFS_Tuning.pdf)
+    - [Linux NFS faq](http://nfs.sourceforge.net/)
+    - [Включение Samba-сервера на базе Ubuntu в домен AD](https://technet.microsoft.com/ru-ru/jj680665.aspx)
 
 
 

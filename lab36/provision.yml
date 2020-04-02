@@ -1,0 +1,130 @@
+---
+- name: Provsioning LAB:36 enviroment
+  hosts: all
+  become: yes
+
+  tasks:
+
+    # General configuration of hosts
+
+    - name: Fix locale
+      lineinfile:
+        path: /etc/environment
+        line: "{{ item }}"
+        state: present
+      with_items:
+        - "LANG=en_US.utf-8"
+        - "LC_ALL=en_US.utf-8"
+
+    - name: Disable SELinux
+      selinux:
+        state: disabled
+
+#    - name: Install EPEL
+#      yum:
+#        name: epel-release
+#        state: present
+
+    - name: Install packages
+      yum:
+        name: nfs-utils
+        state: present
+
+    # Server configuration
+
+    - name: Disable NFSv4
+      blockinfile:
+        path: /etc/nfs.conf
+        block: |
+          [nfsd]
+          vers4=n
+          vers4.0=n
+          vers4.1=n
+          vers4.2=n
+        state: present
+      when: "'server' in inventory_hostname"
+
+    - name: Create NFS share directory if not exist
+      file:
+        path: "{{ item.path }}"
+        state: directory
+        mode: "{{ item.mode }}"
+      with_items:
+        - { path: /var/nfs_share/, mode: '0755' }
+        - { path: /var/nfs_share/upload, mode: '0757' }
+      when: "'server' in inventory_hostname"
+
+    - name: Add the directory to export
+      lineinfile:
+        path: /etc/exports
+        line: "/var/nfs_share/ *(rw)"
+        state: present
+      when: "'server' in inventory_hostname"
+
+    - name: Update exports
+      shell: exportfs -ra
+      when: "'server' in inventory_hostname"
+
+    - name: Restart NFS server
+      systemd:
+        state: restarted
+        name: nfs-server
+        enabled: yes
+      when: "'server' in inventory_hostname"
+
+    - name: Start firewalld
+      systemd:
+        state: started
+        name: firewalld
+      when: "'server' in inventory_hostname"
+
+    - name: Firewalld configuration
+      firewalld:
+        service: "{{ item }}"
+        permanent: yes
+        state: enabled
+        immediate: yes
+      with_items:
+        - nfs
+        - mountd
+        - rpc-bind
+      when: "'server' in inventory_hostname"
+
+    # Client configuration
+
+    - name: Create NFS share directory if not exist
+      file:
+        path: /mnt/nfs_share/
+        state: directory
+      when: "'client' in inventory_hostname"
+
+    - name: Enable auto mount of NFS share
+      lineinfile:
+        path: /etc/fstab
+        line: "192.168.50.10:/var/nfs_share /mnt/nfs_share   nfs	_netdev,noauto,x-systemd.automount,x-systemd.mount-timeout=10,timeo=14,x-systemd.idle-timeout=1min 0 00"
+        state: present
+      when: "'client' in inventory_hostname"
+
+    - name: Restart remote-fs daemon
+      systemd:
+        name: remote-fs.target
+        state: restarted
+        daemon_reload: yes
+      when: "'client' in inventory_hostname"
+
+    # Checking
+
+    - name: Touch a file with random name on NFS share
+      file:
+        path: "/mnt/nfs_share/upload/file{{ 99999 | random }}.txt"
+        state: touch
+      when: "'client' in inventory_hostname"
+
+    - name: Get status of NFS mount on client
+      command: findmnt -t nfs
+      register: output
+      when: "'client' in inventory_hostname"
+
+    - debug:
+        var: output.stdout_lines
+      when: "'client' in inventory_hostname"
