@@ -216,6 +216,14 @@
     - [Кластер высокой доступности на postgresql 9.6 + repmgr + pgbouncer + haproxy + keepalived + контроль через telegram](https://habr.com/ru/company/etagi/blog/314000/)
     - [Кластер pacemaker/corosync без валидола](https://habr.com/ru/company/postgrespro/blog/359230/)
     - [Stolon vs. Patroni, HA решения для PostgreSQL](https://nastachku.ru/var/files/1/presentation/backend/2_Backend_7.pdf)
+* Lab34: Redis, Memcached, RabbitMQ
+    - [RabbitMQ in cluster](https://piotrminkowski.wordpress.com/2017/02/28/rabbitmq-in-cluster/)
+    - [RABBIT MQ CLUSTERING GUIDE](https://medium.com/radio-africa-techblog/rabbit-mq-clustering-guide-8a1e756cf848)
+    - [Как мы Redis Cluster готовили](https://habr.com/ru/post/320902/)
+    - [Увеличение производительности Redis с помощью простого кластера](https://habr.com/ru/post/214131/)
+    - [erlong15/vagrant-redis-cluster](https://github.com/erlong15/vagrant-redis-cluster.git)
+
+
 
 # Инструкции
 
