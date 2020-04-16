@@ -1,0 +1,16 @@
+---
+patroni_scope_name: otus
+
+yum_packages:
+  - gcc 
+  - python3-devel
+  - python-pip 
+  - python3-pip 
+  - python-psycopg2
+  - python-setuptools
+  - python3-setuptools
+
+pip3_packages:
+  - psycopg2-binary
+  - setuptools
+  

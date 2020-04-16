@@ -1,0 +1,54 @@
+---
+- name: Common configuration
+  hosts: all
+  gather_facts: True
+  become: True
+
+  roles:
+    - common
+
+- name: Proxy configuration
+  hosts: proxy
+  gather_facts: True
+  become: True
+
+  roles:
+    - haproxy
+
+- name: DCS configuration
+  hosts: mon
+  gather_facts: True
+  become: True
+
+  roles:
+    - consul
+
+- name: Patroni configuration
+  hosts: db
+  gather_facts: True
+  become: True
+
+  roles:
+    - patroni
+
+#- name: Patroni install and configure role
+#  hosts: 
+#    - pg1
+#    - pg2
+#    - pg3
+#  gather_facts: True
+#  become_user: root
+#  become: True
+#
+#  roles:
+#    - patroni
+#
+#- name: Install and configure HAProxy
+#  hosts: haproxy
+#  gather_facts: True
+#  become_user: root
+#  become: True
+#  roles:
+#    - haproxy
+#  tags:
+#    - haproxy

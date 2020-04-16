@@ -1,0 +1,87 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+
+MACHINES = {
+  :hap1 => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 60001},
+        :ipv4_addr => '192.168.10.11',
+        :ipv6_addr => '2001:db8::11'
+  },
+  :hap2 => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 60002},
+        :ipv4_addr => '192.168.10.12',
+        :ipv6_addr => '2001:db8::12'
+  },
+  :pg1 => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 60003},
+        :ipv4_addr => '192.168.10.21',
+        :ipv6_addr => '2001:db8::21'
+  },
+  :pg2 => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 60004},
+        :ipv4_addr => '192.168.10.22',
+        :ipv6_addr => '2001:db8::22'
+  },
+  :pg3 => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 60005},
+        :ipv4_addr => '192.168.10.23',
+        :ipv6_addr => '2001:db8::23'
+  },
+  :mon => {
+        :box_name => "centos/7",
+        :fwd => {:guest => 22, :host => 60006},
+        :ipv4_addr => '192.168.10.30',
+        :ipv6_addr => '2001:db8::30'
+  },
+}
+
+Vagrant.configure("2") do |config|
+
+  MACHINES.each do |boxname, boxconfig|
+
+      config.vm.define boxname do |box|
+
+          box.vm.box = boxconfig[:box_name]
+          box.vm.host_name = boxname.to_s
+
+          box.vm.network "forwarded_port", boxconfig[:fwd]
+
+          box.vm.network "private_network", ip: boxconfig[:ipv4_addr]
+          box.vm.network "private_network", ip: boxconfig[:ipv6_addr]
+
+          box.vm.provider :virtualbox do |vb|
+            vb.customize ["modifyvm", :id, "--memory", "1048"]
+            vb.customize ["modifyvm", :id, "--cpus", "2"]
+
+          end
+
+            case boxname.to_s
+
+            when "mon"
+
+                  box.vm.provision "ansible" do |ansible|
+                        ansible.verbose = ""
+                        ansible.playbook = "provision.yml"
+                        ansible.become = "true"
+                        ansible.limit = "all"
+                        ansible.host_vars = {
+                              "hap1" => { "vrrp_state" => "master"},
+                              "hap2" => { "vrrp_state" => "backup"},
+                        }
+                        ansible.groups = {
+                              "proxy" => ["hap1", "hap2"],
+                              "db" => ["pg1", "pg2", "pg3"],
+                              "monitoring" => ["mon"]
+                        }
+                  end
+
+           end
+#=end
+      end
+  end
+end

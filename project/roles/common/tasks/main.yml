@@ -1,0 +1,26 @@
+---
+# tasks file for baseline
+- name: Fix locale
+  lineinfile:
+    path: /etc/environment
+    line: "{{ item }}"
+    state: present
+  with_items:
+    - "LANG=en_US.utf-8"
+    - "LC_ALL=en_US.utf-8"
+
+- name: Disable SELinux
+  selinux:
+    state: disabled
+
+- name: Install EPEL
+  yum:
+    name: epel-release
+    state: present
+
+- name: Update hosts file
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ item }}"
+  with_items: "{{ hosts_ipv4 }}"
+
