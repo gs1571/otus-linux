@@ -1,0 +1,24 @@
+---
+# vars file for roles/baseline
+hosts_ipv4:
+    - "192.168.10.10 hap"
+    - "192.168.10.11 hap1"
+    - "192.168.10.12 hap2"
+    - "192.168.10.21 pg1"
+    - "192.168.10.22 pg2"
+    - "192.168.10.23 pg3"
+    - "192.168.10.30 mon"
+
+hosts_ipv6:
+    - "2001:db8::10 hap"
+    - "2001:db8::11 hap1"
+    - "2001:db8::12 hap2"
+    - "2001:db8::21 pg1"
+    - "2001:db8::22 pg2"
+    - "2001:db8::23 pg3"
+    - "2001:db8::30 mon"
+
+yum_packages:
+  - vim-enhanced
+  - bash-completion
+  - bash-completion-extras
