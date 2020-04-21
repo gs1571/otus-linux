@@ -1,2 +1,5 @@
 ---
-# handlers file for roles/baseline
+- name: restart sshd
+  service: 
+    name: sshd
+    state: restarted

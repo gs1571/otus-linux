@@ -2,10 +2,14 @@
 hap1 ansible_host=127.0.0.1 vrrp_state=master ansible_user=vagrant ansible_port=60001 ansible_private_key_file=.vagrant/machines/hap1/virtualbox/private_key
 hap2 ansible_host=127.0.0.1 vrrp_state=backup ansible_user=vagrant ansible_port=60002 ansible_private_key_file=.vagrant/machines/hap2/virtualbox/private_key
 
+[task]
+task1 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60003 ansible_private_key_file=.vagrant/machines/task1/virtualbox/private_key
+#task2 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60004 ansible_private_key_file=.vagrant/machines/task2/virtualbox/private_key
+
 [db]
-pg1 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60003 ansible_private_key_file=.vagrant/machines/pg1/virtualbox/private_key 
-pg2 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60004 ansible_private_key_file=.vagrant/machines/pg2/virtualbox/private_key
-pg3 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60005 ansible_private_key_file=.vagrant/machines/pg3/virtualbox/private_key
+pg1 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60005 ansible_private_key_file=.vagrant/machines/pg1/virtualbox/private_key 
+pg2 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60006 ansible_private_key_file=.vagrant/machines/pg2/virtualbox/private_key
+pg3 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60007 ansible_private_key_file=.vagrant/machines/pg3/virtualbox/private_key
 
 [monitoring]
-mon ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60006 ansible_private_key_file=.vagrant/machines/mon/virtualbox/private_key
+mon ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60008 ansible_private_key_file=.vagrant/machines/mon/virtualbox/private_key

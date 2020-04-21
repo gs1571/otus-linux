@@ -1,0 +1,31 @@
+---
+- name: Add Docker repo
+  shell: yum-config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+  args:
+    creates: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install packages
+  yum:
+    name: '{{ yum_packages }}'
+    state: present
+
+- name: Upgrade pip
+  pip: 
+    name: pip
+    executable: pip2
+    state: latest
+
+- name: Install pip packages
+  pip:
+    name: "{{ pip_packages }}"
+    state: present
+    executable: pip2
+  tags:
+    - pip
+
+- name: Start Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: true
+    

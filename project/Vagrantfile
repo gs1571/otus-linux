@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
         box.vm.box_check_update = false
 
         box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "2048"]
+            vb.customize ["modifyvm", :id, "--memory", "3072"]
             vb.customize ["modifyvm", :id, "--cpus", "2"]
         end
     end
@@ -30,10 +30,42 @@ Vagrant.configure("2") do |config|
         box.vm.box_check_update = false
 
         box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "2048"]
+            vb.customize ["modifyvm", :id, "--memory", "3072"]
             vb.customize ["modifyvm", :id, "--cpus", "2"]
         end
     end
+
+    config.vm.define "task1" do |box|
+        box.vm.box = "centos/7"
+        box.vm.hostname = "task1"
+        
+        box.vm.network :private_network, ip: "192.168.10.14"
+        box.vm.network :private_network, ip: "2001:db8::14"
+        box.vm.network :forwarded_port, guest: 22, host: 60003, id: "ssh"
+
+        box.vm.box_check_update = false
+
+        box.vm.provider :virtualbox do |vb|
+            vb.customize ["modifyvm", :id, "--memory", "3072"]
+            vb.customize ["modifyvm", :id, "--cpus", "2"]
+        end
+    end
+
+#    config.vm.define "task2" do |box|
+#        box.vm.box = "centos/7"
+#        box.vm.hostname = "task2"
+#        
+#        box.vm.network :private_network, ip: "192.168.10.15"
+#        box.vm.network :private_network, ip: "2001:db8::15"
+#        box.vm.network :forwarded_port, guest: 22, host: 60004, id: "ssh"
+#
+#        box.vm.box_check_update = false
+#
+#        box.vm.provider :virtualbox do |vb|
+#            vb.customize ["modifyvm", :id, "--memory", "3072"]
+#            vb.customize ["modifyvm", :id, "--cpus", "2"]
+#        end
+#    end
 
     config.vm.define "pg1" do |box|
         box.vm.box = "centos/7"
@@ -41,7 +73,7 @@ Vagrant.configure("2") do |config|
         
         box.vm.network :private_network, ip: "192.168.10.21"
         box.vm.network :private_network, ip: "2001:db8::21"
-        box.vm.network :forwarded_port, guest: 22, host: 60003, id: "ssh"
+        box.vm.network :forwarded_port, guest: 22, host: 60005, id: "ssh"
 
         box.vm.box_check_update = false
 
@@ -57,7 +89,7 @@ Vagrant.configure("2") do |config|
         
         box.vm.network :private_network, ip: "192.168.10.22"
         box.vm.network :private_network, ip: "2001:db8::22"
-        box.vm.network :forwarded_port, guest: 22, host: 60004, id: "ssh"
+        box.vm.network :forwarded_port, guest: 22, host: 60006, id: "ssh"
 
         box.vm.box_check_update = false
 
@@ -73,7 +105,7 @@ Vagrant.configure("2") do |config|
         
         box.vm.network :private_network, ip: "192.168.10.23"
         box.vm.network :private_network, ip: "2001:db8::23"
-        box.vm.network :forwarded_port, guest: 22, host: 60005, id: "ssh"
+        box.vm.network :forwarded_port, guest: 22, host: 60007, id: "ssh"
 
         box.vm.box_check_update = false
 
@@ -89,7 +121,7 @@ Vagrant.configure("2") do |config|
         
         box.vm.network :private_network, ip: "192.168.10.30"
         box.vm.network :private_network, ip: "2001:db8::30"
-        box.vm.network :forwarded_port, guest: 22, host: 60006, id: "ssh"
+        box.vm.network :forwarded_port, guest: 22, host: 60008, id: "ssh"
 
         box.vm.box_check_update = false
 
@@ -109,6 +141,7 @@ Vagrant.configure("2") do |config|
             }
             ansible.groups = {
                     "proxy" => ["hap1", "hap2"],
+                    "task" => ["task1"],
                     "db" => ["pg1", "pg2", "pg3"],
                     "monitoring" => ["mon"]
             }

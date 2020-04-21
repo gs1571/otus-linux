@@ -31,24 +31,10 @@
   roles:
     - patroni
 
-#- name: Patroni install and configure role
-#  hosts: 
-#    - pg1
-#    - pg2
-#    - pg3
-#  gather_facts: True
-#  become_user: root
-#  become: True
-#
-#  roles:
-#    - patroni
-#
-#- name: Install and configure HAProxy
-#  hosts: haproxy
-#  gather_facts: True
-#  become_user: root
-#  become: True
-#  roles:
-#    - haproxy
-#  tags:
-#    - haproxy
+- name: AWX configuration
+  hosts: task, proxy
+  gather_facts: True
+  become: True
+
+  roles:
+    - awx-nodes

@@ -1,5 +1,4 @@
 ---
-# tasks file for baseline
 - name: Fix locale
   lineinfile:
     path: /etc/environment
@@ -23,9 +22,49 @@
     name: '{{ yum_packages }}'
     state: present
 
+- name: Enable NTP client
+  systemd:
+    name: ntpd
+    state: started
+
 - name: Update hosts file
   lineinfile:
     path: /etc/hosts
     line: "{{ item }}"
   with_items: "{{ hosts_ipv4 }}"
+
+- name: Create directory .ssh
+  file:
+    path: /home/vagrant/.ssh
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: '0700'
+
+- name: Copy SSH keys
+  template:
+    src: "{{ item.src }}"
+    dest: "/home/vagrant/.ssh/{{ item.dest }}"
+    mode: 0600
+    owner: vagrant
+    group: vagrant
+  with_items:
+    - { src: id_rsa, dest: id_rsa}
+    - { src: id_rsa.pub, dest: id_rsa.pub}
+
+- name: Update authorized_keys file
+  lineinfile:
+    path: /home/vagrant/.ssh/authorized_keys
+    line: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDjVzorAbaJftV0jAk2ttfQRtzJMUniEqrdNgDWoyjbGprtfjnVhk3VGlBAiQZwO94/cHKeIz0muH4/34iQmKcGnbj3rLFGrA646WB0yOMZJFtagKIEVW6/AK/zbmlwMalT/SOwYihSJhxGo7OMiAy63/e6imh5mLu8Lt13FLq9mOqeaeIRVYrXUPMV2j+7HKu0MQRXgvCV9rsCdQ+r9IrtDq2ruygHSAVf7T5Kk29sG5nbFQsXaeNrCAiBcO6A1DEkworGgCTZaZLXkdilHxoX0gbEkq5FoIq0WvwuFHO1sp7N6ndZcyeGgWDvLPOc4vNinh7DaKsspGDUS4bkhm0Z root@host"
+    owner: vagrant
+    group: vagrant
+    state: present
+
+
+#- name: Enable ssh password auth
+#  lineinfile:
+#    path: /etc/ssh/sshd_config
+#    regex: "^PasswordAuthentication"
+#    line: "PasswordAuthentication yes"
+#  notify: restart sshd
 

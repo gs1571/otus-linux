@@ -100,37 +100,53 @@ cli
 pip install "https://github.com/ansible/awx/archive/11.0.0.tar.gz#egg=awxkit&subdirectory=awxkit" --install-option="--install-scripts=/usr/bin"
 ```
 
+
+```
+sudo yum install -y ansible git
+```
 HA-AWX
 ```
 git clone https://github.com/sujiar37/AWX-HA-InstanceGroup.git
 cd AWX-HA-InstanceGroup/
-ansible-playbook -i inventory/hosts awx_ha.yml --skip-tags fw_rules --verbose
+ansible-playbook -i inventory/hosts awx_ha.yml --skip-tags fw_rules -vvvv
 ```
 ```
+cat > inventory/hosts
+[all]
+
 [awx_instance_group_web]
 hap1
 hap2
 
 [awx_instance_group_task]
-hap1
-hap2
+task1
 
-[all:vars]
-ansible_user=vagrant
-ansible_password=vagrant
+```
+```
+cat > inventory/group_vars/all.yml
+---
+ansible_user: vagrant
+ansible_password: vagrant
+### AWX Default Settings
+awx_unique_secret_key: awxsecret
+awx_admin_default_pass: password
 
-awx_unique_secret_key=awxsecret
-awx_admin_default_pass=password
+### Postgre DB details
+pg_db_host: "192.168.10.10"
+pg_db_pass: "awxpass"
+pg_db_port: "5000"
+pg_db_user: "awx"
+pg_db_name: "awx"
 
-pg_db_host=192.168.10.10
-pg_db_pass="awxpass"
-pg_db_port=5000
-pg_db_user="awx"
-pg_db_name="awx"
 
-rabbitmq_cookie="cookiemonster"
-rabbitmq_username="awx"
-rabbitmq_password="password"
+###  RabbitMQ default settings
+rabbitmq_cookie: "cookiemonster"
+rabbitmq_username: "awx"
+rabbitmq_password: "password"
+```
+Re run docker containers
+```
+cd /var/lib/awx/build_image && docker-compose restart
 ```
 
 ### Postgres Backup

@@ -65,3 +65,33 @@
     state: restarted
     daemon_reload: True
     enabled: true
+
+- name: Wait untill cluster is up and running
+  wait_for:
+    host: 192.168.10.10
+    port: 5000
+    delay: 10
+
+- name: Add database user - awx
+  postgresql_user:
+    login_host: 192.168.10.10
+    port: 5000
+    login_user: postgres
+    login_password: gfhjkm
+    name: awx
+    password: awxpass
+    state: present
+  when: inventory_hostname == 'pg1'
+    
+- name: Add database - awx
+  postgresql_db:
+    login_host: 192.168.10.10
+    port: 5000
+    login_user: postgres
+    login_password: gfhjkm
+    name: awx
+    owner: awx
+    state: present
+  when: inventory_hostname == 'pg1'
+
+
