@@ -1,40 +1,42 @@
 ---
 - name: Common configuration
   hosts: all
-  gather_facts: True
-  become: True
+  gather_facts: yes
+  become: yes
 
   roles:
     - common
 
-- name: Proxy configuration
+- name: Proxy deploy
   hosts: proxy
-  gather_facts: True
-  become: True
+  gather_facts: yes
+  become: yes
 
   roles:
     - haproxy
 
-- name: DCS configuration
+- name: Consul deploy
   hosts: mon
-  gather_facts: True
-  become: True
+  gather_facts: yes
+  become: yes
 
   roles:
     - consul
 
-- name: Patroni configuration
+- name: Patroni deploy
   hosts: db
-  gather_facts: True
-  become: True
+  gather_facts: yes
+  become: yes
 
   roles:
     - patroni
 
-- name: AWX configuration
-  hosts: task, proxy
-  gather_facts: True
-  become: True
+- name: AWX deploy
+  hosts: awx_instance_group_web, awx_instance_group_task
+  become: yes
+  become_method: sudo
+  max_fail_percentage: 0
 
   roles:
-    - awx-nodes
+    - rabbitmq_cluster
+    - awx_ha

@@ -1,15 +1,40 @@
-[proxy]
 hap1 ansible_host=127.0.0.1 vrrp_state=master ansible_user=vagrant ansible_port=60001 ansible_private_key_file=.vagrant/machines/hap1/virtualbox/private_key
 hap2 ansible_host=127.0.0.1 vrrp_state=backup ansible_user=vagrant ansible_port=60002 ansible_private_key_file=.vagrant/machines/hap2/virtualbox/private_key
-
-[task]
-task1 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60003 ansible_private_key_file=.vagrant/machines/task1/virtualbox/private_key
-#task2 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60004 ansible_private_key_file=.vagrant/machines/task2/virtualbox/private_key
-
-[db]
+task ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60003 ansible_private_key_file=.vagrant/machines/task1/virtualbox/private_key
 pg1 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60005 ansible_private_key_file=.vagrant/machines/pg1/virtualbox/private_key 
 pg2 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60006 ansible_private_key_file=.vagrant/machines/pg2/virtualbox/private_key
 pg3 ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60007 ansible_private_key_file=.vagrant/machines/pg3/virtualbox/private_key
+mon ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60008 ansible_private_key_file=.vagrant/machines/mon/virtualbox/private_key
+
+[all]
+
+[proxy]
+hap1
+hap2
+
+[db]
+pg1
+pg2
+pg3
 
 [monitoring]
-mon ansible_host=127.0.0.1 ansible_user=vagrant ansible_port=60008 ansible_private_key_file=.vagrant/machines/mon/virtualbox/private_key
+mon
+
+[awx_instance_group_web]
+hap1
+hap2
+
+[awx_instance_group_task]
+task
+
+[all:vars]
+awx_unique_secret_key: awxsecret
+awx_admin_default_pass: password
+pg_db_host: "192.168.10.10"
+pg_db_pass: "awxpass"
+pg_db_port: "5000"
+pg_db_user: "awx"
+pg_db_name: "awx"
+rabbitmq_cookie: "cookiemonster"
+rabbitmq_username: "awx"
+rabbitmq_password: "password"

@@ -3,148 +3,146 @@
 
 Vagrant.configure("2") do |config|
 
-    config.vm.define "hap1" do |box|
-        box.vm.box = "centos/7"
-        box.vm.hostname = "hap1"
-        
-        box.vm.network :private_network, ip: "192.168.10.11"
-        box.vm.network :private_network, ip: "2001:db8::11"
-        box.vm.network :forwarded_port, guest: 22, host: 60001, id: "ssh"
+  config.vm.define "hap1" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "hap1"
+    
+    box.vm.network :private_network, ip: "192.168.10.11"
+    box.vm.network :private_network, ip: "2001:db8::11"
+    box.vm.network :forwarded_port, guest: 22, host: 60001, id: "ssh"
 
-        box.vm.box_check_update = false
+    box.vm.box_check_update = false
 
-        box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "3072"]
-            vb.customize ["modifyvm", :id, "--cpus", "2"]
-        end
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "3072"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+
+  config.vm.define "hap2" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "hap2"
+    
+    box.vm.network :private_network, ip: "192.168.10.12"
+    box.vm.network :private_network, ip: "2001:db8::12"
+    box.vm.network :forwarded_port, guest: 22, host: 60002, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "3072"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+
+  config.vm.define "task" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "task"
+    
+    box.vm.network :private_network, ip: "192.168.10.13"
+    box.vm.network :private_network, ip: "2001:db8::13"
+    box.vm.network :forwarded_port, guest: 22, host: 60003, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "3072"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+
+  config.vm.define "pg1" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "pg1"
+    
+    box.vm.network :private_network, ip: "192.168.10.21"
+    box.vm.network :private_network, ip: "2001:db8::21"
+    box.vm.network :forwarded_port, guest: 22, host: 60005, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "1048"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+
+  config.vm.define "pg2" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "pg2"
+    
+    box.vm.network :private_network, ip: "192.168.10.22"
+    box.vm.network :private_network, ip: "2001:db8::22"
+    box.vm.network :forwarded_port, guest: 22, host: 60006, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "1048"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+
+  config.vm.define "pg3" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "pg3"
+    
+    box.vm.network :private_network, ip: "192.168.10.23"
+    box.vm.network :private_network, ip: "2001:db8::23"
+    box.vm.network :forwarded_port, guest: 22, host: 60007, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "1048"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
+    end
+  end
+
+  config.vm.define "mon" do |box|
+    box.vm.box = "centos/7"
+    box.vm.hostname = "mon"
+    
+    box.vm.network :private_network, ip: "192.168.10.30"
+    box.vm.network :private_network, ip: "2001:db8::30"
+    box.vm.network :forwarded_port, guest: 22, host: 60008, id: "ssh"
+
+    box.vm.box_check_update = false
+
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "1048"]
+      vb.customize ["modifyvm", :id, "--cpus", "2"]
     end
 
-    config.vm.define "hap2" do |box|
-        box.vm.box = "centos/7"
-        box.vm.hostname = "hap2"
-        
-        box.vm.network :private_network, ip: "192.168.10.12"
-        box.vm.network :private_network, ip: "2001:db8::12"
-        box.vm.network :forwarded_port, guest: 22, host: 60002, id: "ssh"
-
-        box.vm.box_check_update = false
-
-        box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "3072"]
-            vb.customize ["modifyvm", :id, "--cpus", "2"]
-        end
+    box.vm.provision "ansible" do |ansible|
+      ansible.verbose = ""
+      ansible.playbook = "provision.yml"
+      ansible.become = "true"
+      ansible.limit = "all"
+      ansible.host_vars = {
+        "hap1" => { "vrrp_state" => "master"},
+        "hap2" => { "vrrp_state" => "backup"},
+      }
+      ansible.groups = {
+        "all" => [],
+        "all:vars" => {
+          "awx_unique_secret_key" => "awxsecret",
+          "awx_admin_default_pass" => "password",
+          "pg_db_host" => "192.168.10.10",
+          "pg_db_pass" => "awxpass",
+          "pg_db_port" => "5000",
+          "pg_db_user" => "awx",
+          "pg_db_name" => "awx",
+          "rabbitmq_cookie" => "cookiemonster",
+          "rabbitmq_username" => "awx",
+          "rabbitmq_password" => "password"
+        },
+        "proxy" => ["hap1", "hap2"],
+        "db" => ["pg1", "pg2", "pg3"],
+        "monitoring" => ["mon"],
+        "awx_instance_group_web" => ["hap1", "hap2"],
+        "awx_instance_group_task" => ["task"],
+      }
     end
-
-    config.vm.define "task1" do |box|
-        box.vm.box = "centos/7"
-        box.vm.hostname = "task1"
-        
-        box.vm.network :private_network, ip: "192.168.10.14"
-        box.vm.network :private_network, ip: "2001:db8::14"
-        box.vm.network :forwarded_port, guest: 22, host: 60003, id: "ssh"
-
-        box.vm.box_check_update = false
-
-        box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "3072"]
-            vb.customize ["modifyvm", :id, "--cpus", "2"]
-        end
-    end
-
-#    config.vm.define "task2" do |box|
-#        box.vm.box = "centos/7"
-#        box.vm.hostname = "task2"
-#        
-#        box.vm.network :private_network, ip: "192.168.10.15"
-#        box.vm.network :private_network, ip: "2001:db8::15"
-#        box.vm.network :forwarded_port, guest: 22, host: 60004, id: "ssh"
-#
-#        box.vm.box_check_update = false
-#
-#        box.vm.provider :virtualbox do |vb|
-#            vb.customize ["modifyvm", :id, "--memory", "3072"]
-#            vb.customize ["modifyvm", :id, "--cpus", "2"]
-#        end
-#    end
-
-    config.vm.define "pg1" do |box|
-        box.vm.box = "centos/7"
-        box.vm.hostname = "pg1"
-        
-        box.vm.network :private_network, ip: "192.168.10.21"
-        box.vm.network :private_network, ip: "2001:db8::21"
-        box.vm.network :forwarded_port, guest: 22, host: 60005, id: "ssh"
-
-        box.vm.box_check_update = false
-
-        box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "1048"]
-            vb.customize ["modifyvm", :id, "--cpus", "2"]
-        end
-    end
-
-    config.vm.define "pg2" do |box|
-        box.vm.box = "centos/7"
-        box.vm.hostname = "pg2"
-        
-        box.vm.network :private_network, ip: "192.168.10.22"
-        box.vm.network :private_network, ip: "2001:db8::22"
-        box.vm.network :forwarded_port, guest: 22, host: 60006, id: "ssh"
-
-        box.vm.box_check_update = false
-
-        box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "1048"]
-            vb.customize ["modifyvm", :id, "--cpus", "2"]
-        end
-    end
-
-    config.vm.define "pg3" do |box|
-        box.vm.box = "centos/7"
-        box.vm.hostname = "pg3"
-        
-        box.vm.network :private_network, ip: "192.168.10.23"
-        box.vm.network :private_network, ip: "2001:db8::23"
-        box.vm.network :forwarded_port, guest: 22, host: 60007, id: "ssh"
-
-        box.vm.box_check_update = false
-
-        box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "1048"]
-            vb.customize ["modifyvm", :id, "--cpus", "2"]
-        end
-    end
-
-    config.vm.define "mon" do |box|
-        box.vm.box = "centos/7"
-        box.vm.hostname = "mon"
-        
-        box.vm.network :private_network, ip: "192.168.10.30"
-        box.vm.network :private_network, ip: "2001:db8::30"
-        box.vm.network :forwarded_port, guest: 22, host: 60008, id: "ssh"
-
-        box.vm.box_check_update = false
-
-        box.vm.provider :virtualbox do |vb|
-            vb.customize ["modifyvm", :id, "--memory", "1048"]
-            vb.customize ["modifyvm", :id, "--cpus", "2"]
-        end
-
-        box.vm.provision "ansible" do |ansible|
-            ansible.verbose = ""
-            ansible.playbook = "provision.yml"
-            ansible.become = "true"
-            ansible.limit = "all"
-            ansible.host_vars = {
-                    "hap1" => { "vrrp_state" => "master"},
-                    "hap2" => { "vrrp_state" => "backup"},
-            }
-            ansible.groups = {
-                    "proxy" => ["hap1", "hap2"],
-                    "task" => ["task1"],
-                    "db" => ["pg1", "pg2", "pg3"],
-                    "monitoring" => ["mon"]
-            }
-        end
-    end
+  end
 end

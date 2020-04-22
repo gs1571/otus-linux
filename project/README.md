@@ -1,4 +1,4 @@
-# Project
+# High-Avalability Atomation platform based on AWX
 
 ## Description
 
@@ -8,18 +8,18 @@ The lab eviroment has:
   - keepalived
   - haproxy
 * WEB application
-  - AWX or something else
+  - AWX version 9.2.0
 * Database cluster
-  - patroni cluster of the three nodes
+  - PostgreSQL Patroni cluster with three nodes
+* Backup of the database
+  - pg_probackup
 * Loging server
   - journald
 * Monitoring server
   - grafana
   - prometheus
-* Backup server
-  - barman
 
-All of them will be connected to one network and spread over six VMs follow the diagram:
+All of them will be connected to one network and spread over seven VMs follow the diagram:
 
 ![network diagram](diagrams/network_diagram.png)
 
@@ -28,21 +28,71 @@ Functional diagram is presented below:
 ![functional diagram](diagrams/functional_diagram.png)
 
 Some specific points of the lab enviroments:
-- load balancer will support WEB application and DB cluster in the same time;
-- all the VMs interconnect with each other just over IPv6 (if I have enough time).
+- traffic to AWX web nodes balanced by VRRP since they can work in same time for management of AWX
+- at least of three task nodes is required for AWX cluster, since additional VM just for wax task purpose is intriduced
 
+Thanks a lot for Ansible roles of AWX cluster to [sujiar37](https://github.com/sujiar37). I adopted material from his repo https://github.com/sujiar37/AWX-HA-InstanceGroup.
+
+### Checklist
+
+* [x] Common config
+* [x] Keepalive pair
+* [x] HAProxy pair
+* [x] Patroni cluster
+* [x] AWX cluster
+* [-] Intermediate testing
+  - [x] shutdown hap1
+  - [x] no shutdown hap1
+  - [_] shutdown hap2
+  - [_] no shutdown hap2
+  - [_] shutdown task
+  - [_] no shutdown task
+  - [_] shutdown pg1
+  - [_] no shutdown pg1
+  - [x] shutdown pg2
+  - [x] no shutdown pg2
+  - [_] shutdown pg3
+  - [_] no shutdown pg3
+* [_] Postgres backup
+  - [_] databse
+  - [_] WAL
+* [_] Firewall
+* [_] Logging
+* [_] Prometheus
+* [_] Grafana
+* [_] Final testing
+  - [_] shutdown hap1
+  - [_] no shutdown hap1
+  - [_] shutdown hap2
+  - [_] no shutdown hap2
+  - [_] shutdown task
+  - [_] no shutdown task
+  - [_] shutdown pg1
+  - [_] no shutdown pg1
+  - [_] shutdown pg2
+  - [_] no shutdown pg2
+  - [_] shutdown pg3
+  - [_] no shutdown pg3
+
+Optional:
+* [_] IPv6
 
 ## Useful links and notes
 
-### Accounts
-
-* Patroni
-user: postgres
-password: gfhjkm
-
 ### Resources of the lab
 
-* [http://192.168.10.10:7000/] - HAProxy
+* HAPoxy
+ - url: [http://192.168.10.10:7000]
+
+* AWX
+  - url: [http://192.168.10.10]
+  - user: admin
+  - password: password
+
+* PostgreSQL
+  - url: psql://192.168.10.10:5000
+  - user: postgres
+  - password: gfhjkm
 
 ### How to check
 
@@ -65,6 +115,8 @@ https://github.com/sinist3rr/otus-linux/tree/master/PROJ
 * https://github.com/ansible/awx/blob/devel/INSTALL.md - official installation guide
 * https://github.com/sujiar37/AWX-HA-InstanceGroup - AWX on docker with HA
 * https://www.centlinux.com/2019/09/install-ansible-awx-with-docker-compose-on-centos-7.html - Install Ansible AWX with Docker-Compose on CentOS 7
+
+### Working notes (will be removed)
 
 pre-install
 ```
