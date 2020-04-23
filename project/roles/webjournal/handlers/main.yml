@@ -1,0 +1,11 @@
+---
+- name: nginx restart
+  systemd:
+    name: nginx
+    state: restarted
+
+- name: webjournal restart
+  systemd:
+    name: webjournal
+    state: restarted
+    daemon_reload: yes

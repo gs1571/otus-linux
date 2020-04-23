@@ -3,15 +3,42 @@
   hosts: all
   gather_facts: yes
   become: yes
-
+  tags:
+    - common
   roles:
     - common
+
+- name: Journal server configuration
+  hosts: mon
+  gather_facts: no
+  become: yes
+  tags:
+    - log
+  roles:
+    - journal_server
+
+- name: Webjournal configuration
+  hosts: mon
+  gather_facts: no
+  become: yes
+  tags:
+    - log
+  roles:
+    - webjournal
+
+- name: Journal client configuration
+  hosts: all
+  gather_facts: no
+  become: yes
+  tags:
+    - log
+  roles:
+    - journal_client
 
 - name: Proxy deploy
   hosts: proxy
   gather_facts: yes
   become: yes
-
   roles:
     - haproxy
 
@@ -19,7 +46,6 @@
   hosts: mon
   gather_facts: yes
   become: yes
-
   roles:
     - consul
 
@@ -27,16 +53,15 @@
   hosts: db
   gather_facts: yes
   become: yes
-
   roles:
     - patroni
 
-- name: AWX deploy
-  hosts: awx_instance_group_web, awx_instance_group_task
-  become: yes
-  become_method: sudo
-  max_fail_percentage: 0
-
-  roles:
-    - rabbitmq_cluster
-    - awx_ha
+#- name: AWX deploy
+#  hosts: awx_instance_group_web, awx_instance_group_task
+#  become: yes
+#  become_method: sudo
+#  max_fail_percentage: 0
+#
+#  roles:
+#    - rabbitmq_cluster
+#    - awx_ha

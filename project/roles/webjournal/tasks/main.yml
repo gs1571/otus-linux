@@ -1,0 +1,61 @@
+---
+
+- name: Install packages
+  yum:
+    name: '{{ yum_packages }}'
+    state: present
+
+- name: Copy webjournal app
+  copy:
+    src: '{{ role_path }}/{{ item }}'
+    dest: /opt/journal/
+    owner: root
+    group: root
+  with_items:
+    - 'files/web'
+    - 'files/webjournal.py'
+    - 'files/requirements.txt'
+
+- name: Upgrade pip
+  pip: 
+    name: pip
+    executable: pip2
+    state: latest
+
+- name: Install pip packages
+  pip:
+    requirements: /opt/journal/requirements.txt
+    state: present
+    executable: pip2
+
+- name: Replace nginx config
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+  notify: nginx restart
+
+- name: Copy systemd unit webjournal
+  template:
+    src: webjournal.service
+    dest: /etc/systemd/system/webjournal.service
+    owner: root
+    group: root
+  notify: webjournal restart
+
+- name: Enable webjournal
+  systemd:
+    name: webjournal
+    state: started
+    daemon_reload: yes
+
+- name: Force all notified handlers to run at this point, not waiting for normal sync points
+  meta: flush_handlers
+
+- name: Enable journal-remote
+  systemd:
+    name: systemd-journal-remote
+    state: started
+
+

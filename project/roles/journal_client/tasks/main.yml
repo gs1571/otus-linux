@@ -1,0 +1,20 @@
+---
+- name: Install packages
+  yum:
+    name: '{{ yum_packages }}'
+    state: present
+
+- name: Configure remote host for journal-upload
+  lineinfile:
+    path: /etc/systemd/journal-upload.conf
+    insertafter: '^\[Upload\]'
+    line: URL=http://192.168.10.30:19532
+    state: present
+  notify: journal-upload restart
+
+- name: Enable journal-upload
+  systemd:
+    name: systemd-journal-upload
+    enabled: yes
+    state: started
+

@@ -1,0 +1,6 @@
+---
+- name: journal-upload restart
+  systemd:
+    name: systemd-journal-upload
+    state: restarted
+    

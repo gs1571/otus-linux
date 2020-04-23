@@ -1,0 +1,4 @@
+---
+yum_packages:
+  - systemd-journal-gateway
+  - python2-pip

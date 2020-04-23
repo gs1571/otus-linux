@@ -33,56 +33,64 @@ Some specific points of the lab enviroments:
 
 Thanks a lot for Ansible roles of AWX cluster to [sujiar37](https://github.com/sujiar37). I adopted material from his repo https://github.com/sujiar37/AWX-HA-InstanceGroup.
 
+Thanks a lot for webjournal app for journald-remote to [skob](https://github.com/skob). I adopted material from his repo https://github.com/skob/journal.
+
 ### Checklist
 
 * [x] Common config
-* [x] Keepalive pair
+* [x] Keepalived pair
 * [x] HAProxy pair
 * [x] Patroni cluster
 * [x] AWX cluster
 * [-] Intermediate testing
   - [x] shutdown hap1
   - [x] no shutdown hap1
-  - [_] shutdown hap2
-  - [_] no shutdown hap2
-  - [_] shutdown task
-  - [_] no shutdown task
-  - [_] shutdown pg1
-  - [_] no shutdown pg1
+  - [-] shutdown hap2
+  - [-] no shutdown hap2
+  - [-] shutdown task
+  - [-] no shutdown task
+  - [-] shutdown pg1
+  - [-] no shutdown pg1
   - [x] shutdown pg2
   - [x] no shutdown pg2
-  - [_] shutdown pg3
-  - [_] no shutdown pg3
-* [_] Postgres backup
-  - [_] databse
-  - [_] WAL
-* [_] Firewall
-* [_] Logging
-* [_] Prometheus
-* [_] Grafana
-* [_] Final testing
-  - [_] shutdown hap1
-  - [_] no shutdown hap1
-  - [_] shutdown hap2
-  - [_] no shutdown hap2
-  - [_] shutdown task
-  - [_] no shutdown task
-  - [_] shutdown pg1
-  - [_] no shutdown pg1
-  - [_] shutdown pg2
-  - [_] no shutdown pg2
-  - [_] shutdown pg3
-  - [_] no shutdown pg3
+  - [-] shutdown pg3
+  - [-] no shutdown pg3
+* [-] Postgres backup
+  - [-] databse
+  - [-] WAL
+* [-] Firewall
+* [+] Logging
+  - [+] haproxy
+  - [+] patroni
+  - [-] consul
+  - [-] postgres
+  - [-] awx
+  - [-] pg_probackup
+* [-] Prometheus
+* [-] Grafana
+* [-] Final testing
+  - [-] shutdown hap1
+  - [-] no shutdown hap1
+  - [-] shutdown hap2
+  - [-] no shutdown hap2
+  - [-] shutdown task
+  - [-] no shutdown task
+  - [-] shutdown pg1
+  - [-] no shutdown pg1
+  - [-] shutdown pg2
+  - [-] no shutdown pg2
+  - [-] shutdown pg3
+  - [-] no shutdown pg3
 
 Optional:
-* [_] IPv6
+* [-] IPv6
 
 ## Useful links and notes
 
 ### Resources of the lab
 
 * HAPoxy
- - url: [http://192.168.10.10:7000]
+  - url: [http://192.168.10.10:7000]
 
 * AWX
   - url: [http://192.168.10.10]
@@ -94,27 +102,58 @@ Optional:
   - user: postgres
   - password: gfhjkm
 
+* webjournal
+  - url: [http://192.168.10.30]
+  
+* Consul
+  - url: [http://192.168.10.30:8500]
+
 ### How to check
 
 Patroni
 ```
 /usr/local/bin/patronictl -c /etc/patroni/patroni.yml list
+
 psql -U postgres -h 192.168.10.10 -p 5000
+
 postgres=# select * from pg_stat_replication;
+
+SELECT d.datname as "Name",
+pg_catalog.pg_get_userbyid(d.datdba) as "Owner"
+FROM pg_catalog.pg_database d
+WHERE d.datname = 'your_name'
+ORDER BY 1;
+```
+
+journald
+```
+journalctl -D /var/log/journal/remote/ --follow
 ```
 
 ### Otus projects
 
-https://otus.ru/nest/post/801/ 
-https://otus.ru/nest/post/384/ 
- https://otus.ru/nest/post/638/
-https://github.com/sinist3rr/otus-linux/tree/master/PROJ
+* https://otus.ru/nest/post/801/ 
+* https://otus.ru/nest/post/384/ 
+*  https://otus.ru/nest/post/638/
+* https://github.com/sinist3rr/otus-linux/tree/master/PROJ
+
+### HAProxy
+* https://dasunhegoda.com/how-to-setup-haproxy-with-keepalived/833/
 
 ### AWX
 
+Base version:
 * https://github.com/ansible/awx/blob/devel/INSTALL.md - official installation guide
+* https://www.centlinux.com/2019/09/install-ansible-use-playbooks-centos-7.html
+* https://www.centlinux.com/2019/09/install-ansible-awx-with-docker-compose-on-centos-7.html
+
+HA version:
 * https://github.com/sujiar37/AWX-HA-InstanceGroup - AWX on docker with HA
-* https://www.centlinux.com/2019/09/install-ansible-awx-with-docker-compose-on-centos-7.html - Install Ansible AWX with Docker-Compose on CentOS 7
+
+### Journald
+
+* https://habr.com/ru/company/southbridge/blog/317182/
+* https://sematext.com/docs/logagent/how-to-centralize-linux-system-journal/
 
 ### Working notes (will be removed)
 

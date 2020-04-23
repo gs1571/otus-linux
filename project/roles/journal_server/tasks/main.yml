@@ -1,0 +1,28 @@
+---
+- name: Install packages
+  yum:
+    name: '{{ yum_packages }}'
+    state: present
+
+- name: Create directory for journald-remote
+  file:
+    path: /var/log/journal/remote
+    state: directory
+    owner: systemd-journal-remote
+    group: systemd-journal-remote
+  notify: journal-remote restart
+
+- name: Configure journald-remote
+  lineinfile:
+    path: /lib/systemd/system/systemd-journal-remote.service
+    regexp: '--listen-https'
+    line: '--listen-http=-3 \'
+    state: present
+  notify: journal-remote restart
+
+- name: Enable journal-remote
+  systemd:
+    name: systemd-journal-remote
+    enabled: yes
+    daemon_reload: yes
+    state: started

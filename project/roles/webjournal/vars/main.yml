@@ -1,0 +1,11 @@
+---
+yum_packages:
+  - systemd-journal-gateway
+  - nginx
+  - python2-pip
+  - systemd-libs 
+  - systemd-python
+  - systemd-devel
+  - gcc
+  - python-devel
+

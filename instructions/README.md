@@ -9,6 +9,9 @@
 
 ## URLS
 
+### Vagrant
+- https://phoenixnap.com/kb/how-to-install-vagrant-on-centos-7
+
 ### tmux
 - [Краткая шпаргалка по tmux (менеджеру терминалов)](https://habr.com/ru/post/126996/)
 - [Терминальный сервер для админа; Ни единого SSH-разрыва](https://habr.com/ru/company/vdsina/blog/472746/)

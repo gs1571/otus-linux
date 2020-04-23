@@ -1,5 +1,4 @@
 ---
-# vars file for roles/baseline
 hosts_ipv4:
     - "192.168.10.10 hap"
     - "192.168.10.11 hap1"
