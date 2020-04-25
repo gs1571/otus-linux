@@ -26,3 +26,4 @@ yum_packages:
   - ntp
   - ntpdate
   - htop
+  - unzip

@@ -90,7 +90,7 @@ Thanks a lot for webjournal app for journald-remote to [skob](https://github.com
   - [ ] no shutdown pg3
 
 Optional:
-* [-] IPv6
+* [ ] IPv6
 
 ## Useful links and notes
 
