@@ -33,7 +33,7 @@
     line: "{{ item }}"
   with_items: "{{ hosts_ipv4 }}"
 
-- name: Create directory .ssh
+- name: Create directory .ssh for vagrant user
   file:
     path: /home/vagrant/.ssh
     state: directory
@@ -41,7 +41,7 @@
     group: vagrant
     mode: '0700'
 
-- name: Copy SSH keys
+- name: Copy SSH keys for vagrant user
   template:
     src: "{{ item.src }}"
     dest: "/home/vagrant/.ssh/{{ item.dest }}"

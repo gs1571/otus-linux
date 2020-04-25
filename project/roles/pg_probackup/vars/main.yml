@@ -1,6 +1,4 @@
 ---
-patroni_scope_name: otus
-
 yum_packages:
   - gcc 
   - python3-devel

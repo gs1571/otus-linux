@@ -17,8 +17,7 @@ bootstrap:
     postgresql:
       use_pg_rewind: true
       parameters:
-        archive_mode: "on"
-        archive_command: 'pg_probackup-11 archive-push -B /var/backup --instance dbdc2 --wal-file-path=%p --wal-file-name=%f --remote-host=10.23.2.163 && pg_probackup-11 archive-push -B /var/backup --instance dbdc2 --wal-file-path=%p --wal-file-name=%f --remote-host=10.23.1.185'
+        archive_mode: "off"
         max_parallel_workers: 8
         min_wal_size: 1GB
         max_wal_size: 2GB
@@ -60,7 +59,7 @@ postgresql:
   pg_hba:
   - local all all trust
   - host replication replicator 127.0.0.1/32 md5
-  - host replication replicator 192.168.10.0/24 md5
+  - host replication all 192.168.10.0/24 md5
   - host all all 0.0.0.0/0 md5
 
 log:

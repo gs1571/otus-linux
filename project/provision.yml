@@ -53,15 +53,27 @@
   hosts: db
   gather_facts: yes
   become: yes
+  tags: 
+    - db
   roles:
     - patroni
 
-#- name: AWX deploy
-#  hosts: awx_instance_group_web, awx_instance_group_task
-#  become: yes
-#  become_method: sudo
-#  max_fail_percentage: 0
-#
-#  roles:
-#    - rabbitmq_cluster
-#    - awx_ha
+- name: Backup deploy
+  hosts: mon
+  gather_facts: no
+  become: yes
+  tags: 
+    - db
+  roles:
+    - pg_probackup
+
+- name: AWX deploy
+  hosts: awx_instance_group_web, awx_instance_group_task
+  become: yes
+  become_method: sudo
+  max_fail_percentage: 0
+  tags:
+    - awx
+  roles:
+    - rabbitmq_cluster
+    - awx_ha

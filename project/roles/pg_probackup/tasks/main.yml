@@ -1,0 +1,188 @@
+---
+- name: Install packages
+  yum:
+    name: '{{ yum_packages }}'
+    state: present
+
+- name: Add pg_probackup repo
+  yum:
+    name: http://repo.postgrespro.ru/pg_probackup/keys/pg_probackup-repo-centos.noarch.rpm
+    state: present
+
+- name: Install pg_probackup
+  yum:
+    name: 
+      - pg_probackup-10
+      - pg_probackup-10-debuginfo
+    state: present
+
+- name: Add postgresql-10 repo
+  yum:
+    name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+    state: present
+
+- name: Install postgresql-10
+  yum:
+    name: 
+      - postgresql10-server
+      - postgresql10
+    state: present
+
+- name: Upgrade pip3
+  pip: 
+    name: pip
+    executable: pip3
+    state: latest
+
+- name: Install pip3 packages
+  pip:
+    name: "{{ pip3_packages }}"
+    state: present
+    executable: pip3
+  tags:
+    - pip
+
+- name: Copy .pgpass file for vagrant user
+  template:
+    src: .pgpass
+    dest: /home/vagrant/.pgpass
+    mode: '0600'
+    owner: vagrant
+    group: vagrant
+
+- name: Create directory for backup
+  file:
+    path: /var/lib/pgbackup
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: '0700'
+
+- name: Create directory for logs
+  file:
+    path: /var/log/pg_probackup
+    state: directory
+    owner: vagrant
+    group: vagrant
+
+- name: Initial backup directory
+  command: "pg_probackup-10 init -B /var/lib/pgbackup/"
+  become: yes
+  become_user: vagrant
+  ignore_errors: yes
+
+- name: Add instance for pg1
+  command: "pg_probackup-10 add-instance \
+            -B /var/lib/pgbackup/ \
+            -D /var/lib/pgsql/10/data \
+            --instance 'pg1' \
+            --remote-host=pg1 \
+            --remote-user=postgres \
+            --ssh-options='-o StrictHostKeyChecking=no'"
+  become: yes
+  become_user: vagrant
+  ignore_errors: yes
+
+- name: Add instance for pg2
+  command: "pg_probackup-10 add-instance \
+            -B /var/lib/pgbackup/ \
+            -D /var/lib/pgsql/10/data \
+            --instance 'pg2' \
+            --remote-host=pg2 \
+            --remote-user=postgres \
+            --ssh-options='-o StrictHostKeyChecking=no'"
+  become: yes
+  become_user: vagrant
+  ignore_errors: yes
+
+- name: Add instance for pg3
+  command: "pg_probackup-10 add-instance \
+            -B /var/lib/pgbackup/ \
+            -D /var/lib/pgsql/10/data \
+            --instance 'pg3' \
+            --remote-host=pg3 \
+            --remote-user=postgres \
+            --ssh-options='-o StrictHostKeyChecking=no'"
+  become: yes
+  become_user: vagrant
+  ignore_errors: yes
+
+- name: Add cron jobs
+  lineinfile:
+    path: /etc/crontab
+    state: present
+    line: '{{ item }}'
+  with_items:
+    - "0,10,20,30,40,50 * * * * vagrant pg_probackup-10 backup -B /var/lib/pgbackup/ --instance 'pg1' -b DELTA -d awx -U postgres --stream --compress-algorithm=zlib --compress-level=4 --log-filename=pg_probackup.log --log-directory=/var/log/pg_probackup --log-level-file=verbose --log-level-console=info"
+    - "3 * * * *                vagrant pg_probackup-10 backup -B /var/lib/pgbackup/ --instance 'pg1' -b FULL  -d awx -U postgres --stream --compress-algorithm=zlib --compress-level=4 --log-filename=pg_probackup.log --log-directory=/var/log/pg_probackup --log-level-file=verbose --log-level-console=info"
+    - "6 0 * * *                vagrant pg_probackup-10 delete -B /var/lib/pgbackup/ --instance 'pg1' --retention-redundancy=5 --delete-expired --merge-expired"
+    - "3,13,23,33,43,53 * * * * vagrant pg_probackup-10 backup -B /var/lib/pgbackup/ --instance 'pg2' -b DELTA -d awx -U postgres --stream --compress-algorithm=zlib --compress-level=4 --log-filename=pg_probackup.log --log-directory=/var/log/pg_probackup --log-level-file=verbose --log-level-console=info"
+    - "6 * * * *                vagrant pg_probackup-10 backup -B /var/lib/pgbackup/ --instance 'pg2' -b FULL  -d awx -U postgres --stream --compress-algorithm=zlib --compress-level=4 --log-filename=pg_probackup.log --log-directory=/var/log/pg_probackup --log-level-file=verbose --log-level-console=info"
+    - "9 0 * * *                vagrant pg_probackup-10 delete -B /var/lib/pgbackup/ --instance 'pg2' --retention-redundancy=5 --delete-expired --merge-expired"
+    - "6,16,26,36,46,56 * * * * vagrant pg_probackup-10 backup -B /var/lib/pgbackup/ --instance 'pg3' -b DELTA -d awx -U postgres --stream --compress-algorithm=zlib --compress-level=4 --log-filename=pg_probackup.log --log-directory=/var/log/pg_probackup --log-level-file=verbose --log-level-console=info"
+    - "9 * * * *                vagrant pg_probackup-10 backup -B /var/lib/pgbackup/ --instance 'pg3' -b FULL  -d awx -U postgres --stream --compress-algorithm=zlib --compress-level=4 --log-filename=pg_probackup.log --log-directory=/var/log/pg_probackup --log-level-file=verbose --log-level-console=info"
+    - "3 0 * * *                vagrant pg_probackup-10 delete -B /var/lib/pgbackup/ --instance 'pg3' --retention-redundancy=5 --delete-expired --merge-expired"
+
+
+- name: Create full backup for pg1
+  command: "pg_probackup-10 backup \
+            -B /var/lib/pgbackup/ \
+            --instance 'pg1' \
+            -b FULL \
+            -d awx \
+            -U postgres \
+            --stream \
+            --compress-algorithm=zlib \
+            --compress-level=4 \
+            --log-filename=pg_probackup.log \
+            --log-directory=/var/log/pg_probackup \
+            --log-level-file=verbose \
+            --log-level-console=info"
+  retries: 3
+  delay: 1
+  register: result
+  until: result.rc == 0
+  become: yes
+  become_user: vagrant
+
+- name: Create full backup for pg2
+  command: "pg_probackup-10 backup \
+            -B /var/lib/pgbackup/ \
+            --instance 'pg2' \
+            -b FULL \
+            -d awx \
+            -U postgres \
+            --stream \
+            --compress-algorithm=zlib \
+            --compress-level=4 \
+            --log-filename=pg_probackup.log \
+            --log-directory=/var/log/pg_probackup \
+            --log-level-file=verbose \
+            --log-level-console=info"
+  retries: 3
+  delay: 1
+  register: result
+  until: result.rc == 0
+  become: yes
+  become_user: vagrant
+
+- name: Create full backup for pg3
+  command: "pg_probackup-10 backup \
+            -B /var/lib/pgbackup/ \
+            --instance 'pg3' \
+            -b FULL \
+            -d awx \
+            -U postgres \
+            --stream \
+            --compress-algorithm=zlib \
+            --compress-level=4 \
+            --log-filename=pg_probackup.log \
+            --log-directory=/var/log/pg_probackup \
+            --log-level-file=verbose \
+            --log-level-console=info"
+  retries: 3
+  delay: 1
+  register: result
+  until: result.rc == 0
+  become: yes
+  become_user: vagrant

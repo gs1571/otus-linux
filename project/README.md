@@ -27,6 +27,15 @@ Functional diagram is presented below:
 
 ![functional diagram](diagrams/functional_diagram.png)
 
+Backup details
+
+The pg_probackup utility is used for that purpose. The util run by cron. Strantegy is:
+- create one full backup by ansible play-book
+- create full backup every hour
+- create delta backup every 10 minutes
+- retention policy is save last five full backups
+- for each of databse servers in cluster its own backup store is created
+
 Some specific points of the lab enviroments:
 - traffic to AWX web nodes balanced by VRRP since they can work in same time for management of AWX
 - at least of three task nodes is required for AWX cluster, since additional VM just for wax task purpose is intriduced
@@ -42,45 +51,43 @@ Thanks a lot for webjournal app for journald-remote to [skob](https://github.com
 * [x] HAProxy pair
 * [x] Patroni cluster
 * [x] AWX cluster
-* [-] Intermediate testing
+* [ ] Intermediate testing
   - [x] shutdown hap1
   - [x] no shutdown hap1
-  - [-] shutdown hap2
-  - [-] no shutdown hap2
-  - [-] shutdown task
-  - [-] no shutdown task
-  - [-] shutdown pg1
-  - [-] no shutdown pg1
+  - [ ] shutdown hap2
+  - [ ] no shutdown hap2
+  - [ ] shutdown task
+  - [ ] no shutdown task
+  - [ ] shutdown pg1
+  - [ ] no shutdown pg1
   - [x] shutdown pg2
   - [x] no shutdown pg2
-  - [-] shutdown pg3
-  - [-] no shutdown pg3
-* [-] Postgres backup
-  - [-] databse
-  - [-] WAL
-* [-] Firewall
-* [+] Logging
-  - [+] haproxy
-  - [+] patroni
-  - [-] consul
-  - [-] postgres
-  - [-] awx
-  - [-] pg_probackup
-* [-] Prometheus
-* [-] Grafana
-* [-] Final testing
-  - [-] shutdown hap1
-  - [-] no shutdown hap1
-  - [-] shutdown hap2
-  - [-] no shutdown hap2
-  - [-] shutdown task
-  - [-] no shutdown task
-  - [-] shutdown pg1
-  - [-] no shutdown pg1
-  - [-] shutdown pg2
-  - [-] no shutdown pg2
-  - [-] shutdown pg3
-  - [-] no shutdown pg3
+  - [ ] shutdown pg3
+  - [ ] no shutdown pg3
+* [x] Postgres backup
+* [ ] Firewall
+* [x] Logging
+  - [x] haproxy
+  - [x] patroni
+  - [ ] consul
+  - [ ] postgres
+  - [ ] awx
+  - [ ] pg_probackup
+* [ ] Prometheus
+* [ ] Grafana
+* [ ] Final testing
+  - [ ] shutdown hap1
+  - [ ] no shutdown hap1
+  - [ ] shutdown hap2
+  - [ ] no shutdown hap2
+  - [ ] shutdown task
+  - [ ] no shutdown task
+  - [ ] shutdown pg1
+  - [ ] no shutdown pg1
+  - [ ] shutdown pg2
+  - [ ] no shutdown pg2
+  - [ ] shutdown pg3
+  - [ ] no shutdown pg3
 
 Optional:
 * [-] IPv6
@@ -130,12 +137,28 @@ journald
 journalctl -D /var/log/journal/remote/ --follow
 ```
 
+Backup
+```
+pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg1'
+pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg2'
+pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg3'
+pg_probackup-10 show -B /var/lib/pgbackup/
+```
+
 ### Otus projects
 
 * https://otus.ru/nest/post/801/ 
 * https://otus.ru/nest/post/384/ 
 *  https://otus.ru/nest/post/638/
 * https://github.com/sinist3rr/otus-linux/tree/master/PROJ
+
+### Postgres Backup
+
+* https://postgrespro.ru/education/courses/DBA1 - PostgreSQL backup lecture 17
+* https://postgrespro.github.io/pg_probackup/ - documenation
+* https://github.com/postgrespro/pg_probackup - installation
+* https://postgrespro.ru/docs/postgrespro/10/app-pgprobackup - useful documentation
+
 
 ### HAProxy
 * https://dasunhegoda.com/how-to-setup-haproxy-with-keepalived/833/
@@ -248,6 +271,9 @@ cd /var/lib/awx/build_image && docker-compose restart
 * https://postgrespro.ru/docs/postgrespro/10/app-pgprobackup - useful documentation
 
 Advises:
+
+--ssh-options='CheckHostIP=no'
+
 * full backup
 ```
 pg_probackup-11 backup \
@@ -291,3 +317,4 @@ bootstrap:
      restore_command: pg_probackup-11 archive-get -B /var/backup --instance db-mt --remote-user=dbbackup --wal-file-path %p --wal-file-name %f --remote-host=<remote_host_ip>
 ```
 > Это на бекап хосте. И он по ссх коннектится к хосту БД. Там тоже нужен pg_probackup
+
