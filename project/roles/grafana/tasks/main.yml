@@ -1,2 +1,42 @@
 ---
-# tasks file for roles/grafana
+- name: Copy repo file
+  template:
+    src: grafana.repo
+    dest: /etc/yum.repos.d/grafana.repo
+
+- name: install package
+  yum:
+    name: grafana
+    state: present
+
+- name: Start Grafana
+  systemd:
+    name: grafana-server
+    state: started
+    daemon_reload: yes
+    enabled: yes
+
+- name: Configure datastore
+  grafana_datasource:
+    ds_type: prometheus
+    is_default: yes
+    name: prometheus
+    url: "http://localhost:9090"
+    grafana_url: "http://192.168.10.30:3000"
+    state: present
+
+- name: Create directories for templates
+  file:
+    path: /var/lib/grafana/dashboards
+    state: directory
+
+- name: Copy dashboard config file
+  template:
+    src: dashboards.yaml
+    dest: /etc/grafana/provisioning/dashboards/dashboards.yaml
+  notify: restart grafana
+
+- name: Copy node_exporter dashboard template
+  copy:
+    src: '{{ role_path }}/templates/node_exporter.json'
+    dest: /var/lib/grafana/dashboards/

@@ -1,0 +1,35 @@
+---
+- name: Common configuration
+  hosts: hap1
+  gather_facts: yes
+  become: yes
+
+  tasks:
+
+    - name: get instance status
+      shell: /usr/local/bin/awx --conf.username admin --conf.password password --conf.host http://192.168.10.10 instance_groups list -f yaml
+      register: result
+
+    - set_fact:
+        myvar: "{{ result.stdout | from_yaml }}"
+
+    - set_fact:
+        awx_hosts: "{{ myvar['results'][0]['policy_instance_list'] | from_yaml_all }}"
+
+    - name: Display resutl JSON
+      debug:
+        var: myvar
+
+    - name: Display resutl JSON results
+      debug:
+        var: myvar['results'][0]['policy_instance_list']
+
+- name: Check
+  hosts: all
+  become: yes
+
+  tasks:
+
+    - name: test 1
+      shell: ls -la
+      when: inventory_hostname in awx_hosts

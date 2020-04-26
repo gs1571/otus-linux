@@ -1,2 +1,62 @@
 ---
-# tasks file for roles/prometheus
+- name: Add the user prometheus
+  user:
+    name: prometheus
+    create_home: no
+    shell: /bin/false
+
+- name: Unarchive prometheus
+  unarchive:
+    src: 'https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_ver }}/prometheus-{{ prometheus_ver }}.linux-amd64.tar.gz'
+    dest: /tmp/
+    copy: no
+
+- name: Copy binaries
+  copy:
+    src: '/tmp/prometheus-{{ prometheus_ver }}.linux-amd64/{{ item }}'
+    dest: /usr/local/bin/
+    mode: '0755'
+    remote_src: yes
+  with_items:
+    - prometheus
+    - promtool
+
+- name: Create directories for prometheus
+  file:
+    path: '{{ item }}'
+    state: directory
+    owner: prometheus
+    group: prometheus
+  with_items:
+    - /etc/prometheus
+    - /var/lib/prometheus
+
+- name: Copy configurations
+  copy:
+    src: '/tmp/prometheus-{{ prometheus_ver }}.linux-amd64/{{ item }}'
+    dest: /etc/prometheus/
+    owner: prometheus
+    group: prometheus
+    remote_src: yes
+  with_items:
+    - consoles
+    - console_libraries
+
+- name: Copy configuration file
+  template:
+    src: prometheus.yml
+    dest: /etc/prometheus/
+    owner: prometheus
+    group: prometheus
+
+- name: Copy systemd unit
+  template:
+    src: prometheus.service
+    dest: /etc/systemd/system/
+
+- name: Start prometheus
+  systemd:
+    name: prometheus
+    state: restarted
+    daemon_reload: yes
+    enabled: yes

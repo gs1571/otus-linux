@@ -9,6 +9,16 @@
     - common
     - node_exporter
 
+- name: Prometheus configuration
+  hosts: mon
+  gather_facts: no
+  become: yes
+  tags:
+    - monitor
+  roles:
+    - prometheus
+    - grafana
+
 - name: Journal server configuration
   hosts: mon
   gather_facts: no

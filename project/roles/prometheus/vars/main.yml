@@ -1,2 +1,2 @@
 ---
-# vars file for roles/prometheus
+prometheus_ver: '2.17.2'

@@ -97,23 +97,29 @@ Optional:
 ### Resources of the lab
 
 * HAPoxy
-  - url: [http://192.168.10.10:7000]
+  - [http://192.168.10.10:7000]
 
 * AWX
-  - url: [http://192.168.10.10]
+  - [http://192.168.10.10]
   - user: admin
   - password: password
 
 * PostgreSQL
-  - url: psql://192.168.10.10:5000
+  - psql://192.168.10.10:5000
   - user: postgres
   - password: gfhjkm
 
 * webjournal
-  - url: [http://192.168.10.30]
+  - [http://192.168.10.30]
   
 * Consul
-  - url: [http://192.168.10.30:8500]
+  - [http://192.168.10.30:8500]
+
+* Pormetheus
+  - [http://192.168.10.30:9090/graph]
+
+* Grafana
+  - [http://192.168.10.30:3000]
 
 ### How to check
 
@@ -144,6 +150,14 @@ pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg2'
 pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg3'
 pg_probackup-10 show -B /var/lib/pgbackup/
 ```
+
+### Firewall
+
+* hap1
+* hap2
+* task
+* 
+
 
 ### Otus projects
 
