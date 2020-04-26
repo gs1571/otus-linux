@@ -1,2 +1,7 @@
 ---
-# handlers file for roles/prometheus
+- name: restart firewall
+  service:
+    name: firewalld.service
+    state: restarted
+    enabled: yes
+    

@@ -1,4 +1,10 @@
 ---
+- name: restart firewall
+  service:
+    name: firewalld.service
+    state: restarted
+    enabled: yes
+    
 - name: restart grafana
   systemd:
     name: grafana-server

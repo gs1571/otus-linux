@@ -9,7 +9,7 @@
     - common
     - node_exporter
 
-- name: Prometheus configuration
+- name: Monotoring servers configuration
   hosts: mon
   gather_facts: no
   become: yes

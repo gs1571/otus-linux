@@ -13,3 +13,7 @@ yum_packages:
 pip3_packages:
   - psycopg2-binary
   - setuptools
+
+enable_port:
+  - 5432/tcp    # postgresql
+  - 8008/tcp    # patroni

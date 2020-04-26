@@ -9,3 +9,6 @@ yum_packages:
   - gcc
   - python-devel
 
+enable_port:
+  - 80/tcp    # nginx
+  - 8888/tcp  # webjournal

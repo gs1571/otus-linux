@@ -2,3 +2,6 @@
 yum_packages:
   - systemd-journal-gateway
   - python2-pip
+
+enable_port:
+  - 19532/tcp    # journal-remote

@@ -1,5 +1,10 @@
 ---
-
+- name: restart firewall
+  service:
+    name: firewalld.service
+    state: restarted
+    enabled: yes
+    
 - name: restart haproxy
   service: 
     name: haproxy

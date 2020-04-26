@@ -1,5 +1,14 @@
 ---
-# tasks file for haproxy
+- name: Update the firewall rules
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items: "{{ enable_port }}"
+  notify: restart firewall
+  tags: fw_rules
+
+- meta: flush_handlers
 
 - name: Install packages
   yum:

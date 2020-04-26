@@ -52,20 +52,20 @@ Thanks a lot for webjournal app for journald-remote to [skob](https://github.com
 * [x] Patroni cluster
 * [x] AWX cluster
 * [ ] Intermediate testing
-  - [x] shutdown hap1
-  - [x] no shutdown hap1
-  - [ ] shutdown hap2
-  - [ ] no shutdown hap2
-  - [ ] shutdown task
-  - [ ] no shutdown task
-  - [ ] shutdown pg1
-  - [ ] no shutdown pg1
-  - [x] shutdown pg2
-  - [x] no shutdown pg2
-  - [ ] shutdown pg3
-  - [ ] no shutdown pg3
+  - [x] power-off hap1
+  - [x] power-on  hap1
+  - [ ] power-off hap2
+  - [ ] power-on  hap2
+  - [ ] power-off task
+  - [ ] power-on  task
+  - [ ] power-off pg1
+  - [ ] power-on  pg1
+  - [x] power-off pg2
+  - [x] power-on  pg2
+  - [ ] power-off pg3
+  - [ ] power-on  pg3
 * [x] Postgres backup
-* [ ] Firewall
+* [x] Firewall
 * [x] Logging
   - [x] haproxy
   - [x] patroni
@@ -83,18 +83,18 @@ Thanks a lot for webjournal app for journald-remote to [skob](https://github.com
   - [ ] pg_probackup
 * [x] Grafana
 * [ ] Final testing
-  - [ ] shutdown hap1
-  - [ ] no shutdown hap1
-  - [ ] shutdown hap2
-  - [ ] no shutdown hap2
-  - [ ] shutdown task
-  - [ ] no shutdown task
-  - [ ] shutdown pg1
-  - [ ] no shutdown pg1
-  - [ ] shutdown pg2
-  - [ ] no shutdown pg2
-  - [ ] shutdown pg3
-  - [ ] no shutdown pg3
+  - [x] power-off hap1
+  - [x] power-on  hap1
+  - [x] power-off hap2
+  - [x] power-on  hap2
+  - [x] power-off task
+  - [x] power-on  task
+  - [x] power-off pg1
+  - [x] power-on  pg1
+  - [x] power-off pg2
+  - [x] power-on  pg2
+  - [x] power-off pg3
+  - [x] power-on  pg3
 
 Optional:
 * [ ] IPv6
@@ -161,10 +161,93 @@ pg_probackup-10 show -B /var/lib/pgbackup/
 ### Firewall
 
 * hap1
-* hap2
-* task
-* 
+users:(("dhclient",pid=5161,fd=6)) *:68
+users:(("rpcbind",pid=1439,fd=5),("systemd",pid=1,fd=57)) *:111
+users:(("ntpd",pid=6420,fd=16)) *:123
+users:(("rpcbind",pid=1439,fd=10)) *:660
+users:(("beam.smp",pid=10521,fd=8)) *:25672
+users:(("haproxy",pid=9767,fd=6)) *:5000
+users:(("rpcbind",pid=1439,fd=4),("systemd",pid=1,fd=50)) *:111
+users:(("epmd",pid=10549,fd=3)) *:4369
+users:(("sshd",pid=2656,fd=3)) *:22
+users:(("haproxy",pid=9767,fd=4)) *:7000
 
+* hap2
+users:(("dhclient",pid=5143,fd=6)) *:68
+users:(("rpcbind",pid=1515,fd=5),("systemd",pid=1,fd=39)) *:111
+users:(("ntpd",pid=6400,fd=29)) *:123
+users:(("rpcbind",pid=1515,fd=10)) *:676
+users:(("beam.smp",pid=10495,fd=8)) *:25672
+users:(("haproxy",pid=9745,fd=6)) *:5000
+users:(("rpcbind",pid=1515,fd=4),("systemd",pid=1,fd=38)) *:111
+users:(("epmd",pid=10510,fd=3)) *:4369
+users:(("sshd",pid=2643,fd=3)) *:22
+users:(("haproxy",pid=9745,fd=4)) *:7000
+
+* task
+users:(("dhclient",pid=5177,fd=6)) *:68
+users:(("rpcbind",pid=1433,fd=5),("systemd",pid=1,fd=67)) *:111
+users:(("ntpd",pid=6424,fd=29)) *:123
+users:(("rpcbind",pid=1433,fd=10)) *:635
+users:(("beam.smp",pid=9358,fd=8)) *:25672
+users:(("rpcbind",pid=1433,fd=4),("systemd",pid=1,fd=66)) *:111
+users:(("epmd",pid=9374,fd=3)) *:4369
+users:(("sshd",pid=2503,fd=3)) *:22
+
+* pg1
+
+users:(("rpcbind",pid=1527,fd=10)) *:1003
+users:(("dhclient",pid=5102,fd=6)) *:68
+users:(("rpcbind",pid=1527,fd=5),("systemd",pid=1,fd=61)) *:111
+users:(("ntpd",pid=6356,fd=16)) *:123
+users:(("patroni",pid=10308,fd=4)) 192.168.10.21:8008
+users:(("rpcbind",pid=1527,fd=4),("systemd",pid=1,fd=60)) *:111
+users:(("sshd",pid=2437,fd=3)) *:22
+users:(("postgres",pid=10736,fd=3)) 192.168.10.21:5432
+
+* pg2
+
+users:(("dhclient",pid=5119,fd=6)) *:68
+users:(("dhclient",pid=2524,fd=6)) *:68
+users:(("rpcbind",pid=1481,fd=5),("systemd",pid=1,fd=65)) *:111
+users:(("ntpd",pid=6372,fd=16)) *:123
+users:(("rpcbind",pid=1481,fd=10)) *:680
+users:(("patroni",pid=10328,fd=4)) 192.168.10.22:8008
+users:(("rpcbind",pid=1481,fd=4),("systemd",pid=1,fd=64)) *:111
+users:(("sshd",pid=2447,fd=3)) *:22
+users:(("postgres",pid=10925,fd=3)) 192.168.10.22:5432
+
+* pg3
+
+users:(("dhclient",pid=5073,fd=6)) *:68  
+users:(("dhclient",pid=2398,fd=6)) *:68  
+users:(("rpcbind",pid=1530,fd=5),("systemd",pid=1,fd=31)) *:111 
+users:(("ntpd",pid=6323,fd=16)) *:123 
+users:(("rpcbind",pid=1530,fd=10)) *:704 
+users:(("patroni",pid=10281,fd=4)) 192.168.10.23:8008
+users:(("rpcbind",pid=1530,fd=4),("systemd",pid=1,fd=30)) *:111 
+users:(("sshd",pid=2584,fd=3)) *:22  
+users:(("postgres",pid=10880,fd=3)) 192.168.10.23:5432
+
+* mon
+
+users:(("dhclient",pid=5070,fd=6)) *:68  
+users:(("dhclient",pid=2313,fd=6)) *:68  
+users:(("consul",pid=16064,fd=11)) 192.168.10.30:8301
+users:(("consul",pid=16064,fd=8)) 192.168.10.30:8302
+users:(("rpcbind",pid=1610,fd=5),("systemd",pid=1,fd=27)) *:111 
+users:(("ntpd",pid=6331,fd=16)) *:123 
+users:(("consul",pid=16064,fd=12)) 127.0.0.1:8600
+users:(("rpcbind",pid=1610,fd=10)) *:843 
+users:(("consul",pid=16064,fd=3)) 192.168.10.30:8300
+users:(("consul",pid=16064,fd=10)) 192.168.10.30:8301
+users:(("consul",pid=16064,fd=7)) 192.168.10.30:8302
+users:(("rpcbind",pid=1610,fd=4),("systemd",pid=1,fd=26)) *:111 
+users:(("nginx",pid=14359,fd=7),("nginx",pid=14358,fd=7),("nginx",pid=14357,fd=7)) *:80  
+users:(("consul",pid=16064,fd=14)) 192.168.10.30:8500
+users:(("sshd",pid=2591,fd=3)) *:22  
+users:(("consul",pid=16064,fd=13)) 127.0.0.1:8600
+users:(("python2",pid=14468,fd=9)) 127.0.0.1:8888
 
 ### Otus projects
 

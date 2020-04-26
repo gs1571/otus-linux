@@ -1,2 +1,5 @@
 ---
 node_expoerter_ver: '0.18.1'
+
+enable_port:
+  - 9100/tcp    # node_exporter

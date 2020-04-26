@@ -2,3 +2,7 @@
 yum_packages:
   - haproxy
   - keepalived
+
+enable_port:
+  - 5000/tcp    # haproxy-postgres
+  - 7000/tcp    # haproxy-web

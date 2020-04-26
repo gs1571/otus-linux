@@ -1,2 +1,5 @@
 ---
 prometheus_ver: '2.17.2'
+
+enable_port:
+  - 9090/tcp    # prometheus

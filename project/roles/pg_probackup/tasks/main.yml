@@ -82,6 +82,7 @@
   become: yes
   become_user: vagrant
   ignore_errors: yes
+  register: pg1_instance
 
 - name: Add instance for pg2
   command: "pg_probackup-10 add-instance \
@@ -94,6 +95,7 @@
   become: yes
   become_user: vagrant
   ignore_errors: yes
+  register: pg2_instance
 
 - name: Add instance for pg3
   command: "pg_probackup-10 add-instance \
@@ -106,6 +108,7 @@
   become: yes
   become_user: vagrant
   ignore_errors: yes
+  register: pg3_instance
 
 - name: Add cron jobs
   lineinfile:
@@ -144,6 +147,7 @@
   until: result.rc == 0
   become: yes
   become_user: vagrant
+  when: pg1_instance is not failed
 
 - name: Create full backup for pg2
   command: "pg_probackup-10 backup \
@@ -165,6 +169,7 @@
   until: result.rc == 0
   become: yes
   become_user: vagrant
+  when: pg2_instance is not failed
 
 - name: Create full backup for pg3
   command: "pg_probackup-10 backup \
@@ -186,3 +191,4 @@
   until: result.rc == 0
   become: yes
   become_user: vagrant
+  when: pg3_instance is not failed

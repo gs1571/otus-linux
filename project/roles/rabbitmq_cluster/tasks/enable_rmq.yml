@@ -26,21 +26,22 @@
     state: started
     enabled: yes
 
-#- name: Update the firewall rules
-#  firewalld:
-#    port: "{{ item }}"
-#    permanent: yes
-#    state: enabled
-#  with_items: "{{ enable_port }}"
-#  register: apply_fw_rules
-#  when: fw_rules | bool
-#  tags: fw_rules
+- name: Update the firewall rules
+  firewalld:
+    port: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items: "{{ enable_port }}"
+  register: apply_fw_rules
+  when: fw_rules | bool
+  tags: fw_rules
 
-#- name: Restart the firewalld daemon
-#  service:
-#    name: firewalld.service
-#    state: restarted
-#  when:
-#    - apply_fw_rules is changed
-#    - fw_rules | bool
-#  tags: fw_rules
+- name: Restart the firewalld daemon
+  service:
+    name: firewalld.service
+    state: restarted
+    enabled: yes
+  when:
+    - apply_fw_rules is changed
+    - fw_rules | bool
+  tags: fw_rules

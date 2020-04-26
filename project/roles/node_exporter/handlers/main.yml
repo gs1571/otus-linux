@@ -1,2 +1,7 @@
 ---
-# handlers file for roles/node_exporter
+- name: restart firewall
+  service:
+    name: firewalld.service
+    state: restarted
+    enabled: yes
+    

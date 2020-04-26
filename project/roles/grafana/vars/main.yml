@@ -1,2 +1,3 @@
 ---
-# vars file for roles/grafana
+enable_port:
+  - 3000/tcp    # grafana
