@@ -73,8 +73,15 @@ Thanks a lot for webjournal app for journald-remote to [skob](https://github.com
   - [ ] postgres
   - [ ] awx
   - [ ] pg_probackup
-* [ ] Prometheus
-* [ ] Grafana
+* [x] Prometheus
+  - [x] node_exporter
+  - [x] haproxy
+  - [x] patroni
+  - [ ] consul
+  - [ ] postgres
+  - [ ] awx
+  - [ ] pg_probackup
+* [x] Grafana
 * [ ] Final testing
   - [ ] shutdown hap1
   - [ ] no shutdown hap1
