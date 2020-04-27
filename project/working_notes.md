@@ -1,3 +1,78 @@
+## Useful links and notes
+
+### How to check
+
+Patroni
+```
+/usr/local/bin/patronictl -c /etc/patroni/patroni.yml list
+
+psql -U postgres -h 192.168.10.10 -p 5000
+
+postgres=# select * from pg_stat_replication;
+
+SELECT d.datname as "Name",
+pg_catalog.pg_get_userbyid(d.datdba) as "Owner"
+FROM pg_catalog.pg_database d
+WHERE d.datname = 'your_name'
+ORDER BY 1;
+```
+
+journald
+```
+journalctl -D /var/log/journal/remote/ --follow
+```
+
+Backup
+```
+pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg1'
+pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg2'
+pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg3'
+pg_probackup-10 show -B /var/lib/pgbackup/
+```
+
+
+### Checklist
+
+* [x] Common config
+* [x] Keepalived pair
+* [x] HAProxy pair
+* [x] Patroni cluster
+* [x] AWX cluster
+* [x] Postgres backup
+* [x] Firewall
+* [x] Logging
+  - [x] haproxy
+  - [x] patroni
+  - [ ] consul
+  - [ ] postgres
+  - [ ] awx
+  - [ ] pg_probackup
+* [x] Prometheus
+  - [x] node_exporter
+  - [x] haproxy
+  - [x] patroni
+  - [ ] consul
+  - [ ] postgres
+  - [ ] awx
+  - [ ] pg_probackup
+* [x] Grafana
+* [x] Final testing
+  - [x] power-off hap1
+  - [x] power-on  hap1
+  - [x] power-off hap2
+  - [x] power-on  hap2
+  - [x] power-off task
+  - [x] power-on  task
+  - [x] power-off pg1
+  - [x] power-on  pg1
+  - [x] power-off pg2
+  - [x] power-on  pg2
+  - [x] power-off pg3
+  - [x] power-on  pg3
+
+Optional:
+* [ ] IPv6
+
 ### Firewall
 
 * hap1
