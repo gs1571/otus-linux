@@ -1,35 +1,86 @@
 ---
 - name: Common configuration
-  hosts: hap1
-  gather_facts: yes
+  hosts: awx_instance_group*
+  gather_facts: no
   become: yes
 
   tasks:
 
-    - name: get instance status
+    - name: Install awx-cli
+      shell: 'pip3 install "https://github.com/ansible/awx/archive/9.2.0.tar.gz#egg=awxkit&subdirectory=awxkit"'
+      when: "'hap1' in inventory_hostname"
+
+    - name: Wait until DB is migrating
+      shell: /usr/local/bin/awx --conf.username admin --conf.password password --conf.host http://192.168.10.10 instance_groups list -f human
+      when: "'hap1' in inventory_hostname"
+      retries: 99
+      delay: 10
+      register: result
+      until: result.rc == 0 and result.stdout != 'IsMigrating'
+      #failed_when: result is failed or result.output == 'IsMigrating'
+
+    - name: Wait untill instance group is created
+      shell: /usr/local/bin/awx --conf.username admin --conf.password password --conf.host http://192.168.10.10 instance_groups list -f human | grep tower
+      when: "'hap1' in inventory_hostname"
+      retries: 99
+      delay: 10
+      register: result
+      until: result.rc == 0 and result.stdout != ''
+
+    - name: Get instance host
       shell: /usr/local/bin/awx --conf.username admin --conf.password password --conf.host http://192.168.10.10 instance_groups list -f yaml
+      when: "'hap1' in inventory_hostname"
       register: result
 
     - set_fact:
         myvar: "{{ result.stdout | from_yaml }}"
+      when: "'hap1' in inventory_hostname"
 
     - set_fact:
-        awx_hosts: "{{ myvar['results'][0]['policy_instance_list'] | from_yaml_all }}"
+        instance_host: "{{ myvar['results'][0]['policy_instance_list'][0] }}"
+      when: "'hap1' in inventory_hostname"
 
-    - name: Display resutl JSON
+    
+#    - name: get instance status
+#      shell: /usr/local/bin/awx --conf.username admin --conf.password password --conf.host http://192.168.10.10 instance_groups list -f yaml
+#      register: result
+#
+#    - set_fact:
+#        myvar: "{{ result.stdout | from_yaml }}"
+#
+#    - set_fact:
+#        awx_hosts: "{{ myvar['results'][0]['policy_instance_list'] | from_yaml_all }}"
+#
+#    - set_fact:
+#        instance_host: "{{ myvar['results'][0]['policy_instance_list'][0] }}"
+#
+#    - name: Display resutl JSON
+#      debug:
+#        var: myvar
+#
+#    - name: Display resutl JSON results
+#      debug:
+#        var: myvar['results'][0]['policy_instance_list']
+#
+    - name: Display instance_host
       debug:
-        var: myvar
+        var: instance_host
 
-    - name: Display resutl JSON results
+#    - name: Display hosts
+#      debug:
+#        var: groups['all']
+
+    - name: show all the hosts matching the pattern
       debug:
-        var: myvar['results'][0]['policy_instance_list']
+        msg: yes
+      when: "hostvars['hap1']['instance_host'] not in inventory_hostname"
 
-- name: Check
-  hosts: all
-  become: yes
+    - name: Restart docker compose
+      shell: cd /var/lib/awx/build_image && docker-compose restart
+      register: restart
+      when: "hostvars['hap1']['instance_host'] not in inventory_hostname"
 
-  tasks:
-
-    - name: test 1
-      shell: ls -la
-      when: inventory_hostname in awx_hosts
+    - name: show all the hosts matching the pattern
+      debug:
+        var: restart.stderr_lines
+      when: "hostvars['hap1']['instance_host'] not in inventory_hostname"

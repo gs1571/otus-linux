@@ -9,5 +9,6 @@ dependencies:
     - python-devel
     - python-pip
     - docker-ce
+    - python3
   pip:
     - docker-compose==1.24.0

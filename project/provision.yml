@@ -73,8 +73,6 @@
   hosts: mon
   gather_facts: no
   become: yes
-  tags: 
-    - db
   roles:
     - pg_probackup
 
@@ -88,3 +86,4 @@
   roles:
     - rabbitmq_cluster
     - awx_ha
+    - awx_ha_recovery
