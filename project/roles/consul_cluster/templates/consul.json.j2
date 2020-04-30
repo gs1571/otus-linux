@@ -1,0 +1,25 @@
+{
+  "datacenter": "patroni",
+  "addresses" : {
+    "http": "{{ ansible_eth1.ipv4.address }}"
+  },
+  "bind_addr": "{{ ansible_eth1.ipv4.address }}",
+  "node_name": "{{ inventory_hostname }}",
+  "rejoin_after_leave": true,
+  "domain": "consul",
+  "retry_join": [
+    "192.168.10.21",
+    "192.168.10.22",
+    "192.168.10.23"
+  ],
+  "bootstrap_expect": 3,
+  "client_addr": "0.0.0.0",
+  "enable_syslog": true,
+  "log_level": "INFO",
+  "server": true,
+  "verify_incoming": false,
+  "verify_outgoing": false,
+  "data_dir": "/opt/consul",
+  "disable_remote_exec": false,
+  "ui": true
+}

@@ -30,6 +30,9 @@ pg_probackup-10 show -B /var/lib/pgbackup/  --instance 'pg3'
 pg_probackup-10 show -B /var/lib/pgbackup/
 ```
 
+ansible all -m shell -a "firewall-cmd --state"
+ansible all -m shell -a "firewall-cmd --list-all"
+
 
 ### Checklist
 
@@ -178,6 +181,10 @@ users:(("python2",pid=14468,fd=9)) 127.0.0.1:8888
 * https://github.com/postgrespro/pg_probackup - installation
 * https://postgrespro.ru/docs/postgrespro/10/app-pgprobackup - useful documentation
 
+### Consul
+* https://devopscube.com/setup-consul-cluster-guide/
+* https://www.consul.io/docs/agent/options.html
+* https://github.com/hashicorp/consul-template/blob/master/examples/haproxy.md
 
 ### HAProxy
 * https://dasunhegoda.com/how-to-setup-haproxy-with-keepalived/833/
@@ -191,6 +198,8 @@ Base version:
 
 HA version:
 * https://github.com/sujiar37/AWX-HA-InstanceGroup - AWX on docker with HA
+* https://github.com/powertim/deploy_awx-rpm - AWX rpm
+* https://github.com/MrMEEE/awx-build/issues/26 - discussion about HA of AWX
 
 ### Journald
 

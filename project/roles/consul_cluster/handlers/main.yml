@@ -1,0 +1,11 @@
+---
+- name: restart firewall
+  service:
+    name: firewalld.service
+    state: restarted
+    enabled: yes
+    
+- name: restart consul
+  service: 
+    name: consul
+    state: restarted

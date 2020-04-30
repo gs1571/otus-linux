@@ -60,6 +60,15 @@
   roles:
     - consul
 
+#- name: Consul cluster deploy
+#  hosts: db
+#  gather_facts: yes
+#  become: yes
+#  tags:
+#    - consul
+#  roles:
+#    - consul_cluster
+
 - name: Patroni deploy
   hosts: db
   gather_facts: yes
