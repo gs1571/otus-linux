@@ -1,4 +1,4 @@
-# High-Avalability Atomation platform based on AWX
+# High-Availability Automation platform based on AWX
 
 ## Description
 
@@ -30,24 +30,24 @@ Functional diagram is presented below:
 
 Backup details
 
-The pg_probackup utility is used for that purpose. The util run by cron. Strantegy is:
-- create one full backup by ansible playbook
-- create full backup every hour
+The pg_probackup utility is used for that purpose. The util run by cron. Strategy is:
+- create one full backup by ansible-playbook
+- create a full backup every hour
 - create delta backup every 10 minutes
-- retention policy is save last five full backups
-- for each of database servers in cluster its own backup store is created
+- the retention policy is saving the last five full backups
+- for each of database servers in cluster, its own backup store is created
 
-Some specific points of the lab enviroments:
-- patroni cluster is supported just one instance of consul database hosted on VM mon (it sould be fixed to achive fully HA)
-- traffic to AWX web nodes balanced by VRRP since they can work in same time for management of AWX
-- at least of three task nodes is required for AWX cluster, since additional VM just for wax task purpose is intriduced
+Some specific points of the lab environments:
+- patroni cluster is supported just one instance of consul database hosted on VM mon (it should be fixed to archive fully HA)
+- traffic to AWX web nodes balanced by VRRP since they can work in the same time for management of AWX
+- at least of three task nodes are required for AWX cluster, since additional VM just for wax task purpose is introduced
 - last role awx_ha_recovery is required since two of three task node are not connected to the cluster and their reboot are necessary
-- monitoring part has just node_exporter and does not provide more detail monitoring information from other elemnts of lab (point for improvement)
-- centralizelogging does not get logs from AWX, Postgres (point for improvement)
+- monitoring part has just node_exporter and does not provide more detail monitoring information from other elements of the lab (point for improvement)
+- centralize logging does not get logs from AWX, Postgres (point for improvement)
 
-Thanks a lot for Ansible roles of AWX cluster to [sujiar37](https://github.com/sujiar37). I adopted material from his repo https://github.com/sujiar37/AWX-HA-InstanceGroup.
+Thanks a lot for Ansible roles of the AWX cluster to [sujiar37](https://github.com/sujiar37). I adopted material from his repo https://github.com/sujiar37/AWX-HA-InstanceGroup.
 
-Thanks a lot for webjournal app for journald-remote to [skob](https://github.com/skob). I adopted material from his repo https://github.com/skob/journal.
+Thanks a lot for webjournal app for journal-remote to [skob](https://github.com/skob). I adopted material from his repo https://github.com/skob/journal.
 
 ### Resources of the lab
 

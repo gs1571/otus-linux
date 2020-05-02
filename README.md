@@ -222,14 +222,47 @@
     - [Как мы Redis Cluster готовили](https://habr.com/ru/post/320902/)
     - [Увеличение производительности Redis с помощью простого кластера](https://habr.com/ru/post/214131/)
     - [erlong15/vagrant-redis-cluster](https://github.com/erlong15/vagrant-redis-cluster.git)
+* Lab35: Горизонтальное масштабирование базы данных
 * [Lab36: Файловые хранилища - NFS, SMB, FTP](lab36/README.md)
     - [Deploying NFS Server with 10GigE Network for Dell High Performance Clusters](lab36/dell_nfs_server.pdf)
     - [NFS Tuning for Oracle: Introducing DTrace](lab36/2011_06_Hailey_NFS_Tuning.pdf)
     - [Linux NFS faq](http://nfs.sourceforge.net/)
     - [Включение Samba-сервера на базе Ubuntu в домен AD](https://technet.microsoft.com/ru-ru/jj680665.aspx)
+* [Lab37: Балансировка нагрузки на основе HAproxy и VRRP (keepalived)]
+    - [Разбираем методы проксирования на основе HAProxy](https://habr.com/post/244027/)
+    - [Percona - HAproxy](https://www.percona.com/pdf-viewer/viewer.html?file=https://www.percona.com/sites/default/files/presentations/Load-balancing-MySQL-with-HAProxy.pdf)
+    - [HAProxy version 1.8.14 - Starter Guide](http://cbonte.github.io/haproxy-dconv/1.8/intro.html)
+    - [Introduction to HAProxy](https://linuxacademy.com/howtoguides/posts/show/topic/12012-introduction-to-haproxy)
+    - [MySQL Load Balancing with HAProxy – Stephen kanyi – Medium](https://medium.com/@StephenKanyiW/mysql-load-balancing-with-haproxy-46b25b0295dd)
+    - [How to setup HAProxy with Keepalived](http://dasunhegoda.com/how-to-setup-haproxy-with-keepalived/833/)
+    - [VRRP — Xgu.ru](http://xgu.ru/wiki/VRRP)
+    - [VRRP_protocol.pdf](http://www2.elo.utfsm.cl/~tel242/exp/04/VRRP_protocol.pdf)
+* [Lab38: Строим кластер - Pacemaker, Corosync]
+    - [Docs LINBIT – Online Documentation Resource for DRBD](https://docs.linbit.com/)
+    - [Pacemaker - ClusterLabs](https://wiki.clusterlabs.org/wiki/Pacemaker)
+    - [How to Install and Configure DRBD Cluster on RHEL7 / CentOS7](https://www.learnitguide.net/2016/07/how-to-install-and-configure-drbd-on-linux.html)
+* [Lab39: ISCSI, multipath и кластерные файловые системы: GFS2]
+    - [Understanding Linux SCSI Reservation – The Geek Diary](https://www.thegeekdiary.com/understanding-linux-scsi-reservation/)
+    - [Configure Two Node Highly-Available Cluster Using iSCSI Fencing on RHEL7 (Open Diary – Munshi Hafizul Haque (SazaL))](https://www.ibm.com/developerworks/community/blogs/mhhaque/entry/configure_two_node_highly_available_cluster_using_iscsi_fencing_on_rhel7?lang=en)
+    - [8.3. Configure the Cluster for STONITH](http://clusterlabs.org/pacemaker/doc/en-US/Pacemaker/1.1/html/Clusters_from_Scratch/_configure_the_cluster_for_stonith.html)
+    - [Global File System 2 - Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/global_file_system_2/index)
+    - [RHEL7 - Configuring GFS2 on Pacemaker/Corosync Cluster - UnixArena](https://www.unixarena.com/2016/01/rhel7-configuring-gfs2-on-pacemakercorosync-cluster.html/)
+    - [Multipath I/O для программного iSCSI](https://ivirt-it.ru/multipath-io-iscsi/)
+    - [Lisenet.com :: Linux | Security | Networking | Admin Blog](https://www.lisenet.com/2016/activeactive-high-availability-pacemaker-cluster-with-gfs2-and-iscsi-shared-storage-on-centos-7/)
+    - [OCFS2 — Xgu.ru](http://xgu.ru/wiki/OCFS2)
+    - [Как НЕ НАДО использовать GFS/GFS2](https://access.redhat.com/solutions/41223)
+* [Lab40: Распределенные файловые системы: CEPH]
+    - [Глава 3. Архитектура и компоненты Ceph - Изучаем Ceph](http://onreader.mdl.ru/LearningCeph/content/Ch03.html)
+    - [Ceph Configuration Guide Red Hat Ceph Storage 1.2.3 | Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_ceph_storage/1.2.3/html/ceph_configuration_guide/)
+* [Lab41: Распределенные файловые системы: GlusterFS]
+    - [Основы работы с файловой системой GlusterFS](https://docs.google.com/forms/d/e/1FAIpQLSeMfvVGy-26tJx2qZ_-kqVUktsSEBJa935Zp6iMqom0CUA2kw/viewform?usp=sf_link)
+    - [GlusterFS иструкции для занятия](https://docs.google.com/document/d/19cIbybexw3S2TKUdQFop6OTBSkwGBYzr_fMNGnar8OU/edit?usp=sharing)
+* [Lab42: Виртуализация]
 
+## Проектная работа
 
+[Проектная работа](project/README.md)
 
-# Инструкции
+## Инструкции
 
 * [Разного рода подсказки и инструкции лежат тут](instructions/README.md)
